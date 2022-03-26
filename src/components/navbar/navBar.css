@@ -1,0 +1,6 @@
+@media (max-width: 768px){
+    .navbar-style-mobil{
+        position: absolute!important;
+        z-index: 999999!important;
+    }    
+}

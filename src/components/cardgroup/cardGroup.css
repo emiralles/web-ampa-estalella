@@ -1,0 +1,61 @@
+.card{
+    border: none!important;
+}
+
+.card .text-white{
+    margin-top: 10%!important;
+    margin-left: 25%!important;
+    height: 10rem!important;
+    width: 10rem!important;
+    border-radius: 10rem!important;
+    border: none!important;
+}
+
+.card-img{
+    border-radius: 50%!important;
+    width: 10rem!important;
+    height: 10rem!important;
+    padding: 1rem!important;
+    margin-left: 12%!important;
+}
+
+.img-1-card-row-2{
+    margin-left: 8rem!important;
+}
+
+div.card-img-overlay.card-img-overlay-img-1-card-row-2{
+    margin-left: 9.4rem!important;
+}
+
+.img-2-card-row-2{
+    margin-left: 3.5rem!important;
+}
+
+div.card-img-overlay.card-img-overlay-img-2-card-row-2{
+    margin-left: 5rem!important;
+}
+
+.img-3-card-row-2{
+    margin-left: -1rem!important;
+}
+
+div.card-img-overlay.card-img-overlay-img-3-card-row-2{
+    margin-left: 0.5rem!important;
+}
+
+.card-img-overlay{
+    padding: 0rem!important;
+    width: 7rem!important;
+    text-align: center;
+    text-size-adjust: auto!important;
+    background: rgb(173, 6, 46 ,0.4);
+    height: 6rem!important;
+    /* margin-left: 0.55rem!important; */
+    margin-top: 2.85rem!important;
+    border-radius: 78%!important;
+    margin-left: 24%!important;
+}
+
+.card-title{
+    padding-top: 25%!important;
+}
