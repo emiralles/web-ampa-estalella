@@ -1,12 +1,14 @@
 import Icons from "bootstrap-icons/bootstrap-icons.svg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDrumstickBite} from '@fortawesome/free-solid-svg-icons'
-import logo from "./images/LOGOTIPS AMPA B.jpg";
+// import logo from "./images/LOGOTIPS AMPA B.jpg";
+import logo from "./images/LOGO AMPA V.jpg";
 import './navBar.css';
 // d-none d-sm-block d-sm-none d-md-block d-md-none d-lg-block
 function NavBar() {
     return ( 
-        <nav className="navbar navbar-expand-lg navbar-light bg-light navbar-style-mobil">
+        <nav className="navbar navbar-expand-lg navbar-light fixed-top bg-light ">
+            {/* navbar navbar-expand-md navbar-dark fixed-top bg-dark navbar-style-mobil */}
             <div className="container-fluid">
                 <a className="navbar-brand" href="qa">
                     <img className="Logo" src={logo} alt="Logo"/>
