@@ -122,7 +122,7 @@
 .Logo {
   background-image: url(../public/images/LOGO\ ESTALELLA\ COLORS.jpg);
   width: 4rem!important;
-  height: 3rem!important;
+  height: 4rem!important;
 }
 
 .dropdown-menu{
@@ -138,7 +138,7 @@
   list-style: none;
   background-color: #b4dc73!important;
   background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 0px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
 }
 
@@ -154,44 +154,7 @@
   text-align: inherit;
   text-decoration: none;
   white-space: nowrap;
-  background-color: transparent;
+  /* background-color: transparent; */
+  background-color: #b4dc73!important;
   border: 0;
 }
-/* .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
