@@ -1,16 +1,14 @@
 import Icons from "bootstrap-icons/bootstrap-icons.svg";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDrumstickBite} from '@fortawesome/free-solid-svg-icons'
-// import logo from "./images/LOGOTIPS AMPA B.jpg";
 import logo from "./images/LOGO AMPA V.jpg";
 import './navBar.css';
+import { Link } from "react-router-dom";
 // d-none d-sm-block d-sm-none d-md-block d-md-none d-lg-block
 function NavBar() {
     return ( 
         <nav className="navbar navbar-expand-lg navbar-light fixed-top bg-light ">
             {/* navbar navbar-expand-md navbar-dark fixed-top bg-dark navbar-style-mobil */}
             <div className="container-fluid">
-                <a className="navbar-brand" href="qa">
+                <a className="navbar-brand" href="/">
                     <img className="Logo" src={logo} alt="Logo"/>
                     {/* <FontAwesomeIcon icon={estalellaImage}></FontAwesomeIcon> */}
                 </a>
@@ -24,7 +22,7 @@ function NavBar() {
                             <svg className="bi" width="30" height="24"><use xlinkHref={`${Icons}#people-fill`}></use></svg>L'afa
                         </a>
                         <ul className="dropdown-menu" aria-labelledby="navbarQuiSomDropdown">
-                            <li><a href="fg" className="dropdown-item">Qui som</a></li>
+                            <li><a href="/quisom" className="dropdown-item">Qui som</a></li>
                             <li><a href="fg" className="dropdown-item">Comissions</a></li>
                             <li><a href="fg" className="dropdown-item">Fer-se-soci</a></li>
                         </ul>
@@ -47,7 +45,7 @@ function NavBar() {
                             <svg className="bi" width="30" height="24"><use xlinkHref={`${Icons}#person-rolodex`}></use></svg>Espai de transparència
                         </a>
                         <ul className="dropdown-menu" aria-labelledby="navbarDocumentsDropdown">
-                            <li><a href="fg" className="dropdown-item">Estatuts</a></li>
+                            <li><a href="/esdeveniments" className="dropdown-item">Estatuts</a></li>
                             <li><a href="fg" className="dropdown-item">Pressupost 2021-2022</a></li>
                             <li><a href="fg" className="dropdown-item">Actes</a></li>
                         </ul>
@@ -58,7 +56,9 @@ function NavBar() {
                         </a>
                     </li>
                     <li className="nav-item dropdown">
-                        <a className="nav-link dropdown-toggle" href="#extraescolars-collapse" id="navbarExtraEscolaresDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {/* <Link className="nav-link dropdown-toggle" id="navbarExtraEscolaresDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" to="/esdeveniments"><svg className="bi" width="30" height="24"><use xlinkHref={`${Icons}#calendar2-event`}></use></svg>Esdeveniments</Link> */}
+                        <a className="nav-link dropdown-toggle" href="/esdeveniments" id="navbarExtraEscolaresDropdown" role="button" aria-expanded="false">
+                        {/* className="nav-link "  data-bs-toggle="dropdown"  */}
                             <svg className="bi" width="30" height="24"><use xlinkHref={`${Icons}#calendar2-event`}></use></svg>Esdeveniments
                         </a>
                     </li>
