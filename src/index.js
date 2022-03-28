@@ -2,20 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-// import 'bootstrap/dist/css'
 import 'jquery/dist/jquery'
 import 'popper.js'
-// import 'bootstrap/dist/js/bootstrap'
 import 'bootstrap/dist/js/bootstrap.js';
 import 'react-popper'
-// import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <BrowserRouter>
     <App />
-  </React.StrictMode>,
+  </BrowserRouter>,
+  // <React.StrictMode>
+  //   <App />
+  // </React.StrictMode>,
   document.getElementById('root')
 );
 
