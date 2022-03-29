@@ -18,8 +18,8 @@ function App() {
         <div className='container marketing'>
           <Routes>
             <Route path='/' element={<CardGroup/>} />
-            <Route path='/esdeveniments' element={<Esdeveniments/>} />
-            <Route path='/quisom' element={<Quisom/>} />
+            <Route path='https://www.ariamath.com/esdeveniments' element={<Esdeveniments/>} />
+            <Route path='https://www.ariamath.com/quisom' element={<Quisom/>} />
           </Routes>
         </div>
       </main>
