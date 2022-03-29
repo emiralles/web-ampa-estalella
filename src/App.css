@@ -298,15 +298,17 @@ body {
 
   .containerH1 {
     width: 100%!important;
-    height: 60%!important;
+    height: 25%!important;
     /* background-color: seagreen; */
     color: grey;
     margin-bottom: 2rem!important;
-    border-top: #212529;
-    border-bottom: #212529;
   }
   .containerH1 h1{
-    font-size: 5rem!important;
+    font-size: 2rem!important;
+  }
+
+  .text-h1{
+    text-align: center!important;
   }
 
   .div-ul-ul{
@@ -322,15 +324,17 @@ body {
 
   .containerH1 {
     width: 100%!important;
-    height: 60%!important;
+    height: 25%!important;
     /* background-color: seagreen; */
     color: grey;
     margin-bottom: 2rem!important;
-    border-top: #212529;
-    border-bottom: #212529;
   }
   .containerH1 h1{
-    font-size: 4rem!important;
+    font-size: 2rem!important;
+  }
+
+  .text-h1{
+    text-align: center!important;
   }
 
   .div-ul-ul{
