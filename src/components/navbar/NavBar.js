@@ -22,7 +22,7 @@ function NavBar() {
                             <svg className="bi" width="30" height="24"><use xlinkHref={`${Icons}#people-fill`}></use></svg>L'afa
                         </a>
                         <ul className="dropdown-menu" aria-labelledby="navbarQuiSomDropdown">
-                            <li><a href="https://www.ariamath.com/quisom" className="dropdown-item">Qui som</a></li>
+                            <li><a href="/quisom" className="dropdown-item">Qui som</a></li>
                             <li><a href="fg" className="dropdown-item">Comissions</a></li>
                             <li><a href="fg" className="dropdown-item">Fer-se-soci</a></li>
                         </ul>
@@ -45,7 +45,7 @@ function NavBar() {
                             <svg className="bi" width="30" height="24"><use xlinkHref={`${Icons}#person-rolodex`}></use></svg>Espai de transparència
                         </a>
                         <ul className="dropdown-menu" aria-labelledby="navbarDocumentsDropdown">
-                            <li><a href="https://www.ariamath.com/esdeveniments" className="dropdown-item">Estatuts</a></li>
+                            <li><a href="/esdeveniments" className="dropdown-item">Estatuts</a></li>
                             <li><a href="fg" className="dropdown-item">Pressupost 2021-2022</a></li>
                             <li><a href="fg" className="dropdown-item">Actes</a></li>
                         </ul>
@@ -57,7 +57,7 @@ function NavBar() {
                     </li>
                     <li className="nav-item dropdown">
                         {/* <Link className="nav-link dropdown-toggle" id="navbarExtraEscolaresDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" to="/esdeveniments"><svg className="bi" width="30" height="24"><use xlinkHref={`${Icons}#calendar2-event`}></use></svg>Esdeveniments</Link> */}
-                        <a className="nav-link dropdown-toggle" href="https://www.ariamath.com/esdeveniments" id="navbarExtraEscolaresDropdown" role="button" aria-expanded="false">
+                        <a className="nav-link dropdown-toggle" href="/esdeveniments" id="navbarExtraEscolaresDropdown" role="button" aria-expanded="false">
                         {/* className="nav-link "  data-bs-toggle="dropdown"  */}
                             <svg className="bi" width="30" height="24"><use xlinkHref={`${Icons}#calendar2-event`}></use></svg>Esdeveniments
                         </a>
