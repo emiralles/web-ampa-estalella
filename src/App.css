@@ -19,10 +19,6 @@
   height: 32rem; */
 }
 
-.marketing{
-  margin-top: -13rem!important;
-}
-
 .marketing .col-lg-4 {
   margin-bottom: 1.5rem;
   text-align: center;
@@ -51,6 +47,10 @@
 }
 
 @media (max-width: 991px){
+  /* .marketing{
+    margin-top: -13rem!important;
+  } */
+
   div.col-lg-4.margin-left-col-lg-4{
     margin-left: 0!important;
   }
@@ -283,6 +283,10 @@ body {
 }
 
 @media (max-width: 443px) {
+  .marketing{
+    margin-top: -13rem!important;
+  }
+
   .containerH1 {
     width: 100%!important;
     height: 6rem!important;
@@ -303,6 +307,10 @@ body {
 }
 
 @media (max-width: 350px) {
+  .marketing{
+    margin-top: -13rem!important;
+  }
+
   .containerH1 {
     width: 100%!important;
     height: 4rem!important;
