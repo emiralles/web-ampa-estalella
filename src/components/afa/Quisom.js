@@ -2,9 +2,10 @@
 function Quisom() {
     return ( 
         <>
-        <hr className="featurette-divider fix-margin-featurette-divider-bottom"></hr>
+        <hr className="featurette-divider"></hr>
+        {/* <hr className="featurette-divider fix-margin-featurette-divider-bottom"></hr> */}
         <div className="containerH1"><h1>Qui som</h1></div>
-        <hr className="featurette-divider fix-margin-featurette-divider-top"></hr>
+        {/* <hr className="featurette-divider fix-margin-featurette-divider-top"></hr> */}
         <p className="fs-5 col-md-12">L’AFA de l’Escola Estalella i Graells és l’associació formada per les mares i pares dels alumnes de l’escola que voluntàriament ho desitgin. És una associació sense ànim de lucre, constituïda legalment i està representada per una Junta que a la vegada està dividida en comissions de treballs segons les tasques i/o activitats.</p>
         <hr className="col-3 col-md-12 mb-5"></hr>
         <div className="row g-5">
@@ -42,6 +43,7 @@ function Quisom() {
                 </ul>
             </div> */}
         </div>
+        <hr className="featurette-divider"></hr>
         </>
     );
 }
