@@ -32,7 +32,7 @@ function NavBar() {
                             <svg className="bi" width="30" height="24"><use xlinkHref={`${Icons}#folder2`}></use></svg>Serveis
                         </a>
                         <ul className="dropdown-menu">
-                            <li><a href="fg" className="dropdown-item">Acollida</a></li>
+                            <li><a href="/acollida" className="dropdown-item">Acollida</a></li>
                             <li><a href="fg" className="dropdown-item">Menjador</a></li>
                             <li><a href="fg" className="dropdown-item">Extraescolars</a></li>
                             <li><a href="fg" className="dropdown-item">Equipament</a></li>
