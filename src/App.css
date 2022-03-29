@@ -258,3 +258,20 @@ body {
 .containerH1 h1{
   font-size: 7rem!important;
 }
+
+@media (max-width: 443px) {
+  .containerH1 {
+    width: 100%!important;
+    height: 7rem!important;
+    background-color: seagreen;
+    color: cornsilk;
+    margin-bottom: 2rem!important;
+  }
+  .containerH1 h1{
+    font-size: 5rem!important;
+  }
+  .div-ul-ul{
+    margin-top: 2rem!important;
+    margin-left: -7rem!important;
+  }  
+}
