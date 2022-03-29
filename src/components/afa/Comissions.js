@@ -47,9 +47,9 @@ function Comissions() {
                 <h2>Heading</h2>
                 </div>
             </div>
-            <hr className="featurette-divider fix-margin-featurette-divider-bottom"></hr>
-                <div className="containerH1"><h1>Inscriute a las comissions</h1></div>
             <hr className="featurette-divider fix-margin-featurette-divider-top"></hr>
+                <div className="containerH1"><h1 className="text-h1">Inscriute a las comissions</h1></div>
+            {/* <hr className="featurette-divider fix-margin-featurette-divider-top"></hr> */}
             <div className="container">
                 <form>
                     <div className="mb-3">
