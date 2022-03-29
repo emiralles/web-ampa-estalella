@@ -19,6 +19,9 @@
   height: 32rem; */
 }
 
+.marketing{
+  margin-top: -13rem!important;
+}
 
 .marketing .col-lg-4 {
   margin-bottom: 1.5rem;
@@ -282,7 +285,7 @@ body {
 @media (max-width: 443px) {
   .containerH1 {
     width: 100%!important;
-    height: 7rem!important;
+    height: 6rem!important;
     /* background-color: seagreen; */
     color: grey;
     margin-bottom: 2rem!important;
@@ -302,7 +305,7 @@ body {
 @media (max-width: 350px) {
   .containerH1 {
     width: 100%!important;
-    height: 7rem!important;
+    height: 4rem!important;
     /* background-color: seagreen; */
     color: grey;
     margin-bottom: 2rem!important;
@@ -310,7 +313,7 @@ body {
     border-bottom: #212529;
   }
   .containerH1 h1{
-    font-size: 5rem!important;
+    font-size: 4rem!important;
   }
 
   .div-ul-ul{
