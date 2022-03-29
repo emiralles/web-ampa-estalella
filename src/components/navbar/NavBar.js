@@ -23,8 +23,8 @@ function NavBar() {
                         </a>
                         <ul className="dropdown-menu" aria-labelledby="navbarQuiSomDropdown">
                             <li><a href="/quisom" className="dropdown-item">Qui som</a></li>
-                            <li><a href="fg" className="dropdown-item">Comissions</a></li>
-                            <li><a href="fg" className="dropdown-item">Fer-se-soci</a></li>
+                            <li><a href="/comissions" className="dropdown-item">Comissions</a></li>
+                            <li><a href="/fer-se-soci" className="dropdown-item">Fer-se-soci</a></li>
                         </ul>
                     </li>
                     <li className="nav-item dropdown">
