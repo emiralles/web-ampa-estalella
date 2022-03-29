@@ -1,6 +1,3 @@
-/* .carousel {
-  margin-bottom: 4rem;
-} */
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
@@ -15,15 +12,15 @@
 }
 
 /* Declare heights because of positioning of img element */
-/* .carousel-item {
+.carousel-item {
   height: 32rem;
-} */
+}
 .carousel-item > img {
   position: absolute;
   top: 0;
   left: 0;
   min-width: 100%;
-  /* height: 32rem; */
+  height: 32rem;
 }
 
 .marketing .col-lg-4 {
