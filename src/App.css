@@ -358,7 +358,7 @@ body {
 
 @media (max-width: 350px) {
   /* .marketing{
-    margin-top: -13rem!important;
+    width: 100%!important;
   } */
 
   .card-body .card-text{
@@ -373,10 +373,13 @@ body {
     color: antiquewhite;
   }
   
-  /* .imagen-extraescolar{
-    width: 100%;
-    height: 56%;
-  } */
+  .div-imagen-extraescolar{
+    align-self: center!important;
+  }
+  
+  .imagen-extraescolar{
+    width: 100%!important;
+  }
 
   .title-row-principal{
     font-family: cursive;
