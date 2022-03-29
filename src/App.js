@@ -10,6 +10,7 @@ import Comissions from "./components/afa/Comissions";
 import Festesoci from "./components/afa/Festesoci";
 import Acollida from "./components/serveis/Acollida";
 import Menjador from "./components/serveis/Menjador";
+import Extraescolars from "./components/serveis/Extraescolars";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path='/fer-se-soci' element={<Festesoci/>} />
             <Route path='/acollida' element={<Acollida/>} />
             <Route path='/menjador' element={<Menjador/>} />
+            <Route path='/extraescolars' element={<Extraescolars/>} />
           </Routes>
         </div>
       </main>
