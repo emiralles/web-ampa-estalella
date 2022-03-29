@@ -17,7 +17,7 @@ function Quisom() {
                     <li className="text-muted">Fomentar activitats d’interès per a  la comunitat escolar, com xerrades i conferències de professionals.</li>
                     <li className="text-muted">Donar suport al projecte educatiu de l’Escola i treballar conjuntament en l’educació dels nostres fills i de les nostres filles.</li>
                     <li className="text-muted">Organitzar i oferir activitats i serveis:
-                        <div>
+                        <div className="div-ul-ul">
                             <ul>
                                 <li className="text-muted nolist">Acollida matinal</li>
                                 <li className="text-muted nolist">Menjador</li>
