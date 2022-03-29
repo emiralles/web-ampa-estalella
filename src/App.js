@@ -7,7 +7,7 @@ import Esdeveniments from "./components/esdeveniments/Esdeveniments";
 import { Routes, Route} from "react-router-dom";
 import Quisom from "./components/afa/Quisom";
 import Comissions from "./components/afa/Comissions";
-
+import Festesoci from "./components/afa/Festesoci";
 
 function App() {
   return (
@@ -23,6 +23,7 @@ function App() {
             <Route path='/esdeveniments' element={<Esdeveniments/>} />
             <Route path='/quisom' element={<Quisom/>} />
             <Route path='/comissions' element={<Comissions/>} />
+            <Route path='/fer-se-soci' element={<Festesoci/>} />
           </Routes>
         </div>
       </main>
