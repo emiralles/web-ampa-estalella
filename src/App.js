@@ -5,7 +5,9 @@ import CardGroup from "./components/cardgroup/CardGroup";
 import FooterComponent from "./components/footer/Footer";
 import Esdeveniments from "./components/esdeveniments/Esdeveniments";
 import { Routes, Route} from "react-router-dom";
-import Quisom from "./components/afa/quisom";
+import Quisom from "./components/afa/Quisom";
+import Comissions from "./components/afa/Comissions";
+
 
 function App() {
   return (
@@ -14,12 +16,13 @@ function App() {
         <NavBar/>
       </header>
       <main>
-        <Carousel/>
+        <Carousel/>  
         <div className='container marketing'>
           <Routes>
             <Route path='/' element={<CardGroup/>} />
             <Route path='/esdeveniments' element={<Esdeveniments/>} />
             <Route path='/quisom' element={<Quisom/>} />
+            <Route path='/comissions' element={<Comissions/>} />
           </Routes>
         </div>
       </main>
