@@ -96,7 +96,7 @@ function Extraescolars() {
                         <div className="container container-background">
                             <div className="row row-cols-2">
                                 <div className=" col-sm-8 col-md-8 title-row-principal">Robotica</div>
-                                <div className=" col-sm-4 col-md-4"><img className="imagen-extraescolar" src={imagen1} alt="" /></div>
+                                <div className=" col-sm-4 col-md-4 div-imagen-extraescolar"><img className="imagen-extraescolar" src={imagen1} alt="" /></div>
                                 {/* <svg className="bd-placeholder-img card-img-top" width="100%" height="35%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#55595c"></rect></svg> */}
                             </div>
                             <div className="row row-cols-3 col-row-subtitle">
