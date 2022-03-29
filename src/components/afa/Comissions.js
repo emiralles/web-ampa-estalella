@@ -3,6 +3,7 @@ import imag1 from "../carousel/images/img2.jpg";
 function Comissions() {
     return ( 
         <>
+            <hr className="featurette-divider"></hr>
             <div className="row">
                 <div className="col-lg-4">
                 <img src={imag1} className="bd-placeholder-img rounded-circle" width="140" height="140" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"/>
@@ -47,7 +48,7 @@ function Comissions() {
                 <h2>Heading</h2>
                 </div>
             </div>
-            <hr className="featurette-divider fix-margin-featurette-divider-top"></hr>
+            <hr className="featurette-divider"></hr>
                 <div className="containerH1"><h1 className="text-h1">Inscriute a las comissions</h1></div>
             {/* <hr className="featurette-divider fix-margin-featurette-divider-top"></hr> */}
             <div className="container">
