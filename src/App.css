@@ -298,3 +298,23 @@ body {
     margin-left: -9rem!important;
   }  
 }
+
+@media (max-width: 350px) {
+  .containerH1 {
+    width: 100%!important;
+    height: 7rem!important;
+    /* background-color: seagreen; */
+    color: grey;
+    margin-bottom: 2rem!important;
+    border-top: #212529;
+    border-bottom: #212529;
+  }
+  .containerH1 h1{
+    font-size: 5rem!important;
+  }
+
+  .div-ul-ul{
+    margin-top: 3rem!important;
+    margin-left: -11rem!important;
+  }  
+}
