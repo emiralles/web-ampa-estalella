@@ -313,7 +313,7 @@ body {
 }
 
 .containerH1 h1{
-  font-size: 7rem!important;
+  font-size: 6rem!important;
 }
 
 
@@ -353,58 +353,7 @@ body {
   position: absolute;
 }
 
-/* .card-body .card-text{
-  font-family: "Segoe UI";
-  font-size:larger;
-}
-
-.container-background{
-  background-color: #b4dc73;
-}
-
-.col-row-subtitle{
-  font-family: cursive;
-  font-size:smaller;
-  font-weight:600;
-  color: antiquewhite;
-}
-
-.title-row-principal{
-  font-family: cursive;
-  font-size: 3rem;
-  font-weight:bolder;
-  font-style: italic;
-  color: antiquewhite;
-} */
-
 @media (max-width: 350px) {
- 
-  /* .card-body .card-text{
-    font-family: "Segoe UI";
-    font-size:small;
-  }
-  
-  .col-row-subtitle{
-    font-family: cursive;
-    font-size:.5rem;
-    color: antiquewhite;
-  }
-  
-  .div-imagen-extraescolar{
-    align-self: center!important;
-  }
-  
-  .imagen-extraescolar{
-    width: 100%!important;
-  }
-
-  .title-row-principal{
-    font-family: cursive;
-    font-size: 1.5rem;
-    font-weight:bolder;
-    font-style: italic;
-    color: antiquewhite;
-  } */
 
   .containerH1 {
     width: 100%!important;
