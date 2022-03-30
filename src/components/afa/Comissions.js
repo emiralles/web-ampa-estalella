@@ -6,50 +6,60 @@ function Comissions() {
             <hr className="featurette-divider"></hr>
             <div className="row">
                 <div className="col-lg-4">
-                <img src={imag1} className="bd-placeholder-img rounded-circle" width="140" height="140" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"/>
-                    <title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect>
-                <div className='color-div-card'>
-                    <h2>Equipament</h2>
-                </div>
-                </div>
-                <div className="col-lg-4">
-                <img src={imag1} className="bd-placeholder-img rounded-circle" width="140" height="140" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"/>
-                    <title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect>
-                <div className='color-div-card'>
-                    <h2>Extraescolars</h2>
-                </div>
+                    <a href="/">
+                        <img src={imag1} className="bd-placeholder-img rounded-circle" width="140" height="140" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"/>
+                            <title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect>
+                        <div className='color-div-card'>
+                            <h2 className="title-a-icon">Equipament</h2>
+                        </div>
+                    </a>
                 </div>
                 <div className="col-lg-4">
-                <img src={imag1} className="bd-placeholder-img rounded-circle" width="140" height="140" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"/>
-                    <title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect>
-                <div className='color-div-card'>
-                    <h2>Tic</h2>
+                    <a href="/">
+                        <img src={imag1} className="bd-placeholder-img rounded-circle" width="140" height="140" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"/>
+                            <title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect>
+                        <div className='color-div-card'>
+                            <h2 className="title-a-icon">Extraescolars</h2>
+                        </div>
+                    </a>
                 </div>
+                <div className="col-lg-4">
+                    <a href="/">
+                        <img src={imag1} className="bd-placeholder-img rounded-circle" width="140" height="140" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"/>
+                            <title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect>
+                        <div className='color-div-card'>
+                            <h2 className="title-a-icon">Tic</h2>
+                        </div>
+                    </a>
                 </div>
             </div>
             <div className="row">
                 <div className="col-lg-4 margin-left-col-lg-4">
-                <img src={imag1} className="bd-placeholder-img rounded-circle" width="140" height="140" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"/>
-                    <title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect>
-                <div className='color-div-card'>
-                    <h2>Menjador</h2>
-                </div>
+                    <a href="/">
+                        <img src={imag1} className="bd-placeholder-img rounded-circle" width="140" height="140" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"/>
+                            <title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect>
+                        <div className='color-div-card'>
+                            <h2 className="title-a-icon">Menjador</h2>
+                        </div>
+                    </a>
                 </div>
                 <div className="col-lg-4">
-                <img src={imag1} className="bd-placeholder-img rounded-circle" width="140" height="140" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"/>
-                    <title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect>
-                <div className='color-div-card'>
-                    <h2>Llibres</h2>
-                </div>
+                    <a href="/">
+                        <img src={imag1} className="bd-placeholder-img rounded-circle" width="140" height="140" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"/>
+                            <title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect>
+                        <div className='color-div-card'>
+                            <h2 className="title-a-icon">Llibres</h2>
+                        </div>
+                    </a>
                 </div>
                 <div className="col-lg-4 d-none">
                 <img src={imag1} className="bd-placeholder-img rounded-circle" width="140" height="140" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"/>
                     <title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect>
-                <h2>Heading</h2>
+                    <h2>Heading</h2>
                 </div>
             </div>
             <hr className="featurette-divider"></hr>
-                <div className="containerH1"><h1 className="text-h1">Inscriute a las comissions</h1></div>
+            <div className="containerH1"><h1 className="text-h1">Inscriute a las comissions</h1></div>
             {/* <hr className="featurette-divider fix-margin-featurette-divider-top"></hr> */}
             <div className="container">
                 <form>
