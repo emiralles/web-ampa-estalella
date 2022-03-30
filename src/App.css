@@ -1,3 +1,68 @@
+/* Extraescolares */
+.div-image-horaris-extraescolars{
+  text-align: -webkit-center!important;
+}
+
+.div-image-horaris-extraescolars img{
+  width: 80%!important;
+  height: 40%!important;
+}
+
+.container-background{
+  margin: 0!important;
+  background-color: forestgreen;
+  color: white;
+}
+
+.container-background-verdeAmarillo{
+  margin: 0!important;
+  background-color:olivedrab;
+  color: white;
+}
+
+.row-cols-2{
+  height: 70%!important;
+  align-items: baseline;
+}
+
+.title-row-principal{
+  width: 60%!important;
+  font-size: 180%!important;
+  padding: 0!important;
+  margin: 0!important;
+  align-items: center!important;
+  font-style: oblique;
+  font-family: emoji;
+  font-weight: bolder;
+}
+
+.div-imagen-extraescolar{
+  width: 40%!important;
+  padding: 0!important;
+  margin: 0!important;
+}
+
+.imagen-extraescolar{
+  width: 100%!important;
+  height: 100%!important;
+  margin: 0!important;
+  padding: 0!important;
+  align-self: self-end!important;
+}
+
+.col-row-subtitle{
+  height: 30%!important;
+  align-items: center;
+  padding: 0!important;
+  margin: 0!important;
+}
+
+.col-text-4{
+  padding: 0!important;
+  margin: 0!important;
+  font-size: 60%!important;
+}
+
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
@@ -30,7 +95,7 @@
 .marketing h2 {
   font-weight: 100;
 }
-/* rtl:begin:ignore */
+
 .marketing .col-lg-4 p {
   margin-right: .75rem;
   margin-left: .75rem;
@@ -40,7 +105,7 @@
   margin-bottom: 1.5rem;
   text-align: center;
 }
-/* rtl:begin:ignore */
+
 .marketing .col-lg-6 p {
   margin-right: .75rem;
   margin-left: .75rem;
@@ -51,9 +116,6 @@
 }
 
 @media (max-width: 991px){
-  /* .marketing{
-    margin-top: -13rem!important;
-  } */
 
   div.col-lg-4.margin-left-col-lg-4{
     margin-left: 0!important;
@@ -65,25 +127,6 @@
   list-style: none;
 }
 
-/* .btn {
-  display: inline-block;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #212529;
-  text-align: center;
-  text-decoration: none;
-  vertical-align: middle;
-  cursor: pointer;
-  -webkit-user-select: none;
-  user-select: none;
-  background-color: transparent;
-  border: 1px solid transparent;
-  padding: 0 !important;
-  font-size: 1rem;
-  border-radius: 0.25rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-} */
-
 .svg-search{
   margin-top:5px!important
 }
@@ -92,15 +135,8 @@
   position: relative!important;
 }
 
-/* .App {
-  padding: 1rem;
-} */
-
 .navbar{
   background-color: #b4dc73!important;
-  /* A7E088 */
-  /* border-radius: 0.5rem!important;
-  margin-bottom: 1.5rem!important; */
 }
 .flex-shrink-0{
   background-color: #AD062E90!important;
@@ -111,9 +147,6 @@
   color: white!important;
 }
 
-/* .btn{
-  color: white!important;
-} */
 
 .body-card-group{
   padding: 1rem!important;
@@ -152,9 +185,6 @@
 
 .color-div-card{
   margin-top: 0.5rem;
-  /* background-color: #5CCF98!important;
-  border-radius: 0.5rem;
-  color: white; */
 }
 
 footer{
@@ -183,7 +213,6 @@ footer div span.text-muted{
 .featurette-heading {
   font-weight: 300;
   line-height: 1;
-  /* rtl:remove */
   letter-spacing: -.05rem;
 }
 
@@ -198,14 +227,12 @@ footer div span.text-muted{
   text-align: inherit;
   text-decoration: none;
   white-space: nowrap;
-  /* background-color: transparent; */
   background-color: #b4dc73!important;
   border: 0;
 }
 
 body {
   padding-top: 3rem;
-  /* padding-bottom: 3rem; */
   color: #5a5a5a;
 }
 
@@ -235,7 +262,6 @@ body {
 /* lista de iconos */
 
 .nolist {
-  /* display: flex; */
   align-items: flex-start;
   margin-bottom: 0;
   list-style:circle!important;
@@ -245,9 +271,6 @@ body {
   background: none!important;
 }
 
-/* } */
-/* .icon-list 
-.icon-list  */
 .li-arrow {
   padding-left: 0;
   list-style: none;
@@ -275,31 +298,19 @@ body {
 .containerH1{
   width: 100%!important;
   height: 10rem!important;
-  /* background-color: seagreen; */
   color: grey;
   margin-bottom: 2rem!important;
-  /* border-top: #212529;
-  border-style: ridge;
-  border-bottom: #212529; */
 }
 
 .containerH1 h1{
   font-size: 7rem!important;
 }
 
-/* .btn{
-  background-color: blue!important;
-} */
 
 @media (max-width: 645px) {
-  /* .marketing{
-    margin-top: -13rem!important;
-  } */
-
   .containerH1 {
     width: 100%!important;
     height: 25%!important;
-    /* background-color: seagreen; */
     color: grey;
     margin-bottom: 2rem!important;
   }
@@ -332,7 +343,7 @@ body {
   position: absolute;
 }
 
-.card-body .card-text{
+/* .card-body .card-text{
   font-family: "Segoe UI";
   font-size:larger;
 }
@@ -354,14 +365,11 @@ body {
   font-weight:bolder;
   font-style: italic;
   color: antiquewhite;
-}
+} */
 
 @media (max-width: 350px) {
-  /* .marketing{
-    width: 100%!important;
-  } */
-
-  .card-body .card-text{
+ 
+  /* .card-body .card-text{
     font-family: "Segoe UI";
     font-size:small;
   }
@@ -369,7 +377,6 @@ body {
   .col-row-subtitle{
     font-family: cursive;
     font-size:.5rem;
-    /* font-weight:200; */
     color: antiquewhite;
   }
   
@@ -387,12 +394,11 @@ body {
     font-weight:bolder;
     font-style: italic;
     color: antiquewhite;
-  }
+  } */
 
   .containerH1 {
     width: 100%!important;
     height: 25%!important;
-    /* background-color: seagreen; */
     color: grey;
     margin-bottom: 2rem!important;
   }
