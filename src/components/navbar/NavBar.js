@@ -1,7 +1,7 @@
 import Icons from "bootstrap-icons/bootstrap-icons.svg";
 import logo from "./images/LOGO AMPA V.jpg";
 import './navBar.css';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 // d-none d-sm-block d-sm-none d-md-block d-md-none d-lg-block
 function NavBar() {
     return ( 
