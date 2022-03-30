@@ -62,28 +62,35 @@ function Comissions() {
             <div className="containerH1"><h1 className="text-h1">Inscriute a las comissions</h1></div>
             {/* <hr className="featurette-divider fix-margin-featurette-divider-top"></hr> */}
             <div className="container">
-                <form>
-                    <div className="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email</label>
-                        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-                        {/* <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div> */}
+                <div className="row featurette">
+                    <div className="col-md-5">
+                        <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x270</text></svg>
                     </div>
-                    <div className="mb-3">
-                        <label for="exampleInputPassword1" className="form-label">Nombres y Apellidos</label>
-                        <input type="text" className="form-control" id="exampleInputPassword1"/>
+                    <div className="col-md-7">
+                        <form>
+                            <div className="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Email</label>
+                                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                            </div>
+                            <div className="mb-3">
+                                <label for="exampleInputPassword1" className="form-label">Nombres y Apellidos</label>
+                                <input type="text" className="form-control" id="exampleInputPassword1"/>
+                            </div>
+                            <div className="mb-3">
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>Seleccione una opciò</option>
+                                    <option value="1">Equipament</option>
+                                    <option value="2">Extraescolars</option>
+                                    <option value="3">Tic</option>
+                                    <option value="3">Menjador</option>
+                                    <option value="3">Llibres</option>
+                                </select>
+                            </div>
+                            <button type="submit" className="btn btn-primary">Aceptar</button>
+                        </form>
                     </div>
-                    <div className="mb-3">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Seleccione una opciò</option>
-                            <option value="1">Equipament</option>
-                            <option value="2">Extraescolars</option>
-                            <option value="3">Tic</option>
-                            <option value="3">Menjador</option>
-                            <option value="3">Llibres</option>
-                        </select>
-                    </div>
-                    <button type="submit" className="btn btn-primary">Aceptar</button>
-                </form>
+                </div>
+                
             </div>
             <hr className="featurette-divider"></hr>
             
