@@ -25,6 +25,7 @@ function NavBar() {
                             <li><a href="/quisom" className="dropdown-item">Qui som</a></li>
                             <li><a href="/comissions" className="dropdown-item">Comissions</a></li>
                             <li><a href="/fer-se-soci" className="dropdown-item">Fer-se-soci</a></li>
+                            <li><a href="/contacta-ns" className="dropdown-item">Contacta'ns</a></li>
                         </ul>
                     </li>
                     <li className="nav-item dropdown">
