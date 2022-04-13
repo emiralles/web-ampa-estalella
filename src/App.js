@@ -11,6 +11,7 @@ import Festesoci from "./components/afa/Festesoci";
 import Acollida from "./components/serveis/Acollida";
 import Menjador from "./components/serveis/Menjador";
 import Extraescolars from "./components/serveis/Extraescolars";
+import Contactans from "./components/afa/Contactans";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path='/acollida' element={<Acollida/>} />
             <Route path='/menjador' element={<Menjador/>} />
             <Route path='/extraescolars' element={<Extraescolars/>} />
+            <Route path='/contacta-ns' element={<Contactans/>} />
           </Routes>
         </div>
       </main>
