@@ -19,6 +19,8 @@ import LayoutAdmin from "./components/layout-admin/LayoutAdmin";
 import FormulariEdicioMenjador from "./components/formularis-edicio-apartados/Formulari-edicio-menjador";
 import FormulariEdicioAcollida from "./components/formularis-edicio-apartados/Formulari-edicio-acollida";
 import FormulariEdicioComissions from "./components/formularis-edicio-apartados/Formulari-edicio-comissions";
+import Actes from "./components/transparencia/Actes";
+import Estatuts from "./components/transparencia/Estatuts";
 
 function App() {
   return (
@@ -40,6 +42,8 @@ function App() {
         <Route path='/menjador' element={<Menjador/>} />
         <Route path='/extraescolars' element={<Extraescolars/>} />
         <Route path='/contacta-ns' element={<Contactans/>} />
+        <Route path='/actes' element={<Actes/>} />
+        <Route path='/estatuts' element={<Estatuts/>} />
       </Route>
     </Routes>
   );
