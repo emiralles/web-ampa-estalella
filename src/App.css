@@ -241,10 +241,10 @@ footer div span.text-muted{
   border: 0;
 }
 
-body {
+/* body {
   padding-top: 3rem;
   color: #5a5a5a;
-}
+} */
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */
@@ -264,7 +264,8 @@ body {
 
 @media (min-width: 62em) {
   .featurette-heading {
-    margin-top: 7rem;
+    margin-top: 2.5rem; 
+    /* 7 */
   }
 }
 
