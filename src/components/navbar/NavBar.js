@@ -46,14 +46,15 @@ function NavBar() {
                             <svg className="bi" width="30" height="24"><use xlinkHref={`${Icons}#person-rolodex`}></use></svg>Espai de transparència
                         </a>
                         <ul className="dropdown-menu" aria-labelledby="navbarDocumentsDropdown">
-                            <li><a href="/esdeveniments" className="dropdown-item">Estatuts</a></li>
+                            <li><a href="/estatut" className="dropdown-item">Estatuts</a></li>
                             <li><a href="fg" className="dropdown-item">Pressupost 2021-2022</a></li>
-                            <li><a href="fg" className="dropdown-item">Actes</a></li>
+                            <li><a href="/actes" className="dropdown-item">Actes</a></li>
                         </ul>
                     </li>
                     <li className="nav-item dropdown">
-                        <a className="nav-link dropdown-toggle" href="#noticies-collapse" id="navbarNoticiesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a className="nav-link dropdown-toggle" href="/noticies" id="navbarNoticiesDropdown" role="button"  aria-expanded="false">
                             <svg className="bi" width="30" height="24"><use xlinkHref={`${Icons}#newspaper`}></use></svg>Noticies
+                            {/* data-bs-toggle="dropdown" */}
                         </a>
                     </li>
                     <li className="nav-item dropdown">
