@@ -46,7 +46,7 @@ function NavBar() {
                             <svg className="bi" width="30" height="24"><use xlinkHref={`${Icons}#person-rolodex`}></use></svg>Espai de transparència
                         </a>
                         <ul className="dropdown-menu" aria-labelledby="navbarDocumentsDropdown">
-                            <li><a href="/estatut" className="dropdown-item">Estatuts</a></li>
+                            <li><a href="/estatuts" className="dropdown-item">Estatuts</a></li>
                             <li><a href="fg" className="dropdown-item">Pressupost 2021-2022</a></li>
                             <li><a href="/actes" className="dropdown-item">Actes</a></li>
                         </ul>
