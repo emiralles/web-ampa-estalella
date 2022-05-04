@@ -37,7 +37,7 @@ function NavBar() {
                             <li><a href="/menjador" className="dropdown-item">Menjador</a></li>
                             <li><a href="/extraescolars" className="dropdown-item">Extraescolars</a></li>
                             <li><a href="fg" className="dropdown-item">Equipament</a></li>
-                            <li><a href="fg" className="dropdown-item">Casal d'estiu</a></li>
+                            <li><a href="/casaldestiu" className="dropdown-item">Casal d'estiu</a></li>
                             <li><a href="fg" className="dropdown-item">Tardes de juny</a></li>
                         </ul>
                     </li>
@@ -65,12 +65,12 @@ function NavBar() {
                         </a>
                     </li>
                 </ul>
-                <form className="d-flex">
+                {/* <form className="d-flex">
                     <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
                     <a className="btn btn-outline-success" href="qa" type="submit">
                         <svg className="bi me-2 svg-search" width="30" height="24"><use xlinkHref={`${Icons}#search`}></use></svg>
                     </a>
-                </form>
+                </form> */}
                 </div>
             </div>
         </nav>
