@@ -54,7 +54,7 @@ function Comissions() {
                 <div className="row featurette">
                     <div className="col-md-7 order-md-2">
                         <h2 className="featurette-heading">Equipament</h2>
-                        <p className="lead">Apunta’t a la comparsa musical! Des de l’inici de curs hi ha un grup de pares i mares de diferents cursos que preparem la comparsa musical.</p>
+                        <p className="lead">S’encarrega d’organitzar la venda de roba escolar: bates, samarretes i xandalls amb els colors i logotip de l’escola.</p>
                     </div>
                     <div className="col-md-5 order-md-1">
                         {/* <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={carnestoltes} alt=""/> */}
@@ -65,8 +65,8 @@ function Comissions() {
                 <div className="row featurette">
                     <div className="col-md-7">
                         <h2 className="featurette-heading">Tic</h2>
-                        <p className="lead">Hem celebrat la diada de Sant Jordi amb una mica més de normalitat I sense mascaretes! Ha estat un matí on hem pogut gaudir de diferents activitats, tant a l’interior com a l’exterior de l’escola, aprofitant el sol que que ens ha acompanyat.</p>
-                        <p className="lead">Feliç diada per a tothom!</p>
+                        <p className="lead">La Comissió TIC es una comissió de l’ampa que vol fomentar, impulsar i consolidar l’ús de les noves tecnologies en l’educació, mitjançant actuacions dirigides al desenvolupament, dinamització i difusió del seu ús en un ambient relaxat i divertit.</p>
+                        <p className="lead">Des de la comissió TIC valorem i considerem qualsevol canvi i implementació tecnològica que pugui ser aplicat a la nostra escola. Apostem per la innovació i renovació dels mitjans TIC de forma constant, adaptant-nos a l’evolució tecnològica.</p>
                     </div>
                     <div className="col-md-5">
                         {/* <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={santjordi} alt=""/> */}
@@ -77,7 +77,8 @@ function Comissions() {
                 <div className="row featurette">
                     <div className="col-md-7 order-md-2">
                         <h2 className="featurette-heading">Llibres</h2>
-                        <p className="lead">Apunta’t a la comparsa musical! Des de l’inici de curs hi ha un grup de pares i mares de diferents cursos que preparem la comparsa musical.</p>
+                        <p className="lead">A l’escola es duu a terme un programa de socialització dels llibres de text. L’AFA gestiona l’ús i la compra de tots els llibres de text i de lectura que estan socialitzats. Alumnes-pares-mestres ens hem conscienciat que estem utilitzant un material escolar col·lectiu, que permet la sostenibilitat, el respecte al medi ambient i l’estalvi de recursos.</p>
+                        <p className="lead">Aprenem a valorar el llibre de text com a una important eina de treball de la que hem de tenir cura, aprofitant tota la seva vida útil. Estalviem paper, recursos mediambientals i tot això, a més, repercuteix en l’estalvi de les famílies i en l’educació i el respecte pel material col·lectiu.</p>
                     </div>
                     <div className="col-md-5 order-md-1">
                         {/* <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={carnestoltes} alt=""/> */}
@@ -88,8 +89,9 @@ function Comissions() {
                 <div className="row featurette">
                     <div className="col-md-7">
                         <h2 className="featurette-heading">Menjador</h2>
-                        <p className="lead">Proposem i oferim un ventall d’activitats extraescolars respectuoses amb la línia pedagògica de l’escola i, alhora, que responguin als interessos de les famílies i l’alumnat. Planifiquem, gestionem i supervisem les activitats dirigides a complementar l’horari lectiu dels nostres fills i filles, tant després de les classes com durant el temps del migdia. Les àrees d’activitat potenciades són l’esportiva, la creativa, la musical i la de creixement personal.</p>
-                        <p className="lead">A partir dels interessos de l’alumnat i de les seves famílies, fem una proposta d’activitats a l’AFA, qui avalua i aprova tant les activitats ofertades com el monitoratge i/o els proveïdors d’aquestes. Ens encarreguem de la planificació dels horaris i de supervisar el correcte desenvolupament de les activitats. Juntament amb aquestes activitats també gestionem i supervisem el servei d’acollida del matí (8h-9h).</p>
+                        <p className="lead">El menjador de l’escola és gestionat íntegrament per l’AFA, tenim cuina pròpia on es cuina cada dia per més de 200 alumnes, amb uns menús ben equilibrats i boníssims.</p>
+                        <p className="lead">Els nostres objectius són oferir un menjar de qualitat per els nostres fills i filles, així com treballar i fomentar tots els aspectes pedagògics relacionats amb el treball d’educació en els hàbits, que envolten el tema alimentari.</p>
+                        <p className="lead">La comissió, a part del menjador també gestiona els serveis d’acollida matinal i de tardes.</p>
                     </div>
                     <div className="col-md-5">
                         {/* <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={carnestoltes} alt=""/> */}
