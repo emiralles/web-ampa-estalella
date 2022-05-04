@@ -21,6 +21,7 @@ import FormulariEdicioAcollida from "./components/formularis-edicio-apartados/Fo
 import FormulariEdicioComissions from "./components/formularis-edicio-apartados/Formulari-edicio-comissions";
 import Actes from "./components/transparencia/Actes";
 import Estatuts from "./components/transparencia/Estatuts";
+import Casaldestiu from "./components/serveis/Casaldestiu";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path='/contacta-ns' element={<Contactans/>} />
         <Route path='/actes' element={<Actes/>} />
         <Route path='/estatuts' element={<Estatuts/>} />
+        <Route path='/casaldestiu' element={<Casaldestiu/>} />
       </Route>
     </Routes>
   );
