@@ -1,6 +1,41 @@
+// import { TextFloatingFilter } from "ag-grid-community";
 import axios from "axios";
 
 function Contactans() {
+
+    let EnviarMail = (e) => {
+        e.preventDefault();
+        // let dats = e;
+        let textSubject = e.target[0].value;
+        let textTo = e.target[1].value;
+        let textOf = e.target[2].value;
+        let textTexto = e.target[3].value;
+        
+        const data =
+        {
+            from: textTo,
+            to: textTo,
+            of: textOf,
+            subject: textSubject, 
+            text: textTexto
+        };
+
+        axios.post('http://www.arimathsolutions.com:8080/api/mail',data,{header:{
+            'TIPO DE CONTENIDO': 'Aplicación / JSON' 
+            }})
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+                e.target[0].value="";
+                e.target[1].value="";
+                e.target[2].value="";
+                e.target[3].value="";
+            }).catch(error => {
+                let errordata = error;
+                console.log(errordata);
+            })
+    }
+
     return ( 
         <>
             <hr className="featurette-divider"></hr>
@@ -13,16 +48,18 @@ function Contactans() {
                     <div className="card border-info mb-3">
                         <div className="card-header bg-warning"><h2 className="card-title">Contacta'ns</h2></div>
                         <div className="card-body">
-                            {/* <h5 ></h5> */}
-                            <form>
+                            <form onSubmit={EnviarMail}>
                                 <div className="mb-3">
-                                    <label for="exampleInputPassword1" className="form-label">Nom i Cognoms</label>
-                                    <input type="text" className="form-control" id="exampleInputPassword1"/>
+                                    <label for="exampleInputNombre" className="form-label">Nom i Cognoms</label>
+                                    <input type="text" className="form-control" id="exampleInputNombre"/>
+                                </div>
+                                <div className="mb-3">
+                                    <label for="exampleInputSubject" className="form-label">Asunto</label>
+                                    <input type="text" className="form-control" id="exampleInputSubject"/>
                                 </div>
                                 <div className="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Correu electrònic</label>
                                     <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-                                    {/* <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div> */}
                                 </div>
                                 
                                 <div className="mb-3">
