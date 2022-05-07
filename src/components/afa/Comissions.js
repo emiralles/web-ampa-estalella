@@ -20,7 +20,7 @@ function Comissions() {
             text: textTexto
         };
 
-        axios.post('http://www.arimathsolutions.com:8080/api/mail',data,{header:{
+        axios.post('https://arimathsolutions.com/api/mail',data,{header:{
             'TIPO DE CONTENIDO': 'Aplicación / JSON' 
             }})
             .then(res => {
