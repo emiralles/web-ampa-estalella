@@ -5,6 +5,6 @@ div.card.card-extraescolar {
 
 @media (max-width: 62em) {
     div.card.card-extraescolar {
-      width: 50%!important; 
+      width: 100%!important; 
     }
 }

@@ -1,4 +1,5 @@
-import imag1 from "../carousel/images/img2.jpg";
+// import imag1 from "../carousel/images/img2.jpg";
+import imag1 from "../carousel/images/IMG_1023.JPG";
 
 function CardGroup() {
     return (

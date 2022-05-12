@@ -1,5 +1,8 @@
 // import imag1 from './images/img1.jpg'
-// import imag3 from './images/img3.jpg'
+import imag1 from './images/IMG_1028.JPG'
+import imag2 from './images/IMG_1018.JPG'
+import imag3 from './images/IMG_1029.JPG'
+
 
 function Carousel() {
     return(
@@ -11,8 +14,8 @@ function Carousel() {
             </div>
             <div className="carousel-inner">
             <div className="carousel-item">
-                <svg className="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
-
+                {/* <svg className="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg> */}
+                <img className="bd-placeholder-img" width="100%" height="100%" src={imag1} aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" alt=""/>
                 {/* <div className="container">
                 <div className="carousel-caption text-start">
                     <h1>Example headline.</h1>
@@ -22,8 +25,8 @@ function Carousel() {
                 </div> */}
             </div>
             <div className="carousel-item active">
-                <svg className="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
-
+                {/* <svg className="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg> */}
+                <img className="bd-placeholder-img" width="100%" height="100%" src={imag2} aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" alt=""/>
                 {/* <div className="container">
                 <div className="carousel-caption">
                     <h1>Another example headline.</h1>
@@ -33,8 +36,8 @@ function Carousel() {
                 </div> */}
             </div>
             <div className="carousel-item">
-                <svg className="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
-
+                {/* <svg className="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg> */}
+                <img className="bd-placeholder-img" width="100%" height="100%" src={imag3} aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" alt=""/>
                 {/* <div className="container">
                 <div className="carousel-caption text-end">
                     <h1>One more for good measure.</h1>
