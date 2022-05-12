@@ -1,0 +1,10 @@
+
+div.card.mb-3 {
+    width: 25%!important; 
+}
+
+@media (max-width: 62em) {
+    div.card.mb-3 {
+      width: 50%!important; 
+    }
+}

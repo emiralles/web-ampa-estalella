@@ -19,6 +19,7 @@ import FormulariEdicioComissions from "./components/formularis-edicio-apartados/
 import Actes from "./components/transparencia/Actes";
 import Estatuts from "./components/transparencia/Estatuts";
 import Casaldestiu from "./components/serveis/Casaldestiu";
+import FormulariEdicioExtraescolars from "./components/formularis-edicio-apartados/Formulari-edicio-extraescolars";
 import ProtectedRoute from "./components/protectedroute/ProtectedRoute";
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
                 <Route path='/admin/index/menjador' element={<ProtectedRoute children={<FormulariEdicioMenjador/>}/>}/>
                 <Route path='/admin/index/acollida' element={<ProtectedRoute children={<FormulariEdicioAcollida/>}/>}/>
                 <Route path='/admin/index/comissions' element={<ProtectedRoute children={<FormulariEdicioComissions/>}/>}/>
+                <Route path='/admin/index/extraescolars' element={<ProtectedRoute children={<FormulariEdicioExtraescolars/>}/>}/>
               </Route>
         </Routes>
       </AuthProvider>
