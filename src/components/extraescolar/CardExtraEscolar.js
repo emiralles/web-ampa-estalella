@@ -3,7 +3,7 @@ import imagen2 from "../serveis/images/ConsellEspotivoAltPenedes.PNG";
 function CardExtraEscolar() {
   return (
     <>
-        <div class="card mb-3 me-3 ms-3">
+        <div class="card card-extraescolar mb-3 me-3 ms-3">
             <div className="row g-0">
                 <div class="col-md-4">
                     <img src={imagen2} class="img-fluid rounded-start" alt="..."/>
