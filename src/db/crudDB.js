@@ -1,35 +1,109 @@
-import { useState, useEffect } from "react";
-import {  ref,  uploadBytes,  getDownloadURL,  listAll,  list } from "firebase/storage";
-import { db, storage, imagesRef } from "../firebase/fireabaseConfig";
+// import { useState, useEffect } from "react";
+import {  ref,  uploadBytes,  getDownloadURL, deleteObject } from "firebase/storage";
+// ,  listAll,  list 
+import { db, imagesRef } from "../firebase/fireabaseConfig";
+// , storage
+import { storage } from "../firebase/fireabaseConfig";
 import { collection, addDoc, getDocs, onSnapshot, deleteDoc, doc, getDoc, updateDoc } from "firebase/firestore";
 
 export const add = async (tipo,modelo) =>{
-    await addDoc(collection(db,tipo),modelo);
+    try {
+        let data = {
+            title: modelo.title,
+            parragraph: modelo.parragraph,
+            dateStart: modelo.dateStart,
+            dateEnd: modelo.dateEnd,
+            mainText: modelo.mainText,
+            namePhoto: modelo.namePhoto,
+            urlPhoto: modelo.urlPhoto,
+            whenDo: modelo.whenDo,
+            howTimes: modelo.howTimes,
+            price: modelo.price,
+            grupsToDo: modelo.grupsToDo,
+        }
+        const docRef = await addDoc(collection(db,tipo),data);
+        return docRef.id;      
+    } catch (error) {
+        console.log(error);
+    }
+    
 }
 
-export const getModel = async (tipo,uid) =>{
+export const getAllCollections = async (tipo) =>{
     const querySnapshot = await getDocs(collection(db,tipo));
+    let rst = [];
     querySnapshot.forEach((doc) => {
-        if (doc.id === uid) {
-            return doc.data();
-        }
-        // console.log(`${doc.id} => ${doc.data()}`);
+        let item = doc.data();
+        item.id = doc.id;
+        // let item = {
+        //     id:doc.id,
+        //     data:doc.data()
+        // }
+        // rst.push(doc.data());
+        rst.push(item);
     });
+    return rst;
+}
+
+export const getUrlImage = async (routeRef) =>{
+    // const iref = ref(imagesRef,`/${userid}/${uid}/${name}`);
+    try {
+        const iref = ref(storage,routeRef);
+        let urlData = await getDownloadURL(iref);
+        return urlData;
+    } catch (error) {
+        console.log(error);
+    }
+    
+}
+
+export const removeObject = async (routeRef) =>{
+    try {
+        const iref = ref(storage,routeRef);
+        let objectRemove = await deleteObject(iref);
+        return objectRemove;
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 export const onGetListTipo = (tipo,callback) => onSnapshot(collection(db,tipo),callback);
 export const deleteOneDocOfTipo = async (tipo,uid) => await deleteDoc(doc(db,tipo,uid));
 export const getOneDocOfTipo = async (tipo,uid) => await getDoc(doc(db,tipo,uid));
-export const updateOneDocOfTpo = async (tipo,uid,data) => await updateDoc(doc(db,tipo,uid),data);
-export const uploadFile = async (file,name,uid,userid) => {
-    const iref = ref(imagesRef,`/${userid}/${uid}/${name}`);
-    await uploadBytes(iref,file);
+
+export const updateOneDocOfTpo = async (tipo,uid,modelo) => {
+    try {
+        let data = {
+            title: modelo.title,
+            parragraph: modelo.parragraph,
+            dateStart: modelo.dateStart,
+            dateEnd: modelo.dateEnd,
+            mainText: modelo.mainText,
+            namePhoto: modelo.namePhoto,
+            urlPhoto: modelo.urlPhoto,
+            whenDo: modelo.whenDo,
+            howTimes: modelo.howTimes,
+            price: modelo.price,
+            grupsToDo: modelo.grupsToDo,
+        }
+        
+        const rstUpdate = await updateDoc(doc(db,tipo,uid),data);
+        console.log(rstUpdate);
+    } catch (error) {
+        console.log(error);
+    }
+    
 }
 
-export const getUrlImage = async (name,uid,userid) =>{
-    const iref = ref(imagesRef,`/${userid}/${uid}/${name}`);
-    await getDownloadURL(iref).then((url) => {
-        return url;
-    });
+export const uploadFile = async (file,name,uid,userid) => {
+    try {
+        const iref = ref(imagesRef,`/${userid}/${uid}/${name}`);
+        let fileSub = await uploadBytes(iref,file);
+        return fileSub;
+    } catch (error) {
+        console.log(error);
+    }
 }
+
+
 

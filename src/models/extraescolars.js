@@ -1,16 +1,17 @@
 export class extraEscolars{
-    constructor(title,parragraph,dateStart,dateEnd,mainText,photo,urlPhoto,doAM,doPM,priceAM,pricePM,grupsToDo){
+    constructor(Uid,path,title,parragraph,dateStart,dateEnd,mainText,namePhoto,urlPhoto,whenDo,howTimes,price,grupsToDo){
+        this.Uid = Uid;
+        this.path = path;
         this.title= title;
         this.parragraph= parragraph;
         this.dateStart= dateStart;
         this.dateEnd= dateEnd;
         this.mainText= mainText;
-        this.photo= photo;
+        this.namePhoto= namePhoto;
         this.urlPhoto= urlPhoto;
-        this.doAM= doAM;
-        this.doPM= doPM;
-        this.priceAM= priceAM;
-        this.pricePM= pricePM;
+        this.whenDo= whenDo;
+        this.howTimes= howTimes;
+        this.price= price;
         this.grupsToDo= grupsToDo;
     }
 }
