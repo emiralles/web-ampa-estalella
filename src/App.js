@@ -16,6 +16,7 @@ import LayoutAdmin from "./components/layout-admin/LayoutAdmin";
 import FormulariEdicioMenjador from "./components/formularis-edicio-apartados/Formulari-edicio-menjador";
 import FormulariEdicioAcollida from "./components/formularis-edicio-apartados/Formulari-edicio-acollida";
 import FormulariEdicioComissions from "./components/formularis-edicio-apartados/Formulari-edicio-comissions";
+import FormulariEdicioEsdeveniments from "./components/formularis-edicio-apartados/Formulari-edicio-Esdeveniments";
 import Actes from "./components/transparencia/Actes";
 import Estatuts from "./components/transparencia/Estatuts";
 import Casaldestiu from "./components/serveis/Casaldestiu";
@@ -33,6 +34,7 @@ function App() {
                 <Route path='/admin/index/acollida' element={<ProtectedRoute children={<FormulariEdicioAcollida/>}/>}/>
                 <Route path='/admin/index/comissions' element={<ProtectedRoute children={<FormulariEdicioComissions/>}/>}/>
                 <Route path='/admin/index/extraescolars' element={<ProtectedRoute children={<FormulariEdicioExtraescolars/>}/>}/>
+                <Route path='/admin/index/esdeveniments' element={<ProtectedRoute children={<FormulariEdicioEsdeveniments/>}/>}/>
               </Route>
         </Routes>
       </AuthProvider>

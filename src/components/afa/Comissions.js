@@ -1,4 +1,7 @@
 import axios from "axios";
+import img1 from "./images/IMG_1042.JPG";
+import img2 from "./images/IMG_1078.JPG";
+import img3 from "./images/IMG_1057.JPG";
 // import imag1 from "../carousel/images/img2.jpg";
 
 function Comissions() {
@@ -57,8 +60,8 @@ function Comissions() {
                         <p className="lead">S’encarrega d’organitzar la venda de roba escolar: bates, samarretes i xandalls amb els colors i logotip de l’escola.</p>
                     </div>
                     <div className="col-md-5 order-md-1">
-                        {/* <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={carnestoltes} alt=""/> */}
-                        <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+                        <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={img1} alt=""/>
+                        {/* <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> */}
                     </div>
                 </div>
             <hr className="featurette-divider"></hr>
@@ -69,8 +72,8 @@ function Comissions() {
                         <p className="lead">Des de la comissió TIC valorem i considerem qualsevol canvi i implementació tecnològica que pugui ser aplicat a la nostra escola. Apostem per la innovació i renovació dels mitjans TIC de forma constant, adaptant-nos a l’evolució tecnològica.</p>
                     </div>
                     <div className="col-md-5">
-                        {/* <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={santjordi} alt=""/> */}
-                        <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+                        <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={img2} alt=""/>
+                        {/* <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> */}
                     </div>
                 </div>
             <hr className="featurette-divider"></hr>
@@ -81,8 +84,8 @@ function Comissions() {
                         <p className="lead">Aprenem a valorar el llibre de text com a una important eina de treball de la que hem de tenir cura, aprofitant tota la seva vida útil. Estalviem paper, recursos mediambientals i tot això, a més, repercuteix en l’estalvi de les famílies i en l’educació i el respecte pel material col·lectiu.</p>
                     </div>
                     <div className="col-md-5 order-md-1">
-                        {/* <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={carnestoltes} alt=""/> */}
-                        <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+                        <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={img3} alt=""/>
+                        {/* <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> */}
                     </div>
                 </div>
             <hr className="featurette-divider"></hr>
