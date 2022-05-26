@@ -5,13 +5,13 @@ import { useAuth } from "../../context/authContext";
 
 import ExtraEscolar from "../extraescolar/ExtraEscolar";
 import ListExtraEscolars from "../extraescolar/ListExtraEscolars";
-//import CardExtraEscolar from "../extraescolar/CardExtraEscolar";
 import "./css/formulari-edicio-extraescolars.css";
 
 function FormulariEdicioExtraescolars() {
 
   const [extraescolar, setExtraescolar] = useState([]);
   const [listExtraEscolar, setListExtraEscolar] = useState([]); //extraEscolars
+  const [dataAuxiliar, setDataAuxiliar] = useState([]);
   const [isTrue, setTrue] = useState(false);
   const [grupos,setGrupos] = useState([]);
   const { user }  = useAuth();
@@ -26,23 +26,13 @@ function FormulariEdicioExtraescolars() {
 
   const handleEdit = ({target:{name}}) =>{
 
-    const evenAux = new Event("change");
-
     let btnExtraescolar = document.getElementById('btn-extraescolar');
     
     let inputAux = document.getElementById('input-aux');
     let I1diasetmanal = document.getElementById('1diasetmanal');
-    I1diasetmanal.addEventListener('change',handleCheckChange)
-    
     let I2diasetmanal = document.getElementById('2diasetmanal');
-    I2diasetmanal.addEventListener('change',handleCheckChange)
-
     let I3diasetmanal = document.getElementById('3diasetmanal');
-    I3diasetmanal.addEventListener('change',handleCheckChange)
-
     let principalText = document.getElementById('principalText');
-    principalText.addEventListener('change',handleChange);
-    
     let esmati = document.getElementById('esmati');
     let estarda = document.getElementById('estarda');
     let I6T = document.getElementById('6T');
@@ -66,70 +56,55 @@ function FormulariEdicioExtraescolars() {
       
       let data = result.data();
       data.id = result.id;
-
-      I1diasetmanal.checked = data.howTimes.indexOf("1") ? true: false;
-      I1diasetmanal.dispatchEvent(evenAux);
-      // I1diasetmanal.onchange();
-      I2diasetmanal.checked = data.howTimes.indexOf("2") ? true: false;
-      I2diasetmanal.dispatchEvent(evenAux);
-      I3diasetmanal.checked = data.howTimes.indexOf("3") ? true: false;
-      I3diasetmanal.onchange();
-
+      
+      setDataAuxiliar(data);
+      setGrupos([]);
+       
+      I1diasetmanal.checked = data.howTimes.indexOf("1") > -1 ? true: false;
+      I2diasetmanal.checked = data.howTimes.indexOf("2") > -1 ? true: false;
+      I3diasetmanal.checked = data.howTimes.indexOf("3") > -1 ? true: false;
       titulo.value = data.title;
-      titulo.onchange();
-      estarda.checked = data.whenDo.indexOf("Tarda") ? true:false;
-      estarda.onchange();
-      esmati.checked = data.whenDo.indexOf("Mati") ? true:false;
-      esmati.onchange();
+      estarda.checked = data.whenDo.indexOf("Tarda") > -1 ? true:false;
+      esmati.checked = data.whenDo.indexOf("Mati") > -1 ? true:false;
       fechaFinal.value = data.dateEnd;
-      fechaFinal.onchange();
       fechaInici.value = data.dateStart;
-      fechaInici.onchange();
       principalText.value = data.mainText;
-      principalText.onchange();
       parrafo.value = data.parragraph;
       preu.value = data.price;
       textPhoto.value = data.urlPhoto;
+      
       inputAux.value = `${data.id} - ${data.namePhoto}`;
+      
       data.grupsToDo.forEach((item)=>{
         
         switch (item) {
           case "6T":
-            I6T.checked = true; 
+            I6T.checked = true;
             break;
-
           case "5T":
             I5T.checked = true; 
             break;
-
           case "4T":
             I4T.checked = true; 
-            break;
-          
+            break;          
           case "3E":
             I3E.checked = true; 
             break;
-
           case "2D":
             I2D.checked = true; 
             break;
-
           case "1E":
             I1E.checked = true; 
             break;
-
           case "P5":
             IP5.checked = true; 
             break;
-
           case "P4":
             IP4.checked = true; 
             break;
-
           case "P3":
             IP3.checked = true; 
             break;
-
           default:
             break;
         }
@@ -137,6 +112,7 @@ function FormulariEdicioExtraescolars() {
 
     btnExtraescolar.innerText = "Modificar";
     refresh();
+    titulo.focus();
 
     })
 
@@ -174,12 +150,24 @@ function FormulariEdicioExtraescolars() {
 
   },[isTrue]);
 
-  const handleCheckChange = ({target:{name,id, value}}) => {
+  const handleCheckChange = ({target:{name,id, value,checked}}) => {
     let nombre = name;
     
     if (nombre.toUpperCase().indexOf("SELECT") > -1) 
     {
-      setGrupos(arr => [...arr, `${id}`]);
+
+      if (checked === true) {
+        setGrupos(arr => [...arr, `${id}`]);  
+      }else{
+        if (dataAuxiliar !== null && dataAuxiliar.grupsToDo !== null && dataAuxiliar.grupsToDo.length > 0) {
+          dataAuxiliar.grupsToDo.forEach((elem, idx)=>{
+            if (elem === id ) {
+              dataAuxiliar.grupsToDo.splice(idx,1);
+            }  
+          });    
+        }
+      }
+      
     }
     else
     {
@@ -212,9 +200,6 @@ function FormulariEdicioExtraescolars() {
       textarea => (textarea.value = "")
     );
     
-    // this.setState({
-    //   itemvalues: [{}]
-    // });
   };
 
   const handleSubmit = async (e) =>{
@@ -225,38 +210,53 @@ function FormulariEdicioExtraescolars() {
       let arrDataAux = inputAux.value.split(" - ");
       let idCard = arrDataAux[0];
       let dataImagen = extraescolar["imagenLogo"];
-      let nameCardPhoto = dataImagen !== null ? dataImagen.name : arrDataAux[1];  
+      let nameCardPhoto = dataImagen !== undefined ? dataImagen.name : arrDataAux[1];  
 
       let item = new extraEscolars('','',extraescolar['titol'],extraescolar['parraf'],extraescolar['dataInici'],extraescolar['dataFinal'],extraescolar['principalText'],nameCardPhoto,'',extraescolar['aquinahora'],extraescolar['diasetmanal'],extraescolar['preu'],grupos);
-      const idData = await updateOneDocOfTpo('extraescolar',idCard,item);
+      let itemAux = new extraEscolars('','',dataAuxiliar.title,dataAuxiliar.parragraph,dataAuxiliar.dateStart,dataAuxiliar.dateEnd,dataAuxiliar.mainText,dataAuxiliar.namePhoto,dataAuxiliar.urlPhoto,dataAuxiliar.whenDo,dataAuxiliar.howTimes,dataAuxiliar.price,dataAuxiliar.grupsToDo)
+      
+      item.title = item.title !== undefined ? item.title : itemAux.title;
+      item.parragraph = item.parragraph !== undefined ? item.parragraph : itemAux.parragraph;
+      item.mainText = item.mainText !== undefined ? item.mainText : itemAux.mainText;
+      item.price = item.price !== undefined ? item.price : itemAux.price;
+      item.howTimes = item.howTimes !== undefined ? item.howTimes : itemAux.howTimes;
+      item.dateStart = item.dateStart !== undefined ? item.dateStart : itemAux.dateStart;
+      item.dateEnd = item.dateEnd !== undefined ? item.dateEnd : itemAux.dateEnd;
+      item.whenDo = item.whenDo !== undefined ? item.whenDo : itemAux.whenDo;
+      item.grupsToDo = item.grupsToDo !== undefined && item.grupsToDo.length > 0 ? item.grupsToDo : itemAux.grupsToDo;
+       
+      await updateOneDocOfTpo('extraescolar',idCard,item);
+      
+      if (extraescolar["imagenLogo"] !== undefined) {
+        const dataImg = await uploadFile(extraescolar["imagenLogo"],extraescolar["imagenLogo"].name,idCard,user.uid);
+        item.namePhoto = extraescolar["imagenLogo"].name;
+        item.urlPhoto = dataImg.metadata.fullPath;
+        await updateOneDocOfTpo('extraescolar',idCard,item);    
+      }
+      
       let btnExtraescolar = document.getElementById('btn-extraescolar');
       btnExtraescolar.innerText = "Agregar";
 
-      if (extraescolar["imagenLogo"] !== null) {
-        const dataImg = await uploadFile(extraescolar["imagenLogo"],extraescolar["imagenLogo"].name,idData,user.uid);
-        item.urlPhoto = dataImg.metadata.fullPath;
-        await updateOneDocOfTpo('extraescolar',idCard,item);
-        handleReset();
-        refresh();  
-      }
-
-    }else{
-      
-      let item = new extraEscolars('','',extraescolar['titol'],extraescolar['parraf'],extraescolar['dataInici'],extraescolar['dataFinal'],extraescolar['principalText'],extraescolar['imagenLogo'].name,'',extraescolar['aquinahora'],extraescolar['diasetmanal'],extraescolar['preu'],grupos);
-      const idData = await add('extraescolar',item);
-      const dataImg = await uploadFile(extraescolar["imagenLogo"],extraescolar["imagenLogo"].name,idData,user.uid);
-      item.urlPhoto = dataImg.metadata.fullPath;
-      await updateOneDocOfTpo('extraescolar',idData,item);
       handleReset();
       refresh();
 
+    }else{
+      
+      if (extraescolar['titol'] !== undefined && extraescolar['parraf'] !== undefined && extraescolar['dataInici'] !== undefined && extraescolar['dataFinal'] !== undefined && extraescolar['principalText'] !== undefined && extraescolar['imagenLogo'].name !== undefined && extraescolar['aquinahora'] !== undefined && extraescolar['diasetmanal'] !== undefined && extraescolar['preu'] !== undefined && grupos !== undefined && grupos.length>0) {
+        let item = new extraEscolars('','',extraescolar['titol'],extraescolar['parraf'],extraescolar['dataInici'],extraescolar['dataFinal'],extraescolar['principalText'],extraescolar['imagenLogo'].name,'',extraescolar['aquinahora'],extraescolar['diasetmanal'],extraescolar['preu'],grupos);
+        const idData = await add('extraescolar',item);
+        const dataImg = await uploadFile(extraescolar["imagenLogo"],extraescolar["imagenLogo"].name,idData,user.uid);
+        item.urlPhoto = dataImg.metadata.fullPath;
+        await updateOneDocOfTpo('extraescolar',idData,item);
+        handleReset();
+        refresh();
+      }
+      
     }
     
   }
 
-  //if (!listExtraEscolar.length) return <h3>Loading...</h3>;
-  // if (isTrue) return <h3>Loading...</h3>;
-
+  
   return (
     <>
       <ExtraEscolar handleChange={handleChange} handleFileChange={handleFileChange} handleCheckChange={handleCheckChange} handleSubmit={handleSubmit}/>
