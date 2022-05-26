@@ -1,23 +1,54 @@
-import imagen1 from "./images/TbKids.PNG";
-import imagen2 from "./images/ConsellEspotivoAltPenedes.PNG";
-import imagen3 from "./images/JudoVilafranca.PNG";
-import imagen4 from "./images/KLleure.PNG";
+import {useState, useEffect} from "react";
+import { getAllCollections, getUrlImage } from "../../db/crudDB";
+import { extraEscolars } from "../../models/extraescolars";
+import ListExtraEscolars from "../extraescolar/ListExtraEscolars";
+
+
+// import imagen1 from "./images/TbKids.PNG";
+// import imagen2 from "./images/ConsellEspotivoAltPenedes.PNG";
+// import imagen3 from "./images/JudoVilafranca.PNG";
+// import imagen4 from "./images/KLleure.PNG";
 import imagen5 from "./images/HorarisExtraEscolars.PNG";
 
 function Extraescolars() {
+
+    const [listExtraEscolar, setListExtraEscolar] = useState([]); //extraEscolars
+    // const [isTrue, setTrue] = useState(false);
+    let origen = "vista";
+
+    useEffect(()=>{
+   
+        const handleLoad = async () =>{
+        
+          let promesa1 = getAllCollections('extraescolar');
+          promesa1.then((resul)=>{
+            resul.forEach((doc)=>{
+              let imgUrl = getUrlImage(doc.urlPhoto);
+              imgUrl.then((rstUrl)=>{
+                let item = new extraEscolars(doc.id,doc.urlPhoto,doc.plazas,doc.title,doc.parragraph,doc.dateStart,doc.dateEnd,doc.mainText,doc.namePhoto,rstUrl,doc.whenDo,doc.howTimes,doc.price,doc.grupsToDo);
+                setListExtraEscolar(arr => [...arr, item]);
+              });
+            })
+          })
+          
+        }
+        
+        handleLoad();
+    
+    },[]);
+    
+
     return (  
         <>
             <hr className="featurette-divider"></hr>
             <div className="containerH1"><h1>Extraescolars</h1></div>
             <p className="fs-5 col-md-12">L’AMPA de l’Escola Estalella i Graells ofereix activitats extraescolars de qualitat, atractives i que complementen l’ensenyament lectiu. Esperem que compleixin amb les vostres preferències i interessos i que les gaudiu molt!</p>
-            <hr className="col-3 col-md-12 mb-5"></hr>
-            {/* <div className="row g-5">
-                <div className="col-md-12">
-                    <h2>Objectius</h2>
-                    <hr className="col-3 col-md-2 mb-5"></hr>
-                </div>
-            </div> */}
-            <div className="album py-5 bg-light">
+            {/* <hr className="col-3 col-md-12 mb-5"></hr> */}
+            {
+                <ListExtraEscolars arrayData={listExtraEscolar} componentCall={origen}/>
+            }
+
+            {/* <div className="album py-5 bg-light">
                 <div className="container">
 
                     <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -180,7 +211,6 @@ function Extraescolars() {
                                     <div className="row row-cols-2">
                                         <div className=" col-sm-8 col-md-8 title-row-principal">ESPORTS voleibol bàsquet futbol sala</div>
                                         <div className=" col-sm-4 col-md-4 div-imagen-extraescolar"><img className="imagen-extraescolar" src={imagen2} alt="" /></div>
-                                        {/* <svg className="bd-placeholder-img card-img-top" width="100%" height="35%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#55595c"></rect></svg> */}
                                     </div>
                                     <div className="row row-cols-3 col-row-subtitle">
                                         <div className=" col-sm-4 col-md-4 col-text-4">3r a 6è</div>
@@ -190,7 +220,6 @@ function Extraescolars() {
                                 </div>
                                 <div className="card-body">
                                     <p className="card-text">Són tres activitats diferents. Es treballen aspectes com la cohesió, el sentiment de grup, el respecte, l'esportivitat... Aquests esports, voleibol, bàsquet i futbol sala, són programats d’acord amb els jocs esportius escolars (JESPE), fet que implica no només la participació en l'activitat dels infants durant les tardes a l'escola, sinó també la participació en competicions de caire escolar. El preu de l’activitat inclou la fitxa del JESPE i l'equipatge. Es farà un equip benjamí (3r i 4t) i un equip aleví (5è i 6è) sempre que s'arribi al mínim necessari per dividir cada grup. </p>
-                                    {/* <p className="card-text">Programació amb un coneixement previ adquirit, dissenyant, construint i programant el propi robot o resolent diferents missions en un tauler de joc.</p> */}
                                 </div>
                             </div>
                         </div>
@@ -209,7 +238,6 @@ function Extraescolars() {
                                 </div>
                                 <div className="card-body">
                                     <p className="card-text">Art marcial per excel·lència. La pràctica del judo desenvolupa les habilitats psicomotrius bàsiques, l’equilibri, la resistència, la flexibilitat, la coordinació i la força. Ho fa des del control i el coneixement de les possibilitats de moviment del cos. Ajuda a reconèixer les pròpies habilitats fomentant l’autocontrol, els valors de respecte, responsabilitat i superació personal.</p>
-                                    {/* <p className="card-text">Programació amb un coneixement previ adquirit, dissenyant, construint i programant el propi robot o resolent diferents missions en un tauler de joc.</p> */}
                                 </div>
                             </div>
                         </div>
@@ -228,7 +256,6 @@ function Extraescolars() {
                                 </div>
                                 <div className="card-body">
                                     <p className="card-text">Grups d'iniciació, nivell mitjà i perfeccionament. Amb circuits, rampes, barres, box… Es proporcionarà el material personal, cascs i proteccions pels infants que participin en aquesta activitat. Separem els nens i les nenes segons les seves aptituds en aquest esport.</p>
-                                    {/* <p className="card-text">Programació amb un coneixement previ adquirit, dissenyant, construint i programant el propi robot o resolent diferents missions en un tauler de joc.</p> */}
                                 </div>
                             </div>
                         </div>
@@ -247,13 +274,12 @@ function Extraescolars() {
                                 </div>
                                 <div className="card-body">
                                     <p className="card-text">Conjunt d’exercicis físics en els que s’entrena la musculatura, la resistència, la flexibilitat i el control de la respiració i la ment.</p>
-                                    {/* <p className="card-text">Programació amb un coneixement previ adquirit, dissenyant, construint i programant el propi robot o resolent diferents missions en un tauler de joc.</p> */}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
             <hr className="featurette-divider"></hr>
             <div className="row g-5">
                 <div className="col-md-12">

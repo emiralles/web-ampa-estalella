@@ -15,7 +15,8 @@ function FormulariEdicioExtraescolars() {
   const [isTrue, setTrue] = useState(false);
   const [grupos,setGrupos] = useState([]);
   const { user }  = useAuth();
-  
+  let origen = "admin";
+
   const handleChange = ({target:{name,value}}) => {
     setExtraescolar({...extraescolar,[name]:value});
   }
@@ -49,6 +50,7 @@ function FormulariEdicioExtraescolars() {
     let fechaInici = document.getElementById('fechaInici');
     let parrafo = document.getElementById('parrafo');
     let titulo = document.getElementById('titulo');
+    let plazas = document.getElementById('plazas');
     let textPhoto = document.getElementById('textPhoto');
     
     let promise = getOneDocOfTipo('extraescolar',name);
@@ -64,6 +66,7 @@ function FormulariEdicioExtraescolars() {
       I2diasetmanal.checked = data.howTimes.indexOf("2") > -1 ? true: false;
       I3diasetmanal.checked = data.howTimes.indexOf("3") > -1 ? true: false;
       titulo.value = data.title;
+      plazas.value = data.plazas;
       estarda.checked = data.whenDo.indexOf("Tarda") > -1 ? true:false;
       esmati.checked = data.whenDo.indexOf("Mati") > -1 ? true:false;
       fechaFinal.value = data.dateEnd;
@@ -122,9 +125,11 @@ function FormulariEdicioExtraescolars() {
     let arrStr = name.split(" - ");
     let id = arrStr[0];
     let pathPhoto = arrStr[1];
+    let titulo = document.getElementById('titulo');
     deleteOneDocOfTipo('extraescolar',id);
     removeObject(pathPhoto);
     refresh();
+    titulo.focus();
   }
   
   useEffect(()=>{
@@ -137,7 +142,7 @@ function FormulariEdicioExtraescolars() {
         resul.forEach((doc)=>{
           let imgUrl = getUrlImage(doc.urlPhoto);
           imgUrl.then((rstUrl)=>{
-            let item = new extraEscolars(doc.id,doc.urlPhoto,doc.title,doc.parragraph,doc.dateStart,doc.dateEnd,doc.mainText,doc.namePhoto,rstUrl,doc.whenDo,doc.howTimes,doc.price,doc.grupsToDo);
+            let item = new extraEscolars(doc.id,doc.urlPhoto,doc.plazas,doc.title,doc.parragraph,doc.dateStart,doc.dateEnd,doc.mainText,doc.namePhoto,rstUrl,doc.whenDo,doc.howTimes,doc.price,doc.grupsToDo);
             // arrayItems.push(item);
             setListExtraEscolar(arr => [...arr, item]);
           });
@@ -212,8 +217,8 @@ function FormulariEdicioExtraescolars() {
       let dataImagen = extraescolar["imagenLogo"];
       let nameCardPhoto = dataImagen !== undefined ? dataImagen.name : arrDataAux[1];  
 
-      let item = new extraEscolars('','',extraescolar['titol'],extraescolar['parraf'],extraescolar['dataInici'],extraescolar['dataFinal'],extraescolar['principalText'],nameCardPhoto,'',extraescolar['aquinahora'],extraescolar['diasetmanal'],extraescolar['preu'],grupos);
-      let itemAux = new extraEscolars('','',dataAuxiliar.title,dataAuxiliar.parragraph,dataAuxiliar.dateStart,dataAuxiliar.dateEnd,dataAuxiliar.mainText,dataAuxiliar.namePhoto,dataAuxiliar.urlPhoto,dataAuxiliar.whenDo,dataAuxiliar.howTimes,dataAuxiliar.price,dataAuxiliar.grupsToDo)
+      let item = new extraEscolars('','',extraescolar['plazas'],extraescolar['titol'],extraescolar['parraf'],extraescolar['dataInici'],extraescolar['dataFinal'],extraescolar['principalText'],nameCardPhoto,'',extraescolar['aquinahora'],extraescolar['diasetmanal'],extraescolar['preu'],grupos);
+      let itemAux = new extraEscolars('','',dataAuxiliar.plazas,dataAuxiliar.title,dataAuxiliar.parragraph,dataAuxiliar.dateStart,dataAuxiliar.dateEnd,dataAuxiliar.mainText,dataAuxiliar.namePhoto,dataAuxiliar.urlPhoto,dataAuxiliar.whenDo,dataAuxiliar.howTimes,dataAuxiliar.price,dataAuxiliar.grupsToDo)
       
       item.title = item.title !== undefined ? item.title : itemAux.title;
       item.parragraph = item.parragraph !== undefined ? item.parragraph : itemAux.parragraph;
@@ -242,12 +247,14 @@ function FormulariEdicioExtraescolars() {
 
     }else{
       
-      if (extraescolar['titol'] !== undefined && extraescolar['parraf'] !== undefined && extraescolar['dataInici'] !== undefined && extraescolar['dataFinal'] !== undefined && extraescolar['principalText'] !== undefined && extraescolar['imagenLogo'].name !== undefined && extraescolar['aquinahora'] !== undefined && extraescolar['diasetmanal'] !== undefined && extraescolar['preu'] !== undefined && grupos !== undefined && grupos.length>0) {
-        let item = new extraEscolars('','',extraescolar['titol'],extraescolar['parraf'],extraescolar['dataInici'],extraescolar['dataFinal'],extraescolar['principalText'],extraescolar['imagenLogo'].name,'',extraescolar['aquinahora'],extraescolar['diasetmanal'],extraescolar['preu'],grupos);
+      if (extraescolar['plazas'] !== undefined && extraescolar['titol'] !== undefined && extraescolar['parraf'] !== undefined && extraescolar['dataInici'] !== undefined && extraescolar['dataFinal'] !== undefined && extraescolar['principalText'] !== undefined && extraescolar['imagenLogo'].name !== undefined && extraescolar['aquinahora'] !== undefined && extraescolar['diasetmanal'] !== undefined && extraescolar['preu'] !== undefined && grupos !== undefined && grupos.length>0) {
+        let item = new extraEscolars('','',extraescolar['plazas'],extraescolar['titol'],extraescolar['parraf'],extraescolar['dataInici'],extraescolar['dataFinal'],extraescolar['principalText'],extraescolar['imagenLogo'].name,'',extraescolar['aquinahora'],extraescolar['diasetmanal'],extraescolar['preu'],grupos);
         const idData = await add('extraescolar',item);
-        const dataImg = await uploadFile(extraescolar["imagenLogo"],extraescolar["imagenLogo"].name,idData,user.uid);
-        item.urlPhoto = dataImg.metadata.fullPath;
-        await updateOneDocOfTpo('extraescolar',idData,item);
+        if (idData !== undefined && idData !== "") {
+          const dataImg = await uploadFile(extraescolar["imagenLogo"],extraescolar["imagenLogo"].name,idData,user.uid);
+          item.urlPhoto = dataImg.metadata.fullPath;
+          await updateOneDocOfTpo('extraescolar',idData,item);  
+        }
         handleReset();
         refresh();
       }
@@ -261,7 +268,7 @@ function FormulariEdicioExtraescolars() {
     <>
       <ExtraEscolar handleChange={handleChange} handleFileChange={handleFileChange} handleCheckChange={handleCheckChange} handleSubmit={handleSubmit}/>
       {
-        <ListExtraEscolars arrayData={listExtraEscolar} handleRemove={handleRemove} handleEdit={handleEdit}/>
+        <ListExtraEscolars arrayData={listExtraEscolar} handleRemove={handleRemove} handleEdit={handleEdit} componentCall={origen}/>
       }
     </>
   )

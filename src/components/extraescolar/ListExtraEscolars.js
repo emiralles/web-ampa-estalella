@@ -1,8 +1,8 @@
 import CardExtraEscolar from "../extraescolar/CardExtraEscolar";
 
-function ListExtraEscolars({arrayData, handleRemove, handleEdit}) {
+function ListExtraEscolars({arrayData, handleRemove, handleEdit, componentCall}) {
   
-    if (!arrayData.length) return <h3>Loading...</h3>;    
+    if (!arrayData.length) return <h3>No existe ningun registro</h3>;    
     return (
         <>
         <hr className="featurette-divider"></hr>
@@ -12,7 +12,7 @@ function ListExtraEscolars({arrayData, handleRemove, handleEdit}) {
             <div className="row align-content-center ">
                 {
                     arrayData.map((extraescol,index) => (
-                        <CardExtraEscolar Id={extraescol.Uid} path={extraescol.path} handleEdit={handleEdit} key={extraescol.Uid} titulo={extraescol.title} subTitle1={String.prototype.concat(extraescol.grupsToDo)} precio={extraescol.price} semanal={extraescol.howTimes} textoPrincipal={extraescol.parragraph} srcImage={extraescol.urlPhoto} handleRemove={handleRemove}/> 
+                        <CardExtraEscolar Id={extraescol.Uid} path={extraescol.path} handleEdit={handleEdit} key={extraescol.Uid} titulo={extraescol.title} subTitle1={String.prototype.concat(extraescol.grupsToDo)} precio={extraescol.price} semanal={extraescol.howTimes} textoPrincipal={extraescol.parragraph} srcImage={extraescol.urlPhoto} handleRemove={handleRemove} componentCall={componentCall}/> 
                     ))
                 }
             </div>

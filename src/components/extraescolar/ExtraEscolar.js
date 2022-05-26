@@ -7,6 +7,10 @@ function ExtraEscolar({handleChange, handleCheckChange, handleFileChange, handle
                     <form onSubmit={handleSubmit}>
                         <input className="d-none" id="input-aux" ></input>
                         <div className="form-floating mb-3">
+                        <input type="number" className="form-control w-50" maxLength={2} id="plazas" onChange={handleChange} placeholder="Numero de plazas" name="plazas"/>
+                        <label htmlFor="floatingInput" className="w-50">Numero de plazas, Valor numerico maximo 2 digitos</label>
+                        </div>
+                        <div className="form-floating mb-3">
                         <input type="text" className="form-control" maxLength={32} id="titulo" onChange={handleChange} placeholder="titol" name="titol"/>
                         <label htmlFor="floatingInput">Titol, maxim 32 caracteres</label>
                         </div>
