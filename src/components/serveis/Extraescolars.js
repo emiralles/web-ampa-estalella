@@ -2,18 +2,34 @@ import {useState, useEffect} from "react";
 import { getAllCollections, getUrlImage } from "../../db/crudDB";
 import { extraEscolars } from "../../models/extraescolars";
 import ListExtraEscolars from "../extraescolar/ListExtraEscolars";
-
+import InscripcionExtraEscolar from "../../formularis/inscripcioExtraEscolar/InscripcionExtraEscolar";
 
 // import imagen1 from "./images/TbKids.PNG";
 // import imagen2 from "./images/ConsellEspotivoAltPenedes.PNG";
 // import imagen3 from "./images/JudoVilafranca.PNG";
 // import imagen4 from "./images/KLleure.PNG";
 import imagen5 from "./images/HorarisExtraEscolars.PNG";
+import { modelViewExtraescolar } from "../../models/modelViewExtraescolar";
+
 
 function Extraescolars() {
 
     const [listExtraEscolar, setListExtraEscolar] = useState([]); //extraEscolars
     // const [isTrue, setTrue] = useState(false);
+    // const [lstExtraescolar, setListEstraescolar] = useState([]);
+
+    // let nex = new modelViewExtraescolar('uid00001','Titulo 01','26/05/2022','06/06/2022','Mati','1 dia setmanal','250','2B,3E,1E');
+
+    // setListEstraescolar(ls => [...ls,nex]);
+    // nex = new modelViewExtraescolar('uid00002','Titulo 01','26/05/2022','06/06/2022','Mati','1 dia setmanal','250','2B,3E,1E');
+    // setListEstraescolar(ls => [...ls,nex]);
+    // nex = new modelViewExtraescolar('uid00003','Titulo 01','26/05/2022','06/06/2022','Mati','1 dia setmanal','250','2B,3E,1E');
+    // setListEstraescolar(ls => [...ls,nex]);
+    // nex = new modelViewExtraescolar('uid00004','Titulo 01','26/05/2022','06/06/2022','Mati','1 dia setmanal','250','2B,3E,1E');
+    // setListEstraescolar(ls => [...ls,nex]);
+    // nex = new modelViewExtraescolar('uid00005','Titulo 01','26/05/2022','06/06/2022','Mati','1 dia setmanal','250','2B,3E,1E');
+    // setListEstraescolar(ls => [...ls,nex]);
+
     let origen = "vista";
 
     useEffect(()=>{
@@ -280,6 +296,8 @@ function Extraescolars() {
                     </div>
                 </div>
             </div> */}
+            <hr className="featurette-divider"></hr>
+            <InscripcionExtraEscolar/>
             <hr className="featurette-divider"></hr>
             <div className="row g-5">
                 <div className="col-md-12">
