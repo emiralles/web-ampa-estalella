@@ -11,7 +11,7 @@ function TableGrid({data,nameCheck,handleCheckChange}) {
                             {/* <th scope="col"><input type="checkbox" aria-label="Checkbox for following text input"/></th> */}
                             {
                                 data[0].map((item,index) => (
-                                    <th scope="col" key={index}>{item}</th>
+                                    <th scope="col" className={index===0 ? 'd-none':''} key={index}>{item}</th>
                                 ))
                             }
                             </tr>
@@ -19,11 +19,11 @@ function TableGrid({data,nameCheck,handleCheckChange}) {
                         <tbody>
                             {
                                 data[1].map((item,index) => (
-                                    <tr>
+                                    <tr key={index}>
                                     <th scope="row"><input key={index} name={nameCheck} id={index} onChange={handleCheckChange} type="checkbox" aria-label="Checkbox for following text input"/></th>
                                         {
                                             item.map((itemData,index) => (
-                                                <td key={index}>{itemData}</td>
+                                                <td key={index} className={index===0 ? 'd-none':''}>{itemData}</td>
                                             ))      
                                         }
                                     </tr>
