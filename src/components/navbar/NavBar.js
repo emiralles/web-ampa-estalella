@@ -1,5 +1,6 @@
 import Icons from "bootstrap-icons/bootstrap-icons.svg";
-import logo from "./images/LOGO AMPA V.jpg";
+//import logo from "./images/LOGO AMPA V.jpg";
+import logo from "./images/LOGOTIP AFA DEFINITIU 26052022 VERD.png";
 import './navBar.css';
 // import { Link } from "react-router-dom";
 // d-none d-sm-block d-sm-none d-md-block d-md-none d-lg-block
@@ -9,7 +10,7 @@ function NavBar() {
             {/* navbar navbar-expand-md navbar-dark fixed-top bg-dark navbar-style-mobil */}
             <div className="container-fluid">
                 <a className="navbar-brand" href="/">
-                    <img className="Logo" src={logo} alt="Logo"/>
+                    <img className="Logo rounded-circle " src={logo} alt="Logo"/>
                     {/* <FontAwesomeIcon icon={estalellaImage}></FontAwesomeIcon> */}
                 </a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

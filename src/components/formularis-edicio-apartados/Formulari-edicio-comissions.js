@@ -6,7 +6,6 @@ function FormulariEdicioComissions() {
     return ( 
         <>
             <form>
-                
                 <div className='row border border-success mb-3 mt-3 rounded' id="divTutor">
                     <label htmlFor="divTutor" className="form-label">Tutor Legal</label>
                     <div className=" col-lg-4 mb-3">
@@ -143,10 +142,10 @@ function FormulariEdicioComissions() {
                     <div className="d-grid gap-2 mb-3 mt-3">
                         <button type="submit" className="btn btn-primary">Agregar</button>
                     </div>
+                    
                 </div>
             </form>
             <>
-                <DataGrid/>
                 <DataGrid/>
             </>
         </>

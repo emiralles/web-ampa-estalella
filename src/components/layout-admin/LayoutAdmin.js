@@ -1,4 +1,4 @@
-import logo from "../navbar/images/LOGO AMPA V.jpg";
+import logo from "../navbar/images/LOGOTIP AFA DEFINITIU 26052022 VERD.png";
 import { useAuth } from "../../context/authContext";
 import { Outlet } from "react-router-dom";
 import  "./layout-admin.css";
@@ -24,7 +24,7 @@ function LayoutAdmin() {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <a className="navbar-brand" href="/">
-                    <img className="Logo" src={logo} alt="Logo"/>
+                    <img className="Logo rounded-circle" src={logo} alt="Logo"/>
                     {/* <FontAwesomeIcon icon={estalellaImage}></FontAwesomeIcon> */}
                 </a>
                 {/* <a className="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#1">AFA Estalella i Graells</a> */}
