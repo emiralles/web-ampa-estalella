@@ -8,6 +8,11 @@ a:active { text-decoration: none; }
   text-decoration-color: none!important;
 }
 
+.w-15{
+  width: 1px!important;
+  max-width: 5px!important;
+}
+
 /* Extraescolares */
 .div-image-horaris-extraescolars{
   text-align: -webkit-center!important;
@@ -146,7 +151,8 @@ a:active { text-decoration: none; }
 }
 
 .navbar{
-  background-color: #b4dc73!important;
+  background-color: #009846!important;
+  /* #b4dc73 */
 }
 .flex-shrink-0{
   background-color: #AD062E90!important;
@@ -187,24 +193,26 @@ a:active { text-decoration: none; }
   color:white!important;
   text-align: left;
   list-style: none;
-  background-color: #b4dc73!important;
+  background-color: #009846!important;
   background-clip: padding-box;
   border: 0px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
 }
-
+/* #b4dc73 */
 .color-div-card{
   margin-top: 0.5rem;
 }
 
 footer{
-  background-color: #21252980;
+  background-color: #Cfd4cf;
 }
-
+/* #E25E29 */
+/* #04a24d */
+/* #21252980 */
 footer div span.text-muted{
-  color: antiquewhite!important;
+  color: #222222!important;
 }
-
+/* antiquewhite */
 /* Featurettes
 ------------------------- */
 .featurette-divider.fix-margin-featurette-divider-bottom{
@@ -237,14 +245,10 @@ footer div span.text-muted{
   text-align: inherit;
   text-decoration: none;
   white-space: nowrap;
-  background-color: #b4dc73!important;
+  background-color: #009846!important;
   border: 0;
 }
-
-/* body {
-  padding-top: 3rem;
-  color: #5a5a5a;
-} */
+/* #b4dc73 */
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */
