@@ -340,7 +340,12 @@ footer div span.text-muted{
   .div-ul-ul{
     margin-top: 2rem!important;
     margin-left: -9rem!important;
-  }  
+  }
+  
+  .col-md.left-text{
+    text-align: left!important;
+    padding-top: 1rem!important;
+  }
 }
 
 .video-responsive {
@@ -356,6 +361,14 @@ footer div span.text-muted{
   height: 100%;
   width: 100%;
   position: absolute;
+}
+
+@media (max-width:850px) {
+  .col-md.left-text{
+    text-align: left!important;
+    padding-top: 1rem!important;
+  }
+  
 }
 
 @media (max-width: 350px) {
