@@ -10,9 +10,9 @@ function FooterComponent() {
                 <span className="text-muted">© 2022 AriMath, Inc</span>
             </div>
             <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
-                <li className="ms-3"><a className="text-muted" href="/"><svg className="bi" width="24" height="24"><use xlinkHref={`${Icons}#twitter`}></use></svg></a></li>
-                <li className="ms-3"><a className="text-muted" href="/"><svg className="bi" width="24" height="24"><use xlinkHref={`${Icons}#instagram`}></use></svg></a></li>
-                <li className="ms-3"><a className="text-muted" href="/"><svg className="bi" width="24" height="24"><use xlinkHref={`${Icons}#facebook`}></use></svg></a></li>
+                {/* <li className="ms-3"><a className="text-muted" href="/"><svg className="bi" width="24" height="24"><use xlinkHref={`${Icons}#twitter`}></use></svg></a></li> */}
+                <li className="ms-3"><a className="text-muted" href="https://www.instagram.com/estalellaigraells/?igshid=YmMyMTA2M2Y=" target="_blank" rel="noreferrer"><svg className="bi" width="24" height="24"><use xlinkHref={`${Icons}#instagram`}></use></svg></a></li>
+                {/* <li className="ms-3"><a className="text-muted" href="/"><svg className="bi" width="24" height="24"><use xlinkHref={`${Icons}#facebook`}></use></svg></a></li> */}
             </ul>
         </>
     );
