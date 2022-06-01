@@ -103,7 +103,7 @@ a:active { text-decoration: none; }
   height: 32rem;
 }
 
-.marketing .col-lg-4 {
+.marketing.col-lg-4 {
   margin-bottom: 1.5rem;
   text-align: center;
 }
@@ -111,7 +111,7 @@ a:active { text-decoration: none; }
   font-weight: 100;
 }
 
-.marketing .col-lg-4 p {
+.marketing.col-lg-4 p {
   margin-right: .75rem;
   margin-left: .75rem;
 }
@@ -377,5 +377,10 @@ footer div span.text-muted{
   .div-ul-ul{
     margin-top: 3rem!important;
     margin-left: -11rem!important;
-  }  
+  }
+  
+  .col-md.left-text{
+    text-align: left!important;
+    padding-top: 1rem!important;
+  }
 }
