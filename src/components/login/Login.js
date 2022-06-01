@@ -2,7 +2,8 @@ import { useState } from "react";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 
-import logo from "./images/LOGO ESTALELLA COLORS.jpg";
+//import logo from "./images/LOGO ESTALELLA COLORS.jpg";
+import logo from "./images/LOGOTIP AFA DEFINITIU 26052022 VERD.png";
 import Mensaje from "../mensaje/Mensaje";
 import {useAuth} from "../../context/authContext";
 
@@ -37,7 +38,7 @@ function Login() {
                 <main className="form-signin">
                     { exitMensaje && <Mensaje mensaje={mensaje}/>}
                     <form onSubmit={handleSubmit}>
-                        <img className="mb-4" src={logo} alt="" width="72" height="57"/>
+                        <img className="mb-4" src={logo} alt="" width="72" height="72"/>
                         <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
 
                         <div className="form-floating">
