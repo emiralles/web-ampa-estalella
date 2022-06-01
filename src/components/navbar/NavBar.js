@@ -39,7 +39,7 @@ function NavBar() {
                             <li><a href="/extraescolars" className="dropdown-item">Extraescolars</a></li>
                             <li><a href="fg" className="dropdown-item">Equipament</a></li>
                             <li><a href="/casaldestiu" className="dropdown-item">Casal d'estiu</a></li>
-                            <li><a href="fg" className="dropdown-item">Tardes de juny</a></li>
+                            <li><a href="/tardesestiu" className="dropdown-item">Tardes de juny</a></li>
                         </ul>
                     </li>
                     <li className="nav-item dropdown">
