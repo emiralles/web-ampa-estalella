@@ -8,7 +8,7 @@ function ExtraEscolar({handleChange, handleCheckChange, handleFileChange, handle
                         <input className="d-none" id="input-aux" ></input>
                         <div className="form-floating mb-3">
                         <input type="number" className="form-control w-50" maxLength={2} id="plazas" onChange={handleChange} placeholder="Numero de plazas" name="plazas"/>
-                        <label htmlFor="floatingInput" className="w-50">Numero de plazas, Valor numerico maximo 2 digitos</label>
+                        <label htmlFor="floatingInput">Plazas maxim 2 digits</label>
                         </div>
                         <div className="form-floating mb-3">
                         <input type="text" className="form-control" maxLength={32} id="titulo" onChange={handleChange} placeholder="titol" name="titol"/>
@@ -48,7 +48,7 @@ function ExtraEscolar({handleChange, handleCheckChange, handleFileChange, handle
                                         <label htmlFor="preutarda">Preu Tarda</label>
                                     </div> */}
                                 </div>
-                                <div className="col-md">
+                                <div className="col-md left-text">
                                     
                                     <div className="form-check form-check-inline">
                                         <input className="form-check-input" name="SELECTP3" type="checkbox" id="P3" value="P3" onChange={handleCheckChange}/>
@@ -89,26 +89,26 @@ function ExtraEscolar({handleChange, handleCheckChange, handleFileChange, handle
                                         <label className="form-check-label" htmlFor="6T">6T</label>
                                     </div>
                                 </div>
-                                <div className="col-md">
-                                    <div className="form-check">
+                                <div className="col-md left-text">
+                                    <div className="form-check form-check-inline">
                                         <label className="form-check-label" htmlFor="esmati">
                                         <input className="form-check-input" type="radio" name="aquinahora" onChange={handleCheckChange} id="esmati" value={"Mati"}/>Es Mati</label>
                                     </div>
-                                    <div className="form-check">
+                                    <div className="form-check form-check-inline">
                                         <label className="form-check-label" htmlFor="estarda">
                                         <input className="form-check-input" type="radio" name="aquinahora" onChange={handleCheckChange} id="estarda" value={"Tarda"}/>Es Tarda</label>
                                     </div>
                                 </div>
-                                <div className="col-md">
-                                    <div className="form-check">
+                                <div className="col-md left-text">
+                                    <div className="form-check form-check-inline">
                                         <label className="form-check-label" htmlFor="1diasetmanal">
                                         <input className="form-check-input" type="radio" name="diasetmanal" onChange={handleCheckChange} id="1diasetmanal" value={"1 dia setmanal"}/>1 dia setmanal</label>
                                     </div>
-                                    <div className="form-check">
+                                    <div className="form-check form-check-inline">
                                         <label className="form-check-label" htmlFor="2diasetmanal">
                                         <input className="form-check-input" type="radio" name="diasetmanal" onChange={handleCheckChange} id="2diasetmanal" value={"2 dia setmanal"}/>2 dia setmanal</label>
                                     </div>
-                                    <div className="form-check">
+                                    <div className="form-check form-check-inline">
                                         <label className="form-check-label" htmlFor="3diasetmanal">
                                         <input className="form-check-input" type="radio" name="diasetmanal" onChange={handleCheckChange} id="3diasetmanal" value={"3 dia setmanal"}/>3 dia setmanal</label>
                                     </div>
