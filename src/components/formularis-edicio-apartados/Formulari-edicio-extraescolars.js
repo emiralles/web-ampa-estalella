@@ -7,6 +7,21 @@ import ExtraEscolar from "../extraescolar/ExtraEscolar";
 import ListExtraEscolars from "../extraescolar/ListExtraEscolars";
 import "./css/formulari-edicio-extraescolars.css";
 
+let data = {
+  plazas:"",
+  title: "",
+  parragraph: "",
+  dateStart: "",
+  dateEnd: "",
+  mainText: "",
+  namePhoto: "",
+  urlPhoto: "",
+  whenDo: "",
+  howTimes: "",
+  price: "",
+  grupsToDo: "",
+}
+
 function FormulariEdicioExtraescolars() {
 
   const [extraescolar, setExtraescolar] = useState([]);
@@ -220,23 +235,37 @@ function FormulariEdicioExtraescolars() {
       let item = new extraEscolars('','',extraescolar['plazas'],extraescolar['titol'],extraescolar['parraf'],extraescolar['dataInici'],extraescolar['dataFinal'],extraescolar['principalText'],nameCardPhoto,'',extraescolar['aquinahora'],extraescolar['diasetmanal'],extraescolar['preu'],grupos);
       let itemAux = new extraEscolars('','',dataAuxiliar.plazas,dataAuxiliar.title,dataAuxiliar.parragraph,dataAuxiliar.dateStart,dataAuxiliar.dateEnd,dataAuxiliar.mainText,dataAuxiliar.namePhoto,dataAuxiliar.urlPhoto,dataAuxiliar.whenDo,dataAuxiliar.howTimes,dataAuxiliar.price,dataAuxiliar.grupsToDo)
       
-      item.title = item.title !== undefined ? item.title : itemAux.title;
-      item.parragraph = item.parragraph !== undefined ? item.parragraph : itemAux.parragraph;
-      item.mainText = item.mainText !== undefined ? item.mainText : itemAux.mainText;
-      item.price = item.price !== undefined ? item.price : itemAux.price;
-      item.howTimes = item.howTimes !== undefined ? item.howTimes : itemAux.howTimes;
-      item.dateStart = item.dateStart !== undefined ? item.dateStart : itemAux.dateStart;
-      item.dateEnd = item.dateEnd !== undefined ? item.dateEnd : itemAux.dateEnd;
-      item.whenDo = item.whenDo !== undefined ? item.whenDo : itemAux.whenDo;
-      item.grupsToDo = item.grupsToDo !== undefined && item.grupsToDo.length > 0 ? item.grupsToDo : itemAux.grupsToDo;
-       
-      await updateOneDocOfTpo('extraescolar',idCard,item);
+      // item.title = item.title !== undefined ? item.title : itemAux.title;
+      // item.parragraph = item.parragraph !== undefined ? item.parragraph : itemAux.parragraph;
+      // item.mainText = item.mainText !== undefined ? item.mainText : itemAux.mainText;
+      // item.price = item.price !== undefined ? item.price : itemAux.price;
+      // item.howTimes = item.howTimes !== undefined ? item.howTimes : itemAux.howTimes;
+      // item.dateStart = item.dateStart !== undefined ? item.dateStart : itemAux.dateStart;
+      // item.dateEnd = item.dateEnd !== undefined ? item.dateEnd : itemAux.dateEnd;
+      // item.whenDo = item.whenDo !== undefined ? item.whenDo : itemAux.whenDo;
+      // item.grupsToDo = item.grupsToDo !== undefined && item.grupsToDo.length > 0 ? item.grupsToDo : itemAux.grupsToDo;
+      
+      data.title = item.title !== undefined ? item.title : itemAux.title;
+      data.parragraph = item.parragraph !== undefined ? item.parragraph : itemAux.parragraph;
+      data.mainText = item.mainText !== undefined ? item.mainText : itemAux.mainText;
+      data.price = item.price !== undefined ? item.price : itemAux.price;
+      data.howTimes = item.howTimes !== undefined ? item.howTimes : itemAux.howTimes;
+      data.dateStart = item.dateStart !== undefined ? item.dateStart : itemAux.dateStart;
+      data.dateEnd = item.dateEnd !== undefined ? item.dateEnd : itemAux.dateEnd;
+      data.whenDo = item.whenDo !== undefined ? item.whenDo : itemAux.whenDo;
+      data.grupsToDo = item.grupsToDo !== undefined && item.grupsToDo.length > 0 ? item.grupsToDo : itemAux.grupsToDo;
+      
+      // await updateOneDocOfTpo('extraescolar',idCard,item);
+      await updateOneDocOfTpo('extraescolar',idCard,data);
       
       if (extraescolar["imagenLogo"] !== undefined) {
         const dataImg = await uploadFile(extraescolar["imagenLogo"],extraescolar["imagenLogo"].name,idCard,user.uid);
-        item.namePhoto = extraescolar["imagenLogo"].name;
-        item.urlPhoto = dataImg.metadata.fullPath;
-        await updateOneDocOfTpo('extraescolar',idCard,item);    
+        // item.namePhoto = extraescolar["imagenLogo"].name;
+        // item.urlPhoto = dataImg.metadata.fullPath;
+        data.namePhoto = extraescolar["imagenLogo"].name;
+        data.urlPhoto = dataImg.metadata.fullPath;
+        // await updateOneDocOfTpo('extraescolar',idCard,item);    
+        await updateOneDocOfTpo('extraescolar',idCard,data);    
       }
       
       let btnExtraescolar = document.getElementById('btn-extraescolar');
@@ -249,11 +278,27 @@ function FormulariEdicioExtraescolars() {
       
       if (extraescolar['plazas'] !== undefined && extraescolar['titol'] !== undefined && extraescolar['parraf'] !== undefined && extraescolar['dataInici'] !== undefined && extraescolar['dataFinal'] !== undefined && extraescolar['principalText'] !== undefined && extraescolar['imagenLogo'].name !== undefined && extraescolar['aquinahora'] !== undefined && extraescolar['diasetmanal'] !== undefined && extraescolar['preu'] !== undefined && grupos !== undefined && grupos.length>0) {
         let item = new extraEscolars('','',extraescolar['plazas'],extraescolar['titol'],extraescolar['parraf'],extraescolar['dataInici'],extraescolar['dataFinal'],extraescolar['principalText'],extraescolar['imagenLogo'].name,'',extraescolar['aquinahora'],extraescolar['diasetmanal'],extraescolar['preu'],grupos);
-        const idData = await add('extraescolar',item);
+        data.plazas = item.plazas;
+        data.dateEnd = item.dateEnd;
+        data.dateStart = item.dateStart;
+        data.grupsToDo = item.grupsToDo;
+        data.howTimes = item.howTimes;
+        data.mainText = item.mainText;
+        data.namePhoto = item.namePhoto;
+        data.parragraph = item.parragraph;
+        data.price = item.price;
+        data.title = item.title;
+        data.urlPhoto = item.urlPhoto;
+        data.whenDo = item.whenDo;
+
+        const idData = await add('extraescolar',data);
+        // const idData = await add('extraescolar',item);
         if (idData !== undefined && idData !== "") {
           const dataImg = await uploadFile(extraescolar["imagenLogo"],extraescolar["imagenLogo"].name,idData,user.uid);
-          item.urlPhoto = dataImg.metadata.fullPath;
-          await updateOneDocOfTpo('extraescolar',idData,item);  
+          // item.urlPhoto = dataImg.metadata.fullPath;
+          data.urlPhoto = dataImg.metadata.fullPath;
+          // await updateOneDocOfTpo('extraescolar',idData,item);  
+          await updateOneDocOfTpo('extraescolar',idData,data);  
         }
         handleReset();
         refresh();

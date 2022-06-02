@@ -7,7 +7,7 @@ function CardGroup() {
             <hr className="featurette-divider"></hr>
             <div className="row">
                 <div className="col-lg-4 text-center">
-                    <a href="/">
+                    <a href="/quisom">
                         <img src={imag1} className="bd-placeholder-img rounded-circle" width="140" height="140" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"/>
                             {/* <title>Placeholder</title> */}
                             {/* <rect width="100%" height="100%" fill="#777"></rect> */}
@@ -27,7 +27,7 @@ function CardGroup() {
                     </a>
                 </div>
                 <div className="col-lg-4 text-center">
-                    <a href="/">
+                    <a href="/actes">
                         <img src={imag1} className="bd-placeholder-img rounded-circle" width="140" height="140" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"/>
                         {/* <title>Placeholder</title> */}
                         {/* <rect width="100%" height="100%" fill="#777"></rect> */}
@@ -39,7 +39,7 @@ function CardGroup() {
             </div>
             <div className="row">
                 <div className="col-lg-4 margin-left-col-lg-4 text-center">
-                    <a href="/">
+                    <a href="/noticies">
                         <img src={imag1} className="bd-placeholder-img rounded-circle" width="140" height="140" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"/>
                         {/* <title>Placeholder</title> */}
                         {/* <rect width="100%" height="100%" fill="#777"></rect> */}
@@ -49,7 +49,7 @@ function CardGroup() {
                     </a>
                 </div>
                 <div className="col-lg-4 text-center">
-                    <a href="/">
+                    <a href="/esdeveniments">
                         <img src={imag1} className="bd-placeholder-img rounded-circle" width="140" height="140" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"/>
                             {/* <title>Placeholder</title> */}
                             {/* <rect width="100%" height="100%" fill="#777"></rect> */}

@@ -1,7 +1,7 @@
-a:link { text-decoration: none; }
-a:visited { text-decoration: none; }
-a:hover { text-decoration: none; }
-a:active { text-decoration: none; }
+a:link { text-decoration: none; color:black!important}
+a:visited { text-decoration: none; color:black!important}
+a:hover { text-decoration: none; color:black!important}
+a:active { text-decoration: none; color:black!important}
 .title-a-icon{
   color: black!important;
   text-decoration: none!important;
@@ -327,7 +327,7 @@ footer div span.text-muted{
   ul{
     margin-left: -4.5rem!important;
   }
-  
+
   .containerH1 {
     width: 100%!important;
     height: 25%!important;
