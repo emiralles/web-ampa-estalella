@@ -8,20 +8,22 @@ import { collection, addDoc, getDocs, onSnapshot, deleteDoc, doc, getDoc, update
 
 export const add = async (tipo,modelo) =>{
     try {
-        let data = {
-            title: modelo.title,
-            parragraph: modelo.parragraph,
-            dateStart: modelo.dateStart,
-            dateEnd: modelo.dateEnd,
-            mainText: modelo.mainText,
-            namePhoto: modelo.namePhoto,
-            urlPhoto: modelo.urlPhoto,
-            whenDo: modelo.whenDo,
-            howTimes: modelo.howTimes,
-            price: modelo.price,
-            grupsToDo: modelo.grupsToDo,
-        }
-        const docRef = await addDoc(collection(db,tipo),data);
+        // let data = {
+        //     plazas:modelo.plazas,
+        //     title: modelo.title,
+        //     parragraph: modelo.parragraph,
+        //     dateStart: modelo.dateStart,
+        //     dateEnd: modelo.dateEnd,
+        //     mainText: modelo.mainText,
+        //     namePhoto: modelo.namePhoto,
+        //     urlPhoto: modelo.urlPhoto,
+        //     whenDo: modelo.whenDo,
+        //     howTimes: modelo.howTimes,
+        //     price: modelo.price,
+        //     grupsToDo: modelo.grupsToDo,
+        // }
+        // const docRef = await addDoc(collection(db,tipo),data);
+        const docRef = await addDoc(collection(db,tipo),modelo);
         return docRef.id;      
     } catch (error) {
         console.log(error);
@@ -73,21 +75,22 @@ export const getOneDocOfTipo = async (tipo,uid) => await getDoc(doc(db,tipo,uid)
 
 export const updateOneDocOfTpo = async (tipo,uid,modelo) => {
     try {
-        let data = {
-            title: modelo.title,
-            parragraph: modelo.parragraph,
-            dateStart: modelo.dateStart,
-            dateEnd: modelo.dateEnd,
-            mainText: modelo.mainText,
-            namePhoto: modelo.namePhoto,
-            urlPhoto: modelo.urlPhoto,
-            whenDo: modelo.whenDo,
-            howTimes: modelo.howTimes,
-            price: modelo.price,
-            grupsToDo: modelo.grupsToDo,
-        }
-        
-        const rstUpdate = await updateDoc(doc(db,tipo,uid),data);
+        // let data = {
+        //     plazas:modelo.plazas,
+        //     title: modelo.title,
+        //     parragraph: modelo.parragraph,
+        //     dateStart: modelo.dateStart,
+        //     dateEnd: modelo.dateEnd,
+        //     mainText: modelo.mainText,
+        //     namePhoto: modelo.namePhoto,
+        //     urlPhoto: modelo.urlPhoto,
+        //     whenDo: modelo.whenDo,
+        //     howTimes: modelo.howTimes,
+        //     price: modelo.price,
+        //     grupsToDo: modelo.grupsToDo,
+        // }
+        // const rstUpdate = await updateDoc(doc(db,tipo,uid),data);
+        const rstUpdate = await updateDoc(doc(db,tipo,uid),modelo);
         console.log(rstUpdate);
     } catch (error) {
         console.log(error);
