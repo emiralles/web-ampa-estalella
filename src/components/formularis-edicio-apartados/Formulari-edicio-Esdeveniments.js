@@ -30,6 +30,7 @@ function FormulariEdicioEsdeveniments() {
     
     const [listEsdeveniments,setListEsdeveniments] = useState([]);
     const [isTrue, setTrue] = useState(false);
+    const [dataAuxiliar, setDataAuxiliar] = useState([]);
     let origen = "admin";
 
     const handleChange = ({target:{name,value}}) => {
@@ -43,42 +44,77 @@ function FormulariEdicioEsdeveniments() {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+        let inputAux = document.getElementById('input-aux');
         let fecha = new Date();
         let nowDate = fecha.toLocaleString("es-ES");
-        if (nowDate !== "") {
-            let auxEvento = esdevenim;
-            auxEvento.dateCreation=nowDate;
-            setEsdevenim(auxEvento);    
-        }
-        
-        // if (editorRef.current) {
-        //     let data = editorRef.current.getContent();
-        //     let auxEvento = esdevenim;
-        //     auxEvento.cosHtml=data;
-        //     setEsdevenim(auxEvento);
+            
+        if (inputAux.value !== "") {
+            
+            if (nowDate !== "") {
+                let auxEvento = esdevenim;
+                auxEvento.dateCreation=nowDate;
+                setEsdevenim(auxEvento);    
+            }
 
-        // }
+            let arrDataAux = inputAux.value.split(" - ");
+            let idCard = arrDataAux[0];
+            let dataImagen = esdevenim["fileUpload"];
+            let nameCardPhoto = dataImagen !== undefined ? dataImagen.name : arrDataAux[1];  
+
+            let item = new esdeveniment('','',esdevenim["fileUpload"],esdevenim['title'],esdevenim['cosHtml'],esdevenim['dateCreation'],nameCardPhoto,"");
+            let itemAux = new esdeveniment('','','',dataAuxiliar.title,dataAuxiliar.cosHtml,dataAuxiliar.dateCreation,dataAuxiliar.urlPhoto);
+            
+            dataEvento.title = item.title !== undefined ? item.title : itemAux.title;
+            dataEvento.cosHtml = item.cosHtml !== undefined ? item.cosHtml : itemAux.cosHtml;
+            dataEvento.dateCreation = item.dateCreation !== undefined ? item.dateCreation : itemAux.dateCreation;
+            
+            await updateOneDocOfTpo('esdeveniment',idCard,dataEvento);
+            
+            if (esdevenim["fileUpload"] !== undefined) {
+                const dataImg = await uploadFile(esdevenim["fileUpload"],esdevenim["fileUpload"].name,idCard,user.uid);
+                dataEvento.namePhoto = esdevenim["fileUpload"].name;
+                dataEvento.urlPhoto = dataImg.metadata.fullPath;
+                await updateOneDocOfTpo('esdeveniment',idCard,dataEvento);    
+            }
+            
+            let btnEsdeveniment = document.getElementById('btn-esdeveniment');
+            btnEsdeveniment.innerText = "Agregar";
+
+            handleReset();
+            refresh();
+
+        }else{
         
-        dataEvento.cosHtml = esdevenim.cosHtml;
-        dataEvento.dateCreation = esdevenim.dateCreation;
-        dataEvento.namePhoto = esdevenim.fileupload.name;
-        dataEvento.title = esdevenim.title;
-        
-        const idData = await add('esdeveniment',dataEvento);
-        // const idData = await add('extraescolar',item);
-        if (idData !== undefined && idData !== "") {
-            const dataImg = await uploadFile(esdevenim.fileupload,dataEvento.name,idData,user.uid);
-            // item.urlPhoto = dataImg.metadata.fullPath;
-            dataEvento.path = dataImg.metadata.fullPath;
-            // await updateOneDocOfTpo('extraescolar',idData,item);  
-            await updateOneDocOfTpo('esdeveniment',idData,dataEvento);  
+            if (nowDate !== "") {
+                let auxEvento = esdevenim;
+                auxEvento.dateCreation=nowDate;
+                setEsdevenim(auxEvento);    
+            }
+            
+            // if (editorRef.current) {
+            //     let data = editorRef.current.getContent();
+            //     let auxEvento = esdevenim;
+            //     auxEvento.cosHtml=data;
+            //     setEsdevenim(auxEvento);
+
+            // }
+            
+            dataEvento.cosHtml = esdevenim.cosHtml;
+            dataEvento.dateCreation = esdevenim.dateCreation;
+            dataEvento.namePhoto = esdevenim.fileupload.name;
+            dataEvento.title = esdevenim.title;
+            
+            const idData = await add('esdeveniment',dataEvento);
+            if (idData !== undefined && idData !== "") {
+                const dataImg = await uploadFile(esdevenim.fileupload,dataEvento.name,idData,user.uid);
+                dataEvento.path = dataImg.metadata.fullPath;
+                await updateOneDocOfTpo('esdeveniment',idData,dataEvento);  
+            }
+
+            handleReset();
+            refresh();
             
         }
-
-        handleReset();
-        refresh();
-        
 
     };
 
@@ -110,97 +146,32 @@ function FormulariEdicioEsdeveniments() {
 
     const handleEdit = ({target:{name}}) =>{
 
-        // let btnExtraescolar = document.getElementById('btn-extraescolar');
+        let btnEsdeveniment = document.getElementById('btn-esdeveniment');
         
-        // let inputAux = document.getElementById('input-aux');
-        // let I1diasetmanal = document.getElementById('1diasetmanal');
-        // let I2diasetmanal = document.getElementById('2diasetmanal');
-        // let I3diasetmanal = document.getElementById('3diasetmanal');
-        // let principalText = document.getElementById('principalText');
-        // let esmati = document.getElementById('esmati');
-        // let estarda = document.getElementById('estarda');
-        // let I6T = document.getElementById('6T');
-        // let I5T = document.getElementById('5T');
-        // let I4T = document.getElementById('4T');
-        // let I3E = document.getElementById('3E');
-        // let I2D = document.getElementById('2D');
-        // let I1E = document.getElementById('1E');
-        // let IP5 = document.getElementById('P5');
-        // let IP4 = document.getElementById('P4');
-        // let IP3 = document.getElementById('P3');
-        // let preu = document.getElementById('preu');
-        // let fechaFinal = document.getElementById('fechaFinal');
-        // let fechaInici = document.getElementById('fechaInici');
-        // let parrafo = document.getElementById('parrafo');
-        // let titulo = document.getElementById('titulo');
-        // let plazas = document.getElementById('plazas');
-        // let textPhoto = document.getElementById('textPhoto');
+        let inputtitle = document.getElementById('title');
+        let inputparraf = document.getElementById('parraf');
+        let textPhoto = document.getElementById('textPhoto');
+        let inputAux = document.getElementById('input-aux');
         
-        // let promise = getOneDocOfTipo('esdeveniment',name);
-        // promise.then((result)=>{
+        let promise = getOneDocOfTipo('esdeveniment',name);
+        promise.then((result)=>{
           
-        //   let data = result.data();
-        //   data.id = result.id;
+            let data = result.data();
+            data.id = result.id;
           
-        //   setDataAuxiliar(data);
-        //   setGrupos([]);
+            setDataAuxiliar(data);
            
-        //   I1diasetmanal.checked = data.howTimes.indexOf("1") > -1 ? true: false;
-        //   I2diasetmanal.checked = data.howTimes.indexOf("2") > -1 ? true: false;
-        //   I3diasetmanal.checked = data.howTimes.indexOf("3") > -1 ? true: false;
-        //   titulo.value = data.title;
-        //   plazas.value = data.plazas;
-        //   estarda.checked = data.whenDo.indexOf("Tarda") > -1 ? true:false;
-        //   esmati.checked = data.whenDo.indexOf("Mati") > -1 ? true:false;
-        //   fechaFinal.value = data.dateEnd;
-        //   fechaInici.value = data.dateStart;
-        //   principalText.value = data.mainText;
-        //   parrafo.value = data.parragraph;
-        //   preu.value = data.price;
-        //   textPhoto.value = data.urlPhoto;
+            inputtitle.value = data.title;
+            inputparraf.value = data.cosHtml;
+            textPhoto.value = data.urlPhoto;
           
-        //   inputAux.value = `${data.id} - ${data.namePhoto}`;
-          
-        //   data.grupsToDo.forEach((item)=>{
-            
-        //     switch (item) {
-        //       case "6T":
-        //         I6T.checked = true;
-        //         break;
-        //       case "5T":
-        //         I5T.checked = true; 
-        //         break;
-        //       case "4T":
-        //         I4T.checked = true; 
-        //         break;          
-        //       case "3E":
-        //         I3E.checked = true; 
-        //         break;
-        //       case "2D":
-        //         I2D.checked = true; 
-        //         break;
-        //       case "1E":
-        //         I1E.checked = true; 
-        //         break;
-        //       case "P5":
-        //         IP5.checked = true; 
-        //         break;
-        //       case "P4":
-        //         IP4.checked = true; 
-        //         break;
-        //       case "P3":
-        //         IP3.checked = true; 
-        //         break;
-        //       default:
-        //         break;
-        //     }
-        //   })
+            inputAux.value = `${data.id} - ${data.namePhoto}`;
+        
+            btnEsdeveniment.innerText = "Modificar";
+            refresh();
+            inputtitle.focus();
     
-        // btnExtraescolar.innerText = "Modificar";
-        // refresh();
-        // titulo.focus();
-    
-        // })
+        })
     
     }
     
@@ -248,13 +219,14 @@ function FormulariEdicioEsdeveniments() {
                         <div className="card-header bg-warning"><h2 className="card-title">Esdeveniment</h2></div>
                         <div className="card-body">
                             <form onSubmit={handleSubmit} >
+                                <input className="d-none" id="input-aux" ></input>
                                 <div className="form-floating mb-3">
                                     <input type="text" onChange={handleChange} className="form-control" maxLength={32} id="title" placeholder="titol" name="title"/>
                                     <label htmlFor="title">Titol, maxim 32 caracteres</label>
                                 </div>
                                 <div className="form-floating mb-3">
-                                    <textarea type="text" onChange={handleChange} className="form-control" maxLength={232} id="floatingInputParraf" placeholder="parraf" name="cosHtml"/>
-                                    <label htmlFor="floatingInputParraf">Text, parrafo d'esdeveniment</label>
+                                    <textarea type="text" onChange={handleChange} className="form-control" maxLength={232} id="parraf" placeholder="parraf" name="cosHtml"/>
+                                    <label htmlFor="parraf">Text, parrafo d'esdeveniment</label>
                                 </div>
                                 {/* <div className="mb-3">
                                     <Editor
@@ -278,11 +250,12 @@ function FormulariEdicioEsdeveniments() {
                                     />
                                 </div> */}
                                 <div className="mb-3">
+                                    <input className="d-none" id="textPhoto"/>
                                     <label htmlFor="fileupload" className="form-label">Agregar Imagen Evento</label>
                                     <input type="file" onChange={handleFileChange} className="form-control" id="fileupload" name="fileupload"/>
                                 </div>
                                 <div className="d-grid gap-2">
-                                    <button type="submit" className="btn btn-primary">Agregar</button>
+                                    <button type="submit" id="btn-esdeveniment" className="btn btn-primary">Agregar</button>
                                 </div>
                             </form>
                             

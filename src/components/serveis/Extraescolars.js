@@ -9,7 +9,7 @@ import InscripcionExtraEscolar from "../../formularis/inscripcioExtraEscolar/Ins
 // import imagen3 from "./images/JudoVilafranca.PNG";
 // import imagen4 from "./images/KLleure.PNG";
 import imagen5 from "./images/HorarisExtraEscolars.PNG";
-import { modelViewExtraescolar } from "../../models/modelViewExtraescolar";
+// import { modelViewExtraescolar } from "../../models/modelViewExtraescolar";
 
 
 function Extraescolars() {
