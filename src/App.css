@@ -323,6 +323,11 @@ footer div span.text-muted{
 
 
 @media (max-width: 645px) {
+  
+  ul{
+    margin-left: -4.5rem!important;
+  }
+  
   .containerH1 {
     width: 100%!important;
     height: 25%!important;
@@ -376,7 +381,7 @@ footer div span.text-muted{
   ul{
     margin-left: -4.5rem!important;
   }
-  
+
   .containerH1 {
     width: 100%!important;
     height: 25%!important;
