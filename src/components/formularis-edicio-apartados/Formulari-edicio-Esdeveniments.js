@@ -62,12 +62,14 @@ function FormulariEdicioEsdeveniments() {
             let nameCardPhoto = dataImagen !== undefined ? dataImagen.name : arrDataAux[1];  
 
             let item = new esdeveniment('','',esdevenim["fileUpload"],esdevenim['title'],esdevenim['cosHtml'],esdevenim['dateCreation'],nameCardPhoto,"");
-            let itemAux = new esdeveniment('','','',dataAuxiliar.title,dataAuxiliar.cosHtml,dataAuxiliar.dateCreation,dataAuxiliar.urlPhoto);
+            let itemAux = new esdeveniment('','','',dataAuxiliar.title,dataAuxiliar.cosHtml,dataAuxiliar.dateCreation,dataAuxiliar.namePhoto,dataAuxiliar.urlPhoto);
             
             dataEvento.title = item.title !== undefined ? item.title : itemAux.title;
             dataEvento.cosHtml = item.cosHtml !== undefined ? item.cosHtml : itemAux.cosHtml;
             dataEvento.dateCreation = item.dateCreation !== undefined ? item.dateCreation : itemAux.dateCreation;
-            
+            dataEvento.namePhoto = item.namePhoto != undefined ? item.namePhoto : itemAux.namePhoto;
+            dataEvento.urlPhoto = esdevenim["fileUpload"] !== undefined ? "" : itemAux.urlPhoto;
+
             await updateOneDocOfTpo('esdeveniment',idCard,dataEvento);
             
             if (esdevenim["fileUpload"] !== undefined) {
