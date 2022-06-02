@@ -8,7 +8,7 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 function DataGrid() {
 
     const gridRef = useRef();
-    const containerStyle = useMemo(() => ({ width: '50%', height: '50%' }), []);
+    const containerStyle = useMemo(() => ({ width: '100%', height: '20%' }), []);
     const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
     // const [rowData, setRowData] = useState();
     // const [columnDefs, setColumnDefs] = useState([
@@ -69,7 +69,7 @@ function DataGrid() {
     ]);
 
   return (
-    <div className=' col-6' style={containerStyle}>
+    <div className=' col-12' style={containerStyle}>
         <div style={gridStyle} className="ag-theme-alpine">
             <AgGridReact
             ref={gridRef}
