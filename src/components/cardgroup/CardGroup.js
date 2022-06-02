@@ -6,30 +6,30 @@ function CardGroup() {
         <>
             <hr className="featurette-divider"></hr>
             <div className="row">
-                <div className="col-lg-4">
+                <div className="col-lg-4 text-center">
                     <a href="/">
                         <img src={imag1} className="bd-placeholder-img rounded-circle" width="140" height="140" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"/>
-                            <title>Placeholder</title>
+                            {/* <title>Placeholder</title> */}
                             {/* <rect width="100%" height="100%" fill="#777"></rect> */}
                         <div className='color-div-card'>
                             <h2 className="title-a-icon">L'AFA</h2>
                         </div>
                     </a>
                 </div>
-                <div className="col-lg-4">
+                <div className="col-lg-4 text-center">
                     <a href="/">
                         <img src={imag1} className="bd-placeholder-img rounded-circle" width="140" height="140" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"/>
-                        <title>Placeholder</title>
+                        {/* <title>Placeholder</title> */}
                         {/* <rect width="100%" height="100%" fill="#777"></rect> */}
                         <div className='color-div-card'>
                             <h2 className="title-a-icon">SERVEIS</h2>
                         </div>        
                     </a>
                 </div>
-                <div className="col-lg-4">
+                <div className="col-lg-4 text-center">
                     <a href="/">
                         <img src={imag1} className="bd-placeholder-img rounded-circle" width="140" height="140" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"/>
-                        <title>Placeholder</title>
+                        {/* <title>Placeholder</title> */}
                         {/* <rect width="100%" height="100%" fill="#777"></rect> */}
                         <div className='color-div-card'>
                             <h2 className="title-a-icon">ESPAI DE TRANSPARENCIA</h2>
@@ -38,29 +38,29 @@ function CardGroup() {
                 </div>
             </div>
             <div className="row">
-                <div className="col-lg-4 margin-left-col-lg-4">
+                <div className="col-lg-4 margin-left-col-lg-4 text-center">
                     <a href="/">
                         <img src={imag1} className="bd-placeholder-img rounded-circle" width="140" height="140" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"/>
-                        <title>Placeholder</title>
+                        {/* <title>Placeholder</title> */}
                         {/* <rect width="100%" height="100%" fill="#777"></rect> */}
                         <div className='color-div-card'>
                             <h2 className="title-a-icon">NOTICIES</h2>
                         </div>
                     </a>
                 </div>
-                <div className="col-lg-4">
+                <div className="col-lg-4 text-center">
                     <a href="/">
                         <img src={imag1} className="bd-placeholder-img rounded-circle" width="140" height="140" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"/>
-                            <title>Placeholder</title>
+                            {/* <title>Placeholder</title> */}
                             {/* <rect width="100%" height="100%" fill="#777"></rect> */}
                         <div className='color-div-card'>
                             <h2 className="title-a-icon">ESDEVENIMENTS</h2>
                         </div>    
                     </a>
                 </div>
-                <div className="col-lg-4 d-none">
+                <div className="col-lg-4 d-none text-center">
                     <img src={imag1} className="bd-placeholder-img rounded-circle" width="140" height="140" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"/>
-                        <title>Placeholder</title>
+                        {/* <title>Placeholder</title> */}
                         {/* <rect width="100%" height="100%" fill="#777"></rect> */}
                     <h2>Heading</h2>
                 </div>
