@@ -1,4 +1,4 @@
-import logo from "../navbar/images/LOGOTIP AFA DEFINITIU 26052022 VERD.png";
+// import logo from "../navbar/images/LOGOTIP AFA DEFINITIU 26052022 VERD.png";
 import { useAuth } from "../../context/authContext";
 import { Outlet } from "react-router-dom";
 import  "./layout-admin.css";
@@ -6,7 +6,8 @@ import  "./layout-admin.css";
 
 function LayoutAdmin() {
     // const { signUp } = useAuth();
-    const { user, logOut, loading }  = useAuth();
+    const { logOut, loading }  = useAuth();
+    // user, 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -18,18 +19,15 @@ function LayoutAdmin() {
     return ( 
         <>
             <div className="body-layout-admin">
-                <header className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+                <header className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow" style={{height:"5.5rem!important"}}>
                 
                 <button className="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <a className="navbar-brand" href="/">
+                {/* <a className="navbar-brand" href="/">
                     <img className="Logo rounded-circle" src={logo} alt="Logo"/>
-                    {/* <FontAwesomeIcon icon={estalellaImage}></FontAwesomeIcon> */}
-                </a>
-                {/* <a className="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#1">AFA Estalella i Graells</a> */}
-                {/* <input className="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"/> */}
-                <div className="navbar-nav">
+                </a> */}
+                <div className="navbar-nav styleLogout">
                     <div className="nav-item text-nowrap">
                     {/* <button className="nav-link px-3" onClick={handleSubmit}>Sign out</button> */}
                     <a className="nav-link px-3" onClick={handleSubmit} href="1">Sign out</a>
@@ -43,13 +41,11 @@ function LayoutAdmin() {
                     <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                     <div className="position-sticky pt-3">
                         <ul className="nav flex-column">
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <a className="nav-link active" aria-current="page" href="#3">
-                            {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> */}
                             Dashboard 
-                            {/* {user.displayName} */}
                             </a>
-                        </li>
+                        </li> */}
                         <li className="nav-item">
                             <a className="nav-link" href="/admin/index/acollida">
                             {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file" aria-hidden="true"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg> */}
@@ -98,7 +94,7 @@ function LayoutAdmin() {
                 
                     <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div className="chartjs-size-monitor"><div className="chartjs-size-monitor-expand"><div className=""></div></div><div className="chartjs-size-monitor-shrink"><div className=""></div></div></div>
                     <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                        <h1 className="h2">{user.displayName}</h1>
+                        {/* <h1 className="h2">{user.displayName}</h1> */}
                         <div className="btn-toolbar mb-2 mb-md-0">
                         {/* <div className="btn-group me-2">
                             <button type="button" className="btn btn-sm btn-outline-secondary">Share</button>

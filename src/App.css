@@ -7,6 +7,22 @@ a:active { text-decoration: none; color:black!important}
   text-decoration: none!important;
   text-decoration-color: none!important;
 }
+/* 
+.navbar-light .navbar-toggler-icon {
+  background-image: url("./components//navbar/images/LOGOTIP\ AFA\ DEFINITIU\ 26052022\ VERD.png");
+  
+} */
+/* data:image/svg+xml;.. */
+/* // this is a white icon with 50% opacity */
+.navbar-dark .navbar-toggler-icon {
+  background-image: url("./components//navbar/images/LOGOTIP\ AFA\ DEFINITIU\ 26052022\ VERD.png");
+  width: 4.5rem!important;
+  height: 4.5rem!important;
+  border: none!important;
+  /* background-image: url("./components//navbar/images/LOGOTIP\ AFA\ DEFINITIU\ 26052022\ BLANC.png"); */
+  /* data:image/svg+xml;.. */
+}
+
 
 .w-15{
   width: 1px!important;
