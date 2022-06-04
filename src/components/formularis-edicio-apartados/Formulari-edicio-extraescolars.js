@@ -245,14 +245,14 @@ function FormulariEdicioExtraescolars() {
       // item.whenDo = item.whenDo !== undefined ? item.whenDo : itemAux.whenDo;
       // item.grupsToDo = item.grupsToDo !== undefined && item.grupsToDo.length > 0 ? item.grupsToDo : itemAux.grupsToDo;
       
-      data.title = item.title !== undefined ? item.title : itemAux.title;
-      data.parragraph = item.parragraph !== undefined ? item.parragraph : itemAux.parragraph;
-      data.mainText = item.mainText !== undefined ? item.mainText : itemAux.mainText;
-      data.price = item.price !== undefined ? item.price : itemAux.price;
-      data.howTimes = item.howTimes !== undefined ? item.howTimes : itemAux.howTimes;
-      data.dateStart = item.dateStart !== undefined ? item.dateStart : itemAux.dateStart;
-      data.dateEnd = item.dateEnd !== undefined ? item.dateEnd : itemAux.dateEnd;
-      data.whenDo = item.whenDo !== undefined ? item.whenDo : itemAux.whenDo;
+      data.title = item.title !== undefined && item.title !== "" ? item.title : itemAux.title;
+      data.parragraph = item.parragraph !== undefined && item.parragraph !== "" ? item.parragraph : itemAux.parragraph;
+      data.mainText = item.mainText !== undefined && item.mainText !== "" ? item.mainText : itemAux.mainText;
+      data.price = item.price !== undefined && item.price !== "" ? item.price : itemAux.price;
+      data.howTimes = item.howTimes !== undefined && item.howTimes !== "" ? item.howTimes : itemAux.howTimes;
+      data.dateStart = item.dateStart !== undefined && item.dateStart !== "" ? item.dateStart : itemAux.dateStart;
+      data.dateEnd = item.dateEnd !== undefined && item.dateEnd !== "" ? item.dateEnd : itemAux.dateEnd;
+      data.whenDo = item.whenDo !== undefined && item.whenDo !== "" ? item.whenDo : itemAux.whenDo;
       data.grupsToDo = item.grupsToDo !== undefined && item.grupsToDo.length > 0 ? item.grupsToDo : itemAux.grupsToDo;
       
       // await updateOneDocOfTpo('extraescolar',idCard,item);

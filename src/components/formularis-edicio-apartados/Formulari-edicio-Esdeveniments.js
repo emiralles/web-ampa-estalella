@@ -14,7 +14,7 @@ let evento = new esdeveniment("","","","","","","","");
 let dataEvento = {
     uid:"",
     path:"",
-    fileUpload:"",
+    fileupload:"",
     title:"",
     cosHtml:"",
     dateCreation:"",
@@ -58,24 +58,27 @@ function FormulariEdicioEsdeveniments() {
 
             let arrDataAux = inputAux.value.split(" - ");
             let idCard = arrDataAux[0];
-            let dataImagen = esdevenim["fileUpload"];
+            let dataImagen = esdevenim["fileupload"];
             let nameCardPhoto = dataImagen !== undefined ? dataImagen.name : arrDataAux[1];  
 
-            let item = new esdeveniment('','',esdevenim["fileUpload"],esdevenim['title'],esdevenim['cosHtml'],esdevenim['dateCreation'],nameCardPhoto,"");
+            let item = new esdeveniment('','',esdevenim["fileupload"],esdevenim['title'],esdevenim['cosHtml'],esdevenim['dateCreation'],nameCardPhoto,"");
             let itemAux = new esdeveniment('','','',dataAuxiliar.title,dataAuxiliar.cosHtml,dataAuxiliar.dateCreation,dataAuxiliar.namePhoto,dataAuxiliar.urlPhoto);
             
-            dataEvento.title = item.title !== undefined ? item.title : itemAux.title;
-            dataEvento.cosHtml = item.cosHtml !== undefined ? item.cosHtml : itemAux.cosHtml;
-            dataEvento.dateCreation = item.dateCreation !== undefined ? item.dateCreation : itemAux.dateCreation;
-            dataEvento.namePhoto = item.namePhoto != undefined ? item.namePhoto : itemAux.namePhoto;
-            dataEvento.urlPhoto = esdevenim["fileUpload"] !== undefined ? "" : itemAux.urlPhoto;
+            dataEvento.title = item.title !== undefined && item.title !== ""  ? item.title : itemAux.title;
+            dataEvento.cosHtml = item.cosHtml !== undefined && item.cosHtml !== "" ? item.cosHtml : itemAux.cosHtml;
+            dataEvento.dateCreation = item.dateCreation !== undefined && item.dateCreation !== "" ? item.dateCreation : itemAux.dateCreation;
+            dataEvento.namePhoto = item.namePhoto !== undefined && item.namePhoto !== "" ? item.namePhoto : itemAux.namePhoto;
+            dataEvento.urlPhoto = esdevenim["fileupload"] !== undefined ? "" : itemAux.urlPhoto;
 
             await updateOneDocOfTpo('esdeveniment',idCard,dataEvento);
             
-            if (esdevenim["fileUpload"] !== undefined) {
-                const dataImg = await uploadFile(esdevenim["fileUpload"],esdevenim["fileUpload"].name,idCard,user.uid);
-                dataEvento.namePhoto = esdevenim["fileUpload"].name;
-                dataEvento.urlPhoto = dataImg.metadata.fullPath;
+            if (esdevenim["fileupload"] !== undefined) {
+                let textPhoto = document.getElementById('textPhoto');
+                let pathPhoto = textPhoto.value;
+                removeObject(pathPhoto);
+                const dataImg = await uploadFile(esdevenim["fileupload"],esdevenim["fileupload"].name,idCard,user.uid);
+                dataEvento.namePhoto = esdevenim["fileupload"].name;
+                dataEvento.path = dataImg.metadata.fullPath;
                 await updateOneDocOfTpo('esdeveniment',idCard,dataEvento);    
             }
             
@@ -108,7 +111,7 @@ function FormulariEdicioEsdeveniments() {
             
             const idData = await add('esdeveniment',dataEvento);
             if (idData !== undefined && idData !== "") {
-                const dataImg = await uploadFile(esdevenim.fileupload,dataEvento.name,idData,user.uid);
+                const dataImg = await uploadFile(esdevenim.fileupload,dataEvento.namePhoto,idData,user.uid);
                 dataEvento.path = dataImg.metadata.fullPath;
                 await updateOneDocOfTpo('esdeveniment',idData,dataEvento);  
             }
@@ -165,7 +168,7 @@ function FormulariEdicioEsdeveniments() {
            
             inputtitle.value = data.title;
             inputparraf.value = data.cosHtml;
-            textPhoto.value = data.urlPhoto;
+            textPhoto.value = data.path;
           
             inputAux.value = `${data.id} - ${data.namePhoto}`;
         

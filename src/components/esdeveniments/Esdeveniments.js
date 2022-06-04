@@ -1,9 +1,50 @@
+import { useState, useEffect } from "react";
+import { getAllCollections, getUrlImage} from "../../db/crudDB";
+import { esdeveniment } from "../../models/esdeveniment";
+import ListRectangleCard from "../card/ListRectangleCard";
+
+
 import carnestoltes from "./images/carnestoltes.jpg";
 import santjordi from "./images/SantJordi2022.JPG";
 
+
+
 function Esdeveniments() {
+    let origen = "negoci";
+    const [listEsdeveniments,setListEsdeveniments] = useState([]);
+    const [isTrue, setTrue] = useState(false);
+
+    useEffect(()=>{
+   
+        const handleLoad = async () =>{
+        
+          // let arrayItems = [];
+          let promesa1 = getAllCollections('esdeveniment');
+          promesa1.then((resul)=>{
+            resul.forEach((doc)=>{
+              let imgUrl = getUrlImage(doc.path);
+              imgUrl.then((rstUrl)=>{
+                let item = new esdeveniment(doc.id,doc.path,"",doc.title,doc.cosHtml,doc.dateCreation,doc.namePhoto,rstUrl); 
+                // arrayItems.push(item);
+                setListEsdeveniments(arr => [...arr, item]);
+                //console.log(listEsdeveniments);
+              });
+            })
+          })
+          
+        }
+        
+        handleLoad();
+    
+    },[isTrue]);
+
+    
+      
     return ( 
         <>
+            {
+                <ListRectangleCard arrayData={listEsdeveniments} componentCall={origen}/>
+            }
             <hr className="featurette-divider"></hr>
                 <div className="row featurette">
                     <div className="col-md-7">
