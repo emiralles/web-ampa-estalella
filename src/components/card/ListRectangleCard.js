@@ -1,13 +1,13 @@
 import RectangleCard from "./RectangleCard";
 
-function ListRectangleCard({arrayData, handleEdit, handleRemove, componentCall}) {
+function ListRectangleCard({arrayData, handleEdit, handleRemove, componentCall, nameList}) {
     if (!arrayData.length) return <h3>No existe ningun registro</h3>;    
     return (
         <>
         <hr className="featurette-divider"></hr>
         <div className="container">
         {/* text-center */}
-            <h1>Listat d'Esdeveniments</h1>
+            <h1>{nameList}</h1>
             <div className="container mb-3">
             <div className="row">
             {/* align-content-center  */}

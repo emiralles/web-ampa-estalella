@@ -268,7 +268,7 @@ function FormulariEdicioEsdeveniments() {
                     </div>
                     {/* <div className="border-info mb-3" id="textoEscrito"> */}
                         {
-                            <ListRectangleCard arrayData={listEsdeveniments} handleEdit={handleEdit} handleRemove={handleRemove} componentCall={origen}/>
+                            <ListRectangleCard arrayData={listEsdeveniments} handleEdit={handleEdit} handleRemove={handleRemove} componentCall={origen} nameList="Listat d'Esdeveniments"/>
                         }
                     {/* </div> */}
                 </div>

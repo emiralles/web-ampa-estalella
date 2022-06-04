@@ -228,7 +228,7 @@ function FormulariEdicioNoticies() {
                         </div>
                     </div>
                     {
-                        <ListRectangleCard arrayData={listEsdeveniments} handleEdit={handleEdit} handleRemove={handleRemove} componentCall={origen}/>
+                        <ListRectangleCard arrayData={listEsdeveniments} handleEdit={handleEdit} handleRemove={handleRemove} componentCall={origen} nameList="Listat d'Noticies"/>
                     }
                 </div>
             </div>
