@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import ImageUploading from "react-images-uploading";
 import { uploadFile, add, updateOneDocOfTpo, getAllCollections, getUrlImage, removeObject, deleteOneDocOfTipo, getOneDocOfTipo} from "../../db/crudDB";
 import { useAuth } from "../../context/authContext";
 import { esdeveniment } from "../../models/esdeveniment";
@@ -21,6 +22,9 @@ let dataEvento = {
 
 function FormulariEdicioNoticies() {
   
+    const [images, setImages] = useState([]);
+    const maxNumber = 69;
+
     const[esdevenim,setEsdevenim] = useState(evento);
     const { user }  = useAuth();
     
@@ -28,6 +32,13 @@ function FormulariEdicioNoticies() {
     const [isTrue, setTrue] = useState(false);
     const [dataAuxiliar, setDataAuxiliar] = useState([]);
     let origen = "admin";
+
+
+    const onChange = (imageList, addUpdateIndex) => {
+        // data for submit
+        console.log(imageList, addUpdateIndex);
+        setImages(imageList);
+    };
 
     const handleChange = ({target:{name,value}}) => {
         setEsdevenim({...esdevenim,[name]:value});
@@ -222,6 +233,49 @@ function FormulariEdicioNoticies() {
                                 </div>
                                 <div className="d-grid gap-2">
                                     <button type="submit" id="btn-esdeveniment" className="btn btn-primary">Agregar</button>
+                                </div>
+                                <hr className="featurette-divider"></hr>
+                                <div className="mb-3">
+                                    <ImageUploading
+                                        multiple
+                                        value={images}
+                                        onChange={onChange}
+                                        maxNumber={maxNumber}
+                                        dataURLKey="data_url"
+                                    >
+                                        {({
+                                        imageList,
+                                        onImageUpload,
+                                        onImageRemoveAll,
+                                        // onImageUpdate,
+                                        onImageRemove,
+                                        isDragging,
+                                        dragProps,
+                                        }) => (
+                                        // write your building UI
+                                        <div className="upload__image-wrapper">
+                                            <svg id="svgImagesUpload" onClick={onImageUpload}
+                                            {...dragProps} style={isDragging ? { color: 'red' } : undefined} className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="37.5%" y="50%" fill="#aaa" dy=".1em">Click or Drop here</text>
+                                            
+                                            </svg>
+                                            &nbsp;
+                                            <div id="containerImagesUpload" className=" row border container-fluid">
+                                                {imageList.map((image, index) => (
+                                                <div key={index} className="image-item col p-1">
+                                                    <img src={image['data_url']} alt="" width="100" />
+                                                    <a href="#44" className=" position-absolute text-center mt-0" style={{width:"1rem!important",height:"1rem!important"}} onClick={() => onImageRemove(index)}>x</a>
+                                                    <div className="image-item__btn-wrapper">
+                                                    {/* <button onClick={() => onImageUpdate(index)}>Actualizar</button> */}
+                                                    
+                                                    </div>
+                                                </div>
+                                                ))}
+                                            </div>
+                                            <button onClick={onImageRemoveAll}>Eliminar Todas las Imagenes</button>
+                                            
+                                        </div>
+                                        )}
+                                    </ImageUploading>
                                 </div>
                             </form>
                             
