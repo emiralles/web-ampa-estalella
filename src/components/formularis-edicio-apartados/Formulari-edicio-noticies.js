@@ -38,6 +38,14 @@ function FormulariEdicioNoticies() {
         // data for submit
         console.log(imageList, addUpdateIndex);
         setImages(imageList);
+        let svgUploadImages = document.getElementById('svgImagesUpload');
+        svgUploadImages.style.visibility = 'hidden';
+        let divPresentImages = document.getElementById('containerImagesUpload');
+        divPresentImages.classList.remove("d-none");
+        let btnEliminarAll = document.getElementById('eliminarTodo');
+        btnEliminarAll.classList.remove("d-none");
+        let agregarMas = document.getElementById('agregarMas');
+        agregarMas.classList.remove("d-none");
     };
 
     const handleChange = ({target:{name,value}}) => {
@@ -231,10 +239,6 @@ function FormulariEdicioNoticies() {
                                     <label htmlFor="fileupload" className="form-label">Agregar Imagen Noticie</label>
                                     <input type="file" onChange={handleFileChange} className="form-control" id="fileupload" name="fileupload"/>
                                 </div>
-                                <div className="d-grid gap-2">
-                                    <button type="submit" id="btn-esdeveniment" className="btn btn-primary">Agregar</button>
-                                </div>
-                                <hr className="featurette-divider"></hr>
                                 <div className="mb-3">
                                     <ImageUploading
                                         multiple
@@ -253,30 +257,35 @@ function FormulariEdicioNoticies() {
                                         dragProps,
                                         }) => (
                                         // write your building UI
+                                        <>
+                                        <h5>Agregar las imagenes</h5>
+                                        <button id="eliminarTodo" className=" btn-danger m-3 d-none" onClick={() => {let svgUploadImages = document.getElementById('svgImagesUpload'); onImageRemoveAll() ; svgUploadImages.style.visibility='visible'; let elmTodo = document.getElementById('eliminarTodo'); elmTodo.classList.add('d-none'); let addMas = document.getElementById('agregarMas'); addMas.classList.add('d-none')}}>Eliminar Todas las Imagenes</button>
+                                        <button id="agregarMas" className=" btn-danger m-3 d-none" onClick={() => {let svgUploadImages = document.getElementById('svgImagesUpload'); svgUploadImages.style.visibility='visible';}}>Añadir más Imagenes</button>
                                         <div className="upload__image-wrapper">
-                                            <svg id="svgImagesUpload" onClick={onImageUpload}
-                                            {...dragProps} style={isDragging ? { color: 'red' } : undefined} className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="37.5%" y="50%" fill="#aaa" dy=".1em">Click or Drop here</text>
-                                            
-                                            </svg>
-                                            &nbsp;
-                                            <div id="containerImagesUpload" className=" row border container-fluid">
+                                            <div id="containerImagesUpload" className=" row border container-fluid d-none h-75 w-50">
                                                 {imageList.map((image, index) => (
                                                 <div key={index} className="image-item col p-1">
                                                     <img src={image['data_url']} alt="" width="100" />
                                                     <a href="#44" className=" position-absolute text-center mt-0" style={{width:"1rem!important",height:"1rem!important"}} onClick={() => onImageRemove(index)}>x</a>
                                                     <div className="image-item__btn-wrapper">
-                                                    {/* <button onClick={() => onImageUpdate(index)}>Actualizar</button> */}
-                                                    
                                                     </div>
                                                 </div>
                                                 ))}
                                             </div>
-                                            <button onClick={onImageRemoveAll}>Eliminar Todas las Imagenes</button>
-                                            
+                                            <svg id="svgImagesUpload" onClick={onImageUpload}
+                                            {...dragProps} style={isDragging ? { color: 'red' } : undefined} className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="150" height="150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 150x150" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="37.5%" y="50%" fill="#aaa" dy=".1em">Click or Drop here</text>
+                                            </svg>
                                         </div>
+                                        </>
+                                        
                                         )}
                                     </ImageUploading>
                                 </div>
+                                <div className="d-grid gap-2">
+                                    <button type="submit" id="btn-esdeveniment" className="btn btn-primary">Agregar</button>
+                                </div>
+                                {/* <hr className="featurette-divider"></hr> */}
+                                
                             </form>
                             
                         </div>
