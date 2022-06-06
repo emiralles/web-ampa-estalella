@@ -1,12 +1,40 @@
+import { getAllCollections, getUrlImage } from "../../db/crudDB";
+import { noticie } from "../../models/noticie";
 import ramon from "./images/ramon-grau-1r.jpg";
 import dones from "./images/dones.jpg";
 import lenguaCatalana from "./images/InmersioLenguaCatalana.jpg";
+import { useEffect, useState } from "react";
+import ListRectangleCard from "../card/ListRectangleCard";
 
 function Noticies() {
-    // const id = "";
+    let origen = "vistaUsuario";
+    const [listNoticies,setListNoticies]=useState([]);
+
+    useEffect(()=>{
+        const handleLoad = async () =>{
+        
+            let promesa1 = getAllCollections('noticie');
+            promesa1.then((resul)=>{
+              resul.forEach((doc)=>{
+                let imgUrl = getUrlImage(doc.path);
+                imgUrl.then((rstUrl)=>{
+                    let item = new noticie(doc.id,doc.path,"",doc.title,doc.cosHtml,doc.dateCreation,doc.namePhoto,rstUrl,doc.pathsImages,[],[]); 
+                    setListNoticies(arr => [...arr, item]);
+                });
+              })
+            })
+            
+        }
+        
+        handleLoad();
+    },[])
+
     return ( 
         <>
             <p className="lead">Vols estar al dia de totes les notícies de l’AFA? No et vols perdre cap activitat o esdeveniment? No ets de xarxes socials però no et vols perdre res del que es cou a l’AFA? Aquest és el teu lloc! L’actualitat més fresca de l’Afa a un sol clic. Aquí podràs trovar.</p>
+            {
+                <ListRectangleCard arrayData={listNoticies} componentCall={origen} nameList="Listat d'Noticies"/>
+            }
             <hr className="featurette-divider"></hr>
                 <a href="/galleria/Eyep6plhvLxzvCWFiGM0">
                     <div className="row featurette">

@@ -1,10 +1,5 @@
-// import { useEffect } from "react"
 
 function RectangleCard({Id,path,title,urlImage,arrayData, classnameBody, classnameImage, handleRemove, handleEdit, componentcall}) {
-  
-
-    // let arr = arrayData.split("<p>");
-
 
     const buttonsAdmin = (componentcall) => {
         if (componentcall === "admin") {
@@ -25,25 +20,55 @@ function RectangleCard({Id,path,title,urlImage,arrayData, classnameBody, classna
         }
         
     }
-  
-  
-
-//   useEffect(()=>{
-//     const loadData = (arrayData)=>{
-//         let dt = document.getElementById("textDescriptivo")
-//         dt.innerHTML = arrayData;
-//       }
     
-//     loadData();
-//   },[])
+    const drawRectangle = (componentcall) => {
+        if (componentcall === "admin") {
+            return(
+                <>
+                    <hr className="featurette-divider"></hr>
+                    <div className="row featurette">
+                        <div className={classnameBody}>
+                            {
+                                buttonsAdmin(componentcall)
+                            }
+                            <h2 className="featurette-heading"><span className="text-muted">{title}</span></h2>
+                            <p className="lead">{arrayData}</p>
+                        </div>
+                        <div className={classnameImage}>
+                            <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={urlImage} alt=""/>
+                        </div>
+                    </div>
+                </>
+            )    
+        }else{
+            return(
+                <>
+                    <hr className="featurette-divider"></hr>
+                    <a href={`/galleria/${Id}`}>
+                        <div className="row featurette">
+                            <div className={classnameBody}>
+                                {
+                                    buttonsAdmin(componentcall)
+                                }
+                                <h2 className="featurette-heading"><span className="text-muted">{title}</span></h2>
+                                <p className="lead">{arrayData}</p>
+                            </div>
+                            <div className={classnameImage}>
+                                <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={urlImage} alt=""/>
+                            </div>
+                        </div>
+                    </a>
+                </>
+            )
+        }
+    }
   
   return (
     <>
-        {/* {
-            loadData(arrayData)
-        } */}
-        <hr className="featurette-divider"></hr>
-            
+        {
+            drawRectangle(componentcall)
+        }
+        {/* <hr className="featurette-divider"></hr>
             <div className="row featurette">
                 <div className={classnameBody}>
                     {
@@ -51,18 +76,11 @@ function RectangleCard({Id,path,title,urlImage,arrayData, classnameBody, classna
                     }
                     <h2 className="featurette-heading"><span className="text-muted">{title}</span></h2>
                     <p className="lead">{arrayData}</p>
-                    {/* <div id="textDescriptivo" dangerouslySetInnerHTML={{__html: arrayData}} ></div> */}
-                    
-                    {/* {
-                        arrayData.map((item,index) => (
-                          <p className="lead">{item}</p>  
-                        ))
-                    } */}
                 </div>
                 <div className={classnameImage}>
                     <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={urlImage} alt=""/>
                 </div>
-            </div>
+            </div> */}
     </>
   )
 }
