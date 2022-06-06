@@ -5,7 +5,7 @@ function GalleryImages({arrayImages}) {
         <div class="row">
             {
                 arrayImages.map((item)=>(
-                    <div class="col mb-4 mb-lg-0">
+                    <div class="mb-4 mb-lg-0 width-images-gallery">
                         <img
                         src={item}
                         class="w-100 shadow-1-strong rounded mb-4"
