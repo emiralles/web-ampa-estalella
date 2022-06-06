@@ -3,16 +3,13 @@ function Quisom() {
     return ( 
         <>
         <hr className="featurette-divider"></hr>
-        {/* <hr className="featurette-divider fix-margin-featurette-divider-bottom"></hr> */}
         <div className="containerH1"><h1>Qui som</h1></div>
-        {/* <hr className="featurette-divider fix-margin-featurette-divider-top"></hr> */}
         <p className="fs-5 col-md-12">L’AFA de l’Escola Estalella i Graells és l’associació formada per les mares i pares dels alumnes de l’escola que voluntàriament ho desitgin. És una associació sense ànim de lucre, constituïda legalment i està representada per una Junta que a la vegada està dividida en comissions de treballs segons les tasques i/o activitats.</p>
         <hr className="col-3 col-md-12 mb-5"></hr>
         <div className="row g-5">
             <div className="col-md-12">
                 <h2>Objectius</h2>
                 <hr className="col-3 col-md-2 mb-5"></hr>
-                {/* <p>Ready to beyond the starter template? Check out these open source projects that you can quickly duplicate to a new GitHub repository.</p> */}
                 <ul className="icon-list">
                     <li className="text-muted li-arrow">Fomentar la col·laboració i la participació de les famílies en actes escolars i en actes festius.</li>
                     <li className="text-muted li-arrow">Fomentar activitats d’interès per a  la comunitat escolar, com xerrades i conferències de professionals.</li>
@@ -32,16 +29,6 @@ function Quisom() {
                     </li>
                 </ul>
             </div>
-            {/* <div className="col-md-6">
-                <h2>Guides</h2>
-                <p>Read more detailed instructions and documentation on using or contributing to Bootstrap.</p>
-                <ul className="icon-list">
-                <li><a href="/docs/5.1/getting-started/introduction/">Bootstrap quick start guide</a></li>
-                <li><a href="/docs/5.1/getting-started/webpack/">Bootstrap Webpack guide</a></li>
-                <li><a href="/docs/5.1/getting-started/parcel/">Bootstrap Parcel guide</a></li>
-                <li><a href="/docs/5.1/getting-started/contribute/">Contributing to Bootstrap</a></li>
-                </ul>
-            </div> */}
         </div>
         <hr className="featurette-divider"></hr>
         </>
