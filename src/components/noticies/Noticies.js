@@ -3,21 +3,24 @@ import dones from "./images/dones.jpg";
 import lenguaCatalana from "./images/InmersioLenguaCatalana.jpg";
 
 function Noticies() {
+    // const id = "";
     return ( 
         <>
             <p className="lead">Vols estar al dia de totes les notícies de l’AFA? No et vols perdre cap activitat o esdeveniment? No ets de xarxes socials però no et vols perdre res del que es cou a l’AFA? Aquest és el teu lloc! L’actualitat més fresca de l’Afa a un sol clic. Aquí podràs trovar.</p>
             <hr className="featurette-divider"></hr>
-                <div className="row featurette">
-                    <div className="col-md-7">
-                        <h2 className="featurette-heading">Visita de l’escriptor <span className="text-muted">Ramon Grau.</span></h2>
-                        <p className="lead">El passat 21/04/2022 ens ha visitat l’escriptor Ramon Grau per presentar-nos la novel·la infantil Vali la Valenta i la segona part de la història amb noves aventures.</p>
-                        <p className="lead">Vali la valenta 2 és un llibre educatiu per als menuts, que reivindica a cada capítol els valors que ens fan créixer i ser més bones persones, com ara la voluntat d’entesa i el respecte als altres i al medi ambient.</p>
+                <a href="/galleria/Eyep6plhvLxzvCWFiGM0">
+                    <div className="row featurette">
+                        <div className="col-md-7">
+                            <h2 className="featurette-heading">Visita de l’escriptor <span className="text-muted">Ramon Grau.</span></h2>
+                            <p className="lead">El passat 21/04/2022 ens ha visitat l’escriptor Ramon Grau per presentar-nos la novel·la infantil Vali la Valenta i la segona part de la història amb noves aventures.</p>
+                            <p className="lead">Vali la valenta 2 és un llibre educatiu per als menuts, que reivindica a cada capítol els valors que ens fan créixer i ser més bones persones, com ara la voluntat d’entesa i el respecte als altres i al medi ambient.</p>
+                        </div>
+                        <div className="col-md-5">
+                            {/* <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> */}
+                            <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={ramon} alt=""/>
+                        </div>
                     </div>
-                    <div className="col-md-5">
-                        {/* <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> */}
-                        <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={ramon} alt=""/>
-                    </div>
-                </div>
+                </a>
             <hr className="featurette-divider"></hr>
                 <div className="row featurette">
                     <div className="col-md-7 order-md-2">

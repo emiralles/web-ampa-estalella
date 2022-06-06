@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import ImageUploading from "react-images-uploading";
 import { uploadFile, add, updateOneDocOfTpo, getAllCollections, getUrlImage, removeObject, deleteOneDocOfTipo, getOneDocOfTipo} from "../../db/crudDB";
 import { useAuth } from "../../context/authContext";
-import { esdeveniment } from "../../models/esdeveniment";
+import { noticie } from "../../models/noticie";
 import ListRectangleCard from "../card/ListRectangleCard";
 
 
-let evento = new esdeveniment("","","","","","","",""); 
+let noticia = new noticie("","","","","","","","",[],[],[]); 
 
 
-let dataEvento = {
+let dataNoticie = {
     uid:"",
     path:"",
     fileupload:"",
@@ -18,6 +18,9 @@ let dataEvento = {
     dateCreation:"",
     namePhoto:"",
     urlPhoto:"",
+    pathsImages:[],
+    urlsPathsImages:[],
+    imagesGalery:[]
 }
 
 function FormulariEdicioNoticies() {
@@ -25,10 +28,10 @@ function FormulariEdicioNoticies() {
     const [images, setImages] = useState([]);
     const maxNumber = 69;
 
-    const[esdevenim,setEsdevenim] = useState(evento);
+    const[notici,setNotici] = useState(noticia);
     const { user }  = useAuth();
     
-    const [listEsdeveniments,setListEsdeveniments] = useState([]);
+    const [listNoticies,setListNoticies] = useState([]);
     const [isTrue, setTrue] = useState(false);
     const [dataAuxiliar, setDataAuxiliar] = useState([]);
     let origen = "admin";
@@ -49,11 +52,11 @@ function FormulariEdicioNoticies() {
     };
 
     const handleChange = ({target:{name,value}}) => {
-        setEsdevenim({...esdevenim,[name]:value});
+        setNotici({...notici,[name]:value});
     }
 
     const handleFileChange = ({target:{name,files}}) => {
-        setEsdevenim({...esdevenim,[name]:files[0]})
+        setNotici({...notici,[name]:files[0]})
     }
 
     
@@ -66,39 +69,39 @@ function FormulariEdicioNoticies() {
         if (inputAux.value !== "") {
             
             if (nowDate !== "") {
-                let auxEvento = esdevenim;
+                let auxEvento = notici;
                 auxEvento.dateCreation=nowDate;
-                setEsdevenim(auxEvento);    
+                setNotici(auxEvento);    
             }
 
             let arrDataAux = inputAux.value.split(" - ");
             let idCard = arrDataAux[0];
-            let dataImagen = esdevenim["fileupload"];
+            let dataImagen = notici["fileupload"];
             let nameCardPhoto = dataImagen !== undefined ? dataImagen.name : arrDataAux[1];  
 
-            let item = new esdeveniment('','',esdevenim["fileupload"],esdevenim['title'],esdevenim['cosHtml'],esdevenim['dateCreation'],nameCardPhoto,"");
-            let itemAux = new esdeveniment('','','',dataAuxiliar.title,dataAuxiliar.cosHtml,dataAuxiliar.dateCreation,dataAuxiliar.namePhoto,dataAuxiliar.urlPhoto);
+            let item = new noticie('','',notici["fileupload"],notici['title'],notici['cosHtml'],notici['dateCreation'],nameCardPhoto,"",[],[],[]);
+            let itemAux = new noticie('','','',dataAuxiliar.title,dataAuxiliar.cosHtml,dataAuxiliar.dateCreation,dataAuxiliar.namePhoto,dataAuxiliar.urlPhoto,[],[],[]);
             
-            dataEvento.title = item.title !== undefined && item.title !== ""  ? item.title : itemAux.title;
-            dataEvento.cosHtml = item.cosHtml !== undefined && item.cosHtml !== "" ? item.cosHtml : itemAux.cosHtml;
-            dataEvento.dateCreation = item.dateCreation !== undefined && item.dateCreation !== "" ? item.dateCreation : itemAux.dateCreation;
-            dataEvento.namePhoto = item.namePhoto !== undefined && item.namePhoto !== "" ? item.namePhoto : itemAux.namePhoto;
-            dataEvento.urlPhoto = esdevenim["fileupload"] !== undefined ? "" : itemAux.urlPhoto;
+            dataNoticie.title = item.title !== undefined && item.title !== ""  ? item.title : itemAux.title;
+            dataNoticie.cosHtml = item.cosHtml !== undefined && item.cosHtml !== "" ? item.cosHtml : itemAux.cosHtml;
+            dataNoticie.dateCreation = item.dateCreation !== undefined && item.dateCreation !== "" ? item.dateCreation : itemAux.dateCreation;
+            dataNoticie.namePhoto = item.namePhoto !== undefined && item.namePhoto !== "" ? item.namePhoto : itemAux.namePhoto;
+            dataNoticie.urlPhoto = notici["fileupload"] !== undefined ? "" : itemAux.urlPhoto;
 
-            await updateOneDocOfTpo('esdeveniment',idCard,dataEvento);
+            await updateOneDocOfTpo('noticie',idCard,dataNoticie);
             
-            if (esdevenim["fileupload"] !== undefined) {
+            if (notici["fileupload"] !== undefined) {
                 let textPhoto = document.getElementById('textPhoto');
                 let pathPhoto = textPhoto.value;
                 removeObject(pathPhoto);
-                const dataImg = await uploadFile(esdevenim["fileupload"],esdevenim["fileupload"].name,idCard,user.uid);
-                dataEvento.namePhoto = esdevenim["fileupload"].name;
-                dataEvento.path = dataImg.metadata.fullPath;
-                await updateOneDocOfTpo('esdeveniment',idCard,dataEvento);    
+                const dataImg = await uploadFile(notici["fileupload"],notici["fileupload"].name,idCard,user.uid);
+                dataNoticie.namePhoto = notici["fileupload"].name;
+                dataNoticie.path = dataImg.metadata.fullPath;
+                await updateOneDocOfTpo('noticie',idCard,dataNoticie);    
             }
             
-            let btnEsdeveniment = document.getElementById('btn-esdeveniment');
-            btnEsdeveniment.innerText = "Agregar";
+            let btnNoticie = document.getElementById('btn-noticie');
+            btnNoticie.innerText = "Agregar";
 
             handleReset();
             refresh();
@@ -106,21 +109,39 @@ function FormulariEdicioNoticies() {
         }else{
         
             if (nowDate !== "") {
-                let auxEvento = esdevenim;
+                let auxEvento = notici;
                 auxEvento.dateCreation=nowDate;
-                setEsdevenim(auxEvento);    
+                setNotici(auxEvento);    
             }
             
-            dataEvento.cosHtml = esdevenim.cosHtml;
-            dataEvento.dateCreation = esdevenim.dateCreation;
-            dataEvento.namePhoto = esdevenim.fileupload.name;
-            dataEvento.title = esdevenim.title;
+            dataNoticie.cosHtml = notici.cosHtml;
+            dataNoticie.dateCreation = notici.dateCreation;
+            dataNoticie.namePhoto = notici.fileupload.name;
+            dataNoticie.title = notici.title;
             
-            const idData = await add('esdeveniment',dataEvento);
+            
+
+
+            const idData = await add('noticie',dataNoticie);
             if (idData !== undefined && idData !== "") {
-                const dataImg = await uploadFile(esdevenim.fileupload,dataEvento.namePhoto,idData,user.uid);
-                dataEvento.path = dataImg.metadata.fullPath;
-                await updateOneDocOfTpo('esdeveniment',idData,dataEvento);  
+                const dataImg = await uploadFile(notici.fileupload,dataNoticie.namePhoto,idData,user.uid);
+                dataNoticie.path = dataImg.metadata.fullPath;
+                await updateOneDocOfTpo('noticie',idData,dataNoticie);  
+
+                if (images.length>0) {
+                    let arryAu = [...images];
+                    arryAu.forEach((item)=>{
+                        const datass = uploadFile(item.file,item.file.name,idData,`${user.uid}-imagegalery`);
+                        datass.then((rstPath)=>{
+                            dataNoticie.pathsImages.push(rstPath.metadata.fullPath);
+                            updateOneDocOfTpo('noticie',idData,dataNoticie);          
+                        });
+                        // dataNoticie.pathsImages.push(datass.metadata.fullPath);
+
+                        return 0;
+                    })
+                    
+                }
             }
 
             handleReset();
@@ -131,7 +152,7 @@ function FormulariEdicioNoticies() {
     };
 
     const refresh = ()=>{
-        setListEsdeveniments([]);
+        setListNoticies([]);
         if (isTrue) {
           setTrue(false);
         }else{
@@ -151,19 +172,20 @@ function FormulariEdicioNoticies() {
         Array.from(document.querySelectorAll("textarea")).forEach(
             textarea => (textarea.value = "")
         );
-    
+        
+        setImages([]);
     };
 
     const handleEdit = ({target:{name}}) =>{
 
-        let btnEsdeveniment = document.getElementById('btn-esdeveniment');
+        let btnNoticie = document.getElementById('btn-noticie');
         
         let inputtitle = document.getElementById('title');
         let inputparraf = document.getElementById('parraf');
         let textPhoto = document.getElementById('textPhoto');
         let inputAux = document.getElementById('input-aux');
         
-        let promise = getOneDocOfTipo('esdeveniment',name);
+        let promise = getOneDocOfTipo('noticie',name);
         promise.then((result)=>{
           
             let data = result.data();
@@ -177,7 +199,7 @@ function FormulariEdicioNoticies() {
           
             inputAux.value = `${data.id} - ${data.namePhoto}`;
         
-            btnEsdeveniment.innerText = "Modificar";
+            btnNoticie.innerText = "Modificar";
             refresh();
             inputtitle.focus();
     
@@ -190,7 +212,7 @@ function FormulariEdicioNoticies() {
         let id = arrStr[0];
         let pathPhoto = arrStr[1];
         let titulo = document.getElementById('title');
-        deleteOneDocOfTipo('esdeveniment',id);
+        deleteOneDocOfTipo('noticie',id);
         removeObject(pathPhoto);
         refresh();
         titulo.focus();
@@ -200,13 +222,13 @@ function FormulariEdicioNoticies() {
    
         const handleLoad = async () =>{
         
-          let promesa1 = getAllCollections('esdeveniment');
+          let promesa1 = getAllCollections('noticie');
           promesa1.then((resul)=>{
             resul.forEach((doc)=>{
               let imgUrl = getUrlImage(doc.path);
               imgUrl.then((rstUrl)=>{
-                let item = new esdeveniment(doc.id,doc.path,"",doc.title,doc.cosHtml,doc.dateCreation,doc.namePhoto,rstUrl); 
-                setListEsdeveniments(arr => [...arr, item]);
+                let item = new noticie(doc.id,doc.path,"",doc.title,doc.cosHtml,doc.dateCreation,doc.namePhoto,rstUrl,[],[],[]); 
+                setListNoticies(arr => [...arr, item]);
               });
             })
           })
@@ -265,7 +287,7 @@ function FormulariEdicioNoticies() {
                                             <div id="containerImagesUpload" className=" row border container-fluid d-none h-75 w-50">
                                                 {imageList.map((image, index) => (
                                                 <div key={index} className="image-item col p-1">
-                                                    <img src={image['data_url']} alt="" width="100" />
+                                                    <img src={image['data_url']} alt="" width="100" className="w-100 shadow-1-strong rounded mb-4"/>
                                                     <a href="#44" className=" position-absolute text-center mt-0" style={{width:"1rem!important",height:"1rem!important"}} onClick={() => onImageRemove(index)}>x</a>
                                                     <div className="image-item__btn-wrapper">
                                                     </div>
@@ -282,7 +304,7 @@ function FormulariEdicioNoticies() {
                                     </ImageUploading>
                                 </div>
                                 <div className="d-grid gap-2">
-                                    <button type="submit" id="btn-esdeveniment" className="btn btn-primary">Agregar</button>
+                                    <button type="submit" id="btn-noticie" className="btn btn-primary">Agregar</button>
                                 </div>
                                 {/* <hr className="featurette-divider"></hr> */}
                                 
@@ -291,7 +313,7 @@ function FormulariEdicioNoticies() {
                         </div>
                     </div>
                     {
-                        <ListRectangleCard arrayData={listEsdeveniments} handleEdit={handleEdit} handleRemove={handleRemove} componentCall={origen} nameList="Listat d'Noticies"/>
+                        <ListRectangleCard arrayData={listNoticies} handleEdit={handleEdit} handleRemove={handleRemove} componentCall={origen} nameList="Listat d'Noticies"/>
                     }
                 </div>
             </div>

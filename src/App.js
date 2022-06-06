@@ -24,6 +24,7 @@ import Casaldestiu from "./components/serveis/Casaldestiu";
 import FormulariEdicioExtraescolars from "./components/formularis-edicio-apartados/Formulari-edicio-extraescolars";
 import ProtectedRoute from "./components/protectedroute/ProtectedRoute";
 import ViewTardesEstiu from "./views/ViewTardesEstiu";
+import ViewGalleryImages from "./views/ViewGalleryImages";
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
           <Route path='/estatuts' element={<Estatuts/>} />
           <Route path='/casaldestiu' element={<Casaldestiu/>} />
           <Route path='/tardesestiu' element={<ViewTardesEstiu/>} />
+          <Route path='/galleria/:id' element={<ViewGalleryImages/>} />
         </Route>
       </Routes>
     </>
