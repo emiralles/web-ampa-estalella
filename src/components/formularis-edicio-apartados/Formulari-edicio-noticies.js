@@ -27,6 +27,9 @@ function FormulariEdicioNoticies() {
   
     const [images, setImages] = useState([]);
     const maxNumber = 69;
+    const [lstImgs, setLstImgs] = useState([]);
+    // const [lstPathImageEdit, setLstPathImageEdit] = useState([]);
+    const [lstImgsDelete, setLstImgsDelete] = useState([]);
 
     const[notici,setNotici] = useState(noticia);
     const { user }  = useAuth();
@@ -80,13 +83,14 @@ function FormulariEdicioNoticies() {
             let nameCardPhoto = dataImagen !== undefined ? dataImagen.name : arrDataAux[1];  
 
             let item = new noticie('','',notici["fileupload"],notici['title'],notici['cosHtml'],notici['dateCreation'],nameCardPhoto,"",[],[],[]);
-            let itemAux = new noticie('','','',dataAuxiliar.title,dataAuxiliar.cosHtml,dataAuxiliar.dateCreation,dataAuxiliar.namePhoto,dataAuxiliar.urlPhoto,[],[],[]);
+            let itemAux = new noticie('','','',dataAuxiliar.title,dataAuxiliar.cosHtml,dataAuxiliar.dateCreation,dataAuxiliar.namePhoto,dataAuxiliar.urlPhoto,dataAuxiliar.pathsImages,[],[]);
             
             dataNoticie.title = item.title !== undefined && item.title !== ""  ? item.title : itemAux.title;
             dataNoticie.cosHtml = item.cosHtml !== undefined && item.cosHtml !== "" ? item.cosHtml : itemAux.cosHtml;
             dataNoticie.dateCreation = item.dateCreation !== undefined && item.dateCreation !== "" ? item.dateCreation : itemAux.dateCreation;
             dataNoticie.namePhoto = item.namePhoto !== undefined && item.namePhoto !== "" ? item.namePhoto : itemAux.namePhoto;
             dataNoticie.urlPhoto = notici["fileupload"] !== undefined ? "" : itemAux.urlPhoto;
+            dataNoticie.pathsImages = itemAux.pathsImages;
 
             await updateOneDocOfTpo('noticie',idCard,dataNoticie);
             
@@ -100,9 +104,38 @@ function FormulariEdicioNoticies() {
                 await updateOneDocOfTpo('noticie',idCard,dataNoticie);    
             }
             
+            if (images.length>0) {
+
+                dataNoticie.pathsImages = [];
+
+                let arryAu = [...images];
+                arryAu.forEach((item)=>{
+                    const datass = uploadFile(item.file,item.file.name,idCard,`${user.uid}-imagegalery`);
+                    datass.then((rstPath)=>{
+                        dataNoticie.pathsImages.push(rstPath.metadata.fullPath);
+                        updateOneDocOfTpo('noticie',idCard,dataNoticie);          
+                    });
+                    // return 0;
+                })
+
+                if (lstImgs.length>0) {
+                    lstImgs.forEach((item)=>{
+                        dataNoticie.pathsImages.push(item.pathFoto);
+                        updateOneDocOfTpo('noticie',idCard,dataNoticie);          
+                    })    
+                }
+                
+                if (lstImgsDelete.length>0) {
+                    lstImgsDelete.forEach((strPath)=>{
+                        removeObject(strPath);
+                    })    
+                }
+                
+            }
+
             let btnNoticie = document.getElementById('btn-noticie');
             btnNoticie.innerText = "Agregar";
-
+            setLstImgs([]);
             handleReset();
             refresh();
 
@@ -173,7 +206,15 @@ function FormulariEdicioNoticies() {
             textarea => (textarea.value = "")
         );
         
+        let elmTodo = document.getElementById('eliminarTodo'); 
+        elmTodo.classList.add('d-none'); 
+        let addMas = document.getElementById('agregarMas'); 
+        addMas.classList.add('d-none');
+        let svgUploadImages = document.getElementById('svgImagesUpload'); 
+        svgUploadImages.style.visibility='visible';
+        
         setImages([]);
+        
     };
 
     const handleEdit = ({target:{name}}) =>{
@@ -198,7 +239,22 @@ function FormulariEdicioNoticies() {
             textPhoto.value = data.path;
           
             inputAux.value = `${data.id} - ${data.namePhoto}`;
-        
+  
+            data.pathsImages.forEach((pathItem)=>{
+                let prom = getUrlImage(pathItem);
+                // setLstPathImageEdit(ars => [...ars, pathItem]);
+                prom.then((url)=>{
+                    let objFoto ={
+                        urlPhoto:url,
+                        pathFoto:pathItem
+                    }
+                    setLstImgs(arr => [...arr, objFoto]);
+                })
+            })
+            
+            let divPresentImages = document.getElementById('containerImagesUpload');
+            divPresentImages.classList.remove("d-none");
+            
             btnNoticie.innerText = "Modificar";
             refresh();
             inputtitle.focus();
@@ -212,10 +268,29 @@ function FormulariEdicioNoticies() {
         let id = arrStr[0];
         let pathPhoto = arrStr[1];
         let titulo = document.getElementById('title');
+        
+        let promise = getOneDocOfTipo('noticie',id);
+        promise.then((result)=>{
+            let data = result.data();
+            data.pathsImages.forEach((itemPath)=>{
+                removeObject(itemPath);        
+            })
+        })
+
         deleteOneDocOfTipo('noticie',id);
         removeObject(pathPhoto);
         refresh();
         titulo.focus();
+    }
+
+    const onImageDelete = (urldelete,pathdelete) =>{
+        // let objDelete = {
+        //     urlPhoto:urldelete,
+        //     pathFoto:pathdelete
+        // }
+        setLstImgsDelete(arr => [...arr, pathdelete]);
+        let lstAux = lstImgs.filter(x=>x.urlPhoto !== urldelete);
+        setLstImgs(lstAux);
     }
     
     useEffect(()=>{
@@ -289,6 +364,14 @@ function FormulariEdicioNoticies() {
                                                 <div key={index} className="image-item col p-1">
                                                     <img src={image['data_url']} alt="" width="100" className="w-100 shadow-1-strong rounded mb-4"/>
                                                     <a href="#44" className=" position-absolute text-center mt-0" style={{width:"1rem!important",height:"1rem!important"}} onClick={() => onImageRemove(index)}>x</a>
+                                                    <div className="image-item__btn-wrapper">
+                                                    </div>
+                                                </div>
+                                                ))}
+                                                {lstImgs.map((item, index) => (
+                                                <div key={index} className="image-item col p-1">
+                                                    <img src={item.urlPhoto} alt="" width="100" className="w-100 shadow-1-strong rounded mb-4"/>
+                                                    <a href="#44" className=" position-absolute text-center mt-0" style={{width:"1rem!important",height:"1rem!important"}} onClick={() => onImageDelete(item.urlPhoto,item.pathFoto)}>x</a>
                                                     <div className="image-item__btn-wrapper">
                                                     </div>
                                                 </div>

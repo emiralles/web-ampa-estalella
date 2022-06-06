@@ -36,7 +36,7 @@ function Noticies() {
                 <ListRectangleCard arrayData={listNoticies} componentCall={origen} nameList="Listat d'Noticies"/>
             }
             <hr className="featurette-divider"></hr>
-                <a href="/galleria/Eyep6plhvLxzvCWFiGM0">
+                <a href="/gal/Eyep6plhvLxzvCWFiGM0">
                     <div className="row featurette">
                         <div className="col-md-7">
                             <h2 className="featurette-heading">Visita de l’escriptor <span className="text-muted">Ramon Grau.</span></h2>
