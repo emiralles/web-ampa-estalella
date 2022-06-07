@@ -1,8 +1,42 @@
+
+import { useEffect, useState } from "react";
+import { menjador } from "../../models/menjador";
+import { getAllCollections} from "../../db/crudDB";
+import Parrafo from "../../components/menjador/Parrafo";
+
+let edicio = new menjador("","","",""); 
+
 function ViewMenjador() {
+
+    const[edicioMenjador,setEdicioMenjador] = useState(edicio);
+    let origen = "viewMenjador";
+
+    
+    useEffect(()=>{
+   
+        const handleLoad = async () =>{
+        
+          let promesa1 = getAllCollections('menjador');
+          promesa1.then((resul)=>{
+            resul.forEach((doc)=>{
+                let item = new menjador(doc.id,doc.cosHtml,doc.dateCreation,doc.iframeYoutube); 
+                setEdicioMenjador(item);
+            })
+          })
+          
+        }
+        
+        handleLoad();
+    
+    },[]);
+
     return (  
         <>
             <hr className="featurette-divider"></hr>
             <div className="containerH1"><h1>Menjador</h1></div>
+            {
+                <Parrafo data={edicioMenjador} componentcall={origen} />
+            }
             {/* <hr className="featurette-divider"></hr> */}
             <div className="video-responsive">
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/Wox8BHyJ0XE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
