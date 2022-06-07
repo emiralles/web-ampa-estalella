@@ -23,18 +23,7 @@ function WebPage() {
                 <main>
                     <Carousel/>  
                     <div className='container marketing'>
-                    <Outlet/>
-                    {/* <Routes>
-                        <Route path='/' element={<CardGroup/>} />
-                        <Route path='/esdeveniments' element={<Esdeveniments/>} />
-                        <Route path='/quisom' element={<Quisom/>} />
-                        <Route path='/comissions' element={<Comissions/>} />
-                        <Route path='/fer-se-soci' element={<Festesoci/>} />
-                        <Route path='/acollida' element={<Acollida/>} />
-                        <Route path='/menjador' element={<Menjador/>} />
-                        <Route path='/extraescolars' element={<Extraescolars/>} />
-                        <Route path='/contacta-ns' element={<Contactans/>} />
-                    </Routes> */}
+                        <Outlet/>
                     </div>
                 </main>
                 <footer className='App-Footer d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top'>

@@ -1,0 +1,10 @@
+
+div.card.card-extraescolar {
+    width: 25%!important; 
+}
+
+@media (max-width: 62em) {
+    div.card.card-extraescolar {
+      width: 100%!important; 
+    }
+}
