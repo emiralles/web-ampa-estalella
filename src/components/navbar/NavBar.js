@@ -76,7 +76,7 @@ function NavBar() {
             </div>
             <div className="container-fluid justify-content-end">
                 <div className="nav-item text-nowrap rounded-2" style={{color:"azure!important"}}>
-                    <a className=" px-3 rounded" style={{color:"azure!important"}} href="/admin/login">Signin</a>
+                    <a className=" px-3 rounded" style={{color:"azure!important"}} href="/admin/login">Singin</a>
                 </div>
             </div>
         </nav>
