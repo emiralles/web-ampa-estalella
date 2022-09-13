@@ -1,8 +1,9 @@
-export class modelViewPDF{
-    constructor(uid,tipo,title,urlPDF){
+export class estatut{
+    constructor(uid,bodyHtml,namesPDFS,urlsPDFS,pathsPDFS){
         this.uid = uid;
-        this.tipo = tipo;
-        this.title= title;
-        this.urlPDF= urlPDF;
+        this.bodyHtml = bodyHtml;
+        this.namesPDFS = namesPDFS;
+        this.urlsPDFS = urlsPDFS;
+        this.pathsPDFS = pathsPDFS;
     }
 }

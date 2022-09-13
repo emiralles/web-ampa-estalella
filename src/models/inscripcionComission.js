@@ -1,4 +1,4 @@
-export class inscripcion{
+export class inscripcionComission{
     constructor(nombre,primerApellido,segundoApellido,email,fechaNacimiento,fechaInscripcion,comision){
         this.nombre = nombre;
         this.primerApellido = primerApellido;

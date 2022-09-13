@@ -44,7 +44,7 @@ function ViewContactans() {
                 </div>
                 <div className="col-md-5">
                     <div className="card border-info mb-3">
-                        <div className="card-header bg-warning"><h2 className="card-title">Contacta'ns</h2></div>
+                        <div className="card-header backGroundGreen"><h2 className="card-title">Contacta'ns</h2></div>
                         <div className="card-body">
                             <form onSubmit={handleSubmit}>
                                 <div className="mb-3">
@@ -65,7 +65,7 @@ function ViewContactans() {
                                     <textarea className="form-control" onChange={handleChange} id="formControlTextarea1" rows="3" name="textArea"></textarea>
                                 </div>
                                 <div className="d-grid gap-2">
-                                    <button type="submit" className="btn btn-primary">Enviar</button>
+                                    <button type="submit" className="btn btn-color-back btn-primary">Enviar</button>
                                 </div>
                             </form>
                         </div>

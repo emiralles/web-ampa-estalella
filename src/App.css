@@ -1,5 +1,5 @@
-a:link { text-decoration: none; color:black!important}
-a:visited { text-decoration: none; color:black!important}
+a:link { text-decoration: none; color:white!important}
+a:visited { text-decoration: none; color:white!important}
 a:hover { text-decoration: none; color:black!important}
 a:active { text-decoration: none; color:black!important}
 .title-a-icon{
@@ -435,4 +435,27 @@ footer div span.text-muted{
     text-align: left!important;
     padding-top: 1rem!important;
   }
+
+  
+}
+
+/* Contacts */
+.card-header.backGroundGreen{
+  background-color: #009846!important;
+  color: white!important;
+}
+.card.border-info.mb-3{
+ border-color: #009846!important;
+ /* forestgreen */
+}
+.btn.btn-color-back.btn-primary{
+ background-color: gainsboro!important;
+ color: #009846!important;
+ border-color: #009846!important;
+}
+
+/*Button download*/
+.style-button-download{
+  background-color: #009846!important;
+  color: white!important;
 }
