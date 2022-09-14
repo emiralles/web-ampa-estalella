@@ -459,3 +459,12 @@ footer div span.text-muted{
   background-color: #009846!important;
   color: white!important;
 }
+
+/* layaout */
+.col-md-3.col-lg-2.d-md-block.bg-light.sidebar.collapse.navbarAdmin{
+  background-color: #009846!important;
+}
+
+.position-sticky.pt-3.region-nav{
+  background-color: #009846!important;
+}

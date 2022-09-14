@@ -35,8 +35,8 @@ function ViewLayoutAdmin() {
                 
                 <div className="container-fluid">
                 <div className="row">
-                    <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-                    <div className="position-sticky pt-3">
+                    <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse navbarAdmin">
+                    <div className="position-sticky pt-3 region-nav">
                         <ul className="nav flex-column">
                         {/* <li className="nav-item">
                             <a className="nav-link active" aria-current="page" href="#3">
