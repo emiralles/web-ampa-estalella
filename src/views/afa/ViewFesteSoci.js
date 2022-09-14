@@ -1,4 +1,10 @@
+import { useState, useEffect } from "react";
 import axios from "axios";
+import { noticie } from "../../models/noticie";
+
+
+let noticia = new noticie("","","","","","","","",[],[],[]); 
+
 
 function ViewFesteSoci() {
 
@@ -35,6 +41,34 @@ function ViewFesteSoci() {
             })
     }
 
+    const[notici,setNotici] = useState(noticia);
+    const [pdf,setPDF] = useState("");
+
+    const handleFileChange = ({target:{name,files}}) => {
+        setNotici({...notici,[name]:files[0]})
+    }
+    
+    let downLoadPDF = () =>{
+        const xhr = new XMLHttpRequest();
+        xhr.responseType = 'blob';
+        xhr.onload = (event) => {
+            const blob = xhr.response;
+            let urlBlob = URL.createObjectURL(blob);
+            setPDF(urlBlob);
+        };
+
+        // xhr.open('GET', {datalink});
+        // xhr.open('GET', "https://agora.xtec.cat/ceipestalella/wp-content/uploads/usu318/2022/06/22-23-Full-Inscripcio%CC%81-soci-AFA-PROTECCIO%CC%81-DADES-I-DRETS-IMATGE.pdf");
+        xhr.open('GET', "https://firebasestorage.googleapis.com/v0/b/afa-estalella-i-graells.appspot.com/o/pdfs%2Fsoci-afa%2F22-23-Full-Inscripcio%CC%81-soci-AFA-PROTECCIO%CC%81-DADES-I-DRETS-IMATGE.pdf?alt=media&token=776f2ef6-29ac-4581-9c9a-c4d2fdad9e55");
+        xhr.send();
+    }
+
+    useEffect(() => {
+        downLoadPDF();
+        
+    }, [])
+    
+
     return (
         <>
             <hr className="featurette-divider"></hr>
@@ -43,6 +77,19 @@ function ViewFesteSoci() {
                 <hr className="featurette-divider"></hr>
                 <p className="lead">Les famílies sòcies de l’AFA gaudeixen de descomptes en el preu dels serveis d’acollida, menjador i extraescolars, entre d’altres avantatges. La quota d’inscripció permet mantenir aquests serveis, així com altres activitats i equipaments de l’escola.</p>
                 <p className="lead">*PER FORMAR PART DE L’AFA CAL SER MARE, PARE O TUTOR/A LEGAL D’UN INFANT DE L’ESCOLA.</p>
+                {
+                    pdf ?
+                    <div>
+                        <p>Descarrega el PDF on podras omplir les dades respectives que necesitem per fer la inscripciò com socí del AFA.</p>
+                        <div className="nav">
+                        <a href={pdf} download={"FichaInscripcio.pdf"}>
+                                <button className="style-button-download">Download</button>
+                        </a>
+                        </div>
+                    </div>:"..."
+                }
+                
+                
                 <hr className="featurette-divider"></hr>
                 <form onSubmit={EnviarMail}>
                     <div className="mb-3">
@@ -61,15 +108,20 @@ function ViewFesteSoci() {
                         <label for="exampleInputPassword1" className="form-label">Segundo Apellido</label>
                         <input type="text" className="form-control" id="exampleInputPassword1"/>
                     </div>
-                    <div className="mb-3">
+                    <div className="custom-file mb-3">
+                        <input className="d-none" id="pdfInscripcion"/>
+                        <label htmlFor="fileupload" className="form-label">Pujar ficher</label>
+                        <input type="file" onChange={handleFileChange} className="custom-file-input form-control" id="fileupload" name="fileupload" lang="in" />
+                    </div>
+                    {/* <div className="mb-3">
                         <label for="exampleInputPassword1" className="form-label">DNI/NIE</label>
                         <input type="text" className="form-control" id="exampleInputPassword1"/>
                     </div>
                     <div className="mb-3">
                         <label for="exampleInputPassword1" className="form-label">Fecha Nacimiento</label>
                         <input type="date" className="form-control" id="exampleInputPassword1"/>
-                    </div>
-                    <button type="submit" className="btn btn-primary">Aceptar</button>
+                    </div> */}
+                    <button type="submit" className="btn btn-primary">Enviar</button>
                 </form>
             </div>
             <hr className="featurette-divider"></hr>

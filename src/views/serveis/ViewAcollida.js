@@ -1,6 +1,5 @@
 // import Icons from "bootstrap-icons/bootstrap-icons.svg";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function ViewAcollida() {
 
