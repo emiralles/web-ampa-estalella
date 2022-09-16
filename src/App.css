@@ -468,3 +468,15 @@ footer div span.text-muted{
 .position-sticky.pt-3.region-nav{
   background-color: #009846!important;
 }
+
+.body-layout-admin{
+  height: 100%!important;
+}
+
+.container-fluid.layout-css{
+  height: 100%!important;
+}
+
+.row.row-layout{
+  height: 100%!important;
+}

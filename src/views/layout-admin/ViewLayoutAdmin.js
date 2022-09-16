@@ -1,7 +1,7 @@
 import { useAuth } from "../../context/authContext";
 import { Outlet } from "react-router-dom";
 import  "./layout-admin.css";
-
+import Icons from "bootstrap-icons/bootstrap-icons.svg";
 
 function ViewLayoutAdmin() {
     const { logOut, loading }  = useAuth();
@@ -15,9 +15,9 @@ function ViewLayoutAdmin() {
     if (loading) return (<h1>Loading.....</h1>)
     return ( 
         <>
-            <div className="body-layout-admin">
-                <header className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow" style={{height:"5.5rem!important"}}>
-                
+            <div className="body-layout-admin" style={{height:"100%!important"}}>
+                <header className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow" style={{height:"100%!important"}}>
+                {/* 5.5rem!important                 */}
                 <button className="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -33,60 +33,82 @@ function ViewLayoutAdmin() {
                 </div>
                 </header>
                 
-                <div className="container-fluid">
-                <div className="row">
+                <div className="container-fluid layout-css" style={{height:"100%!important"}}>
+                <div className="row row-layout" style={{height:"100%!important"}}>
                     <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse navbarAdmin">
-                    <div className="position-sticky pt-3 region-nav">
-                        <ul className="nav flex-column">
-                        {/* <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#3">
-                            Dashboard 
-                            </a>
-                        </li> */}
-                        <li className="nav-item">
-                            <a className="nav-link" href="/admin/index/acollida">
-                            {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file" aria-hidden="true"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg> */}
-                            Acollida
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/admin/index/menjador">
-                            {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file" aria-hidden="true"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg> */}
-                            Menjador
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/admin/index/comissions">
-                            {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart" aria-hidden="true"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> */}
-                            Comissions
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/admin/index/extraescolars">
-                            {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> */}
-                            Extraescolars
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/admin/index/esdeveniments">
-                            Esdeveniments
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/admin/index/noticies">
-                            Noticies
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#7">
-                            {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg> */}
-                            Reportes
-                            </a>
-                        </li>
-                        </ul>
-                
-                        
-                    </div>
+                        <div className="position-sticky pt-3 region-nav">
+                            <ul className="nav flex-column">
+                            {/* <li className="nav-item">
+                                <a className="nav-link active" aria-current="page" href="#3">
+                                Dashboard 
+                                </a>
+                            </li> */}
+                            <li className="nav-item dropdown">
+                                <a className="nav-link dropdown-toggle" href="#home-collapse" id="navbarQuiSomDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <svg className="bi" width="30" height="24"><use xlinkHref={`${Icons}#people-fill`}></use></svg>L'afa
+                                </a>
+                                <ul className="dropdown-menu" aria-labelledby="navbarQuiSomDropdown">
+                                    <li><a href="/quisom" className="dropdown-item">Qui som</a></li>
+                                    <li className="nav-item">
+                                        <a className="nav-link" href="/admin/index/comissions">
+                                        {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart" aria-hidden="true"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> */}
+                                        Comissions
+                                        </a>
+                                    </li>
+                                    {/* <li><a href="/comissions" className="dropdown-item">Comissions</a></li> */}
+                                    <li><a href="/fer-se-soci" className="dropdown-item">Fer-se-soci</a></li>
+                                    <li><a href="/contacta-ns" className="dropdown-item">Contacta'ns</a></li>
+                                </ul>
+                            </li>
+                            <li className="nav-item dropdown">
+                                <a className="nav-link dropdown-toggle" href="#serveis-collapse" id="navbarServeisDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <svg className="bi" width="30" height="24"><use xlinkHref={`${Icons}#folder2`}></use></svg>Serveis
+                                </a>
+                                <ul className="dropdown-menu">
+                                    <li className="nav-item">
+                                        <a className="nav-link" href="/admin/index/acollida">
+                                        {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file" aria-hidden="true"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg> */}
+                                        Acollida
+                                        </a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a className="nav-link" href="/admin/index/menjador">
+                                        {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file" aria-hidden="true"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg> */}
+                                        Menjador
+                                        </a>
+                                    </li>
+                                    {/* <li><a href="/acollida" className="dropdown-item">Acollida</a></li>
+                                    <li><a href="/menjador" className="dropdown-item">Menjador</a></li> */}
+                                    <li className="nav-item">
+                                        <a className="nav-link" href="/admin/index/extraescolars">
+                                        {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> */}
+                                        Extraescolars
+                                        </a>
+                                    </li>
+                                    {/* <li><a href="/extraescolars" className="dropdown-item">Extraescolars</a></li> */}
+                                    <li><a href="fg" className="dropdown-item">Equipament</a></li>
+                                    <li><a href="/casaldestiu" className="dropdown-item">Casal d'estiu</a></li>
+                                    <li><a href="/tardesestiu" className="dropdown-item">Tardes de juny</a></li>
+                                </ul>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/admin/index/esdeveniments">
+                                Esdeveniments
+                                </a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/admin/index/noticies">
+                                Noticies
+                                </a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#7">
+                                {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg> */}
+                                Reportes
+                                </a>
+                            </li>
+                            </ul>
+                        </div>
                     </nav>
                 
                     <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div className="chartjs-size-monitor"><div className="chartjs-size-monitor-expand"><div className=""></div></div><div className="chartjs-size-monitor-shrink"><div className=""></div></div></div>
