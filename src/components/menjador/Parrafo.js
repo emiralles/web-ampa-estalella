@@ -6,10 +6,10 @@ function Parrafo({data,componentcall, handleEdit, handleRemove}) {
             return(
                 <div className="row g-0">
                     <div className="col-6">
-                        <a href="#ass" name={data.uid} onClick={handleEdit} className="nav-link px-1" role="button" aria-disabled="true">Editar</a>
+                        <a href="#ass" name={data.uid} onClick={handleEdit} className="nav-link px-1 style-button-download" role="button" aria-disabled="true">Editar</a>
                     </div>
                     <div className="col-6">
-                        <a href="#ass" name={data.uid} onClick={handleRemove} className="nav-link px-1" role="button" aria-disabled="true">Eliminar</a>
+                        <a href="#ass" name={data.uid} onClick={handleRemove} className="nav-link px-1 style-button-download" role="button" aria-disabled="true">Eliminar</a>
                     </div>
                 </div>
             )    

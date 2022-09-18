@@ -13,6 +13,7 @@ import Extraescolars from "./views/serveis/ViewExtraescolars";
 import Login from "./views/login/ViewLogin";
 import WebPage from "./components/webpage/WebPage";
 import LayoutAdmin from "./views/layout-admin/ViewLayoutAdmin";
+import FormulariEdicioQuiSom from "./views/formularis-edicio-apartados/View-edicio-QuiSom";
 import FormulariEdicioMenjador from "./views/formularis-edicio-apartados/View-edicio-menjador";
 import FormulariEdicioAcollida from "./views/formularis-edicio-apartados/View-edicio-acollida";
 import FormulariEdicioComissions from "./views/formularis-edicio-apartados/View-edicio-comissions";
@@ -33,6 +34,7 @@ function App() {
         <Routes>
             <Route path='/admin/login' element={<Login/>} />
               <Route path='/admin/index' element={<ProtectedRoute children={<LayoutAdmin/>} />}>
+                <Route path='/admin/index/quisom' element={<ProtectedRoute children={<FormulariEdicioQuiSom/>}/>}/>
                 <Route path='/admin/index/menjador' element={<ProtectedRoute children={<FormulariEdicioMenjador/>}/>}/>
                 <Route path='/admin/index/acollida' element={<ProtectedRoute children={<FormulariEdicioAcollida/>}/>}/>
                 <Route path='/admin/index/comissions' element={<ProtectedRoute children={<FormulariEdicioComissions/>}/>}/>
