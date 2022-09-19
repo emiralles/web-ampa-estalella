@@ -5,7 +5,7 @@ import { quisom } from "../../models/quisom";
 // import { useAuth } from "../../context/authContext";
 import { add, updateOneDocOfTpo, getAllCollections, deleteOneDocOfTipo, getOneDocOfTipo} from "../../db/crudDB";
 import Parrafo from "../../components/menjador/Parrafo";
-import { faL } from "@fortawesome/free-solid-svg-icons";
+// import { fal } from "@fortawesome/free-solid-svg-icons";
 
 // let edicio = new menjador("","","",""); 
 let edicio = new quisom("","","","","","", false, false); 

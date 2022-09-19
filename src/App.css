@@ -285,6 +285,10 @@ footer div span.text-muted{
   .featurette-heading {
     font-size: 50px;
   }
+
+  a.nav-link.px-1.style-button-download {
+    width: 50%!important;
+  }
 }
 
 @media (min-width: 62em) {
@@ -292,6 +296,10 @@ footer div span.text-muted{
     margin-top: 2.5rem; 
     /* 7 */
   }
+
+  /* .nav-link.px-1.style-button-download {
+    width: 50%!important;
+  } */
 }
 
 
@@ -377,6 +385,10 @@ footer div span.text-muted{
     text-align: left!important;
     padding-top: 1rem!important;
   }
+
+  a.nav-link.px-1.style-button-download {
+    width: 50%!important;
+  }
 }
 
 .video-responsive {
@@ -399,7 +411,21 @@ footer div span.text-muted{
     text-align: left!important;
     padding-top: 1rem!important;
   }
-  
+  .nav-link.px-1.style-button-download {
+    width: 50%!important;
+  }
+}
+
+@media (max-width:150px) {
+  a.nav-link.px-1.style-button-download {
+    width: 50%!important;
+  }
+}
+
+@media (min-width: 250px) {
+  a.nav-link.px-1.style-button-download {
+    width: 50%!important;
+  }
 }
 
 @media (max-width: 350px) {
@@ -436,7 +462,9 @@ footer div span.text-muted{
     padding-top: 1rem!important;
   }
 
-  
+  a.nav-link.px-1.style-button-download {
+    width: 50%!important;
+  }
 }
 
 /* Contacts */
