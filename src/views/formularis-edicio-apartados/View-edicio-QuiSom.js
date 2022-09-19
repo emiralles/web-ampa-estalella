@@ -176,6 +176,7 @@ function ViewEdicioQuiSom() {
           promesa1.then((resul)=>{
             resul.forEach((doc)=>{
                 let item = new quisom(doc.id,doc.cosHtml,doc.dateCreation,"","","",false,false); 
+                // setTrue(!isTrue);
                 setEdicioQuisom(item);
             })
           })
@@ -228,7 +229,7 @@ function ViewEdicioQuiSom() {
                         </div>
 
                         {
-                            edicioQuisom && isTrue ?
+                            edicioQuisom ?
                             <div className=" m-2 p-4">
                                 <Parrafo data={edicioQuisom} handleRemove={handleRemove} handleEdit={handleEdit} componentcall={origen} />
                             </div>:""
