@@ -5,7 +5,7 @@ import { menjador } from "../../models/menjador";
 import { add, updateOneDocOfTpo, getAllCollections, deleteOneDocOfTipo, getOneDocOfTipo} from "../../db/crudDB";
 import Parrafo from "../../components/menjador/Parrafo";
 
-let edicio = new menjador("","","",""); 
+let edicio = new menjador("","","","", true); 
 
 
 let dataMenjador = {
@@ -13,6 +13,7 @@ let dataMenjador = {
     cosHtml:"",
     dateCreation:"",
     iframeYoutube:"",
+    thereIsYoutubeVideo: true,
 }
 
 
@@ -76,19 +77,21 @@ function ViewEdicioMenjador() {
                 let data = editorRef.current.getContent();
                 let auxEvento = edicioMenjador;
                 auxEvento.cosHtml=data;
+                auxEvento.thereIsYoutubeVideo = true;
                 setEdicioMenjador(auxEvento);
                 // console.log(data);
             }
 
             let idCard = inputAux.value;
             
-            let item = new menjador('',edicioMenjador['cosHtml'],edicioMenjador['dateCreation'],edicioMenjador['iframeYoutube']);
-            let itemAux = new menjador('',dataAuxiliar.cosHtml,dataAuxiliar.dateCreation,dataAuxiliar.iframeYoutube);
+            let item = new menjador('',edicioMenjador['cosHtml'],edicioMenjador['dateCreation'],edicioMenjador['iframeYoutube'], true);
+            let itemAux = new menjador('',dataAuxiliar.cosHtml,dataAuxiliar.dateCreation,dataAuxiliar.iframeYoutube, true);
             
             dataMenjador.cosHtml = item.cosHtml !== undefined && item.cosHtml !== "" ? item.cosHtml : itemAux.cosHtml;
             dataMenjador.dateCreation = item.dateCreation !== undefined && item.dateCreation !== "" ? item.dateCreation : itemAux.dateCreation;
             dataMenjador.iframeYoutube = item.iframeYoutube !== undefined && item.iframeYoutube !== "" ? item.iframeYoutube : itemAux.iframeYoutube;
-            
+            dataMenjador.thereIsYoutubeVideo = true;
+
             await updateOneDocOfTpo('menjador',idCard,dataMenjador);
             
             let btnMenjador = document.getElementById('btn-menjador');
@@ -102,6 +105,7 @@ function ViewEdicioMenjador() {
             if (nowDate !== "") {
                 let auxEvento = edicioMenjador;
                 auxEvento.dateCreation=nowDate;
+                auxEvento.thereIsYoutubeVideo=true;
                 setEdicioMenjador(auxEvento);    
             }
             
@@ -109,6 +113,7 @@ function ViewEdicioMenjador() {
                 let data = editorRef.current.getContent();
                 let auxEvento = edicioMenjador;
                 auxEvento.cosHtml=data;
+                auxEvento.thereIsYoutubeVideo=true;
                 setEdicioMenjador(auxEvento);
                 // console.log(data);
             }
@@ -117,7 +122,8 @@ function ViewEdicioMenjador() {
             dataMenjador.cosHtml = edicioMenjador.cosHtml;
             dataMenjador.dateCreation = edicioMenjador.dateCreation;
             dataMenjador.iframeYoutube = edicioMenjador.iframeYoutube;
-            
+            dataMenjador.thereIsYoutubeVideo = true;
+
             await add('menjador',dataMenjador);
             
             handleReset();
@@ -170,7 +176,7 @@ function ViewEdicioMenjador() {
           let promesa1 = getAllCollections('menjador');
           promesa1.then((resul)=>{
             resul.forEach((doc)=>{
-                let item = new menjador(doc.id,doc.cosHtml,doc.dateCreation,doc.iframeYoutube); 
+                let item = new menjador(doc.id,doc.cosHtml,doc.dateCreation,doc.iframeYoutube, true); 
                 setEdicioMenjador(item);
             })
           })
