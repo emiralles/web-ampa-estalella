@@ -1,22 +1,28 @@
 import { useRef, useState, useEffect } from "react";
 import { Editor } from '@tinymce/tinymce-react';
-import { menjador } from "../../models/menjador";
+//import { menjador } from "../../models/menjador";
+import { quisom } from "../../models/quisom";
 // import { useAuth } from "../../context/authContext";
 import { add, updateOneDocOfTpo, getAllCollections, deleteOneDocOfTipo, getOneDocOfTipo} from "../../db/crudDB";
 import Parrafo from "../../components/menjador/Parrafo";
+import { faL } from "@fortawesome/free-solid-svg-icons";
 
-let edicio = new menjador("","","",""); 
+// let edicio = new menjador("","","",""); 
+let edicio = new quisom("","","","","","", false, false); 
 
-
-let dataMenjador = {
+let dataQuisom = {
     uid:"",
     cosHtml:"",
     dateCreation:"",
-    iframeYoutube:"",
+    urlPhoto: "",
+    path: "",
+    namePhoto: "",
+    thereIsUrlPhoto: false,
+    thereIsYoutubeVideo:false,
 }
 
 function ViewEdicioQuiSom() {
-    const[edicioMenjador,setEdicioMenjador] = useState(edicio);
+    const[edicioQuisom,setEdicioQuisom] = useState(edicio);
     // const { user }  = useAuth();
     const [isTrue, setTrue] = useState(false);
     const [dataAuxiliar, setDataAuxiliar] = useState([]);
@@ -25,12 +31,12 @@ function ViewEdicioQuiSom() {
     const editorRef = useRef(null);
     
     const handleChange = ({target:{name,value}}) => {
-        setEdicioMenjador({...edicioMenjador,[name]:value})
+        setEdicioQuisom({...edicioQuisom,[name]:value})
     }
 
     const refresh = ()=>{
         // re-renders the component
-        setEdicioMenjador(edicio);
+        setEdicioQuisom(edicio);
         //window.location.reload(false);
         if (isTrue) {
           setTrue(false);
@@ -66,29 +72,29 @@ function ViewEdicioQuiSom() {
         if (inputAux.value !== "") {
             
             if (nowDate !== "") {
-                let auxEvento = edicioMenjador;
+                let auxEvento = edicioQuisom;
                 auxEvento.dateCreation=nowDate;
-                setEdicioMenjador(auxEvento);    
+                setEdicioQuisom(auxEvento);    
             }
 
             if (editorRef.current) {
                 let data = editorRef.current.getContent();
-                let auxEvento = edicioMenjador;
+                let auxEvento = edicioQuisom;
                 auxEvento.cosHtml=data;
-                setEdicioMenjador(auxEvento);
+                setEdicioQuisom(auxEvento);
                 // console.log(data);
             }
 
             let idCard = inputAux.value;
             
-            let item = new menjador('',edicioMenjador['cosHtml'],edicioMenjador['dateCreation'],edicioMenjador['iframeYoutube']);
-            let itemAux = new menjador('',dataAuxiliar.cosHtml,dataAuxiliar.dateCreation,dataAuxiliar.iframeYoutube);
+            let item = new quisom('',edicioQuisom['cosHtml'],edicioQuisom['dateCreation'],edicioQuisom['urlPhoto'],edicioQuisom['path'],edicioQuisom['namePhoto'], false,false);
+            let itemAux = new quisom('',dataAuxiliar.cosHtml,dataAuxiliar.dateCreation,dataAuxiliar.urlPhoto,dataAuxiliar.path,dataAuxiliar.namePhoto, false,false);
             
-            dataMenjador.cosHtml = item.cosHtml !== undefined && item.cosHtml !== "" ? item.cosHtml : itemAux.cosHtml;
-            dataMenjador.dateCreation = item.dateCreation !== undefined && item.dateCreation !== "" ? item.dateCreation : itemAux.dateCreation;
-            dataMenjador.iframeYoutube = item.iframeYoutube !== undefined && item.iframeYoutube !== "" ? item.iframeYoutube : itemAux.iframeYoutube;
+            dataQuisom.cosHtml = item.cosHtml !== undefined && item.cosHtml !== "" ? item.cosHtml : itemAux.cosHtml;
+            dataQuisom.dateCreation = item.dateCreation !== undefined && item.dateCreation !== "" ? item.dateCreation : itemAux.dateCreation;
+            // dataQuisom.iframeYoutube = item.iframeYoutube !== undefined && item.iframeYoutube !== "" ? item.iframeYoutube : itemAux.iframeYoutube;
             
-            await updateOneDocOfTpo('menjador',idCard,dataMenjador);
+            await updateOneDocOfTpo('quisom',idCard,dataQuisom);
             
             let btnMenjador = document.getElementById('btn-menjador');
             btnMenjador.innerText = "Agregar";
@@ -99,25 +105,25 @@ function ViewEdicioQuiSom() {
         }else{
         
             if (nowDate !== "") {
-                let auxEvento = edicioMenjador;
+                let auxEvento = edicioQuisom;
                 auxEvento.dateCreation=nowDate;
-                setEdicioMenjador(auxEvento);    
+                setEdicioQuisom(auxEvento);    
             }
             
             if (editorRef.current) {
                 let data = editorRef.current.getContent();
-                let auxEvento = edicioMenjador;
+                let auxEvento = edicioQuisom;
                 auxEvento.cosHtml=data;
-                setEdicioMenjador(auxEvento);
+                setEdicioQuisom(auxEvento);
                 // console.log(data);
             }
 
             
-            dataMenjador.cosHtml = edicioMenjador.cosHtml;
-            dataMenjador.dateCreation = edicioMenjador.dateCreation;
-            dataMenjador.iframeYoutube = edicioMenjador.iframeYoutube;
+            dataQuisom.cosHtml = edicioQuisom.cosHtml;
+            dataQuisom.dateCreation = edicioQuisom.dateCreation;
+            // dataQuisom.iframeYoutube = edicioQuisom.iframeYoutube;
             
-            await add('menjador',dataMenjador);
+            await add('quisom',dataQuisom);
             
             handleReset();
             refresh();
@@ -132,10 +138,10 @@ function ViewEdicioQuiSom() {
         
         // let inputparraf = document.getElementById('tinymce');
         let psd = document.getElementById('container-body-parraph');
-        let textPhoto = document.getElementById('iframeYoutube');
+        // let textPhoto = document.getElementById('iframeYoutube');
         let inputAux = document.getElementById('input-aux');
         
-        let promise = getOneDocOfTipo('menjador',name);
+        let promise = getOneDocOfTipo('quisom',name);
         promise.then((result)=>{
           
             let data = result.data();
@@ -143,7 +149,7 @@ function ViewEdicioQuiSom() {
           
             setDataAuxiliar(data);
 
-            textPhoto.value = data.iframeYoutube;
+            // textPhoto.value = data.iframeYoutube;
             inputAux.value = data.id;
             psd.children[1].children[0].children[1].children[0].children[0].contentDocument.children[0].children['tinymce'].innerHTML=data.cosHtml;
             // inputparraf.innerHTML = data.cosHtml;
@@ -158,7 +164,7 @@ function ViewEdicioQuiSom() {
     const handleRemove = ({target:{name}}) =>{
         let arrStr = name.split(" - ");
         let id = arrStr[0];
-        deleteOneDocOfTipo('esdeveniment',id);
+        deleteOneDocOfTipo('quisom',id);
         refresh();
     }
 
@@ -169,8 +175,8 @@ function ViewEdicioQuiSom() {
           let promesa1 = getAllCollections('quisom');
           promesa1.then((resul)=>{
             resul.forEach((doc)=>{
-                let item = new menjador(doc.id,doc.cosHtml,doc.dateCreation,doc.iframeYoutube); 
-                setEdicioMenjador(item);
+                let item = new quisom(doc.id,doc.cosHtml,doc.dateCreation,"","","",false,false); 
+                setEdicioQuisom(item);
             })
           })
           
@@ -222,9 +228,9 @@ function ViewEdicioQuiSom() {
                         </div>
 
                         {
-                            edicioMenjador && isTrue ?
+                            edicioQuisom && isTrue ?
                             <div className=" m-2 p-4">
-                                <Parrafo data={edicioMenjador} handleRemove={handleRemove} handleEdit={handleEdit} componentcall={origen} />
+                                <Parrafo data={edicioQuisom} handleRemove={handleRemove} handleEdit={handleEdit} componentcall={origen} />
                             </div>:""
                         }
                         
