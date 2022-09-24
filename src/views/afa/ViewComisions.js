@@ -1,10 +1,40 @@
 import axios from "axios";
-import img1 from "./images/IMG_1042.JPG";
-import img2 from "./images/IMG_1078.JPG";
-import img3 from "./images/IMG_1057.JPG";
+// import img1 from "./images/IMG_1042.JPG";
+// import img2 from "./images/IMG_1078.JPG";
+// import img3 from "./images/IMG_1057.JPG";
+import { useState, useEffect } from "react";
+import { getAllCollections, getUrlImage} from "../../db/crudDB";
+import { comissio } from "../../models/comissio";
+import ListRectangleCard from "../../components/card/ListRectangleCard";
 
 
 function ViewComisions() {
+
+    let origen = "negoci";
+    const [listComisiones,setListComisiones] = useState([]);
+    // const [isTrue, setTrue] = useState(false);
+
+    useEffect(()=>{
+   
+        const handleLoad = async () =>{
+        
+          let promesa1 = getAllCollections('comissio');
+          promesa1.then((resul)=>{
+            resul.forEach((doc)=>{
+              let imgUrl = getUrlImage(doc.path);
+              imgUrl.then((rstUrl)=>{
+                let item = new comissio(doc.id,doc.path,"",doc.title,doc.cosHtml,doc.dateCreation,doc.namePhoto,rstUrl); 
+                setListComisiones(arr => [...arr, item]);
+              });
+            })
+          })
+          
+        }
+        
+        handleLoad();
+    
+    },[]);
+
 
     let EnviarMail = (e) => {
         e.preventDefault();
@@ -41,7 +71,7 @@ function ViewComisions() {
 
     return (
         <>
-            <hr className="featurette-divider"></hr>
+            {/* <hr className="featurette-divider"></hr>
                 <div className="row featurette">
                     <div className="col-md-7">
                         <h2 className="featurette-heading">Extraescolars</h2>
@@ -49,7 +79,6 @@ function ViewComisions() {
                         <p className="lead">A partir dels interessos de l’alumnat i de les seves famílies, fem una proposta d’activitats a l’AFA, qui avalua i aprova tant les activitats ofertades com el monitoratge i/o els proveïdors d’aquestes. Ens encarreguem de la planificació dels horaris i de supervisar el correcte desenvolupament de les activitats. Juntament amb aquestes activitats també gestionem i supervisem el servei d’acollida del matí (8h-9h).</p>
                     </div>
                     <div className="col-md-5">
-                        {/* <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={carnestoltes} alt=""/> */}
                         <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
                     </div>
                 </div>
@@ -61,7 +90,6 @@ function ViewComisions() {
                     </div>
                     <div className="col-md-5 order-md-1">
                         <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={img1} alt=""/>
-                        {/* <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> */}
                     </div>
                 </div>
             <hr className="featurette-divider"></hr>
@@ -73,7 +101,6 @@ function ViewComisions() {
                     </div>
                     <div className="col-md-5">
                         <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={img2} alt=""/>
-                        {/* <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> */}
                     </div>
                 </div>
             <hr className="featurette-divider"></hr>
@@ -85,7 +112,6 @@ function ViewComisions() {
                     </div>
                     <div className="col-md-5 order-md-1">
                         <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={img3} alt=""/>
-                        {/* <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> */}
                     </div>
                 </div>
             <hr className="featurette-divider"></hr>
@@ -97,11 +123,12 @@ function ViewComisions() {
                         <p className="lead">La comissió, a part del menjador també gestiona els serveis d’acollida matinal i de tardes.</p>
                     </div>
                     <div className="col-md-5">
-                        {/* <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={carnestoltes} alt=""/> */}
                         <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
                     </div>
-                </div>
-            
+                </div> */}
+            {
+                <ListRectangleCard arrayData={listComisiones} componentCall={origen} nameList="Listat d'Comissions"/>
+            }
             <hr className="featurette-divider"></hr>
             <p className="lead">L’AFA no té cap sentit si les famílies no s’hi involucren. Hi ha moltes formes de col·laborar, que s’adapten a les possibilitats i el temps de cadascú. Si vols participar, escriu-nos.</p>
             <hr className="featurette-divider"></hr>

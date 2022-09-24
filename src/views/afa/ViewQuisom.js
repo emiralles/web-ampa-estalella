@@ -1,9 +1,47 @@
+import { useState, useEffect } from "react";
+import {quisom} from "../../models/quisom";
+import {getAllCollections} from "../../db/crudDB";
+import Parrafo from "../../components/menjador/Parrafo";
+
+let edicio = new quisom("","","","","","", false, false); 
 
 function ViewQuisom() {
+
+    const[edicioQuisom,setEdicioQuisom] = useState(edicio);
+    // const [isTrue, setTrue] = useState(false);
+    
+    let origen = "quisom";
+
+    useEffect(()=>{
+
+        const handleLoad = async () =>{
+        
+            let promesa1 = getAllCollections('quisom');
+            promesa1.then((resul)=>{
+            resul.forEach((doc)=>{
+                let item = new quisom(doc.id,doc.cosHtml,doc.dateCreation,"","","",false,false); 
+                // setTrue(!isTrue);
+                setEdicioQuisom(item);
+            })
+            })
+            
+        }
+        
+        handleLoad();
+
+    },[]);
+  
+
   return (
     <>
-        <hr className="featurette-divider"></hr>
-        <div className="containerH1"><h1>Qui som</h1></div>
+        {/* <hr className="featurette-divider"></hr> */}
+        {
+            edicioQuisom ?
+            <div className=" m-2 p-4">
+                <Parrafo data={edicioQuisom} componentcall={origen} />
+            </div>:""
+        }
+        {/* <div className="containerH1"><h1>Qui som</h1></div>
         <p className="fs-5 col-md-12">L’AFA de l’Escola Estalella i Graells és l’associació formada per les mares i pares dels alumnes de l’escola que voluntàriament ho desitgin. És una associació sense ànim de lucre, constituïda legalment i està representada per una Junta que a la vegada està dividida en comissions de treballs segons les tasques i/o activitats.</p>
         <hr className="col-3 col-md-12 mb-5"></hr>
         <div className="row g-5">
@@ -30,7 +68,7 @@ function ViewQuisom() {
                 </ul>
             </div>
         </div>
-        <hr className="featurette-divider"></hr>
+        <hr className="featurette-divider"></hr> */}
     </>
   )
 }

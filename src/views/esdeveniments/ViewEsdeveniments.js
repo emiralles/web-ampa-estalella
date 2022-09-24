@@ -4,16 +4,16 @@ import { esdeveniment } from "../../models/esdeveniment";
 import ListRectangleCard from "../../components/card/ListRectangleCard";
 
 
-import carnestoltes from "./images/carnestoltes.jpg";
-import santjordi from "./images/SantJordi2022.JPG";
+// import carnestoltes from "./images/carnestoltes.jpg";
+// import santjordi from "./images/SantJordi2022.JPG";
 
 
 
 function ViewEsdeveniments() {
 
-    let origen = "negoci";
+    let origen = "esdeveniments";
     const [listEsdeveniments,setListEsdeveniments] = useState([]);
-    const [isTrue, setTrue] = useState(false);
+    // const [isTrue, setTrue] = useState(false);
 
     useEffect(()=>{
    
@@ -34,14 +34,14 @@ function ViewEsdeveniments() {
         
         handleLoad();
     
-    },[isTrue]);
+    },[]);
 
     return (
         <>
             {
                 <ListRectangleCard arrayData={listEsdeveniments} componentCall={origen}/>
             }
-            <hr className="featurette-divider"></hr>
+            {/* <hr className="featurette-divider"></hr>
                 <div className="row featurette">
                     <div className="col-md-7">
                         <h2 className="featurette-heading"><span className="text-muted">Festa de fi de curs.</span></h2>
@@ -50,8 +50,6 @@ function ViewEsdeveniments() {
                     </div>
                     <div className="col-md-5">
                         <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={carnestoltes} alt=""/>
-                        {/* <
-                        svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></> */}
                     </div>
                 </div>
             <hr className="featurette-divider"></hr>
@@ -62,7 +60,6 @@ function ViewEsdeveniments() {
                     </div>
                     <div className="col-md-5 order-md-1">
                         <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={carnestoltes} alt=""/>
-                        {/* <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> */}
                     </div>
                 </div>
             <hr className="featurette-divider"></hr>
@@ -74,10 +71,9 @@ function ViewEsdeveniments() {
                     </div>
                     <div className="col-md-5">
                         <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={santjordi} alt=""/>
-                        {/* <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> */}
                     </div>
                 </div>
-            <hr className="featurette-divider"></hr>
+            <hr className="featurette-divider"></hr> */}
         </>
     )
 }

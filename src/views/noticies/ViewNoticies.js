@@ -1,13 +1,13 @@
 import { getAllCollections, getUrlImage } from "../../db/crudDB";
 import { noticie } from "../../models/noticie";
-import ramon from "./images/ramon-grau-1r.jpg";
-import dones from "./images/dones.jpg";
-import lenguaCatalana from "./images/InmersioLenguaCatalana.jpg";
+// import ramon from "./images/ramon-grau-1r.jpg";
+// import dones from "./images/dones.jpg";
+// import lenguaCatalana from "./images/InmersioLenguaCatalana.jpg";
 import { useEffect, useState } from "react";
 import ListRectangleCard from "../../components/card/ListRectangleCard";
 
 function ViewNoticies() {
-    let origen = "vistaUsuario";
+    let origen = "noticies"; //vistaUsuario
     const [listNoticies,setListNoticies]=useState([]);
 
     useEffect(()=>{
@@ -35,7 +35,7 @@ function ViewNoticies() {
             {
                 <ListRectangleCard arrayData={listNoticies} componentCall={origen} nameList="Listat d'Noticies"/>
             }
-            <hr className="featurette-divider"></hr>
+            {/* <hr className="featurette-divider"></hr>
                 <a href="/gal/Eyep6plhvLxzvCWFiGM0">
                     <div className="row featurette">
                         <div className="col-md-7">
@@ -44,7 +44,6 @@ function ViewNoticies() {
                             <p className="lead">Vali la valenta 2 és un llibre educatiu per als menuts, que reivindica a cada capítol els valors que ens fan créixer i ser més bones persones, com ara la voluntat d’entesa i el respecte als altres i al medi ambient.</p>
                         </div>
                         <div className="col-md-5">
-                            {/* <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> */}
                             <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={ramon} alt=""/>
                         </div>
                     </div>
@@ -57,7 +56,6 @@ function ViewNoticies() {
                     </div>
                     <div className="col-md-5 order-md-1">
                         <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={dones} alt=""/>
-                        {/* <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> */}
                     </div>
                 </div>
             <hr className="featurette-divider"></hr>
@@ -69,10 +67,9 @@ function ViewNoticies() {
                     </div>
                     <div className="col-md-5">
                         <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={lenguaCatalana} alt=""/>
-                        {/* <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> */}
                     </div>
                 </div>
-            <hr className="featurette-divider"></hr>
+            <hr className="featurette-divider"></hr> */}
         </>
      );
 }

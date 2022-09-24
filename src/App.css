@@ -1,12 +1,3 @@
-a:link { text-decoration: none; color:white!important}
-a:visited { text-decoration: none; color:white!important}
-a:hover { text-decoration: none; color:black!important}
-a:active { text-decoration: none; color:black!important}
-.title-a-icon{
-  color: black!important;
-  text-decoration: none!important;
-  text-decoration-color: none!important;
-}
 
 /* galeria de imagenes */
 .width-images-gallery{
@@ -516,4 +507,8 @@ footer div span.text-muted{
 
 .row.row-layout{
   height: 100%!important;
+}
+
+.lead.p-data{
+  color: black!important;
 }
