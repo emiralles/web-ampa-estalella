@@ -277,8 +277,8 @@ function ViewEdicioNoticies() {
             })
         })
 
-        deleteOneDocOfTipo('noticie',id);
         removeObject(pathPhoto);
+        deleteOneDocOfTipo('noticie',id);
         refresh();
         titulo.focus();
     }

@@ -181,8 +181,8 @@ function ViewEdicioEsdeveniments() {
         let id = arrStr[0];
         let pathPhoto = arrStr[1];
         let titulo = document.getElementById('title');
-        deleteOneDocOfTipo('esdeveniment',id);
         removeObject(pathPhoto);
+        deleteOneDocOfTipo('esdeveniment',id);
         refresh();
         titulo.focus();
     }

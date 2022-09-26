@@ -21,7 +21,7 @@ let dataEvento = {
 function ViewEdicioCarousel() {
     const[esdevenim,setEsdevenim] = useState(evento);
     const { user }  = useAuth();
-    
+    const[isTrue,setTrue] = useState(false);
     const [listEsdeveniments,setListEsdeveniments] = useState([]);
     const [dataAuxiliar, setDataAuxiliar] = useState([]);
     let origen = "admin";
@@ -62,7 +62,7 @@ function ViewEdicioCarousel() {
             dataEvento.namePhoto = item.namePhoto !== undefined && item.namePhoto !== "" ? item.namePhoto : itemAux.namePhoto;
             dataEvento.urlPhoto = esdevenim["fileupload"] !== undefined ? "" : itemAux.urlPhoto;
 
-            await updateOneDocOfTpo('esdeveniment',idCard,dataEvento);
+            await updateOneDocOfTpo('carousel',idCard,dataEvento);
             
             if (esdevenim["fileupload"] !== undefined) {
                 let textPhoto = document.getElementById('textPhoto');
@@ -71,7 +71,7 @@ function ViewEdicioCarousel() {
                 const dataImg = await uploadFile(esdevenim["fileupload"],esdevenim["fileupload"].name,idCard,user.uid);
                 dataEvento.namePhoto = esdevenim["fileupload"].name;
                 dataEvento.path = dataImg.metadata.fullPath;
-                await updateOneDocOfTpo('esdeveniment',idCard,dataEvento);    
+                await updateOneDocOfTpo('carousel',idCard,dataEvento);    
             }
             
             let btnEsdeveniment = document.getElementById('btn-esdeveniment');
@@ -88,16 +88,15 @@ function ViewEdicioCarousel() {
                 setEsdevenim(auxEvento);    
             }
             
-            dataEvento.cosHtml = esdevenim.cosHtml;
             dataEvento.dateCreation = esdevenim.dateCreation;
             dataEvento.namePhoto = esdevenim.fileupload.name;
             dataEvento.title = esdevenim.title;
             
-            const idData = await add('esdeveniment',dataEvento);
+            const idData = await add('carousel',dataEvento);
             if (idData !== undefined && idData !== "") {
                 const dataImg = await uploadFile(esdevenim.fileupload,dataEvento.namePhoto,idData,user.uid);
                 dataEvento.path = dataImg.metadata.fullPath;
-                await updateOneDocOfTpo('esdeveniment',idData,dataEvento);  
+                await updateOneDocOfTpo('carousel',idData,dataEvento);  
             }
 
             handleReset();
@@ -109,22 +108,22 @@ function ViewEdicioCarousel() {
     const refresh = ()=>{
         // re-renders the component
         setListEsdeveniments([]);
-        //window.location.reload(false);
-        // if (isTrue) {
-        //   setTrue(false);
-        // }else{
-        //   setTrue(true);
-        // }
+        window.location.reload(false);
+        if (isTrue) {
+          setTrue(false);
+        }else{
+          setTrue(true);
+        }
         
     }
       
     
     const handleReset = () => {
-        Array.from(document.querySelectorAll("input")).forEach(
-            input => (
-            input.type === "radio" ?  input.checked = false : input.type === "checkbox" ? input.checked = false :input.value = "" 
-            )
-        );
+        // Array.from(document.querySelectorAll("input")).forEach(
+        //     input => (
+        //     input.type === "radio" ?  input.checked = false : input.type === "checkbox" ? input.checked = false :input.value = "" 
+        //     )
+        // );
 
         Array.from(document.querySelectorAll("textarea")).forEach(
             textarea => (textarea.value = "")
@@ -141,7 +140,7 @@ function ViewEdicioCarousel() {
         let textPhoto = document.getElementById('textPhoto');
         let inputAux = document.getElementById('input-aux');
         
-        let promise = getOneDocOfTipo('esdeveniment',name);
+        let promise = getOneDocOfTipo('carousel',name);
         promise.then((result)=>{
           
             let data = result.data();
@@ -168,8 +167,8 @@ function ViewEdicioCarousel() {
         let id = arrStr[0];
         let pathPhoto = arrStr[1];
         let titulo = document.getElementById('title');
-        deleteOneDocOfTipo('esdeveniment',id);
         removeObject(pathPhoto);
+        deleteOneDocOfTipo('carousel',id);
         refresh();
         titulo.focus();
     }
@@ -178,7 +177,7 @@ function ViewEdicioCarousel() {
    
         const handleLoad = async () =>{
         
-          let promesa1 = getAllCollections('esdeveniment');
+          let promesa1 = getAllCollections('carousel');
           promesa1.then((resul)=>{
             resul.forEach((doc)=>{
               let imgUrl = getUrlImage(doc.path);

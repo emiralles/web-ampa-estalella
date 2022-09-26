@@ -176,8 +176,8 @@ function ViewEdicioComissions() {
         let id = arrStr[0];
         let pathPhoto = arrStr[1];
         let titulo = document.getElementById('title');
-        deleteOneDocOfTipo('comissio',id);
         removeObject(pathPhoto);
+        deleteOneDocOfTipo('comissio',id);
         refresh();
         titulo.focus();
     }

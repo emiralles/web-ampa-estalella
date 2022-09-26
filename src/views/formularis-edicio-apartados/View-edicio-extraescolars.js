@@ -141,8 +141,8 @@ function ViewEdicioExtraescolars() {
     let id = arrStr[0];
     let pathPhoto = arrStr[1];
     let titulo = document.getElementById('titulo');
-    deleteOneDocOfTipo('extraescolar',id);
     removeObject(pathPhoto);
+    deleteOneDocOfTipo('extraescolar',id);
     refresh();
     titulo.focus();
   }
