@@ -43,6 +43,11 @@ function ViewLayoutAdmin() {
                                 Dashboard 
                                 </a>
                             </li> */}
+                            <li className="nav-item">
+                                <a className="nav-link" href="/admin/index/carousel">
+                                Carousel
+                                </a>
+                            </li>
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#home-collapse" id="navbarQuiSomDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <svg className="bi" width="30" height="24"><use xlinkHref={`${Icons}#people-fill`}></use></svg>L'afa

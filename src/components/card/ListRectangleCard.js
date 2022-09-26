@@ -1,4 +1,5 @@
 import RectangleCard from "./RectangleCard";
+import Card from "./Card";
 
 function ListRectangleCard({arrayData, handleEdit, handleRemove, componentCall, nameList}) {
     if (!arrayData.length) return <h3>No existe ningun registro</h3>;    
@@ -10,9 +11,16 @@ function ListRectangleCard({arrayData, handleEdit, handleRemove, componentCall, 
             <div className="container mb-3">
             <div className="row">
                 {
-                    arrayData.map((esdevenim,index) => (
-                        <RectangleCard Id={esdevenim.uid} arrayData={esdevenim.cosHtml} path={esdevenim.path} classnameBody={index%2 === 0 ? "col-md-7":"col-md-7 order-md-2"} classnameImage={index%2 === 0 ? "col-md-5":"col-md-5 order-md-1"} handleEdit={handleEdit} key={esdevenim.uid} title={esdevenim.title}  urlImage={esdevenim.urlPhoto} handleRemove={handleRemove} componentcall={componentCall}/> 
-                    ))
+                    arrayData.map((esdevenim,index) => {
+                        
+                            if(nameList === "Listat d'Imatges el Carousel") {
+                              return <Card Id={esdevenim.uid} path={esdevenim.path} classnameBody={index%2 === 0 ? "col-md-7":"col-md-7 order-md-2"} classnameImage={index%2 === 0 ? "col-md-5":"col-md-5 order-md-1"} handleEdit={handleEdit} key={esdevenim.uid} title={esdevenim.title}  urlImage={esdevenim.urlPhoto} handleRemove={handleRemove} componentcall={componentCall}/>;
+                            }
+                            else
+                            {
+                              return <RectangleCard Id={esdevenim.uid} arrayData={esdevenim.cosHtml} path={esdevenim.path} classnameBody={index%2 === 0 ? "col-md-7":"col-md-7 order-md-2"} classnameImage={index%2 === 0 ? "col-md-5":"col-md-5 order-md-1"} handleEdit={handleEdit} key={esdevenim.uid} title={esdevenim.title}  urlImage={esdevenim.urlPhoto} handleRemove={handleRemove} componentcall={componentCall}/>;
+                            }
+                        })
                 }
             </div>
             </div>

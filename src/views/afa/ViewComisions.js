@@ -155,11 +155,17 @@ function ViewComisions() {
                             <div className="mb-3">
                                 <select class="form-select" aria-label="Default select example">
                                     <option selected>Seleccione una opciò</option>
-                                    <option value="1">Equipament</option>
+                                    {
+                                        listComisiones.map((element,index) => (
+                                            <option value={index+1}>{element.title}</option> 
+                                        ))
+                                    }
+                                    
+                                    {/* <option value="1">Equipament</option>
                                     <option value="2">Extraescolars</option>
                                     <option value="3">Tic</option>
                                     <option value="3">Menjador</option>
-                                    <option value="3">Llibres</option>
+                                    <option value="3">Llibres</option> */}
                                 </select>
                             </div>
                             <button type="submit" className="btn btn-primary">Aceptar</button>
