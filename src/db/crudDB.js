@@ -61,7 +61,8 @@ export const deleteOneDocOfTipo = async (tipo,uid) => {
         // vsd = colRef.firestore;
         
         // .firestore.doc(uid).delete();
-        const rstUpdate = await deleteDoc(doc(colRef,uid)).then((objR) => {
+        // const rstUpdate = 
+        deleteDoc(doc(colRef,uid)).then((objR) => {
             // File deleted successfully
             return objR;
         }).catch((error) => {
@@ -69,7 +70,7 @@ export const deleteOneDocOfTipo = async (tipo,uid) => {
             console.log(error);
         });
         //const rstUpdate = await deleteDoc(doc(db,tipo,uid));
-        console.log(rstUpdate);
+        //console.log(rstUpdate);
     } catch (error) {
         console.log(error);
     }
