@@ -38,20 +38,50 @@ export const getUrlImage = async (routeRef) =>{
 export const removeObject = async (routeRef) =>{
     try {
         const iref = ref(storage,routeRef);
-        let objectRemove = await deleteObject(iref);
-        return objectRemove;
+        deleteObject(iref).then((objR) => {
+            // File deleted successfully
+            return objR;
+        }).catch((error) => {
+            // Uh-oh, an error occurred!
+            console.log(error);
+        });
+        // let objectRemove = await deleteObject(iref);
+        // return objectRemove;
     } catch (error) {
         console.log(error);
     }
 }
 
 export const onGetListTipo = (tipo,callback) => onSnapshot(collection(db,tipo),callback);
-export const deleteOneDocOfTipo = async (tipo,uid) => await deleteDoc(doc(db,tipo,uid));
+
+export const deleteOneDocOfTipo = async (tipo,uid) => {
+    try {
+        const colRef = collection(db, tipo);
+        
+        // vsd = colRef.firestore;
+        
+        // .firestore.doc(uid).delete();
+        const rstUpdate = await deleteDoc(doc(colRef,uid)).then((objR) => {
+            // File deleted successfully
+            return objR;
+        }).catch((error) => {
+            // Uh-oh, an error occurred!
+            console.log(error);
+        });
+        //const rstUpdate = await deleteDoc(doc(db,tipo,uid));
+        console.log(rstUpdate);
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 export const getOneDocOfTipo = async (tipo,uid) => await getDoc(doc(db,tipo,uid));
 
 export const updateOneDocOfTpo = async (tipo,uid,modelo) => {
     try {
-        const rstUpdate = await updateDoc(doc(db,tipo,uid),modelo);
+        const colRef = collection(db, tipo);
+        const rstUpdate = await updateDoc(doc(colRef, uid), modelo);
+        //const rstUpdate = await updateDoc(doc(db,tipo,uid),modelo);
         console.log(rstUpdate);
     } catch (error) {
         console.log(error);

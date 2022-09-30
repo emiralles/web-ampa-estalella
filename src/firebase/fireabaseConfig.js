@@ -6,7 +6,7 @@ import { getStorage, ref } from "firebase/storage";
 
 
 export const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
+export const db = getFirestore();
 export const auth = getAuth(app);
 export const storage = getStorage(app);
 export const imagesRef = ref(storage, 'images');
