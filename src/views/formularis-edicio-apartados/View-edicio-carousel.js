@@ -167,9 +167,9 @@ function ViewEdicioCarousel() {
         let id = arrStr[0];
         let pathPhoto = arrStr[1];
         let titulo = document.getElementById('title');
-        removeObject(pathPhoto);
-        deleteOneDocOfTipo('carousel',id);
         
+        deleteOneDocOfTipo('carousel',id);
+        removeObject(pathPhoto);
         refresh();
         titulo.focus();
     }
