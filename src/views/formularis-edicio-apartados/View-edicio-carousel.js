@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { uploadFile, add, updateOneDocOfTpo, getAllCollections, getUrlImage, removeObject, deleteOneDocOfTipo, getOneDocOfTipo} from "../../db/crudDB";
+import { deleteDocumentandImage, uploadFile, add, updateOneDocOfTpo, getAllCollections, getUrlImage, removeObject, getOneDocOfTipo} from "../../db/crudDB";
+//, deleteOneDocOfTipo
 import { useAuth } from "../../context/authContext";
 import { itemcarousel } from "../../models/itemCarousel";
 import ListRectangleCard from "../../components/card/ListRectangleCard";
@@ -162,16 +163,30 @@ function ViewEdicioCarousel() {
     
     }
     
-    const handleRemove = ({target:{name}}) =>{
+    const handleRemove = async ({target:{name}}) =>{
         let arrStr = name.split(" - ");
         let id = arrStr[0];
         let pathPhoto = arrStr[1];
         let titulo = document.getElementById('title');
         
-        deleteOneDocOfTipo('carousel',id);
-        removeObject(pathPhoto);
-        refresh();
-        titulo.focus();
+        try {
+            await deleteDocumentandImage('carousel', id, pathPhoto);    
+            refresh();
+            titulo.focus();
+        } catch (error) {
+            console.log(error)
+        }
+        
+        // deleteOneDocOfTipo('carousel',id).then(() => {
+        //     console.log("Entire Document has been deleted successfully.");
+        //     removeObject(pathPhoto).then(() =>{
+        //         refresh();
+        //         titulo.focus();
+        //     });
+        // }).catch(error => {
+        //     console.log(error);
+        // });
+        
     }
     
     useEffect(()=>{

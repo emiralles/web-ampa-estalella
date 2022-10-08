@@ -36,7 +36,7 @@ export const getUrlImage = async (routeRef) =>{
 }
 
 export const removeObject = async (routeRef) =>{
-    try {
+    //try {
         const iref = ref(storage,routeRef);
         deleteObject(iref).then((objR) => {
             // File deleted successfully
@@ -47,17 +47,38 @@ export const removeObject = async (routeRef) =>{
         });
         // let objectRemove = await deleteObject(iref);
         // return objectRemove;
-    } catch (error) {
-        console.log(error);
-    }
+    // } catch (error) {
+    //     console.log(error);
+    // }
 }
 
 export const onGetListTipo = (tipo,callback) => onSnapshot(collection(db,tipo),callback);
 
+export const deleteDocumentandImage = async(tipo,uid,routeRef) =>{
+    let stRootDocument = "";
+        stRootDocument = `/${tipo}/${uid}`;
+        const refCol = doc(db,stRootDocument);
+        
+        deleteDoc(refCol)
+        .then(() => {
+            const iref = ref(storage,routeRef);
+            deleteObject(iref).then((objR) => {
+                console.log("Entire Document has been deleted successfully.")
+                return objR;
+            }).catch((error) => {
+                console.log(error);
+            });
+            
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
+ 
 export const deleteOneDocOfTipo = async (tipo,uid) => {
-    try {
+    //try {
         //const colRef = collection(db, tipo);
-        // const refCol = doc(db,tipo,uid);
+        // const refCol = doc(db,tipo,uid); 
         // var jobskill_query = await db.collection('carousel').where('id','==','xg4cxSPQ4VDCijZGUTk4');
         //     jobskill_query.get().then(function(querySnapshot) {
         //         querySnapshot.forEach(function(doc) {
@@ -92,9 +113,9 @@ export const deleteOneDocOfTipo = async (tipo,uid) => {
         // // });
         //const rstUpdate = await deleteDoc(doc(db,tipo,uid));
         //console.log(rstUpdate);
-    } catch (error) {
-        console.log(error);
-    }
+    // } catch (error) {
+    //     console.log(error);
+    // }
 };
 
 export const getOneDocOfTipo = async (tipo,uid) => await getDoc(doc(db,tipo,uid));
