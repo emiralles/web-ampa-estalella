@@ -1,9 +1,14 @@
 import { useState, useEffect } from "react";
+import {quisom} from "../../models/quisom";
+import {getAllCollections} from "../../db/crudDB";
+import Parrafo from "../../components/menjador/Parrafo";
+
+//import { useState, useEffect } from "react";
 import axios from "axios";
-import { noticie } from "../../models/noticie";
+// import { noticie } from "../../models/noticie";
 
 
-let noticia = new noticie("","","","","","","","",[],[],[]); 
+let edicio = new quisom("","","","","","", false, false); 
 
 
 function ViewFesteSoci() {
@@ -41,11 +46,18 @@ function ViewFesteSoci() {
             })
     }
 
-    const[notici,setNotici] = useState(noticia);
+    //const[edicioQuisom,setEdicioQuisom] = useState(noticie);
+    // const [isTrue, setTrue] = useState(false);
+    
+    let origen = "fersesoci";
+
+    const[edicioQuisom,setEdicioQuisom] = useState(edicio);
+    
+    // const[notici,setNotici] = useState(noticia);
     const [pdf,setPDF] = useState("");
 
     const handleFileChange = ({target:{name,files}}) => {
-        setNotici({...notici,[name]:files[0]})
+        setEdicioQuisom({...edicioQuisom,[name]:files[0]})
     }
     
     let downLoadPDF = () =>{
@@ -65,16 +77,68 @@ function ViewFesteSoci() {
 
     useEffect(() => {
         downLoadPDF();
+
+        const handleLoad = async () =>{
+        
+            let promesa1 = getAllCollections('festesoci');
+            promesa1.then((resul)=>{
+                resul.forEach((doc)=>{
+                    let item = new quisom(doc.id,doc.cosHtml,doc.dateCreation,"","","",false,false); 
+                    // setTrue(!isTrue);
+                    setEdicioQuisom(item);
+                })
+            })
+            
+        }
+        
+        handleLoad();
         
     }, [])
     
 
     return (
         <>
-            <hr className="featurette-divider"></hr>
-                <div className="containerH1"><h1 className="text-h1">Fes te socí</h1></div>
-            <div className="container">
-                <hr className="featurette-divider"></hr>
+            {
+                edicioQuisom && pdf ?
+                <div className=" m-2 p-4">
+                    <Parrafo data={edicioQuisom} componentcall={origen} />
+                    <div className="nav">
+                        <a href={pdf} download={"FichaInscripcio.pdf"}>
+                                <button className="style-button-download">Download</button>
+                        </a>
+                    </div>
+                    <hr className="featurette-divider"></hr>
+                    <form onSubmit={EnviarMail}>
+                        <div className="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email</label>
+                            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                        </div>
+                        <div className="mb-3">
+                            <label for="exampleInputPassword1" className="form-label">Nombres</label>
+                            <input type="text" className="form-control" id="exampleInputPassword1"/>
+                        </div>
+                        <div className="mb-3">
+                            <label for="exampleInputPassword1" className="form-label">Primer Apellido</label>
+                            <input type="text" className="form-control" id="exampleInputPassword1"/>
+                        </div>
+                        <div className="mb-3">
+                            <label for="exampleInputPassword1" className="form-label">Segundo Apellido</label>
+                            <input type="text" className="form-control" id="exampleInputPassword1"/>
+                        </div>
+                        <div className="custom-file mb-3">
+                            <input className="d-none" id="pdfInscripcion"/>
+                            <label htmlFor="fileupload" className="form-label">Pujar ficher</label>
+                            <input type="file" onChange={handleFileChange} className="custom-file-input form-control" id="fileupload" name="fileupload" lang="in" />
+                        </div>
+                        <button type="submit" className="btn btn-primary">Enviar</button>
+                    </form>
+                    <hr className="featurette-divider"></hr>
+                </div>:""
+            }
+            {/* <hr className="featurette-divider"></hr> */}
+                {/* <div className="containerH1"><h1 className="text-h1">Fes te socí</h1></div> */}
+            {/* <div className="container"> */}
+                {/* <hr className="featurette-divider"></hr>
                 <p className="lead">Les famílies sòcies de l’AFA gaudeixen de descomptes en el preu dels serveis d’acollida, menjador i extraescolars, entre d’altres avantatges. La quota d’inscripció permet mantenir aquests serveis, així com altres activitats i equipaments de l’escola.</p>
                 <p className="lead">*PER FORMAR PART DE L’AFA CAL SER MARE, PARE O TUTOR/A LEGAL D’UN INFANT DE L’ESCOLA.</p>
                 {
@@ -87,44 +151,13 @@ function ViewFesteSoci() {
                         </a>
                         </div>
                     </div>:"..."
-                }
+                } */}
                 
                 
-                <hr className="featurette-divider"></hr>
-                <form onSubmit={EnviarMail}>
-                    <div className="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email</label>
-                        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-                    </div>
-                    <div className="mb-3">
-                        <label for="exampleInputPassword1" className="form-label">Nombres</label>
-                        <input type="text" className="form-control" id="exampleInputPassword1"/>
-                    </div>
-                    <div className="mb-3">
-                        <label for="exampleInputPassword1" className="form-label">Primer Apellido</label>
-                        <input type="text" className="form-control" id="exampleInputPassword1"/>
-                    </div>
-                    <div className="mb-3">
-                        <label for="exampleInputPassword1" className="form-label">Segundo Apellido</label>
-                        <input type="text" className="form-control" id="exampleInputPassword1"/>
-                    </div>
-                    <div className="custom-file mb-3">
-                        <input className="d-none" id="pdfInscripcion"/>
-                        <label htmlFor="fileupload" className="form-label">Pujar ficher</label>
-                        <input type="file" onChange={handleFileChange} className="custom-file-input form-control" id="fileupload" name="fileupload" lang="in" />
-                    </div>
-                    {/* <div className="mb-3">
-                        <label for="exampleInputPassword1" className="form-label">DNI/NIE</label>
-                        <input type="text" className="form-control" id="exampleInputPassword1"/>
-                    </div>
-                    <div className="mb-3">
-                        <label for="exampleInputPassword1" className="form-label">Fecha Nacimiento</label>
-                        <input type="date" className="form-control" id="exampleInputPassword1"/>
-                    </div> */}
-                    <button type="submit" className="btn btn-primary">Enviar</button>
-                </form>
-            </div>
-            <hr className="featurette-divider"></hr>
+                {/* <hr className="featurette-divider"></hr> */}
+                
+            {/* </div>
+            <hr className="featurette-divider"></hr> */}
         </>
     )
 }

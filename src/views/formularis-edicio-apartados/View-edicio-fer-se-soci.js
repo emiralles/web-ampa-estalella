@@ -1,13 +1,9 @@
 import { useRef, useState, useEffect } from "react";
 import { Editor } from '@tinymce/tinymce-react';
-//import { menjador } from "../../models/menjador";
 import { quisom } from "../../models/quisom";
-// import { useAuth } from "../../context/authContext";
 import { add, updateOneDocOfTpo, getAllCollections, deleteOneDocOfTipo, getOneDocOfTipo} from "../../db/crudDB";
 import Parrafo from "../../components/menjador/Parrafo";
-// import { fal } from "@fortawesome/free-solid-svg-icons";
 
-// let edicio = new menjador("","","",""); 
 let edicio = new quisom("","","","","","", false, false); 
 
 let dataQuisom = {
@@ -21,18 +17,17 @@ let dataQuisom = {
     thereIsYoutubeVideo:false,
 }
 
-function ViewEdicioQuiSom() {
+function ViewEdicioFersesoci() {
     const[edicioQuisom,setEdicioQuisom] = useState(edicio);
-    // const { user }  = useAuth();
     const [isTrue, setTrue] = useState(false);
     const [dataAuxiliar, setDataAuxiliar] = useState([]);
     let origen = "admin";
 
     const editorRef = useRef(null);
     
-    const handleChange = ({target:{name,value}}) => {
-        setEdicioQuisom({...edicioQuisom,[name]:value})
-    }
+    // const handleChange = ({target:{name,value}}) => {
+    //     setEdicioQuisom({...edicioQuisom,[name]:value})
+    // }
 
     const refresh = ()=>{
         // re-renders the component
@@ -95,7 +90,7 @@ function ViewEdicioQuiSom() {
             dataQuisom.dateCreation = item.dateCreation !== undefined && item.dateCreation !== "" ? item.dateCreation : itemAux.dateCreation;
             // dataQuisom.iframeYoutube = item.iframeYoutube !== undefined && item.iframeYoutube !== "" ? item.iframeYoutube : itemAux.iframeYoutube;
             
-            await updateOneDocOfTpo('quisom',idCard,dataQuisom);
+            await updateOneDocOfTpo('festesoci',idCard,dataQuisom);
             
             let btnMenjador = document.getElementById('btn-menjador');
             btnMenjador.innerText = "Agregar";
@@ -124,7 +119,7 @@ function ViewEdicioQuiSom() {
             dataQuisom.dateCreation = edicioQuisom.dateCreation;
             // dataQuisom.iframeYoutube = edicioQuisom.iframeYoutube;
             
-            await add('quisom',dataQuisom);
+            await add('festesoci',dataQuisom);
             
             handleReset();
             refresh();
@@ -142,7 +137,7 @@ function ViewEdicioQuiSom() {
         // let textPhoto = document.getElementById('iframeYoutube');
         let inputAux = document.getElementById('input-aux');
         
-        let promise = getOneDocOfTipo('quisom',name);
+        let promise = getOneDocOfTipo('festesoci',name);
         promise.then((result)=>{
           
             let data = result.data();
@@ -165,7 +160,7 @@ function ViewEdicioQuiSom() {
     const handleRemove = ({target:{name}}) =>{
         let arrStr = name.split(" - ");
         let id = arrStr[0];
-        deleteOneDocOfTipo('quisom',id);
+        deleteOneDocOfTipo('festesoci',id);
         refresh();
     }
 
@@ -173,7 +168,7 @@ function ViewEdicioQuiSom() {
    
         const handleLoad = async () =>{
         
-          let promesa1 = getAllCollections('quisom');
+          let promesa1 = getAllCollections('festesoci');
           promesa1.then((resul)=>{
             resul.forEach((doc)=>{
                 let item = new quisom(doc.id,doc.cosHtml,doc.dateCreation,"","","",false,false); 
@@ -193,7 +188,7 @@ function ViewEdicioQuiSom() {
             <div className="row featurette">
                 <div className="col-md-12">
                     <div className="card border-info mb-3">
-                        <div className="card-header bg-warning"><h2 className="card-title">Qui Som</h2></div>
+                        <div className="card-header bg-warning"><h2 className="card-title">Fer se soci</h2></div>
                         <div className="card-body">
                             <form onSubmit={handleSubmit} >
                                 <input className="d-none" id="input-aux" ></input>
@@ -218,11 +213,6 @@ function ViewEdicioQuiSom() {
                                         }}
                                     />
                                 </div>
-                                {/* <div className="mb-3">
-                                    <input className="d-none" id="textPhoto"/>
-                                    <label htmlFor="iframeYoutube" className="form-label">Agregar Video Youtube para portada menjador</label>
-                                    <input type="text" onChange={handleChange} className="form-control" id="iframeYoutube" name="iframeYoutube"/>
-                                </div> */}
                                 <div className="d-grid gap-2">
                                     <button type="submit" id="btn-menjador" className="btn btn-primary">Agregar</button>
                                 </div>
@@ -243,4 +233,4 @@ function ViewEdicioQuiSom() {
      );
 }
 
-export default ViewEdicioQuiSom;
+export default ViewEdicioFersesoci;

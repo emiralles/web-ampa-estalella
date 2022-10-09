@@ -1,8 +1,8 @@
 
-function Parrafo({data,componentcall, handleEdit, handleRemove}) {
+function  Parrafo({data,componentcall, handleEdit, handleRemove}) {
     
     const buttonsAdmin = (componentcall) => {
-        if (componentcall === "admin") {
+        if (componentcall === "admin" && data!=null && data.uid !== "" ) {
             return(
                 <div className="row g-0">
                     <div className="col-6">
@@ -37,8 +37,9 @@ function Parrafo({data,componentcall, handleEdit, handleRemove}) {
         <hr className="featurette-divider"></hr>
         <div id='textoHtml' dangerouslySetInnerHTML={{ __html: `${data.cosHtml}` }}>
         </div>
-        
-        <hr className="featurette-divider"></hr>
+        { componentcall === "fersesoci" ?
+         "":<hr className="featurette-divider"></hr>
+        }
     </>
   )
 }
