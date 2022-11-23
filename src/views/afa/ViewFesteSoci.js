@@ -17,22 +17,26 @@ function ViewFesteSoci() {
         e.preventDefault();
     
         let textSubject = "fer me soci de l'AFA";
-        let textTo = e.target[0].value;
-        let textOf = `${e.target[1].value} ${e.target[2].value} ${e.target[3].value}` ;
-        let textTexto = `${e.target[4].value} ${e.target[5].value}}` ;
+        let textFrom = "ampa.estalella.i.graells@gmail.com";
+        let textTo =  "juntaampa@estalella.cat;emirallesyataco@gmail.com"; //e.target[0].value;
+        // let textOf = "";
+        let textTexto = `Nombre: ${e.target[1].value} ${e.target[2].value} ${e.target[3].value} email: ${e.target[0].value}` ; //`${e.target[4].value} ${e.target[5].value}}` ;
         
+        let fileUpload = e.target[5].files[0];
+
         const data =
         {
-            from: textTo,
+            from: textFrom,
             to: textTo,
-            of: textOf,
+            // of: textOf,
             subject: textSubject, 
-            text: textTexto
+            text: textTexto,
+            strRoutefile: fileUpload
         };
 
-        axios.post('https://arimathsolutions.com/api/mail',data,{header:{
-            'TIPO DE CONTENIDO': 'Aplicación / JSON' 
-            }})
+        axios.post('https://arimathsolutions.com/api/mail/documents',data,{headers: {
+            "Content-Type": "multipart/form-data",
+          }})
             .then(res => {
                 e.target[0].value="";
                 e.target[1].value="";
