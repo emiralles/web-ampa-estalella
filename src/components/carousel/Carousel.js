@@ -40,7 +40,7 @@ function Carousel() {
                     {
                         listEsdeveniments.map((esdevenim,index) => {
                             return (
-                                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to={index} className={index === 0 ?"active":""} aria-label={`Slide ${index}`}></button>
+                                <button type="button" key={index} data-bs-target="#myCarousel" data-bs-slide-to={index} className={index === 0 ?"active":""} aria-label={`Slide ${index}`}></button>
                             )
                         })
                     }
@@ -53,7 +53,7 @@ function Carousel() {
                     {
                         listEsdeveniments.map((esdevenim,index) => {
                             return (
-                                <div className={index === 0 ? "carousel-item active":"carousel-item"}>
+                                <div key={index} className={index === 0 ? "carousel-item active":"carousel-item"}>
                                     <img className="bd-placeholder-img" width="100%" height="100%" src={esdevenim.urlPhoto} aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" alt=""/>
                                 </div>
                             )

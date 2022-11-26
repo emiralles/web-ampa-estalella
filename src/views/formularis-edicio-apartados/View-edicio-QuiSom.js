@@ -30,9 +30,9 @@ function ViewEdicioQuiSom() {
 
     const editorRef = useRef(null);
     
-    const handleChange = ({target:{name,value}}) => {
-        setEdicioQuisom({...edicioQuisom,[name]:value})
-    }
+    // const handleChange = ({target:{name,value}}) => {
+    //     setEdicioQuisom({...edicioQuisom,[name]:value})
+    // }
 
     const refresh = ()=>{
         // re-renders the component
