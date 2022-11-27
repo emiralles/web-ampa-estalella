@@ -94,11 +94,11 @@ function CardGroup() {
         <>
             <hr className="featurette-divider"></hr>
             <Box sx={{ flexGrow: 1 }}>
-                <Grid classes={gridStyles} container spacing={{xs:1,sm:3}} columns={{xs:1,sm:12}}>
+                <Grid classes={gridStyles} container spacing={3} columns={{sm:10}}>
                 {/* spacing={{ xs: 1, sm: 3, md: 3 }} */}
                 {/* wrap={'nowrap'} */}
                 {/* columns={{ xs: 4, sm: 12, md: 12 }}  */}
-                    <Grid item xs={4} sm={4}>
+                    <Grid container item sm={4}>
                     <CustomCard
                         classes={styles}
                         title={'L\'AFA'}
@@ -108,7 +108,7 @@ function CardGroup() {
                         }
                     />
                     </Grid>
-                    <Grid item xs={4} sm={4}>
+                    <Grid container item sm={4}>
                     <CustomCard
                         classes={styles2}
                         title={'SERVEIS'}
@@ -117,14 +117,14 @@ function CardGroup() {
                         }
                     />
                     </Grid>
-                    <Grid item xs={4} sm={4}>
+                    <Grid container item sm={4}>
                     <CustomCard
                         classes={styles3}
                         title={'TRANSPARENCIA'}
                         image={imag1}
                     />
                     </Grid>
-                    <Grid item xs={4} sm={4}>
+                    <Grid container item sm={4}>
                     <CustomCard
                         classes={styles4}
                         title={'NOTICIES'}
@@ -133,7 +133,7 @@ function CardGroup() {
                         }
                     />
                     </Grid>
-                    <Grid item xs={4} sm={4}>
+                    <Grid container item sm={4}>
                     <CustomCard
                         classes={styles3}
                         title={'ESDEVENIMENTS'}
