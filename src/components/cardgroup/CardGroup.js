@@ -13,6 +13,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import { useFourThreeCardMediaStyles } from '@mui-treasury/styles/cardMedia/fourThree';
+//import { blue, yellow } from "@mui/material/colors";
 
 
 const useGridStyles = makeStyles(({ breakpoints }) => ({
@@ -36,12 +37,11 @@ card: ({ color }) => ({
     borderRadius: 16,
     boxShadow: 'none',
     '&:hover': {
-    boxShadow: `0 6px 12px 0 ${Color(color)
+        boxShadow: `0 6px 12px 0 ${Color(color)
         .rotate(-12)
         .darken(0.2)
         .fade(0.5)}`,
     },
-    //padding: 5,
 }),
 content: ({ color }) => {
     return {
@@ -85,10 +85,11 @@ return (
 
 function CardGroup() {
     const gridStyles = useGridStyles();
-    const styles = useStyles({ color: '#203f52', padding:5 });
-    const styles2 = useStyles({ color: '#4d137f', padding:5 });
-    const styles3 = useStyles({ color: '#ff9900', padding:5 });
-    const styles4 = useStyles({ color: '#34241e', padding:5 });
+    const styles = useStyles({ color: '#668572' });
+    const styles2 = useStyles({ color: '#aafdcb' });
+    const styles3 = useStyles({ color: '#2e7a67' });
+    const styles4 = useStyles({ color: '#003825' });
+    const styles5 = useStyles({ color: '#6e8c4f' });
 
     return (
         <>
@@ -135,7 +136,7 @@ function CardGroup() {
                     </Grid>
                     <Grid container item sm={4}>
                     <CustomCard
-                        classes={styles3}
+                        classes={styles5}
                         title={'ESDEVENIMENTS'}
                         image={
                         imag1
