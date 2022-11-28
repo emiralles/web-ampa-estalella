@@ -1,17 +1,23 @@
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Container from '@mui/material/Container';
+
 import Icons from "bootstrap-icons/bootstrap-icons.svg";
-//import logo from "./images/LOGO AMPA V.jpg";
 import logo from "./images/LOGOTIP AFA DEFINITIU 26052022 VERD.png";
 import './navBar.css';
-// import { Link } from "react-router-dom";
-// d-none d-sm-block d-sm-none d-md-block d-md-none d-lg-block
+
+
 function NavBar() {
-    return ( 
+
+    return (
+        <AppBar>
+            <Container maxWidth="xl">
+            <Toolbar disableGutters color="green">
+                     
         <nav className="navbar navbar-expand-lg navbar-light fixed-top bg-light ">
-            {/* navbar navbar-expand-md navbar-dark fixed-top bg-dark navbar-style-mobil */}
             <div className="container-fluid">
                 <a className="navbar-brand" href="/">
                     <img className="Logo rounded-circle " src={logo} alt="Logo"/>
-                    {/* <FontAwesomeIcon icon={estalellaImage}></FontAwesomeIcon> */}
                 </a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -55,31 +61,30 @@ function NavBar() {
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="/noticies" id="navbarNoticiesDropdown" role="button"  aria-expanded="false">
                                 <svg className="bi" width="30" height="24"><use xlinkHref={`${Icons}#newspaper`}></use></svg>Noticies
-                                {/* data-bs-toggle="dropdown" */}
                             </a>
                         </li>
                         <li className="nav-item dropdown">
-                            {/* <Link className="nav-link dropdown-toggle" id="navbarExtraEscolaresDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" to="/esdeveniments"><svg className="bi" width="30" height="24"><use xlinkHref={`${Icons}#calendar2-event`}></use></svg>Esdeveniments</Link> */}
                             <a className="nav-link dropdown-toggle" href="/esdeveniments" id="navbarExtraEscolaresDropdown" role="button" aria-expanded="false">
-                            {/* className="nav-link "  data-bs-toggle="dropdown"  */}
                                 <svg className="bi" width="30" height="24"><use xlinkHref={`${Icons}#calendar2-event`}></use></svg>Esdeveniments
                             </a>
                         </li>
+                        <li className="nav-item dropdown">
+                            <a className="nav-link dropdown-toggle" href="/admin/login" id="navbarLoginDropdown" role="button" aria-expanded="false">
+                                <svg className="bi" width="30" height="24"><use xlinkHref={`${Icons}#key`}></use></svg>Singin
+                            </a>
+                        </li>
                     </ul>
-                {/* <form className="d-flex">
-                    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                    <a className="btn btn-outline-success" href="qa" type="submit">
-                        <svg className="bi me-2 svg-search" width="30" height="24"><use xlinkHref={`${Icons}#search`}></use></svg>
-                    </a>
-                </form> */}
                 </div>
             </div>
-            <div className="container-fluid justify-content-end">
+            {/* <div className="container-fluid justify-content-end">
                 <div className="nav-item text-nowrap rounded-2" style={{color:"azure!important"}}>
                     <a className=" px-3 rounded" style={{color:"azure!important"}} href="/admin/login">Singin</a>
                 </div>
-            </div>
+            </div> */}
         </nav>
+        </Toolbar>
+        </Container>
+        </AppBar>
     );
 }
 
