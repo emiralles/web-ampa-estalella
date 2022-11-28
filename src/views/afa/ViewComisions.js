@@ -1,19 +1,52 @@
 import axios from "axios";
-// import img1 from "./images/IMG_1042.JPG";
-// import img2 from "./images/IMG_1078.JPG";
-// import img3 from "./images/IMG_1057.JPG";
 import { useState, useEffect } from "react";
 import { getAllCollections, getUrlImage} from "../../db/crudDB";
 import { comissio } from "../../models/comissio";
 import ListRectangleCard from "../../components/card/ListRectangleCard";
 
 
+import Box from '@mui/material/Box';
+import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
+import MenuItem from '@mui/material/MenuItem';
+import Button from '@mui/material/Button';
+import SendIcon from '@mui/icons-material/Send';
+
+import Paper from '@mui/material/Paper';
+//import Box from '@mui/material/Box';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
+
+let elevation = 24;
+const Item = styled(Paper)(({ theme }) => ({
+    ...theme.typography.body1,
+    color: theme.palette.text.secondary
+  }));
+  
+const lightTheme = createTheme({ palette: { mode: 'light' } });  
+
+
+
 function ViewComisions() {
+
+
+    const [name, setName] = useState('Composed TextField');
+
+    const handleChange = (event) => {
+      setName(event.target.value);
+    };
+
+    const [comboValor, setComboValor] = useState('');
+
+    const handleChangeCombo = (event) => {
+        setComboValor(event.target.value);
+    };
 
     let origen = "negoci";
     const [listComisiones,setListComisiones] = useState([]);
-    // const [isTrue, setTrue] = useState(false);
-
+    
     useEffect(()=>{
    
         const handleLoad = async () =>{
@@ -71,75 +104,106 @@ function ViewComisions() {
 
     return (
         <>
-            {/* <hr className="featurette-divider"></hr>
-                <div className="row featurette">
-                    <div className="col-md-7">
-                        <h2 className="featurette-heading">Extraescolars</h2>
-                        <p className="lead">Proposem i oferim un ventall d’activitats extraescolars respectuoses amb la línia pedagògica de l’escola i, alhora, que responguin als interessos de les famílies i l’alumnat. Planifiquem, gestionem i supervisem les activitats dirigides a complementar l’horari lectiu dels nostres fills i filles, tant després de les classes com durant el temps del migdia. Les àrees d’activitat potenciades són l’esportiva, la creativa, la musical i la de creixement personal.</p>
-                        <p className="lead">A partir dels interessos de l’alumnat i de les seves famílies, fem una proposta d’activitats a l’AFA, qui avalua i aprova tant les activitats ofertades com el monitoratge i/o els proveïdors d’aquestes. Ens encarreguem de la planificació dels horaris i de supervisar el correcte desenvolupament de les activitats. Juntament amb aquestes activitats també gestionem i supervisem el servei d’acollida del matí (8h-9h).</p>
-                    </div>
-                    <div className="col-md-5">
-                        <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-                    </div>
-                </div>
-            <hr className="featurette-divider"></hr>
-                <div className="row featurette">
-                    <div className="col-md-7 order-md-2">
-                        <h2 className="featurette-heading">Equipament</h2>
-                        <p className="lead">S’encarrega d’organitzar la venda de roba escolar: bates, samarretes i xandalls amb els colors i logotip de l’escola.</p>
-                    </div>
-                    <div className="col-md-5 order-md-1">
-                        <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={img1} alt=""/>
-                    </div>
-                </div>
-            <hr className="featurette-divider"></hr>
-                <div className="row featurette">
-                    <div className="col-md-7">
-                        <h2 className="featurette-heading">Tic</h2>
-                        <p className="lead">La Comissió TIC es una comissió de l’ampa que vol fomentar, impulsar i consolidar l’ús de les noves tecnologies en l’educació, mitjançant actuacions dirigides al desenvolupament, dinamització i difusió del seu ús en un ambient relaxat i divertit.</p>
-                        <p className="lead">Des de la comissió TIC valorem i considerem qualsevol canvi i implementació tecnològica que pugui ser aplicat a la nostra escola. Apostem per la innovació i renovació dels mitjans TIC de forma constant, adaptant-nos a l’evolució tecnològica.</p>
-                    </div>
-                    <div className="col-md-5">
-                        <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={img2} alt=""/>
-                    </div>
-                </div>
-            <hr className="featurette-divider"></hr>
-                <div className="row featurette">
-                    <div className="col-md-7 order-md-2">
-                        <h2 className="featurette-heading">Llibres</h2>
-                        <p className="lead">A l’escola es duu a terme un programa de socialització dels llibres de text. L’AFA gestiona l’ús i la compra de tots els llibres de text i de lectura que estan socialitzats. Alumnes-pares-mestres ens hem conscienciat que estem utilitzant un material escolar col·lectiu, que permet la sostenibilitat, el respecte al medi ambient i l’estalvi de recursos.</p>
-                        <p className="lead">Aprenem a valorar el llibre de text com a una important eina de treball de la que hem de tenir cura, aprofitant tota la seva vida útil. Estalviem paper, recursos mediambientals i tot això, a més, repercuteix en l’estalvi de les famílies i en l’educació i el respecte pel material col·lectiu.</p>
-                    </div>
-                    <div className="col-md-5 order-md-1">
-                        <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={img3} alt=""/>
-                    </div>
-                </div>
-            <hr className="featurette-divider"></hr>
-                <div className="row featurette">
-                    <div className="col-md-7">
-                        <h2 className="featurette-heading">Menjador</h2>
-                        <p className="lead">El menjador de l’escola és gestionat íntegrament per l’AFA, tenim cuina pròpia on es cuina cada dia per més de 200 alumnes, amb uns menús ben equilibrats i boníssims.</p>
-                        <p className="lead">Els nostres objectius són oferir un menjar de qualitat per els nostres fills i filles, així com treballar i fomentar tots els aspectes pedagògics relacionats amb el treball d’educació en els hàbits, que envolten el tema alimentari.</p>
-                        <p className="lead">La comissió, a part del menjador també gestiona els serveis d’acollida matinal i de tardes.</p>
-                    </div>
-                    <div className="col-md-5">
-                        <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-                    </div>
-                </div> */}
             {
                 <ListRectangleCard arrayData={listComisiones} componentCall={origen} nameList="Listat d'Comissions"/>
             }
             <hr className="featurette-divider"></hr>
             <p className="lead">L’AFA no té cap sentit si les famílies no s’hi involucren. Hi ha moltes formes de col·laborar, que s’adapten a les possibilitats i el temps de cadascú. Si vols participar, escriu-nos.</p>
             <hr className="featurette-divider"></hr>
-            <div className="containerH1"><h1 className="text-h1">Inscriute a las comissions</h1></div>
-            <div className="container">
-                <div className="row featurette">
-                    <div className="col-md-5">
-                        <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x270</text></svg>
-                    </div>
-                    <div className="col-md-7">
-                        <form onSubmit={EnviarMail}>
+            
+            {[lightTheme].map((theme, index) => (
+                // <Grid item key={index}>
+                <ThemeProvider theme={theme} key={index}>
+                    <Box>
+                        <Item key={elevation} elevation={elevation}>
+                                <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
+                                    <Chip label="Inscriute a las comissions" size="large" variant="outlined" />
+                                </Stack>
+                                {/* <div className="containerH1">
+                                
+                                Inscriute a las comissions
+                                </div> */}
+                                    <div className="container p-4">
+                                        <div className="row featurette">
+                                            <div className="col-md-5">
+                                                <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x270</text></svg>
+                                            </div>
+                                            <div className="col-md-7">
+                                            <Box
+                                                component="form"
+                                                sx={{
+                                                    '& > :not(style)': { m: 1 },
+                                                }}
+                                                //noValidate
+                                                autoComplete="off"
+                                                >
+                                                <FormControl variant="standard">
+                                                    <Box
+                                                        sx={{
+                                                            width: 300,
+                                                            maxWidth: '100%',
+                                                        }}
+                                                        >
+                                                        <TextField
+                                                        fullWidth
+                                                        id="outlined-name"
+                                                        label="Email"
+                                                        type="email"
+                                                        onChange={handleChange}
+                                                        />
+                                                    </Box>
+                                                </FormControl>
+                                                <FormControl variant="standard">
+                                                    <Box
+                                                            sx={{
+                                                                width: 300,
+                                                                maxWidth: '100%',
+                                                            }}
+                                                            >
+                                                        <TextField
+                                                            fullWidth
+                                                            id="outlined-name"
+                                                            label="Nom & Cognoms"
+                                                            type="Text"
+                                                            onChange={handleChange}
+                                                            />
+                                                    </Box>
+                                                </FormControl>
+                                                <FormControl variant="standard">
+                                                    <TextField
+                                                        fullWidth
+                                                        id="outlined-select-currency"
+                                                        select
+                                                        label="Comissiones"
+                                                        value={comboValor}
+                                                        onChange={handleChangeCombo}
+                                                        helperText="Sis plau ha de seleccionar una comisiò"
+                                                        >
+                                                        {listComisiones.map((option, index) => (
+                                                            <MenuItem key={index} value={option.title}>
+                                                            {option.title}
+                                                            </MenuItem>
+                                                        ))}
+                                                        </TextField>
+                                                </FormControl>
+                                                <FormControl variant="standard">
+                                                    <Button variant="contained" onSubmit={EnviarMail} fullWidth size="large" endIcon={<SendIcon />}>
+                                                        Enviar Mail
+                                                    </Button>
+                                                </FormControl>
+                                            </Box>
+                                        </div>
+                                    </div>
+                                </div>
+                        </Item>
+                    </Box>
+                </ThemeProvider>
+                // </Grid>
+            ))}
+            
+            
+            
+                        {/* <form onSubmit={EnviarMail}>
                             <div className="mb-3">
                                 <label for="inputEmail1" class="form-label">Email</label>
                                 <input type="email" className="form-control" id="inputEmail1" aria-describedby="emailHelp"/>
@@ -160,19 +224,12 @@ function ViewComisions() {
                                             <option value={index+1}>{element.title}</option> 
                                         ))
                                     }
-                                    
-                                    {/* <option value="1">Equipament</option>
-                                    <option value="2">Extraescolars</option>
-                                    <option value="3">Tic</option>
-                                    <option value="3">Menjador</option>
-                                    <option value="3">Llibres</option> */}
                                 </select>
                             </div>
                             <button type="submit" className="btn btn-primary">Aceptar</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+                        </form> */}
+                    
+            
             <hr className="featurette-divider"></hr>
         </>
     )
