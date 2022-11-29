@@ -25,7 +25,7 @@ function RectangleCard({Id,path,title,urlImage,arrayData, classnameBody, classna
         if (componentcall === "admin") {
             return(
                 <>
-                    <hr className="featurette-divider"></hr>
+                    {/* <hr className="featurette-divider"></hr> */}
                     <div className="row featurette">
                         <div className={classnameBody}>
                             {
@@ -43,7 +43,7 @@ function RectangleCard({Id,path,title,urlImage,arrayData, classnameBody, classna
         }else if(componentcall === "noticies" || componentcall === "esdeveniments" ){
             return(
                 <>
-                    <hr className="featurette-divider"></hr>
+                    {/* <hr className="featurette-divider"></hr> */}
                     <a href={`/galleria/${Id}`}>
                         <div className="row featurette">
                             <div className={classnameBody}>
@@ -63,7 +63,7 @@ function RectangleCard({Id,path,title,urlImage,arrayData, classnameBody, classna
         }else{
             return(
                 <>
-                    <hr className="featurette-divider"></hr>
+                    {/* <hr className="featurette-divider"></hr> */}
                     <div className="row featurette">
                         <div className={classnameBody}>
                             {

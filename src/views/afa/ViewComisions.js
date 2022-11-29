@@ -18,6 +18,8 @@ import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
 
 let elevation = 24;
 const Item = styled(Paper)(({ theme }) => ({
@@ -107,9 +109,6 @@ function ViewComisions() {
             {
                 <ListRectangleCard arrayData={listComisiones} componentCall={origen} nameList="Listat d'Comissions"/>
             }
-            <hr className="featurette-divider"></hr>
-            <p className="lead">L’AFA no té cap sentit si les famílies no s’hi involucren. Hi ha moltes formes de col·laborar, que s’adapten a les possibilitats i el temps de cadascú. Si vols participar, escriu-nos.</p>
-            <hr className="featurette-divider"></hr>
             
             {[lightTheme].map((theme, index) => (
                 // <Grid item key={index}>
@@ -119,6 +118,18 @@ function ViewComisions() {
                                 <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
                                     <Chip label="Inscriute a las comissions" size="large" variant="outlined" />
                                 </Stack>
+                                <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
+                                    <DialogContent>
+                                        <DialogContentText id="alert-dialog-description">
+                                            L’AFA no té cap sentit si les famílies no s’hi involucren. Hi ha moltes formes de col·laborar, que s’adapten a les possibilitats i el temps de cadascú. Si vols participar, escriu-nos.
+                                        </DialogContentText>
+                                    </DialogContent>
+                                    {/* <hr className="featurette-divider"></hr> */}
+                                        {/* <p className="lead">L’AFA no té cap sentit si les famílies no s’hi involucren. Hi ha moltes formes de col·laborar, que s’adapten a les possibilitats i el temps de cadascú. Si vols participar, escriu-nos.</p> */}
+                                    {/* <hr className="featurette-divider"></hr> */}
+                                </Stack>
+                                
+                                
                                 {/* <div className="containerH1">
                                 
                                 Inscriute a las comissions
