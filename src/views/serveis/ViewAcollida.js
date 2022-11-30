@@ -33,8 +33,6 @@ function ViewAcollida() {
 
     const[edicioQuisom,setEdicioQuisom] = useState(edicio);
     
-    //let origen = "acollida";
-
     const [linkPDF,setLinkPDF] = useState(false);
     
     const [pdf,setPDF] = useState("");
@@ -72,7 +70,6 @@ function ViewAcollida() {
         
     }, [linkPDF])
     
-
     return ( 
         <>
             {[lightTheme].map((theme, index) => (
@@ -85,13 +82,10 @@ function ViewAcollida() {
                             <Stack direction="row" sx={{justifyContent: 'center'}}>
                                 <DialogContent>
                                     <DialogContentText id="alert-dialog-description">
-                                        {/* <div>{edicioQuisom.cosHtml}</div> */}
                                         { 
                                             edicioQuisom ? <div className="container" id='textoHtml' dangerouslySetInnerHTML={{ __html: `${edicioQuisom.cosHtml}` }}>
                                             </div> : <p>Aun no existe información...</p>
                                         }
-                                        {/* <p>L’AMPA de l’escola Estalella i Graells ofereix un servei d’acollida matinal per tots aquells pares i mares i nens i nenes que ho necessitin, les hores d’entrada són a les 7.50 h i a les 8.30 h. L’alumnat entrarà per la porta de consergeria.</p>
-                                        <p>Descarrega el PDF on expliquem com inscribir el teu fill/filla a la acollida que tenim com servei per totes las families que desitgen fer-ho.</p> */}
                                     </DialogContentText>
                                     <DialogContentText id="alert-dialog-description">
                                         {
@@ -99,7 +93,7 @@ function ViewAcollida() {
                                             <div className="container ml-5">
                                                 <a href={pdf} download={"inscripcionApp.pdf"}>
                                                     <FormControl variant="standard" sx={{pl:3}}>
-                                                        <Button variant="contained" fullWidth size="medium" endIcon={<DownloadIcon />}>
+                                                        <Button variant="contained" color="success" sx={{backgroundColor:"green"}} fullWidth size="medium" endIcon={<DownloadIcon />}>
                                                             Download
                                                         </Button>
                                                     </FormControl>
@@ -110,36 +104,10 @@ function ViewAcollida() {
                                     </DialogContentText>
                                 </DialogContent>
                             </Stack>
-                            <Stack direction="row" sx={{justifyContent: 'center'}}>
-                                <DialogContent>
-                                    
-                                </DialogContent>
-                            </Stack>
                         </Item>
                     </Box>
                 </ThemeProvider>
             ))}
-                    
-            {/* <hr className="featurette-divider"></hr>
-            <div className="containerH1"><h1>Acollida</h1></div>
-            <p className="fs-5 col-md-12">L’AMPA de l’escola Estalella i Graells ofereix un servei d’acollida matinal per tots aquells pares i mares i nens i nenes que ho necessitin.</p>
-            <p className="fs-5 col-md-12">Les hores d’entrada són a les 7.50 h i a les 8.30 h.</p>
-            <p className="fs-5 col-md-12">L’alumnat entrarà per la porta de consergeria.</p>
-            <hr className="col-3 col-md-12 mb-5"></hr>
-            <div>
-                <p>Descarrega el PDF on expliquem com inscribir el teu fill/filla a la acollida que tenim com servei per totes las families que desitgen fer-ho. 
-                    {
-                        pdf ?
-                        <div className="nav">
-                            <a href={pdf} download={"inscripcionApp.pdf"}>
-                                    <button className="style-button-download">Download</button>
-                            </a>
-                        </div>:"..."
-
-                    } 
-                </p>
-            </div>
-            <hr className="featurette-divider"></hr> */}
         </>
      );
 }
