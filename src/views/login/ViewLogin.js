@@ -38,7 +38,10 @@ function ViewLogin() {
                 <main className="form-signin">
                     { exitMensaje && <Mensaje mensaje={mensaje}/>}
                     <form onSubmit={handleSubmit}>
-                        <img className="mb-4" src={logo} alt="" width="72" height="72"/>
+                        <a href="/">
+                            <img className="mb-4 Logo rounded-circle " src={logo} alt="Logo" width="72" height="72"/>
+                        </a>
+                        {/* <img className="mb-4" src={logo} alt="" width="72" height="72"/> */}
                         <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
 
                         <div className="form-floating">
@@ -49,14 +52,7 @@ function ViewLogin() {
                         <input type="password" className="form-control" id="floatingPassword" placeholder="Password" name="password" onChange={handleChange}/>
                         <label htmlFor="floatingPassword">Password</label>
                         </div>
-
-                        {/* <div className="checkbox mb-3">
-                        <label>
-                            <input type="checkbox" value="remember-me"/> Remember me
-                        </label>
-                        </div> */}
                         <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-                        {/* <p className="mt-5 mb-3 text-muted">© 2020–2022</p> */}
                     </form>
                 </main>
             </div>
