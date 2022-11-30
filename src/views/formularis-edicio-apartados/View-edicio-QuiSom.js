@@ -1,13 +1,9 @@
 import { useRef, useState, useEffect } from "react";
 import { Editor } from '@tinymce/tinymce-react';
-//import { menjador } from "../../models/menjador";
 import { quisom } from "../../models/quisom";
-// import { useAuth } from "../../context/authContext";
 import { add, updateOneDocOfTpo, getAllCollections, deleteOneDocOfTipo, getOneDocOfTipo} from "../../db/crudDB";
 import Parrafo from "../../components/menjador/Parrafo";
-// import { fal } from "@fortawesome/free-solid-svg-icons";
 
-// let edicio = new menjador("","","",""); 
 let edicio = new quisom("","","","","","", false, false); 
 
 let dataQuisom = {
@@ -23,17 +19,12 @@ let dataQuisom = {
 
 function ViewEdicioQuiSom() {
     const[edicioQuisom,setEdicioQuisom] = useState(edicio);
-    // const { user }  = useAuth();
     const [isTrue, setTrue] = useState(false);
     const [dataAuxiliar, setDataAuxiliar] = useState([]);
     let origen = "admin";
 
     const editorRef = useRef(null);
     
-    // const handleChange = ({target:{name,value}}) => {
-    //     setEdicioQuisom({...edicioQuisom,[name]:value})
-    // }
-
     const refresh = ()=>{
         // re-renders the component
         edicio = new quisom("","","","","","", false, false); 
@@ -218,11 +209,6 @@ function ViewEdicioQuiSom() {
                                         }}
                                     />
                                 </div>
-                                {/* <div className="mb-3">
-                                    <input className="d-none" id="textPhoto"/>
-                                    <label htmlFor="iframeYoutube" className="form-label">Agregar Video Youtube para portada menjador</label>
-                                    <input type="text" onChange={handleChange} className="form-control" id="iframeYoutube" name="iframeYoutube"/>
-                                </div> */}
                                 <div className="d-grid gap-2">
                                     <button type="submit" id="btn-menjador" className="btn btn-primary">Agregar</button>
                                 </div>

@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import {quisom} from "../../models/quisom";
 import {getAllCollections} from "../../db/crudDB";
@@ -11,16 +12,12 @@ import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 
 
 let edicio = new quisom("","","","","","", false, false); 
+
 let elevation = 24;
+
 const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body1,
-    //textAlign: 'center',
     color: theme.palette.text.secondary
-    //,
-    //height: "100%",
-    //width: "100%",
-    // lineHeight: '100%',
-    //maxWidth: "100%"
   }));
   
 const lightTheme = createTheme({ palette: { mode: 'light' } });  
@@ -28,7 +25,6 @@ const lightTheme = createTheme({ palette: { mode: 'light' } });
 function ViewQuisom() {
 
     const[edicioQuisom,setEdicioQuisom] = useState(edicio);
-    // const [isTrue, setTrue] = useState(false);
     
     let origen = "quisom";
 
@@ -54,25 +50,11 @@ function ViewQuisom() {
 
   return (
     <>
-        {/* {
-            edicioQuisom ?
-            <div className=" m-2 p-4">
-                <Parrafo data={edicioQuisom} componentcall={origen} />
-            </div>:""
-        } */}
         <Grid container spacing={2}>
         {[lightTheme].map((theme, index) => (
             <Grid item key={index}>
             <ThemeProvider theme={theme}>
-                <Box
-                // sx={{
-                //     p: 2,
-                //     bgcolor: 'background.default',
-                //     display: 'grid',
-                //     gridTemplateColumns: { md: '1fr 1fr' },
-                //     gap: 2,
-                // }}
-                >
+                <Box>
                     <Item key={elevation} elevation={elevation}>
                         { edicioQuisom ?
                             <div className=" m-2 p-4">
@@ -80,9 +62,6 @@ function ViewQuisom() {
                             </div>:""
                         }
                     </Item>
-                {/* {[24].map((elevation) => (
-                    
-                ))} */}
                 </Box>
             </ThemeProvider>
             </Grid>

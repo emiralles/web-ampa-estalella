@@ -1,4 +1,7 @@
-// import Icons from "bootstrap-icons/bootstrap-icons.svg";
+
+import {quisom} from "../../models/quisom";
+import {getAllCollections} from "../../db/crudDB";
+
 import { useState, useEffect } from "react";
 
 import Box from '@mui/material/Box';
@@ -24,8 +27,13 @@ const Item = styled(Paper)(({ theme }) => ({
   
 const lightTheme = createTheme({ palette: { mode: 'light' } });  
 
+let edicio = new quisom("","","","","","", false, false); 
 
 function ViewAcollida() {
+
+    const[edicioQuisom,setEdicioQuisom] = useState(edicio);
+    
+    //let origen = "acollida";
 
     const [linkPDF,setLinkPDF] = useState(false);
     
@@ -47,6 +55,19 @@ function ViewAcollida() {
     }
 
     useEffect(() => {
+        
+        const handleLoad = async () =>{
+            let promesa1 = getAllCollections('acollida');
+            promesa1.then((resul)=>{
+            resul.forEach((doc)=>{
+                let item = new quisom(doc.id,doc.cosHtml,doc.dateCreation,"","","",false,false); 
+                setEdicioQuisom(item);
+            })
+            })
+        }
+        
+        handleLoad();
+
         downLoadPDF();
         
     }, [linkPDF])
@@ -64,18 +85,21 @@ function ViewAcollida() {
                             <Stack direction="row" sx={{justifyContent: 'center'}}>
                                 <DialogContent>
                                     <DialogContentText id="alert-dialog-description">
-                                        <p>L’AMPA de l’escola Estalella i Graells ofereix un servei d’acollida matinal per tots aquells pares i mares i nens i nenes que ho necessitin, les hores d’entrada són a les 7.50 h i a les 8.30 h. L’alumnat entrarà per la porta de consergeria.</p>
-                                    </DialogContentText>
-                                    <DialogContentText id="alert-dialog-description">
-                                        <p>Descarrega el PDF on expliquem com inscribir el teu fill/filla a la acollida que tenim com servei per totes las families que desitgen fer-ho.</p>
+                                        {/* <div>{edicioQuisom.cosHtml}</div> */}
+                                        { 
+                                            edicioQuisom ? <div className="container" id='textoHtml' dangerouslySetInnerHTML={{ __html: `${edicioQuisom.cosHtml}` }}>
+                                            </div> : <p>Aun no existe información...</p>
+                                        }
+                                        {/* <p>L’AMPA de l’escola Estalella i Graells ofereix un servei d’acollida matinal per tots aquells pares i mares i nens i nenes que ho necessitin, les hores d’entrada són a les 7.50 h i a les 8.30 h. L’alumnat entrarà per la porta de consergeria.</p>
+                                        <p>Descarrega el PDF on expliquem com inscribir el teu fill/filla a la acollida que tenim com servei per totes las families que desitgen fer-ho.</p> */}
                                     </DialogContentText>
                                     <DialogContentText id="alert-dialog-description">
                                         {
                                             pdf ?
-                                            <div className="nav">
+                                            <div className="container ml-5">
                                                 <a href={pdf} download={"inscripcionApp.pdf"}>
-                                                    <FormControl variant="standard">
-                                                        <Button variant="contained" fullWidth size="large" endIcon={<DownloadIcon />}>
+                                                    <FormControl variant="standard" sx={{pl:3}}>
+                                                        <Button variant="contained" fullWidth size="medium" endIcon={<DownloadIcon />}>
                                                             Download
                                                         </Button>
                                                     </FormControl>

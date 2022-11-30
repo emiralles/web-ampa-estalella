@@ -124,16 +124,7 @@ function ViewComisions() {
                                             L’AFA no té cap sentit si les famílies no s’hi involucren. Hi ha moltes formes de col·laborar, que s’adapten a les possibilitats i el temps de cadascú. Si vols participar, escriu-nos.
                                         </DialogContentText>
                                     </DialogContent>
-                                    {/* <hr className="featurette-divider"></hr> */}
-                                        {/* <p className="lead">L’AFA no té cap sentit si les famílies no s’hi involucren. Hi ha moltes formes de col·laborar, que s’adapten a les possibilitats i el temps de cadascú. Si vols participar, escriu-nos.</p> */}
-                                    {/* <hr className="featurette-divider"></hr> */}
                                 </Stack>
-                                
-                                
-                                {/* <div className="containerH1">
-                                
-                                Inscriute a las comissions
-                                </div> */}
                                     <div className="container p-4">
                                         <div className="row featurette">
                                             <div className="col-md-5">
