@@ -14,17 +14,20 @@ let dataMenjador = {
     thereIsYoutubeVideo: true,
 }
 
-function ViewEdicioMenjador() {
+function ViewEdicioCasalEstiu() {
     const[edicioMenjador,setEdicioMenjador] = useState(edicio);
-    // const { user }  = useAuth();
     const [isTrue, setTrue] = useState(false);
     const [dataAuxiliar, setDataAuxiliar] = useState([]);
     let origen = "admin";
 
     const editorRef = useRef(null);
     
-    const handleChange = ({target:{name,value}}) => {
-        setEdicioMenjador({...edicioMenjador,[name]:value})
+    // const handleChange = ({target:{name,value}}) => {
+    //     setEdicioMenjador({...edicioMenjador,[name]:value})
+    // }
+
+    const handleFileChange = ({target:{name,files}}) => {
+        setEdicioMenjador({...edicioMenjador,[name]:files[0]})
     }
 
     const refresh = ()=>{
@@ -76,7 +79,6 @@ function ViewEdicioMenjador() {
                 auxEvento.cosHtml=data;
                 auxEvento.thereIsYoutubeVideo = true;
                 setEdicioMenjador(auxEvento);
-                // console.log(data);
             }
 
             let idCard = inputAux.value;
@@ -89,7 +91,7 @@ function ViewEdicioMenjador() {
             dataMenjador.iframeYoutube = item.iframeYoutube !== undefined && item.iframeYoutube !== "" ? item.iframeYoutube : itemAux.iframeYoutube;
             dataMenjador.thereIsYoutubeVideo = true;
 
-            await updateOneDocOfTpo('menjador',idCard,dataMenjador);
+            await updateOneDocOfTpo('casalestiu',idCard,dataMenjador);
             
             let btnMenjador = document.getElementById('btn-menjador');
             btnMenjador.innerText = "Agregar";
@@ -112,7 +114,6 @@ function ViewEdicioMenjador() {
                 auxEvento.cosHtml=data;
                 auxEvento.thereIsYoutubeVideo=true;
                 setEdicioMenjador(auxEvento);
-                // console.log(data);
             }
 
             
@@ -121,7 +122,7 @@ function ViewEdicioMenjador() {
             dataMenjador.iframeYoutube = edicioMenjador.iframeYoutube;
             dataMenjador.thereIsYoutubeVideo = true;
 
-            await add('menjador',dataMenjador);
+            await add('casalestiu',dataMenjador);
             
             handleReset();
             refresh();
@@ -134,12 +135,11 @@ function ViewEdicioMenjador() {
 
         let btnMenjador = document.getElementById('btn-menjador');
         
-        // let inputparraf = document.getElementById('tinymce');
         let psd = document.getElementById('container-body-parraph');
         let textPhoto = document.getElementById('iframeYoutube');
         let inputAux = document.getElementById('input-aux');
         
-        let promise = getOneDocOfTipo('menjador',name);
+        let promise = getOneDocOfTipo('casalestiu',name);
         promise.then((result)=>{
           
             let data = result.data();
@@ -150,7 +150,6 @@ function ViewEdicioMenjador() {
             textPhoto.value = data.iframeYoutube;
             inputAux.value = data.id;
             psd.children[1].children[0].children[1].children[0].children[0].contentDocument.children[0].children['tinymce'].innerHTML=data.cosHtml;
-            // inputparraf.innerHTML = data.cosHtml;
             
             btnMenjador.innerText = "Modificar";
             refresh();
@@ -162,7 +161,7 @@ function ViewEdicioMenjador() {
     const handleRemove = ({target:{name}}) =>{
         let arrStr = name.split(" - ");
         let id = arrStr[0];
-        deleteOneDocOfTipo('menjador',id);
+        deleteOneDocOfTipo('casalestiu',id);
         refresh();
     }
 
@@ -170,7 +169,7 @@ function ViewEdicioMenjador() {
    
         const handleLoad = async () =>{
         
-          let promesa1 = getAllCollections('menjador');
+          let promesa1 = getAllCollections('casalestiu');
           promesa1.then((resul)=>{
             resul.forEach((doc)=>{
                 let item = new menjador(doc.id,doc.cosHtml,doc.dateCreation,doc.iframeYoutube, true); 
@@ -189,7 +188,7 @@ function ViewEdicioMenjador() {
             <div className="row featurette">
                 <div className="col-md-12">
                     <div className="card border-info mb-3">
-                        <div className="card-header bg-warning"><h2 className="card-title">Menjador</h2></div>
+                        <div className="card-header bg-warning"><h2 className="card-title">Casal d'Estiu</h2></div>
                         <div className="card-body">
                             <form onSubmit={handleSubmit} >
                                 <input className="d-none" id="input-aux" ></input>
@@ -216,9 +215,10 @@ function ViewEdicioMenjador() {
                                 </div>
                                 <div className="mb-3">
                                     <input className="d-none" id="textPhoto"/>
-                                    <label htmlFor="iframeYoutube" className="form-label">Agregar Video Youtube para portada menjador</label>
-                                    <input type="text" onChange={handleChange} className="form-control" id="iframeYoutube" name="iframeYoutube"/>
+                                    <label htmlFor="fileupload" className="form-label">Afegir Imatge Tardes Estiu</label>
+                                    <input type="file" onChange={handleFileChange} className="form-control" id="fileupload" name="fileupload"/>
                                 </div>
+                                
                                 <div className="d-grid gap-2">
                                     <button type="submit" id="btn-menjador" className="btn btn-primary">Agregar</button>
                                 </div>
@@ -234,4 +234,4 @@ function ViewEdicioMenjador() {
      );
 }
 
-export default ViewEdicioMenjador;
+export default ViewEdicioCasalEstiu;
