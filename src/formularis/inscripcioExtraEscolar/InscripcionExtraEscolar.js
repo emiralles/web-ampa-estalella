@@ -2,6 +2,10 @@ import { useState } from "react";
 import TableGrid from "../../components/tableGrid/TableGrid";
 import { modelViewRegistroAlumno } from "../../models/modelViewRegistroAlumno";
 
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
+
+
 let newInitialRegistroAlumno = new modelViewRegistroAlumno('u0000','','','','','','','','','');
 function InscripcionExtraEscolar({arrayListExtraEscolar}) {
 
@@ -157,7 +161,11 @@ function InscripcionExtraEscolar({arrayListExtraEscolar}) {
 
   return (
     <>
-        <h2 className=" text-center text-success ">Inscripciò ExtraEscolar</h2>
+        {/* <h2 className=" text-center text-success ">Inscripciò ExtraEscolar</h2> */}
+        <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
+            <Chip label="Inscripciò ExtraEscolar" size="large" sx={{color:"white", backgroundColor:"green"}} variant="outlined" />
+        </Stack>
+
         <form onSubmit={handleAdd}>
             <div className='row border border-success mb-3 mt-3 rounded' id="divTutor">
                 <label htmlFor="divTutor" className="form-label">Tutor Legal</label>

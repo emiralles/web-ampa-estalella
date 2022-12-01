@@ -1,13 +1,19 @@
 import CardExtraEscolar from "../extraescolar/CardExtraEscolar";
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
+
 
 function ListExtraEscolars({arrayData, handleRemove, handleEdit, componentCall}) {
   
     if (!arrayData.length) return <h3>No existe ningun registro</h3>;    
     return (
         <>
-        <hr className="featurette-divider"></hr>
+        {/* <hr className="featurette-divider"></hr> */}
         <div className="container text-center">
-            <h1>Listat d'Extraescolars</h1>
+            {/* <h1>Listat d'Extraescolars</h1> */}
+            <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
+                <Chip label="Listat d'Extraescolars" sx={{color:"white", backgroundColor:"green"}} size="large" variant="outlined" />
+            </Stack>
             <div className="container mb-3">
             <div className="row align-content-center ">
                 {
