@@ -27,45 +27,6 @@ function InscripcionExtraEscolar({arrayListExtraEscolar}) {
     arrayDataTotalExtraEscolares.push(arrayFields);
     arrayDataTotalExtraEscolares.push(arrayDataExtraEscolares);
 
-    // let arrayTotalData = [];
-    // let arrayColumnNames = ['Id','ExtraEscolar','Tutor','Mail','Nen/Nena','Curs','Grupos ExtraEscolar'];
-    // let arryData = [];
-
-    // let objct = new modelViewRegistroAlumno('u000001','ExtraEscolar 1','Pepe Martinez','pepe@mail.com','Hijo Pepe 1','3E','3E,2D,1E');
-    // let array1 = [objct.uid,objct.titleExtraEscolar,objct.tutor,objct.mail,objct.alumno,objct.curso,objct.grupos];
-    // arryData.push(array1);
-    // let array2 = ['u000002','ExtraEscolar 2','Pepe Martinez','pepe@mail.com','Hijo Pepe 2','4T','3E,2D,1E'];
-    // arryData.push(array2);
-    // let array3 = ['u000003','ExtraEscolar 3','Pepe Martinez','pepe@mail.com','Hijo Pepe 3','6T','3E,2D,1E'];
-    // arryData.push(array3);
-    // let array4 = ['u000004','ExtraEscolar 4','Pepe Martinez','pepe@mail.com','Hijo Pepe 4','1E','3E,2D,1E'];
-    // arryData.push(array4);
-    // arrayTotalData.push(arrayColumnNames);
-    // arrayTotalData.push(arryData)
-
-    // esto es otra grid
-    // let arryTotal = [];
-    // let arrayColumnName = ['Id','Nombre','Vagades','Horari','Grupos','Inici','Fin'];
-    // let arryDat = [];
-
-    // let arra1 = ['u000001','ExtraEscolar 1','1 dia setmanal','Mati','3E,2D,1E','25/05/2022','01/06/2022'];
-    // arryDat.push(arra1);
-    // let arra2 = ['u000002','ExtraEscolar 2','1 dia setmanal','Mati','3E,2D,1E','25/05/2022','01/06/2022'];
-    // arryDat.push(arra2);
-    // let arra3 = ['u000003','ExtraEscolar 3','1 dia setmanal','Mati','3E,2D,1E','25/05/2022','01/06/2022'];
-    // arryDat.push(arra3);
-    // let arra4 = ['u000004','ExtraEscolar 4','1 dia setmanal','Mati','3E,2D,1E','25/05/2022','01/06/2022'];
-    // arryDat.push(arra4);
-    // let arra5 = ['u000005','ExtraEscolar 5','1 dia setmanal','Mati','3E,2D,1E','25/05/2022','01/06/2022'];
-    // arryDat.push(arra5);
-    // let arra6 = ['u000006','ExtraEscolar 6','1 dia setmanal','Mati','3E,2D,1E','25/05/2022','01/06/2022'];
-    // arryDat.push(arra6);
-    // let arra7 = ['u000007','ExtraEscolar 7','1 dia setmanal','Mati','3E,2D,1E','25/05/2022','01/06/2022'];
-    // arryDat.push(arra7);
-
-    // arryTotal.push(arrayColumnName);
-    // arryTotal.push(arryDat);
-
     const handleAdd = (e) =>{
         e.preventDefault();
         let arryData = [];
@@ -81,7 +42,6 @@ function InscripcionExtraEscolar({arrayListExtraEscolar}) {
         arrayTotalll.push(arryData);
         setLstData(arrayTotalll);
         handleReset();
-        // console.log(arryData);
     }
 
     const handleReset = () => {
@@ -91,10 +51,6 @@ function InscripcionExtraEscolar({arrayListExtraEscolar}) {
           )
         );
     
-        // Array.from(document.querySelectorAll("textarea")).forEach(
-        //   textarea => (textarea.value = "")
-        // );
-        
     };
 
     const handleSubmit = (e) =>{
@@ -155,10 +111,7 @@ function InscripcionExtraEscolar({arrayListExtraEscolar}) {
         
     }
 
-    // useEffect(()=>{
-        
-    // })
-
+  
   return (
     <>
         {/* <h2 className=" text-center text-success ">Inscripciò ExtraEscolar</h2> */}
