@@ -1,5 +1,7 @@
 
-import {quisom} from "../../models/quisom";
+//import {quisom} from "../../models/quisom";
+import { menjador } from "../../models/menjador";
+
 import {getAllCollections} from "../../db/crudDB";
 
 import { useState, useEffect } from "react";
@@ -31,12 +33,24 @@ const Item = styled(Paper)(({ theme }) => ({
   
 const lightTheme = createTheme({ palette: { mode: 'light' } });  
 
-let edicio = new quisom("","","","","","", false, false); 
+let edicio = new menjador("","","","", true); 
+
+// let dataMenjador = {
+//     uid:"",
+//     cosHtml:"",
+//     dateCreation:"",
+//     iframeYoutube:"",
+//     thereIsYoutubeVideo: true,
+// }
 
 function ViewMenjador() {
 
-    const[edicioQuisom,setEdicioQuisom] = useState(edicio);
+    const[edicioMenjador,setEdicioMenjador] = useState(edicio);
+    // const { user }  = useAuth();
+    // const [isTrue, setTrue] = useState(false);
+    // const [dataAuxiliar, setDataAuxiliar] = useState([]);
     
+
     const [pdf,setPDF] = useState("");
 
     let downLoadPDF = () =>{
@@ -56,13 +70,15 @@ function ViewMenjador() {
     useEffect(()=>{
         
         const handleLoad = async () =>{
+        
             let promesa1 = getAllCollections('menjador');
             promesa1.then((resul)=>{
-            resul.forEach((doc)=>{
-                let item = new quisom(doc.id,doc.cosHtml,doc.dateCreation,"","","",false,false); 
-                setEdicioQuisom(item);
+              resul.forEach((doc)=>{
+                  let item = new menjador(doc.id,doc.cosHtml,doc.dateCreation,doc.iframeYoutube, true); 
+                  setEdicioMenjador(item);
+              })
             })
-            })
+            
         }
         
         handleLoad();
@@ -80,8 +96,15 @@ function ViewMenjador() {
             {/* <div className="containerH1"><h1>Menjador</h1></div> */}
             <Card sx={{ maxWidth: "100%" }}>
                 <CardActionArea>
-                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/Wox8BHyJ0XE" frameBorder={0} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen="allowfullscreen">
-                    </iframe>
+                    {
+                        edicioMenjador && edicioMenjador.thereIsYoutubeVideo ?
+                        <div className="video-responsive rounded" id="ivideoyoutube" dangerouslySetInnerHTML={{ __html: `${edicioMenjador.iframeYoutube}` }}>
+                        {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/Wox8BHyJ0XE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                        </iframe> */}
+                        </div> : ""  
+                    }
+                    {/* <iframe width="100%" height="400" src="https://www.youtube.com/embed/Wox8BHyJ0XE" frameBorder={0} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen="allowfullscreen">
+                    </iframe> */}
                 </CardActionArea>
             </Card>
             {/* <div className="video-responsive">
@@ -98,25 +121,31 @@ function ViewMenjador() {
                             <Stack direction="row" sx={{justifyContent: 'center'}}>
                                 <DialogContent>
                                     <DialogContentText id="alert-dialog-description">
+                                        {
+                                            edicioMenjador && edicioMenjador.cosHtml ?
+                                            <div id='textoHtml' dangerouslySetInnerHTML={{ __html: `${edicioMenjador.cosHtml}` }}>
+                                            </div> : <p>No hay texto para presentar</p>
+                                        }
                                         {/* { 
                                             edicioQuisom ? <div className="container" id='textoHtml' dangerouslySetInnerHTML={{ __html: `${edicioQuisom.cosHtml}` }}>
                                             </div> : <p>Aun no existe información...</p>
                                         } */}
-                                        <p>L’Escola Estalella i Graells disposa de cuina pròpia, cuineres i monitors/monitores, contractats per l’AMPA.</p>
-                                        <p>Descarrega el pdf on te expliquem el funcionament del menjador.</p>
+                                        {/* <p>L’Escola Estalella i Graells disposa de cuina pròpia, cuineres i monitors/monitores, contractats per l’AMPA.</p>
+                                        <p>Descarrega el pdf on te expliquem el funcionament del menjador.</p> */}
                                     </DialogContentText>
                                     <DialogContentText id="alert-dialog-description">
                                         {
                                             pdf ?
-                                            <div className="container ml-5">
-                                                <a href={pdf} download={"menjadorEstalella.pdf"}>
-                                                    <FormControl variant="standard" sx={{pl:3}}>
-                                                        <Button variant="contained" color="success" sx={{backgroundColor:"green"}} fullWidth size="medium" endIcon={<DownloadIcon />}>
-                                                            Download
-                                                        </Button>
-                                                    </FormControl>
-                                                </a>
-                                            </div>
+                                            <a href={pdf} download={"menjadorEstalella.pdf"}>
+                                                <FormControl variant="standard">
+                                                    <Button variant="contained" color="success" sx={{backgroundColor:"green"}} fullWidth size="medium" endIcon={<DownloadIcon />}>
+                                                        Download
+                                                    </Button>
+                                                </FormControl>
+                                            </a>
+                                            // <div className="container ml-5">
+                                                
+                                            // </div>
                                             :"..."
                                         }
                                     </DialogContentText>

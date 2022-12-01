@@ -7,7 +7,6 @@ import Parrafo from "../../components/menjador/Parrafo";
 
 let edicio = new menjador("","","","", true); 
 
-
 let dataMenjador = {
     uid:"",
     cosHtml:"",
@@ -15,7 +14,6 @@ let dataMenjador = {
     iframeYoutube:"",
     thereIsYoutubeVideo: true,
 }
-
 
 function ViewEdicioMenjador() {
     const[edicioMenjador,setEdicioMenjador] = useState(edicio);
