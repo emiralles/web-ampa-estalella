@@ -44,7 +44,7 @@ function CardExtraEscolar({Id,titulo,subTitle1,precio,semanal,textoPrincipal,src
 
     return (
     <>
-        <Card sx={{ display: 'flex', width:"25%", height:"9%", margin:1 }}>
+        <Card sx={{ display: 'flex', width:350, height:"9%", margin:1 }}>
             <Box sx={{ display: 'flex', width:"60%" , flexDirection: 'column' }}>
                 <CardContent sx={{ flex: '1 0 auto' }}>
                 <Typography component="div" sx={{ fontSize:14, fontStyle:"bold", textAlign:"center" }} variant="h5">
@@ -64,7 +64,6 @@ function CardExtraEscolar({Id,titulo,subTitle1,precio,semanal,textoPrincipal,src
                 {
                     buttonsAdmin(componentCall)
                 }
-                
             </Box>
             <CardMedia
                 component="img"
