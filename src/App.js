@@ -31,6 +31,7 @@ import FormulariEdicioExtraescolars from "./views/formularis-edicio-apartados/Vi
 import ProtectedRoute from "./components/protectedroute/ProtectedRoute";
 import ViewTardesEstiu from "./views/ViewTardesEstiu";
 import ViewGalleryImages from "./views/ViewGalleryImages";
+import ViewEquipament from "./views/serveis/ViewEquipament";
 
 function App() {
   return (
@@ -71,6 +72,7 @@ function App() {
           <Route path='/estatuts' element={<Estatuts/>} />
           <Route path='/casaldestiu' element={<Casaldestiu/>} />
           <Route path='/tardesestiu' element={<ViewTardesEstiu/>} />
+          <Route path='/equipament' element={<ViewEquipament/>} />
           <Route path='/galleria/:id' element={<ViewGalleryImages/>} />
         </Route>
       </Routes>
