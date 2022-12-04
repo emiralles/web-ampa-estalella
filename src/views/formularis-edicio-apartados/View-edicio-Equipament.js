@@ -1,45 +1,99 @@
-import { useRef, useState, useEffect } from "react";
-import { Editor } from '@tinymce/tinymce-react';
-import { menjador } from "../../models/menjador";
-import { add, updateOneDocOfTpo, getAllCollections, deleteOneDocOfTipo, getOneDocOfTipo} from "../../db/crudDB";
-import Parrafo from "../../components/menjador/Parrafo";
+import Equipament from "../../components/equipament/Equipament";
+import { useState, useEffect} from "react";
+import { uploadFile, add, updateOneDocOfTpo, getAllCollections, getUrlImage, removeObject, deleteOneDocOfTipo, getOneDocOfTipo } from "../../db/crudDB";
 
-let edicio = new menjador("","","","", true); 
+import CssBaseline from '@mui/material/CssBaseline';
+import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
+import Chip from '@mui/material/Chip';
 
-let dataMenjador = {
-    uid:"",
-    cosHtml:"",
-    dateCreation:"",
-    iframeYoutube:"",
-    thereIsYoutubeVideo: true,
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+import CardEquipament from "../../components/equipament/CardEquipament";
+
+import { equipament } from "../../models/equipament";
+import { useAuth } from "../../context/authContext";
+
+
+let data = {
+  title: "",
+  parragraph: "",
+  mainText: "",
+  namePhoto: "",
+  urlPhoto: "",
 }
 
-function ViewEdicioEquipament() {
-    const[edicioMenjador,setEdicioMenjador] = useState(edicio);
-    const [isTrue, setTrue] = useState(false);
-    const [dataAuxiliar, setDataAuxiliar] = useState([]);
-    let origen = "admin";
+const cards = [1];
+const theme = createTheme();
 
-    const editorRef = useRef(null);
+function ViewEdicioEquipament() {
+
+    const [extraescolar, setExtraescolar] = useState([]);
+    const [listExtraEscolar, setListExtraEscolar] = useState([]); //extraEscolars
+    const [dataAuxiliar, setDataAuxiliar] = useState([]);
+    const [isTrue, setTrue] = useState(false);
+    const { user }  = useAuth();
     
-    // const handleChange = ({target:{name,value}}) => {
-    //     setEdicioMenjador({...edicioMenjador,[name]:value})
-    // }
+    const handleChange = ({target:{name,value}}) => {
+        setExtraescolar({...extraescolar,[name]:value});
+    }
 
     const handleFileChange = ({target:{name,files}}) => {
-        setEdicioMenjador({...edicioMenjador,[name]:files[0]})
+        setExtraescolar({...extraescolar,[name]:files[0]})
+    }
+
+    const handleEdit = ({target:{name}}) =>{
+
+        let btnExtraescolar = document.getElementById('btn-extraescolar');
+        
+        let inputAux = document.getElementById('input-aux');
+        let principalText = document.getElementById('principalText');
+        let parrafo = document.getElementById('parrafo');
+        let titulo = document.getElementById('titulo');
+        let textPhoto = document.getElementById('textPhoto');
+        
+        let promise = getOneDocOfTipo('equipament',name);
+        promise.then((result)=>{
+            
+            let data = result.data();
+            data.id = result.id;
+            
+            setDataAuxiliar(data);
+            
+            titulo.value = data.title;
+            principalText.value = data.mainText;
+            parrafo.value = data.parragraph;
+            textPhoto.value = data.urlPhoto;    
+            inputAux.value = `${data.id} - ${data.namePhoto}`;
+            btnExtraescolar.innerText = "Modificar";
+            refresh();
+            titulo.focus();
+
+        })
+
+    }
+
+    const handleRemove = ({target:{name}}) =>{
+        let arrStr = name.split(" - ");
+        let id = arrStr[0];
+        let pathPhoto = arrStr[1];
+        let titulo = document.getElementById('titulo');
+        removeObject(pathPhoto);
+        deleteOneDocOfTipo('equipament',id);
+        refresh();
+        titulo.focus();
     }
 
     const refresh = ()=>{
         // re-renders the component
-        setEdicioMenjador(edicio);
+        setListExtraEscolar([]);
         //window.location.reload(false);
         if (isTrue) {
-          setTrue(false);
+            setTrue(false);
         }else{
-          setTrue(true);
+            setTrue(true);
         }
-        
     }
 
     const handleReset = () => {
@@ -53,127 +107,75 @@ function ViewEdicioEquipament() {
             textarea => (textarea.value = "")
         );
 
-        let psd = document.getElementById('container-body-parraph');
-
-        psd.children[1].children[0].children[1].children[0].children[0].contentDocument.children[0].children['tinymce'].innerHTML="<p>agregue aqui el texto.</p>";
-    
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e) =>{
+    
         e.preventDefault();
         let inputAux = document.getElementById('input-aux');
-        let fecha = new Date();
-        let nowDate = fecha.toLocaleString("es-ES");
-            
         if (inputAux.value !== "") {
-            
-            if (nowDate !== "") {
-                let auxEvento = edicioMenjador;
-                auxEvento.dateCreation=nowDate;
-                setEdicioMenjador(auxEvento);    
-            }
-
-            if (editorRef.current) {
-                let data = editorRef.current.getContent();
-                let auxEvento = edicioMenjador;
-                auxEvento.cosHtml=data;
-                auxEvento.thereIsYoutubeVideo = true;
-                setEdicioMenjador(auxEvento);
-            }
-
-            let idCard = inputAux.value;
-            
-            let item = new menjador('',edicioMenjador['cosHtml'],edicioMenjador['dateCreation'],edicioMenjador['iframeYoutube'], true);
-            let itemAux = new menjador('',dataAuxiliar.cosHtml,dataAuxiliar.dateCreation,dataAuxiliar.iframeYoutube, true);
-            
-            dataMenjador.cosHtml = item.cosHtml !== undefined && item.cosHtml !== "" ? item.cosHtml : itemAux.cosHtml;
-            dataMenjador.dateCreation = item.dateCreation !== undefined && item.dateCreation !== "" ? item.dateCreation : itemAux.dateCreation;
-            dataMenjador.iframeYoutube = item.iframeYoutube !== undefined && item.iframeYoutube !== "" ? item.iframeYoutube : itemAux.iframeYoutube;
-            dataMenjador.thereIsYoutubeVideo = true;
-
-            await updateOneDocOfTpo('equipament',idCard,dataMenjador);
-            
-            let btnMenjador = document.getElementById('btn-menjador');
-            btnMenjador.innerText = "Agregar";
-
-            handleReset();
-            refresh();
-
-        }else{
-        
-            if (nowDate !== "") {
-                let auxEvento = edicioMenjador;
-                auxEvento.dateCreation=nowDate;
-                auxEvento.thereIsYoutubeVideo=true;
-                setEdicioMenjador(auxEvento);    
-            }
-            
-            if (editorRef.current) {
-                let data = editorRef.current.getContent();
-                let auxEvento = edicioMenjador;
-                auxEvento.cosHtml=data;
-                auxEvento.thereIsYoutubeVideo=true;
-                setEdicioMenjador(auxEvento);
-            }
-
-            
-            dataMenjador.cosHtml = edicioMenjador.cosHtml;
-            dataMenjador.dateCreation = edicioMenjador.dateCreation;
-            dataMenjador.iframeYoutube = edicioMenjador.iframeYoutube;
-            dataMenjador.thereIsYoutubeVideo = true;
-
-            await add('equipament',dataMenjador);
-            
-            handleReset();
-            refresh();
-            
-        }
-
-    };
-
-    const handleEdit = ({target:{name}}) =>{
-
-        let btnMenjador = document.getElementById('btn-menjador');
-        
-        let psd = document.getElementById('container-body-parraph');
-        let textPhoto = document.getElementById('iframeYoutube');
-        let inputAux = document.getElementById('input-aux');
-        
-        let promise = getOneDocOfTipo('equipament',name);
-        promise.then((result)=>{
-          
-            let data = result.data();
-            data.id = result.id;
-          
-            setDataAuxiliar(data);
-
-            textPhoto.value = data.iframeYoutube;
-            inputAux.value = data.id;
-            psd.children[1].children[0].children[1].children[0].children[0].contentDocument.children[0].children['tinymce'].innerHTML=data.cosHtml;
-            
-            btnMenjador.innerText = "Modificar";
-            refresh();
-        
-        })
+          let arrDataAux = inputAux.value.split(" - ");
+          let idCard = arrDataAux[0];
+          let dataImagen = extraescolar["imagenLogo"];
+          let nameCardPhoto = dataImagen !== undefined ? dataImagen.name : arrDataAux[1];  
     
-    }
-
-    const handleRemove = ({target:{name}}) =>{
-        let arrStr = name.split(" - ");
-        let id = arrStr[0];
-        deleteOneDocOfTipo('equipament',id);
-        refresh();
+          let item = new equipament('','',extraescolar['titol'],extraescolar['parraf'],extraescolar['principalText'],nameCardPhoto,'');
+          let itemAux = new equipament('','',dataAuxiliar.title,dataAuxiliar.parragraph,dataAuxiliar.mainText,dataAuxiliar.namePhoto,dataAuxiliar.urlPhoto)
+          
+          data.title = item.title !== undefined && item.title !== "" ? item.title : itemAux.title;
+          data.parragraph = item.parragraph !== undefined && item.parragraph !== "" ? item.parragraph : itemAux.parragraph;
+          data.mainText = item.mainText !== undefined && item.mainText !== "" ? item.mainText : itemAux.mainText;
+          
+          await updateOneDocOfTpo('equipament',idCard,data);
+          
+          if (extraescolar["imagenLogo"] !== undefined) {
+            const dataImg = await uploadFile(extraescolar["imagenLogo"],extraescolar["imagenLogo"].name,idCard,user.uid);
+            data.namePhoto = extraescolar["imagenLogo"].name;
+            data.urlPhoto = dataImg.metadata.fullPath;
+            await updateOneDocOfTpo('equipament',idCard,data);    
+          }
+          
+          let btnExtraescolar = document.getElementById('btn-extraescolar');
+          btnExtraescolar.innerText = "Agregar";
+    
+          handleReset();
+          refresh();
+    
+        }else{
+          
+          if (extraescolar['titol'] !== undefined && extraescolar['parraf'] !== undefined && extraescolar['principalText'] !== undefined && extraescolar['imagenLogo'].name !== undefined ) {
+            let item = new equipament('','',extraescolar['titol'],extraescolar['parraf'],extraescolar['principalText'],extraescolar['imagenLogo'].name,'');
+            data.mainText = item.mainText;
+            data.namePhoto = item.namePhoto;
+            data.parragraph = item.parragraph;
+            data.title = item.title;
+            data.urlPhoto = item.urlPhoto;
+            
+            const idData = await add('equipament',data);
+            if (idData !== undefined && idData !== "") {
+              const dataImg = await uploadFile(extraescolar["imagenLogo"],extraescolar["imagenLogo"].name,idData,user.uid);
+              data.urlPhoto = dataImg.metadata.fullPath;
+              await updateOneDocOfTpo('equipament',idData,data);  
+            }
+            handleReset();
+            refresh();
+          }
+          
+        }
+        
     }
 
     useEffect(()=>{
    
         const handleLoad = async () =>{
-        
           let promesa1 = getAllCollections('equipament');
           promesa1.then((resul)=>{
             resul.forEach((doc)=>{
-                let item = new menjador(doc.id,doc.cosHtml,doc.dateCreation,doc.iframeYoutube, true); 
-                setEdicioMenjador(item);
+              let imgUrl = getUrlImage(doc.urlPhoto);
+              imgUrl.then((rstUrl)=>{
+                let item = new equipament(doc.id,doc.urlPhoto,doc.title,doc.parragraph,doc.mainText,doc.namePhoto,rstUrl);
+                setListExtraEscolar(arr => [...arr, item]);
+              });
             })
           })
           
@@ -185,11 +187,14 @@ function ViewEdicioEquipament() {
 
     return ( 
         <>
-            <div className="row featurette">
-                <div className="col-md-12">
+            {/* <div className="row featurette"> */}
+                <Equipament handleChange={handleChange} handleFileChange={handleFileChange} handleSubmit={handleSubmit}/>
+       
+                {/* <div className="col-md-12">
                     <div className="card border-info mb-3">
                         <div className="card-header bg-warning"><h2 className="card-title">Equipament</h2></div>
-                        <div className="card-body">
+                        <div className="card-body
+                        ">
                             <form onSubmit={handleSubmit} >
                                 <input className="d-none" id="input-aux" ></input>
                                 <div className="mb-3" id="container-body-parraph">
@@ -228,8 +233,47 @@ function ViewEdicioEquipament() {
                             <Parrafo data={edicioMenjador} handleRemove={handleRemove} handleEdit={handleEdit} componentcall={origen} />
                         </div>
                     </div>
-                </div>
-            </div>
+                </div> */}
+                <ThemeProvider theme={theme}>
+                    <CssBaseline />
+                    <main>
+                        <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
+                            <Chip label="Equipament" size="large" sx={{backgroundColor:"green", color:"white"}} variant="outlined" />
+                        </Stack>
+                        <Container sx={{ py: 8 }} maxWidth="md">
+                        {/* End hero unit */}
+                        <Grid container spacing={4}>
+                            {cards.map((card) => (
+                            <CardEquipament theme={theme} card={card} handleEdit={handleEdit} handleRemove={handleRemove} ></CardEquipament>
+                            // <Grid item key={card} xs={12} sm={6} md={4}>
+                            //     <Card
+                            //     sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+                            //     >
+                            //     <CardMedia
+                            //         component="img"
+                            //         sx={{
+                            //             height:150
+                            //         }}
+                            //         image="https://source.unsplash.com/random"
+                            //         alt="random"
+                            //     />
+                            //     <CardContent sx={{ flexGrow: 1 }}>
+                            //         <Typography gutterBottom variant="h5" component="h2">
+                            //         <diV>Articulo 1</diV>
+                            //         </Typography>
+                            //         <Typography>
+                            //         <diV>Precio: 150, Articulo ofrecido por la Afa a un precio acequible para los padres y madres de familia de nuestra escuela.</diV>
+                            //         </Typography>
+                            //     </CardContent>
+                            //     {/* Edicion */}
+                            //     </Card>
+                            // </Grid>
+                            ))}
+                        </Grid>
+                        </Container>
+                    </main>
+                </ThemeProvider>
+            {/* </div> */}
         </>
      );
 }
