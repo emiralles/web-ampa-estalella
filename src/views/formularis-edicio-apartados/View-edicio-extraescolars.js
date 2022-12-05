@@ -151,14 +151,12 @@ function ViewEdicioExtraescolars() {
    
     const handleLoad = async () =>{
     
-      // let arrayItems = [];
       let promesa1 = getAllCollections('extraescolar');
       promesa1.then((resul)=>{
         resul.forEach((doc)=>{
           let imgUrl = getUrlImage(doc.urlPhoto);
           imgUrl.then((rstUrl)=>{
             let item = new extraEscolars(doc.id,doc.urlPhoto,doc.plazas,doc.title,doc.parragraph,doc.dateStart,doc.dateEnd,doc.mainText,doc.namePhoto,rstUrl,doc.whenDo,doc.howTimes,doc.price,doc.grupsToDo);
-            // arrayItems.push(item);
             setListExtraEscolar(arr => [...arr, item]);
           });
         })
@@ -235,16 +233,6 @@ function ViewEdicioExtraescolars() {
       let item = new extraEscolars('','',extraescolar['plazas'],extraescolar['titol'],extraescolar['parraf'],extraescolar['dataInici'],extraescolar['dataFinal'],extraescolar['principalText'],nameCardPhoto,'',extraescolar['aquinahora'],extraescolar['diasetmanal'],extraescolar['preu'],grupos);
       let itemAux = new extraEscolars('','',dataAuxiliar.plazas,dataAuxiliar.title,dataAuxiliar.parragraph,dataAuxiliar.dateStart,dataAuxiliar.dateEnd,dataAuxiliar.mainText,dataAuxiliar.namePhoto,dataAuxiliar.urlPhoto,dataAuxiliar.whenDo,dataAuxiliar.howTimes,dataAuxiliar.price,dataAuxiliar.grupsToDo)
       
-      // item.title = item.title !== undefined ? item.title : itemAux.title;
-      // item.parragraph = item.parragraph !== undefined ? item.parragraph : itemAux.parragraph;
-      // item.mainText = item.mainText !== undefined ? item.mainText : itemAux.mainText;
-      // item.price = item.price !== undefined ? item.price : itemAux.price;
-      // item.howTimes = item.howTimes !== undefined ? item.howTimes : itemAux.howTimes;
-      // item.dateStart = item.dateStart !== undefined ? item.dateStart : itemAux.dateStart;
-      // item.dateEnd = item.dateEnd !== undefined ? item.dateEnd : itemAux.dateEnd;
-      // item.whenDo = item.whenDo !== undefined ? item.whenDo : itemAux.whenDo;
-      // item.grupsToDo = item.grupsToDo !== undefined && item.grupsToDo.length > 0 ? item.grupsToDo : itemAux.grupsToDo;
-      
       data.title = item.title !== undefined && item.title !== "" ? item.title : itemAux.title;
       data.parragraph = item.parragraph !== undefined && item.parragraph !== "" ? item.parragraph : itemAux.parragraph;
       data.mainText = item.mainText !== undefined && item.mainText !== "" ? item.mainText : itemAux.mainText;
@@ -255,16 +243,12 @@ function ViewEdicioExtraescolars() {
       data.whenDo = item.whenDo !== undefined && item.whenDo !== "" ? item.whenDo : itemAux.whenDo;
       data.grupsToDo = item.grupsToDo !== undefined && item.grupsToDo.length > 0 ? item.grupsToDo : itemAux.grupsToDo;
       
-      // await updateOneDocOfTpo('extraescolar',idCard,item);
       await updateOneDocOfTpo('extraescolar',idCard,data);
       
       if (extraescolar["imagenLogo"] !== undefined) {
         const dataImg = await uploadFile(extraescolar["imagenLogo"],extraescolar["imagenLogo"].name,idCard,user.uid);
-        // item.namePhoto = extraescolar["imagenLogo"].name;
-        // item.urlPhoto = dataImg.metadata.fullPath;
         data.namePhoto = extraescolar["imagenLogo"].name;
         data.urlPhoto = dataImg.metadata.fullPath;
-        // await updateOneDocOfTpo('extraescolar',idCard,item);    
         await updateOneDocOfTpo('extraescolar',idCard,data);    
       }
       
@@ -292,12 +276,9 @@ function ViewEdicioExtraescolars() {
         data.whenDo = item.whenDo;
 
         const idData = await add('extraescolar',data);
-        // const idData = await add('extraescolar',item);
         if (idData !== undefined && idData !== "") {
           const dataImg = await uploadFile(extraescolar["imagenLogo"],extraescolar["imagenLogo"].name,idData,user.uid);
-          // item.urlPhoto = dataImg.metadata.fullPath;
           data.urlPhoto = dataImg.metadata.fullPath;
-          // await updateOneDocOfTpo('extraescolar',idData,item);  
           await updateOneDocOfTpo('extraescolar',idData,data);  
         }
         handleReset();
