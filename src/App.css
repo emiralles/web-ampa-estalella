@@ -171,9 +171,9 @@
   color: #AD062E!important;
 }
 
-.navbar-light .navbar-nav .nav-link {
+/* .navbar-light .navbar-nav .nav-link {
   color: white!important;
-}
+} */
 
 
 .body-card-group{
@@ -209,6 +209,9 @@
   background-clip: padding-box;
   border: 0px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
+}
+.nav-link.dropdown-toggle{
+  color:white!important;
 }
 /* #b4dc73 */
 .color-div-card{
