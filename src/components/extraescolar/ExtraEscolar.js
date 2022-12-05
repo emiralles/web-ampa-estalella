@@ -131,3 +131,4 @@ function ExtraEscolar({handleChange, handleCheckChange, handleFileChange, handle
 }
 
 export default ExtraEscolar
+

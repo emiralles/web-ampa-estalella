@@ -10,11 +10,10 @@
 // }
 
 export class equipament{
-    constructor(Uid,path,title,parragraph,mainText,namePhoto,urlPhoto){
+    constructor(Uid,path,title,mainText,namePhoto,urlPhoto){
         this.Uid = Uid;
         this.path = path;
         this.title= title;
-        this.parragraph= parragraph;
         this.mainText= mainText;
         this.namePhoto= namePhoto;
         this.urlPhoto= urlPhoto;

@@ -12,7 +12,7 @@ import EditSharpIcon from '@mui/icons-material/EditSharp';
 import DeleteSharpIcon from '@mui/icons-material/DeleteSharp';
 
 
-function CardEquipament({Id,path,theme,card,title,urlImage, classnameBody, classnameImage, handleRemove, handleEdit, componentcall}) {
+function CardEquipament({Id,path,theme,card,handleRemove, handleEdit, componentcall}) {
 
     const buttonsAdmin = (componentcall) => {
         if (componentcall === "admin") {
@@ -50,15 +50,18 @@ function CardEquipament({Id,path,theme,card,title,urlImage, classnameBody, class
                         sx={{
                             height:150
                         }}
-                        image="https://source.unsplash.com/random"
+                        image={card.urlPhoto}
+                        // "https://source.unsplash.com/random"
                         alt="random"
                     />
                     <CardContent sx={{ flexGrow: 1 }}>
                         <Typography gutterBottom variant="h5" component="h2">
-                        <diV>Articulo 1</diV>
+                        {/* Articulo 1 */}
+                            {card.name}
                         </Typography>
                         <Typography>
-                        <diV>Precio: 150, Articulo ofrecido por la Afa a un precio acequible para los padres y madres de familia de nuestra escuela.</diV>
+                        {/* Precio: 150, Articulo ofrecido por la Afa a un precio acequible para los padres y madres de familia de nuestra escuela. */}
+                            {card.mainText}
                         </Typography>
                     </CardContent>
                         {
@@ -79,30 +82,22 @@ function CardEquipament({Id,path,theme,card,title,urlImage, classnameBody, class
                                 sx={{
                                     height:150
                                 }}
-                                image="https://source.unsplash.com/random"
+                                image={card.urlPhoto}
                                 alt="random"
                             />
                             <CardContent sx={{ flexGrow: 1 }}>
                                 <Typography gutterBottom variant="h5" component="h2">
-                                <diV>Articulo 1</diV>
+                                {card.name}
                                 </Typography>
                                 <Typography>
-                                <diV>Precio: 150, Articulo ofrecido por la Afa a un precio acequible para los padres y madres de familia de nuestra escuela.</diV>
+                                {card.mainText}
                                 </Typography>
                             </CardContent>
-                            {
+                            {/* {
                                 buttonsAdmin(componentcall)
-                            }
+                            } */}
                         </Card>
                     </Grid>
-                    {/* <div className="row featurette">
-                        <div className={classnameBody}>
-                            
-                        </div>
-                        <div className={classnameImage}>
-                            <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={urlImage} alt=""/>
-                        </div>
-                    </div> */}
                 </>
             )
         }

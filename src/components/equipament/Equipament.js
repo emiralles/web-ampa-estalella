@@ -1,4 +1,4 @@
-
+  
 function Equipament({handleChange, handleFileChange, handleSubmit, inputAux}) {
     return (
         <>

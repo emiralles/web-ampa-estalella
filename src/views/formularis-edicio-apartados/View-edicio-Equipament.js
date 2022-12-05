@@ -18,7 +18,6 @@ import { useAuth } from "../../context/authContext";
 
 let data = {
   title: "",
-  parragraph: "",
   mainText: "",
   namePhoto: "",
   urlPhoto: "",
@@ -34,7 +33,8 @@ function ViewEdicioEquipament() {
     const [dataAuxiliar, setDataAuxiliar] = useState([]);
     const [isTrue, setTrue] = useState(false);
     const { user }  = useAuth();
-    
+    let componentCall = "admin";
+
     const handleChange = ({target:{name,value}}) => {
         setExtraescolar({...extraescolar,[name]:value});
     }
@@ -49,7 +49,6 @@ function ViewEdicioEquipament() {
         
         let inputAux = document.getElementById('input-aux');
         let principalText = document.getElementById('principalText');
-        let parrafo = document.getElementById('parrafo');
         let titulo = document.getElementById('titulo');
         let textPhoto = document.getElementById('textPhoto');
         
@@ -63,7 +62,6 @@ function ViewEdicioEquipament() {
             
             titulo.value = data.title;
             principalText.value = data.mainText;
-            parrafo.value = data.parragraph;
             textPhoto.value = data.urlPhoto;    
             inputAux.value = `${data.id} - ${data.namePhoto}`;
             btnExtraescolar.innerText = "Modificar";
@@ -119,11 +117,10 @@ function ViewEdicioEquipament() {
           let dataImagen = extraescolar["imagenLogo"];
           let nameCardPhoto = dataImagen !== undefined ? dataImagen.name : arrDataAux[1];  
     
-          let item = new equipament('','',extraescolar['titol'],extraescolar['parraf'],extraescolar['principalText'],nameCardPhoto,'');
-          let itemAux = new equipament('','',dataAuxiliar.title,dataAuxiliar.parragraph,dataAuxiliar.mainText,dataAuxiliar.namePhoto,dataAuxiliar.urlPhoto)
+          let item = new equipament('','',extraescolar['titol'],extraescolar['principalText'],nameCardPhoto,'');
+          let itemAux = new equipament('','',dataAuxiliar.title,dataAuxiliar.mainText,dataAuxiliar.namePhoto,dataAuxiliar.urlPhoto)
           
           data.title = item.title !== undefined && item.title !== "" ? item.title : itemAux.title;
-          data.parragraph = item.parragraph !== undefined && item.parragraph !== "" ? item.parragraph : itemAux.parragraph;
           data.mainText = item.mainText !== undefined && item.mainText !== "" ? item.mainText : itemAux.mainText;
           
           await updateOneDocOfTpo('equipament',idCard,data);
@@ -143,11 +140,10 @@ function ViewEdicioEquipament() {
     
         }else{
           
-          if (extraescolar['titol'] !== undefined && extraescolar['parraf'] !== undefined && extraescolar['principalText'] !== undefined && extraescolar['imagenLogo'].name !== undefined ) {
-            let item = new equipament('','',extraescolar['titol'],extraescolar['parraf'],extraescolar['principalText'],extraescolar['imagenLogo'].name,'');
+          if (extraescolar['titol'] !== undefined && extraescolar['principalText'] !== undefined && extraescolar['imagenLogo'].name !== undefined ) {
+            let item = new equipament('','',extraescolar['titol'],extraescolar['principalText'],extraescolar['imagenLogo'].name,'');
             data.mainText = item.mainText;
             data.namePhoto = item.namePhoto;
-            data.parragraph = item.parragraph;
             data.title = item.title;
             data.urlPhoto = item.urlPhoto;
             
@@ -173,7 +169,7 @@ function ViewEdicioEquipament() {
             resul.forEach((doc)=>{
               let imgUrl = getUrlImage(doc.urlPhoto);
               imgUrl.then((rstUrl)=>{
-                let item = new equipament(doc.id,doc.urlPhoto,doc.title,doc.parragraph,doc.mainText,doc.namePhoto,rstUrl);
+                let item = new equipament(doc.id,doc.urlPhoto,doc.title,doc.mainText,doc.namePhoto,rstUrl);
                 setListExtraEscolar(arr => [...arr, item]);
               });
             })
@@ -187,93 +183,23 @@ function ViewEdicioEquipament() {
 
     return ( 
         <>
-            {/* <div className="row featurette"> */}
-                <Equipament handleChange={handleChange} handleFileChange={handleFileChange} handleSubmit={handleSubmit}/>
-       
-                {/* <div className="col-md-12">
-                    <div className="card border-info mb-3">
-                        <div className="card-header bg-warning"><h2 className="card-title">Equipament</h2></div>
-                        <div className="card-body
-                        ">
-                            <form onSubmit={handleSubmit} >
-                                <input className="d-none" id="input-aux" ></input>
-                                <div className="mb-3" id="container-body-parraph">
-                                    <Editor
-                                        apiKey="twddabpib9sh6y8sk8heu47ikwtyx74ryopk10mxlnlf2ue8"
-                                        onInit={(evt, editor) => editorRef.current = editor}
-                                        initialValue="<p>agregue aqui el texto.</p>"
-                                        init={{
-                                        height: 500,
-                                        menubar: true,
-                                        plugins: [
-                                            'advlist', 'autolink', 'lists', 'link', 'image', 'charmap',
-                                            'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
-                                            'insertdatetime', 'media', 'table', 'preview', 'help', 'wordcount'
-                                        ],
-                                        toolbar: 'undo redo | blocks | ' +
-                                            'bold italic forecolor | alignleft aligncenter ' +
-                                            'alignright alignjustify | bullist numlist outdent indent | ' +
-                                            'removeformat | help',
-                                        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
-                                        }}
-                                    />
-                                </div>
-                                <div className="mb-3">
-                                    <input className="d-none" id="textPhoto"/>
-                                    <label htmlFor="fileupload" className="form-label">Afegir Imatge Tardes Estiu</label>
-                                    <input type="file" onChange={handleFileChange} className="form-control" id="fileupload" name="fileupload"/>
-                                </div>
-                                
-                                <div className="d-grid gap-2">
-                                    <button type="submit" id="btn-menjador" className="btn btn-primary">Agregar</button>
-                                </div>
-                            </form>
-                        </div>
-                        <div className=" m-2 p-4">
-                            <Parrafo data={edicioMenjador} handleRemove={handleRemove} handleEdit={handleEdit} componentcall={origen} />
-                        </div>
-                    </div>
-                </div> */}
-                <ThemeProvider theme={theme}>
-                    <CssBaseline />
-                    <main>
-                        <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
-                            <Chip label="Equipament" size="large" sx={{backgroundColor:"green", color:"white"}} variant="outlined" />
-                        </Stack>
-                        <Container sx={{ py: 8 }} maxWidth="md">
-                        {/* End hero unit */}
-                        <Grid container spacing={4}>
-                            {cards.map((card) => (
-                            <CardEquipament theme={theme} card={card} handleEdit={handleEdit} handleRemove={handleRemove} ></CardEquipament>
-                            // <Grid item key={card} xs={12} sm={6} md={4}>
-                            //     <Card
-                            //     sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-                            //     >
-                            //     <CardMedia
-                            //         component="img"
-                            //         sx={{
-                            //             height:150
-                            //         }}
-                            //         image="https://source.unsplash.com/random"
-                            //         alt="random"
-                            //     />
-                            //     <CardContent sx={{ flexGrow: 1 }}>
-                            //         <Typography gutterBottom variant="h5" component="h2">
-                            //         <diV>Articulo 1</diV>
-                            //         </Typography>
-                            //         <Typography>
-                            //         <diV>Precio: 150, Articulo ofrecido por la Afa a un precio acequible para los padres y madres de familia de nuestra escuela.</diV>
-                            //         </Typography>
-                            //     </CardContent>
-                            //     {/* Edicion */}
-                            //     </Card>
-                            // </Grid>
-                            ))}
-                        </Grid>
-                        </Container>
-                    </main>
-                </ThemeProvider>
-            {/* </div> */}
+            <Equipament handleChange={handleChange} handleFileChange={handleFileChange} handleSubmit={handleSubmit}/>
+            <ThemeProvider theme={theme}>
+                <CssBaseline />
+                <main>
+                    <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
+                        <Chip label="Equipament" size="large" sx={{backgroundColor:"green", color:"white"}} variant="outlined" />
+                    </Stack>
+                    <Container sx={{ py: 8 }} maxWidth="md">
+                    {/* End hero unit */}
+                    <Grid container spacing={4}>
+                        {listExtraEscolar.map((card, index) => (
+                            <CardEquipament Id={card.Uid} path={card.path} key={index} theme={theme} card={card} handleEdit={handleEdit} handleRemove={handleRemove} componentcall={componentCall}></CardEquipament>
+                        ))}
+                    </Grid>
+                    </Container>
+                </main>
+            </ThemeProvider>
         </>
      );
 }
