@@ -210,6 +210,7 @@
   border: 0px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
 }
+
 .nav-link.dropdown-toggle{
   color:white!important;
 }
@@ -346,7 +347,6 @@ footer div span.text-muted{
 
 
 @media (max-width: 645px) {
- 
   /* media para la galeria */
   .width-images-gallery{
     width: 50%!important;
@@ -423,7 +423,7 @@ footer div span.text-muted{
 }
 
 @media (max-width: 350px) {
-/* media para la galeria */
+  /* media para la galeria */
   .width-images-gallery{
     width: 50%!important;
   }

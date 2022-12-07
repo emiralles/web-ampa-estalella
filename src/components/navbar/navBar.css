@@ -10,6 +10,10 @@ a:active { text-decoration: none; color:black!important}
   text-decoration-color: none!important;
 }
 
+.dropdown-menu li a{
+  color:white!important;
+  background-color: #009846!important;
+}
 
 @media (max-width: 768px){
     .navbar-style-mobil{
