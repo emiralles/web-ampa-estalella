@@ -39,7 +39,7 @@ function ViewEsdeveniments() {
     return (
         <>
             {
-                <ListRectangleCard arrayData={listEsdeveniments} componentCall={origen}/>
+                <ListRectangleCard arrayData={listEsdeveniments} componentCall={origen} nameList="Esdeveniments"/>
             }
             {/* <hr className="featurette-divider"></hr>
                 <div className="row featurette">

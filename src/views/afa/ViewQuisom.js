@@ -1,15 +1,11 @@
-
 import { useState, useEffect } from "react";
 import {quisom} from "../../models/quisom";
 import {getAllCollections} from "../../db/crudDB";
 import Parrafo from "../../components/menjador/Parrafo";
-
-//import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
-
 
 let edicio = new quisom("","","","","","", false, false); 
 
@@ -18,7 +14,7 @@ let elevation = 24;
 const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body1,
     color: theme.palette.text.secondary
-  }));
+}));
   
 const lightTheme = createTheme({ palette: { mode: 'light' } });  
 
