@@ -16,6 +16,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
+import { green } from "@mui/material/colors";
 
 let edicio = new quisom("","","","","","", false, false); 
 let elevation = 24;
@@ -29,7 +30,7 @@ const lightTheme = createTheme({ palette: { mode: 'light' } });
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-        backgroundColor: theme.palette.common.black,
+        backgroundColor: "forestgreen", // theme.palette.common.green,
         color: theme.palette.common.white,
     },
     [`&.${tableCellClasses.body}`]: {
