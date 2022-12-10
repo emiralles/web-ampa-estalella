@@ -2,7 +2,7 @@ import {useState, useEffect} from "react";
 import { getAllCollections, getUrlImage } from "../../db/crudDB";
 import { extraEscolars } from "../../models/extraescolars";
 import ListExtraEscolars from "../../components/extraescolar/ListExtraEscolars";
-import InscripcionExtraEscolar from "../../formularis/inscripcioExtraEscolar/InscripcionExtraEscolar";
+//import InscripcionExtraEscolar from "../../formularis/inscripcioExtraEscolar/InscripcionExtraEscolar";
 
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
@@ -88,10 +88,8 @@ function ViewExtraescolars() {
                     </Box>
                 </ThemeProvider>
             ))}
-            {/* <hr className="col-3 col-md-12 mb-5"></hr> */}
-            
-            <hr className="featurette-divider"></hr>
-            {[lightTheme].map((theme, index) => (
+            {/* <hr className="featurette-divider"></hr> */}
+            {/* {[lightTheme].map((theme, index) => (
                 <ThemeProvider theme={theme} key={index}>
                     <Box>
                         <Item key={elevation} elevation={elevation}>
@@ -107,20 +105,7 @@ function ViewExtraescolars() {
                         </Item>
                     </Box>
                 </ThemeProvider>
-            ))}
-            
-
-            {/* <hr className="featurette-divider"></hr>
-            <div className="row g-5">
-                <div className="col-md-12">
-                    <h2>Horaris Extraescolars</h2>
-                    <hr className="col-3 col-md-2 mb-5"></hr>
-                </div>
-            </div>
-            <div className="div-image-horaris-extraescolars">
-                <img src={imagen5} alt=""/>
-            </div>
-            <hr className="featurette-divider"></hr> */}
+            ))} */}
         </>
     );
 }

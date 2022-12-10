@@ -22,7 +22,6 @@ const Item = styled(Paper)(({ theme }) => ({
   
 const lightTheme = createTheme({ palette: { mode: 'light' } });  
 
-
 function ViewTardesEstiu() {
   return (
     <>
@@ -31,13 +30,13 @@ function ViewTardesEstiu() {
             <div id='textoHtml' dangerouslySetInnerHTML={{ __html: `${edicioMenjador.cosHtml}` }}>
             </div> : <p>No hay texto para presentar</p>
         } */}
+        <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
+            <Chip label="TARDES DE JUNY" size="large" variant="outlined" />
+        </Stack>
         {[lightTheme].map((theme, index) => (
                 <ThemeProvider theme={theme} key={index}>
                     <Box>
                         <Item key={elevation} elevation={elevation}>
-                            <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
-                                <Chip label="TARDES DE JUNY" size="large" variant="outlined" />
-                            </Stack>
                             <Stack direction="row" sx={{justifyContent: 'center'}}>
                                 <DialogContent>
                                     <Grid container spacing={2} columns={{sm:10}}>
