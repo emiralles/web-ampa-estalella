@@ -18,3 +18,7 @@ body.body-layout-admin{
 .position-sticky.pt-3.region-nav{
     background-color: #009846!important;
 }
+
+#sidebarMenu div ul li a.nav-link{
+    color: white!important;
+}

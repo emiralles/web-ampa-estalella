@@ -20,14 +20,15 @@ function RectangleCard({Id,path,title,urlImage,arrayData, classnameBody, classna
         if (componentcall === "admin") {
             return(
                 <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-                    <IconButton aria-label="previous">
-                        {theme.direction === 'rtl' ? <DeleteSharpIcon name={`${Id} - ${path}`} onClick={handleRemove}/> : <EditSharpIcon name={Id} onClick={handleEdit}/>}
+                    <IconButton aria-label="previous" name={Id} onClick={handleEdit}>
+                        {theme.direction === 'rtl' ? <DeleteSharpIcon /> : <EditSharpIcon />}
                     </IconButton>
                     {/* <IconButton aria-label="play/pause">
                         <PlayArrowIcon sx={{ height: 38, width: 38 }} />
                     </IconButton> */}
-                    <IconButton aria-label="next">
-                        {theme.direction === 'rtl' ? <EditSharpIcon name={Id} onClick={handleEdit}/> : <DeleteSharpIcon name={`${Id} - ${path}`} onClick={handleRemove}/>}
+                    <IconButton aria-label="next" name={`${Id} - ${path}`} onClick={handleRemove}>
+                    {/* name={Id} onClick={handleEdit} name={`${Id} - ${path}`} onClick={handleRemove} */}
+                        {theme.direction === 'rtl' ? <EditSharpIcon /> : <DeleteSharpIcon />}
                     </IconButton>
                 </Box>
                 // <div className="row g-0">
