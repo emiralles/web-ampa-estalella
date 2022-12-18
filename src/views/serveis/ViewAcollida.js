@@ -1,3 +1,10 @@
+// import Table from '@mui/material/Table';
+// import TableBody from '@mui/material/TableBody';
+// import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+// import TableContainer from '@mui/material/TableContainer';
+// import TableHead from '@mui/material/TableHead';
+// import TableRow from '@mui/material/TableRow';
+
 
 import {quisom} from "../../models/quisom";
 import {getAllCollections} from "../../db/crudDB";
@@ -83,7 +90,7 @@ function ViewAcollida() {
                                 <DialogContent>
                                     <DialogContentText id="alert-dialog-description">
                                         { 
-                                            edicioQuisom ? <div className="container" id='textoHtml' dangerouslySetInnerHTML={{ __html: `${edicioQuisom.cosHtml}` }}>
+                                            edicioQuisom ? <div className="container p-4" id='textoHtml' dangerouslySetInnerHTML={{ __html: `${edicioQuisom.cosHtml}` }}>
                                             </div> : <p>Aun no existe información...</p>
                                         }
                                     </DialogContentText>

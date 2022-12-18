@@ -120,7 +120,7 @@ function Carousel() {
                         <Box
                             component="img"
                             sx={{
-                            height: 255,
+                            height: window.innerWidth > 1024 ? 655:255,
                             display: 'block',
                             maxWidth: '100%',
                             overflow: 'hidden',
@@ -143,57 +143,14 @@ function Carousel() {
                         onClick={handleNext}
                         disabled={activeStep === listEsdeveniments.length - 1}
                     >
-                        {/* Next
-                        {theme.direction === 'rtl' ? (
-                        <KeyboardArrowLeft />
-                        ) : (
-                        <KeyboardArrowRight />
-                        )} */}
                     </Button>
                     }
                     backButton={
                     <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-                        {/* {theme.direction === 'rtl' ? (
-                        <KeyboardArrowRight />
-                        ) : (
-                        <KeyboardArrowLeft />
-                        )}
-                        Back */}
                     </Button>
                     }
                 />
             </Box>
-            // <div id="myCarousel" className="carousel slide" data-bs-ride="carousel">
-            //     <div className="carousel-indicators">
-            //         {
-            //             listEsdeveniments.map((esdevenim,index) => {
-            //                 return (
-            //                     <button type="button" key={index} data-bs-target="#myCarousel" data-bs-slide-to={index} className={index === 0 ?"active":""} aria-label={`Slide ${index}`}></button>
-            //                 )
-            //             })
-            //         }
-            //     </div>
-            //     <div className="carousel-inner">
-                
-            //         {
-            //             listEsdeveniments.map((esdevenim,index) => {
-            //                 return (
-            //                     <div key={index} className={index === 0 ? "carousel-item active":"carousel-item"}>
-            //                         <img className="bd-placeholder-img" width="100%" height="100%" src={esdevenim.urlPhoto} aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" alt=""/>
-            //                     </div>
-            //                 )
-            //             })
-            //         }
-            //     </div>
-            //     <button className="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-            //         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-            //         <span className="visually-hidden">Previous</span>
-            //     </button>
-            //     <button className="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-            //         <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            //         <span className="visually-hidden">Next</span>
-            //     </button>
-            // </div>
         );
         
     }

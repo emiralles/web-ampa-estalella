@@ -1,4 +1,4 @@
-export class tardesJuny{
+export class modelTardesJuny{
     constructor(uid,cosHtml,dateCreation,urlPhoto,path,namePhoto){
         this.uid = uid;
         this.cosHtml = cosHtml;

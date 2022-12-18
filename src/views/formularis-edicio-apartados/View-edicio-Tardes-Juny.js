@@ -1,45 +1,152 @@
 import { useRef, useState, useEffect } from "react";
+import { useAuth } from "../../context/authContext";
 import { Editor } from '@tinymce/tinymce-react';
-import { menjador } from "../../models/menjador";
-import { add, updateOneDocOfTpo, getAllCollections, deleteOneDocOfTipo, getOneDocOfTipo} from "../../db/crudDB";
+import { add, updateOneDocOfTpo, getAllCollections, deleteOneDocOfTipo, getOneDocOfTipo, uploadFile, removeObject, getUrlImage} from "../../db/crudDB";
 import Parrafo from "../../components/menjador/Parrafo";
+import { modelTardesJuny } from "../../models/tardesJuny";
 
-let edicio = new menjador("","","","", true); 
 
-let dataMenjador = {
+let data = {
     uid:"",
     cosHtml:"",
     dateCreation:"",
-    iframeYoutube:"",
-    thereIsYoutubeVideo: true,
+    namePhoto: "",
+    urlPhoto: "",
 }
 
-function ViewEdicioTardesJuny() {
-    const[edicioMenjador,setEdicioMenjador] = useState(edicio);
-    const [isTrue, setTrue] = useState(false);
-    const [dataAuxiliar, setDataAuxiliar] = useState([]);
-    let origen = "admin";
+let origen = "admin";  
 
-    const editorRef = useRef(null);
-    
+let edicio = new modelTardesJuny("","","","","" ,""); 
+
+// let dataMenjador = {
+//     uid:"",
+//     cosHtml:"",
+//     dateCreation:"",
+//     iframeYoutube:"",
+//     thereIsYoutubeVideo: true,
+// }
+
+function ViewEdicioTardesJuny() {
+    const [tardesJuny, setTardesJuny] = useState(edicio);
+    //const [dataAuxiliar, setDataAuxiliar] = useState([]);
+    const { user }  = useAuth();
+    //let componentCall = "admin";
+
     // const handleChange = ({target:{name,value}}) => {
-    //     setEdicioMenjador({...edicioMenjador,[name]:value})
+    //     setTardesJuny({...tardesJuny,[name]:value});
     // }
 
     const handleFileChange = ({target:{name,files}}) => {
-        setEdicioMenjador({...edicioMenjador,[name]:files[0]})
+        setTardesJuny({...tardesJuny,[name]:files[0]})
+    }
+
+
+    const editorRef = useRef(null);
+    
+    const handleSubmit = async (e) =>{    
+        e.preventDefault();
+        let inputAux = document.getElementById('input-aux');
+        if (inputAux.value !== "") {
+          //let arrDataAux = inputAux.value.split(" - ");
+          //let idCard = arrDataAux[0];
+        //  let dataImagen = extraescolar["imagenLogo"];
+        //   let nameCardPhoto = dataImagen !== undefined ? dataImagen.name : arrDataAux[1];  
+    
+        //   let item = new equipament('','',extraescolar['titol'],extraescolar['principalText'],nameCardPhoto,'');
+        //   let itemAux = new equipament('','',dataAuxiliar.title,dataAuxiliar.mainText,dataAuxiliar.namePhoto,dataAuxiliar.urlPhoto)
+          
+        //   data.title = item.title !== undefined && item.title !== "" ? item.title : itemAux.title;
+        //   data.mainText = item.mainText !== undefined && item.mainText !== "" ? item.mainText : itemAux.mainText;
+          
+        //   await updateOneDocOfTpo('equipament',idCard,data);
+          
+        //   if (extraescolar["imagenLogo"] !== undefined) {
+        //     const dataImg = await uploadFile(extraescolar["imagenLogo"],extraescolar["imagenLogo"].name,idCard,user.uid);
+        //     data.namePhoto = extraescolar["imagenLogo"].name;
+        //     data.urlPhoto = dataImg.metadata.fullPath;
+        //     await updateOneDocOfTpo('equipament',idCard,data);    
+        //   }
+          
+        //   let btnExtraescolar = document.getElementById('btn-extraescolar');
+        //   btnExtraescolar.innerText = "Agregar";
+    
+          handleReset();
+          refresh();
+    
+        }else{
+          
+          if ( tardesJuny['fileUpload'].name !== undefined && editorRef.current ) {
+            let dataAux = editorRef.current.getContent();
+            let auxEvento = tardesJuny;
+            auxEvento.cosHtml=dataAux;
+            setTardesJuny(auxEvento);
+            
+            data.cosHtml= auxEvento.cosHtml;
+            
+            //let item = new modelTardesJuny('', auxEvento.cosHtml, auxEvento.dateCreation, '', '', '' );
+            
+            const idData = await add('tardesjuny',data);
+            if (idData !== undefined && idData !== "") {
+              data.uid = idData;
+              const dataImg = await uploadFile(auxEvento["fileUpload"],auxEvento["fileUpload"].name,idData,user.uid);
+              data.namePhoto = auxEvento["fileUpload"].name;
+              data.urlPhoto = dataImg.metadata.fullPath;
+              await updateOneDocOfTpo('tardesjuny',idData,data);  
+            }
+            handleReset();
+            refresh();
+          }
+        }        
+    }
+    
+    const handleEdit = ({target:{name}}) =>{
+
+        let btnExtraescolar = document.getElementById('btn-extraescolar');
+        
+        let inputAux = document.getElementById('input-aux');
+        let psd = document.getElementById('container-body-parraph');
+        
+        
+        let principalText = document.getElementById('textoHtml');
+        //let titulo = document.getElementById('titulo');
+        let textPhoto = document.getElementById('textPhoto');
+        
+        let promise = getOneDocOfTipo('tardesjuny',name);
+        promise.then((result)=>{
+            
+            let data = result.data();
+            data.id = result.id;
+            
+            setTardesJuny(data);
+            
+            //titulo.value = data.title;
+            //principalText.value = data.mainText;
+            textPhoto.value = data.urlPhoto;    
+            inputAux.value = `${data.id} - ${data.namePhoto}`;
+
+            psd.children[1].children[0].children[1].children[0].children[0].contentDocument.children[0].children['tinymce'].innerHTML=data.cosHtml;
+            
+            btnExtraescolar.innerText = "Modificar";
+            refresh();
+            //titulo.focus();
+        })
+    }
+
+    const handleRemove = ({target:{name}}) =>{
+        let arrStr = name.split(" - ");
+        let id = arrStr[0];
+        let pathPhoto = arrStr[1];
+        //let titulo = document.getElementById('titulo');
+        removeObject(pathPhoto);
+        deleteOneDocOfTipo('tardesjuny',id);
+        refresh();
+        //titulo.focus();
     }
 
     const refresh = ()=>{
         // re-renders the component
-        setEdicioMenjador(edicio);
+        setTardesJuny(data);
         //window.location.reload(false);
-        if (isTrue) {
-          setTrue(false);
-        }else{
-          setTrue(true);
-        }
-        
     }
 
     const handleReset = () => {
@@ -52,136 +159,30 @@ function ViewEdicioTardesJuny() {
         Array.from(document.querySelectorAll("textarea")).forEach(
             textarea => (textarea.value = "")
         );
-
+    
         let psd = document.getElementById('container-body-parraph');
-
         psd.children[1].children[0].children[1].children[0].children[0].contentDocument.children[0].children['tinymce'].innerHTML="<p>agregue aqui el texto.</p>";
-    
     };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        let inputAux = document.getElementById('input-aux');
-        let fecha = new Date();
-        let nowDate = fecha.toLocaleString("es-ES");
-            
-        if (inputAux.value !== "") {
-            
-            if (nowDate !== "") {
-                let auxEvento = edicioMenjador;
-                auxEvento.dateCreation=nowDate;
-                setEdicioMenjador(auxEvento);    
-            }
-
-            if (editorRef.current) {
-                let data = editorRef.current.getContent();
-                let auxEvento = edicioMenjador;
-                auxEvento.cosHtml=data;
-                auxEvento.thereIsYoutubeVideo = true;
-                setEdicioMenjador(auxEvento);
-            }
-
-            let idCard = inputAux.value;
-            
-            let item = new menjador('',edicioMenjador['cosHtml'],edicioMenjador['dateCreation'],edicioMenjador['iframeYoutube'], true);
-            let itemAux = new menjador('',dataAuxiliar.cosHtml,dataAuxiliar.dateCreation,dataAuxiliar.iframeYoutube, true);
-            
-            dataMenjador.cosHtml = item.cosHtml !== undefined && item.cosHtml !== "" ? item.cosHtml : itemAux.cosHtml;
-            dataMenjador.dateCreation = item.dateCreation !== undefined && item.dateCreation !== "" ? item.dateCreation : itemAux.dateCreation;
-            dataMenjador.iframeYoutube = item.iframeYoutube !== undefined && item.iframeYoutube !== "" ? item.iframeYoutube : itemAux.iframeYoutube;
-            dataMenjador.thereIsYoutubeVideo = true;
-
-            await updateOneDocOfTpo('tardesjuny',idCard,dataMenjador);
-            
-            let btnMenjador = document.getElementById('btn-menjador');
-            btnMenjador.innerText = "Agregar";
-
-            handleReset();
-            refresh();
-
-        }else{
-        
-            if (nowDate !== "") {
-                let auxEvento = edicioMenjador;
-                auxEvento.dateCreation=nowDate;
-                auxEvento.thereIsYoutubeVideo=true;
-                setEdicioMenjador(auxEvento);    
-            }
-            
-            if (editorRef.current) {
-                let data = editorRef.current.getContent();
-                let auxEvento = edicioMenjador;
-                auxEvento.cosHtml=data;
-                auxEvento.thereIsYoutubeVideo=true;
-                setEdicioMenjador(auxEvento);
-            }
-
-            
-            dataMenjador.cosHtml = edicioMenjador.cosHtml;
-            dataMenjador.dateCreation = edicioMenjador.dateCreation;
-            dataMenjador.iframeYoutube = edicioMenjador.iframeYoutube;
-            dataMenjador.thereIsYoutubeVideo = true;
-
-            await add('tardesjuny',dataMenjador);
-            
-            handleReset();
-            refresh();
-            
-        }
-
-    };
-
-    const handleEdit = ({target:{name}}) =>{
-
-        let btnMenjador = document.getElementById('btn-menjador');
-        
-        let psd = document.getElementById('container-body-parraph');
-        let textPhoto = document.getElementById('iframeYoutube');
-        let inputAux = document.getElementById('input-aux');
-        
-        let promise = getOneDocOfTipo('tardesjuny',name);
-        promise.then((result)=>{
-          
-            let data = result.data();
-            data.id = result.id;
-          
-            setDataAuxiliar(data);
-
-            textPhoto.value = data.iframeYoutube;
-            inputAux.value = data.id;
-            psd.children[1].children[0].children[1].children[0].children[0].contentDocument.children[0].children['tinymce'].innerHTML=data.cosHtml;
-            
-            btnMenjador.innerText = "Modificar";
-            refresh();
-        
-        })
-    
-    }
-
-    const handleRemove = ({target:{name}}) =>{
-        let arrStr = name.split(" - ");
-        let id = arrStr[0];
-        deleteOneDocOfTipo('tardesjuny',id);
-        refresh();
-    }
 
     useEffect(()=>{
    
         const handleLoad = async () =>{
-        
-          let promesa1 = getAllCollections('tardesjuny');
-          promesa1.then((resul)=>{
-            resul.forEach((doc)=>{
-                let item = new menjador(doc.id,doc.cosHtml,doc.dateCreation,doc.iframeYoutube, true); 
-                setEdicioMenjador(item);
-            })
-          })
-          
+            let promesa1 = getAllCollections('tardesjuny');
+            promesa1.then((resul)=>{
+              resul.forEach((doc)=>{
+                let imgUrl = getUrlImage(doc.urlPhoto);
+                imgUrl.then((rstUrl)=>{
+                    let item = new modelTardesJuny(doc.id,doc.cosHtml,doc.dateCreation,doc.urlPhoto,rstUrl,doc.namePhoto);
+                    //setTardesJuny(arr => [...arr, item]);
+                    setTardesJuny(item);
+                });
+              })
+            })    
         }
-        
+    
         handleLoad();
     
-    },[isTrue]);
+    },[]);
 
     return ( 
         <>
@@ -215,8 +216,8 @@ function ViewEdicioTardesJuny() {
                                 </div>
                                 <div className="mb-3">
                                     <input className="d-none" id="textPhoto"/>
-                                    <label htmlFor="fileupload" className="form-label">Afegir Imatge Tardes Estiu</label>
-                                    <input type="file" onChange={handleFileChange} className="form-control" id="fileupload" name="fileupload"/>
+                                    <label htmlFor="fileUpload" className="form-label">Afegir Imatge Tardes d'Juny</label>
+                                    <input type="file" onChange={handleFileChange} className="form-control" id="fileupload" name="fileUpload"/>
                                 </div>
                                 
                                 {/* <div className="mb-3">
@@ -230,7 +231,7 @@ function ViewEdicioTardesJuny() {
                             </form>
                         </div>
                         <div className=" m-2 p-4">
-                            <Parrafo data={edicioMenjador} handleRemove={handleRemove} handleEdit={handleEdit} componentcall={origen} />
+                            <Parrafo data={tardesJuny} handleRemove={handleRemove} handleEdit={handleEdit} componentcall={origen} />
                         </div>
                     </div>
                 </div>

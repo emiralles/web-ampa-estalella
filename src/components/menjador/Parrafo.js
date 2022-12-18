@@ -1,3 +1,5 @@
+import CardMedia from '@mui/material/CardMedia';
+
 
 function  Parrafo({data,componentcall, handleEdit, handleRemove}) {
     
@@ -33,6 +35,15 @@ function  Parrafo({data,componentcall, handleEdit, handleRemove}) {
             {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/Wox8BHyJ0XE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
             </iframe> */}
             </div> : ""
+        }
+        {
+            data.urlPhoto && data.path ? 
+            <CardMedia
+                component="img"
+                sx={{ width: "40%" }}
+                image={data.path}
+                alt="Live from space album cover"
+            />:""
         }
         <hr className="featurette-divider"></hr>
         <div id='textoHtml' dangerouslySetInnerHTML={{ __html: `${data.cosHtml}` }}>
