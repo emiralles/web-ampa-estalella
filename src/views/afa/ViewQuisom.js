@@ -6,6 +6,9 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
+
 
 let edicio = new quisom("","","","","","", false, false); 
 
@@ -51,6 +54,9 @@ function ViewQuisom() {
             <Grid item key={index}>
             <ThemeProvider theme={theme}>
                 <Box>
+                    <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
+                        <Chip label="Quisom" size="large" variant="outlined" />
+                    </Stack>
                     <Item key={elevation} elevation={elevation}>
                         { edicioQuisom ?
                             <div className=" m-2 p-4">

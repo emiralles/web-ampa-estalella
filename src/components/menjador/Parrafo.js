@@ -45,10 +45,10 @@ function  Parrafo({data,componentcall, handleEdit, handleRemove}) {
                 alt="Live from space album cover"
             />:""
         }
-        <hr className="featurette-divider"></hr>
+        {/* <hr className="featurette-divider"></hr> */}
         <div id='textoHtml' dangerouslySetInnerHTML={{ __html: `${data.cosHtml}` }}>
         </div>
-        { componentcall === "fersesoci" ?
+        { componentcall === "fersesoci" || componentcall === "quisom" ?
          "":<hr className="featurette-divider"></hr>
         }
     </>
