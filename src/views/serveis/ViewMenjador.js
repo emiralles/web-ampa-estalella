@@ -84,8 +84,6 @@ function ViewMenjador() {
                     {
                         edicioMenjador && edicioMenjador.thereIsYoutubeVideo ?
                         <div className="video-responsive rounded" id="ivideoyoutube" dangerouslySetInnerHTML={{ __html: `${edicioMenjador.iframeYoutube}` }}>
-                        {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/Wox8BHyJ0XE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                        </iframe> */}
                         </div> : ""  
                     }
                 </CardActionArea>

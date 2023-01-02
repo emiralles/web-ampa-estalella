@@ -22,3 +22,7 @@ body.body-layout-admin{
 #sidebarMenu div ul li a.nav-link{
     color: white!important;
 }
+
+a.MuiButtonBase-root{
+    color: white!important;
+}

@@ -22,6 +22,10 @@ function ViewEdicioMenjador() {
     let origen = "admin";
 
     const editorRef = useRef(null);
+
+    const handleFileChange = ({target:{name,files}}) => {
+        setEdicioMenjador({...edicioMenjador,[name]:files[0]})
+    }
     
     const handleChange = ({target:{name,value}}) => {
         setEdicioMenjador({...edicioMenjador,[name]:value})
@@ -226,6 +230,26 @@ function ViewEdicioMenjador() {
                         </div>
                         <div className=" m-2 p-4">
                             <Parrafo data={edicioMenjador} handleRemove={handleRemove} handleEdit={handleEdit} componentcall={origen} />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="row featurette">
+                <div className="col-md-12">
+                    <div className="card border-info mb-3">
+                        <div className="card-header bg-warning"><h2 className="card-title">Fitxe Menjador</h2></div>
+                        <div className="card-body">
+                            <form onSubmit={handleSubmit} >
+                                <input className="d-none" id="input-aux" ></input>
+                                <div className="mb-3">
+                                    <input className="d-none" id="textPhoto"/>
+                                    <label htmlFor="fileupload" className="form-label">Afegir fitxe per descarregar per el menjador</label>
+                                    <input type="file" onChange={handleFileChange} className="form-control" id="fileupload" name="fileupload"/>
+                                </div>
+                                <div className="d-grid gap-2">
+                                    <button type="submit" id="btn-menjador" className="btn btn-primary">Afegir</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
