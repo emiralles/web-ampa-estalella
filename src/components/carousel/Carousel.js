@@ -101,7 +101,7 @@ function Carousel() {
                     sx={{
                     display: 'flex',
                     alignItems: 'center',
-                    height: 80,
+                    height: 70,
                     pl: 1,
                     bgcolor: 'background.default',
                     }}

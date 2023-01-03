@@ -13,10 +13,20 @@ import { Outlet} from "react-router-dom";
 // import Contactans from "../afa/Contactans";
 import FooterComponent from "../footer/Footer";
 
+import AppFooter from './appfooter/AppFooter'; //'./modules/views/AppFooter';
+import AppAppBar from './appbar/AppAppBar'; //'./modules/views/AppAppBar';
+
+
 function WebPage() {
     return ( 
         <>
-            <div className="App">
+            <AppAppBar />
+            <Carousel/>
+            <div className='container marketing'>
+                <Outlet/>
+            </div>
+            <AppFooter />
+            {/* <div className="App">
                 <header className="App-header">
                     <NavBar/>
                 </header>
@@ -29,7 +39,7 @@ function WebPage() {
                 <footer className='App-Footer d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top'>
                     <FooterComponent/>
                 </footer>
-            </div>
+            </div> */}
             
         </>
      );
