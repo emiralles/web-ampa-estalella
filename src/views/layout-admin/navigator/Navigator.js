@@ -43,8 +43,8 @@ const categories = [
         icon: <DnsRoundedIcon /> },
       { id: "Espai d'transparència", 
         sublista: [
-            { id: "Estatus", href: "/admin/index/acollida", icon: <DnsRoundedIcon /> },
-            { id: "Pressupostos", href: "/admin/index/menjador", icon: <PermMediaOutlinedIcon /> },
+            { id: "Estatus", href: "/admin/index/estatus", icon: <DnsRoundedIcon /> },
+            { id: "Pressupostos", href: "/admin/index/pressupostos", icon: <PermMediaOutlinedIcon /> },
             { id: "Actes", href: "/admin/index/extraescolars", icon: <PermMediaOutlinedIcon /> },
         ], 
         icon: <PermMediaOutlinedIcon /> },
