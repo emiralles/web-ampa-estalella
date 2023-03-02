@@ -3,9 +3,30 @@ import {quisom} from "../../models/quisom";
 import {getAllCollections} from "../../db/crudDB";
 import Parrafo from "../../components/menjador/Parrafo";
 
-//import { useState, useEffect } from "react";
-import axios from "axios";
-// import { noticie } from "../../models/noticie";
+//import axios from "axios";
+
+import Box from '@mui/material/Box';
+// import FormControl from '@mui/material/FormControl';
+// import TextField from '@mui/material/TextField';
+// import MenuItem from '@mui/material/MenuItem';
+// import Button from '@mui/material/Button';
+// import SendIcon from '@mui/icons-material/Send';
+
+import Paper from '@mui/material/Paper';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+
+let elevation = 24;
+const Item = styled(Paper)(({ theme }) => ({
+    ...theme.typography.body1,
+    color: theme.palette.text.secondary
+  }));
+  
+const lightTheme = createTheme({ palette: { mode: 'light' } });  
 
 
 let edicio = new quisom("","","","","","", false, false); 
@@ -13,42 +34,40 @@ let edicio = new quisom("","","","","","", false, false);
 
 function ViewFesteSoci() {
 
-    let EnviarMail = (e) => {
-        e.preventDefault();
+    // let EnviarMail = (e) => {
+    //     e.preventDefault();
     
-        let textSubject = "fer me soci de l'AFA";
-        let textFrom = "ampa.estalella.i.graells@gmail.com";
-        let textTo =  "juntaampa@estalella.cat;emirallesyataco@gmail.com"; //e.target[0].value;
-        // let textOf = "";
-        let textTexto = `Nombre: ${e.target[1].value} ${e.target[2].value} ${e.target[3].value} email: ${e.target[0].value}` ; //`${e.target[4].value} ${e.target[5].value}}` ;
+    //     let textSubject = "fer me soci de l'AFA";
+    //     let textFrom = "ampa.estalella.i.graells@gmail.com";
+    //     let textTo =  "juntaampa@estalella.cat;emirallesyataco@gmail.com"; 
+    //     let textTexto = `Nombre: ${e.target[1].value} ${e.target[2].value} ${e.target[3].value} email: ${e.target[0].value}` ;
         
-        let fileUpload = e.target[5].files[0];
+    //     let fileUpload = e.target[5].files[0];
 
-        const data =
-        {
-            from: textFrom,
-            to: textTo,
-            // of: textOf,
-            subject: textSubject, 
-            text: textTexto,
-            strRoutefile: fileUpload
-        };
+    //     const data =
+    //     {
+    //         from: textFrom,
+    //         to: textTo,
+    //         subject: textSubject, 
+    //         text: textTexto,
+    //         strRoutefile: fileUpload
+    //     };
 
-        axios.post('https://arimathsolutions.com/api/mail/documents',data,{headers: {
-            "Content-Type": "multipart/form-data",
-          }})
-            .then(res => {
-                e.target[0].value="";
-                e.target[1].value="";
-                e.target[2].value="";
-                e.target[3].value="";
-                e.target[4].value="";
-                e.target[5].value="";
-            }).catch(error => {
-                let errordata = error;
-                console.log(errordata);
-            })
-    }
+    //     axios.post('https://arimathsolutions.com/api/mail/documents',data,{headers: {
+    //         "Content-Type": "multipart/form-data",
+    //       }})
+    //         .then(res => {
+    //             e.target[0].value="";
+    //             e.target[1].value="";
+    //             e.target[2].value="";
+    //             e.target[3].value="";
+    //             e.target[4].value="";
+    //             e.target[5].value="";
+    //         }).catch(error => {
+    //             let errordata = error;
+    //             console.log(errordata);
+    //         })
+    // }
 
     //const[edicioQuisom,setEdicioQuisom] = useState(noticie);
     // const [isTrue, setTrue] = useState(false);
@@ -60,9 +79,9 @@ function ViewFesteSoci() {
     // const[notici,setNotici] = useState(noticia);
     const [pdf,setPDF] = useState("");
 
-    const handleFileChange = ({target:{name,files}}) => {
-        setEdicioQuisom({...edicioQuisom,[name]:files[0]})
-    }
+    // const handleFileChange = ({target:{name,files}}) => {
+    //     setEdicioQuisom({...edicioQuisom,[name]:files[0]})
+    // }
     
     let downLoadPDF = () =>{
         const xhr = new XMLHttpRequest();
@@ -102,66 +121,64 @@ function ViewFesteSoci() {
 
     return (
         <>
-            {
-                edicioQuisom && pdf ?
-                <div className=" m-2 p-4">
-                    <Parrafo data={edicioQuisom} componentcall={origen} />
-                    <div className="nav">
-                        <a href={pdf} download={"FichaInscripcio.pdf"}>
-                                <button className="style-button-download">Download</button>
-                        </a>
-                    </div>
-                    <hr className="featurette-divider"></hr>
-                    <form onSubmit={EnviarMail}>
-                        <div className="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Email</label>
-                            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-                        </div>
-                        <div className="mb-3">
-                            <label for="exampleInputPassword1" className="form-label">Nombres</label>
-                            <input type="text" className="form-control" id="exampleInputPassword1"/>
-                        </div>
-                        <div className="mb-3">
-                            <label for="exampleInputPassword1" className="form-label">Primer Apellido</label>
-                            <input type="text" className="form-control" id="exampleInputPassword1"/>
-                        </div>
-                        <div className="mb-3">
-                            <label for="exampleInputPassword1" className="form-label">Segundo Apellido</label>
-                            <input type="text" className="form-control" id="exampleInputPassword1"/>
-                        </div>
-                        <div className="custom-file mb-3">
-                            <input className="d-none" id="pdfInscripcion"/>
-                            <label htmlFor="fileupload" className="form-label">Pujar ficher</label>
-                            <input type="file" onChange={handleFileChange} className="custom-file-input form-control" id="fileupload" name="fileupload" lang="in" />
-                        </div>
-                        <button type="submit" className="btn btn-primary">Enviar</button>
-                    </form>
-                    <hr className="featurette-divider"></hr>
-                </div>:""
-            }
-            {/* <hr className="featurette-divider"></hr> */}
-                {/* <div className="containerH1"><h1 className="text-h1">Fes te socí</h1></div> */}
-            {/* <div className="container"> */}
-                {/* <hr className="featurette-divider"></hr>
-                <p className="lead">Les famílies sòcies de l’AFA gaudeixen de descomptes en el preu dels serveis d’acollida, menjador i extraescolars, entre d’altres avantatges. La quota d’inscripció permet mantenir aquests serveis, així com altres activitats i equipaments de l’escola.</p>
-                <p className="lead">*PER FORMAR PART DE L’AFA CAL SER MARE, PARE O TUTOR/A LEGAL D’UN INFANT DE L’ESCOLA.</p>
-                {
-                    pdf ?
-                    <div>
-                        <p>Descarrega el PDF on podras omplir les dades respectives que necesitem per fer la inscripciò com socí del AFA.</p>
-                        <div className="nav">
-                        <a href={pdf} download={"FichaInscripcio.pdf"}>
-                                <button className="style-button-download">Download</button>
-                        </a>
-                        </div>
-                    </div>:"..."
-                } */}
-                
-                
-                {/* <hr className="featurette-divider"></hr> */}
-                
-            {/* </div>
-            <hr className="featurette-divider"></hr> */}
+            {[lightTheme].map((theme, index) => (
+                // <Grid item key={index}>
+                <ThemeProvider theme={theme} key={index}>
+                    <Box>
+                        <Item key={elevation} elevation={elevation}>
+                                <Stack direction="row" sx={{justifyContent: 'center', pt:15, pb:2}}>
+                                    <Chip label="Fes-te Soci" size="large" variant="outlined" />
+                                </Stack>
+                                <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
+                                    <DialogContent>
+                                        <DialogContentText id="alert-dialog-description">
+                                        {
+                                            edicioQuisom && pdf ?
+                                            
+                                            <div className=" m-2 pt-12 pb-4 pr-4 pl-4">
+                                                {/* <hr className="featurette-divider"></hr> */}
+                                                <Parrafo data={edicioQuisom} componentcall={origen} />
+                                                <div className="nav">
+                                                    <a href={pdf} download={"FichaInscripcio.pdf"}>
+                                                            <button className="style-button-download">Download</button>
+                                                    </a>
+                                                </div>
+                                                {/* <hr className="featurette-divider"></hr>
+                                                <form onSubmit={EnviarMail}>
+                                                    <div className="mb-3">
+                                                        <label for="exampleInputEmail1" class="form-label">Email</label>
+                                                        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                                                    </div>
+                                                    <div className="mb-3">
+                                                        <label for="exampleInputPassword1" className="form-label">Nombres</label>
+                                                        <input type="text" className="form-control" id="exampleInputPassword1"/>
+                                                    </div>
+                                                    <div className="mb-3">
+                                                        <label for="exampleInputPassword1" className="form-label">Primer Apellido</label>
+                                                        <input type="text" className="form-control" id="exampleInputPassword1"/>
+                                                    </div>
+                                                    <div className="mb-3">
+                                                        <label for="exampleInputPassword1" className="form-label">Segundo Apellido</label>
+                                                        <input type="text" className="form-control" id="exampleInputPassword1"/>
+                                                    </div>
+                                                    <div className="custom-file mb-3">
+                                                        <input className="d-none" id="pdfInscripcion"/>
+                                                        <label htmlFor="fileupload" className="form-label">Pujar ficher</label>
+                                                        <input type="file" onChange={handleFileChange} className="custom-file-input form-control" id="fileupload" name="fileupload" lang="in" />
+                                                    </div>
+                                                    <button type="submit" className="btn btn-primary">Enviar</button>
+                                                </form> */}
+                                                {/* <hr className="featurette-divider"></hr> */}
+                                            </div>:""
+                                        }
+                                        </DialogContentText>
+                                    </DialogContent>
+                                </Stack>
+                                    
+                        </Item>
+                    </Box>
+                </ThemeProvider>
+            ))}
         </>
     )
 }

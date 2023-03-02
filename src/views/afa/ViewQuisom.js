@@ -54,14 +54,18 @@ function ViewQuisom() {
             <Grid item key={index}>
             <ThemeProvider theme={theme}>
                 <Box>
-                    <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
-                        <Chip label="Quisom" size="large" variant="outlined" />
-                    </Stack>
+                    
                     <Item key={elevation} elevation={elevation}>
                         { edicioQuisom ?
-                            <div className=" m-2 p-4">
-                                <Parrafo data={edicioQuisom} componentcall={origen} />
-                            </div>:""
+                            <>
+                                <Stack direction="row" sx={{justifyContent: 'center', pt:15, pb:2}}>
+                                    <Chip label="Quisom" size="large" variant="outlined" />
+                                </Stack>
+                                <div className=" m-2 p-4">
+                                    <Parrafo data={edicioQuisom} componentcall={origen} />
+                                </div>
+                            </>
+                            :""
                         }
                     </Item>
                 </Box>

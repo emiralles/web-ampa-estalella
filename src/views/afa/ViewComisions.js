@@ -106,15 +106,19 @@ function ViewComisions() {
 
     return (
         <>
-            {
-                <ListRectangleCard arrayData={listComisiones} componentCall={origen} nameList="Listat d'Comissions"/>
-            }
+            
             
             {[lightTheme].map((theme, index) => (
                 // <Grid item key={index}>
                 <ThemeProvider theme={theme} key={index}>
                     <Box>
                         <Item key={elevation} elevation={elevation}>
+                                <Stack direction="row" sx={{justifyContent: 'center', pt:15, pb:2}}>
+                                    <Chip label="Comissions" size="large" variant="outlined" />
+                                </Stack>
+                                {
+                                    <ListRectangleCard arrayData={listComisiones} componentCall={origen} nameList="Listat d'Comissions"/>
+                                }
                                 <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
                                     <Chip label="Inscriute a las comissions" size="large" variant="outlined" />
                                 </Stack>
