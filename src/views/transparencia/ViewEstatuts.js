@@ -8,6 +8,7 @@ import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
+import Grid from '@mui/material/Grid';
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -77,55 +78,77 @@ function ViewEstatuts() {
 
     return ( 
         <>
-            <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
-                <Chip label="Estatuts" size="large" variant="outlined" />
-            </Stack>
-            {[lightTheme].map((theme, index) => (
+            <Grid container spacing={2} sx={{pt:10}}>
+                {[lightTheme].map((theme, index) => (
+                    <Grid item key={index}>
+                    <ThemeProvider theme={theme} key={index}>
+                        <Box>       
+                            <Item key={elevation} elevation={elevation} sx={{
+                                    mb: 2,
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    height: 650,
+                                    overflow: "hidden",
+                                    overflowY: "scroll",
+                                    // justifyContent="flex-end" # DO NOT USE THIS WITH 'scroll'
+                                    }}>
+                                        <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
+                                            <Chip label="Estatuts" size="large" variant="outlined" />
+                                        </Stack>
+                                        <Stack direction="row" sx={{justifyContent: 'center'}}>
+                                            <DialogContent>
+                                                <DialogContentText id="alert-dialog-description">
+                                                    <Typography gutterBottom variant="h6" component="h6">
+                                                        A continuació indiquem els estatuts de l’Associació de Mares i Pares d’Alumnes de l’escola. Estatuts: Estatuts AFA Estalella i Graells (Aprovats a l’ActaAssembleaEstatuts).
+                                                    </Typography>
+                                                    {/* { edicioQuisom ?
+                                                        "A continuació indiquem els estatuts de l’Associació de Mares i Pares d’Alumnes de l’escola. Estatuts: Estatuts AFA Estalella i Graells (Aprovats a l’ActaAssembleaEstatuts)."
+                                                        :""
+                                                    } */}
+                                                </DialogContentText>
+                                                <DialogContentText sx={{width:"70%"}}>
+                                                    <div className="p-3">
+                                                        <TableContainer component={Paper}>
+                                                            <Table sx={{ width: "100%" }} aria-label="customized table">
+                                                                <TableHead>
+                                                                    <TableRow>
+                                                                        <StyledTableCell sx={{textAlign:"center"}}>Data</StyledTableCell>
+                                                                        <StyledTableCell align="center">Fitxe</StyledTableCell>
+                                                                    </TableRow>
+                                                                </TableHead>
+                                                                <TableBody>
+                                                                {rows.map((row) => (
+                                                                    <StyledTableRow key={row.name}>
+                                                                    <StyledTableCell align="center" component="th" scope="row">
+                                                                        {row.name}
+                                                                    </StyledTableCell>
+                                                                    <StyledTableCell align="center"><a href={row.fitxe} target="_blank" rel="noreferrer">{row.texto}</a></StyledTableCell>
+                                                                    </StyledTableRow>
+                                                                ))}
+                                                                </TableBody>
+                                                            </Table>
+                                                        </TableContainer>
+                                                    </div>
+                                                    
+                                                </DialogContentText>
+                                            </DialogContent>
+                                        </Stack>
+                            </Item>
+                        </Box>
+                    </ThemeProvider>
+                    </Grid>
+                ))}
+            </Grid>    
+            
+            {/* {[lightTheme].map((theme, index) => (
                 <ThemeProvider theme={theme} key={index}>
                     <Box>
                         <Item key={elevation} elevation={elevation}>
-                            <Stack direction="row" sx={{justifyContent: 'center'}}>
-                                <DialogContent>
-                                    <DialogContentText id="alert-dialog-description">
-                                        <Typography gutterBottom variant="h6" component="h6">
-                                            A continuació indiquem els estatuts de l’Associació de Mares i Pares d’Alumnes de l’escola. Estatuts: Estatuts AFA Estalella i Graells (Aprovats a l’ActaAssembleaEstatuts).
-                                        </Typography>
-                                        {/* { edicioQuisom ?
-                                            "A continuació indiquem els estatuts de l’Associació de Mares i Pares d’Alumnes de l’escola. Estatuts: Estatuts AFA Estalella i Graells (Aprovats a l’ActaAssembleaEstatuts)."
-                                            :""
-                                        } */}
-                                    </DialogContentText>
-                                    <DialogContentText sx={{width:"70%"}}>
-                                        <div className="p-3">
-                                            <TableContainer component={Paper}>
-                                                <Table sx={{ width: "100%" }} aria-label="customized table">
-                                                    <TableHead>
-                                                        <TableRow>
-                                                            <StyledTableCell sx={{textAlign:"center"}}>Data</StyledTableCell>
-                                                            <StyledTableCell align="center">Fitxe</StyledTableCell>
-                                                        </TableRow>
-                                                    </TableHead>
-                                                    <TableBody>
-                                                    {rows.map((row) => (
-                                                        <StyledTableRow key={row.name}>
-                                                        <StyledTableCell align="center" component="th" scope="row">
-                                                            {row.name}
-                                                        </StyledTableCell>
-                                                        <StyledTableCell align="center"><a href={row.fitxe} target="_blank" rel="noreferrer">{row.texto}</a></StyledTableCell>
-                                                        </StyledTableRow>
-                                                    ))}
-                                                    </TableBody>
-                                                </Table>
-                                            </TableContainer>
-                                        </div>
-                                        
-                                    </DialogContentText>
-                                </DialogContent>
-                            </Stack>
+                            
                         </Item>
                     </Box>
                 </ThemeProvider>
-            ))}
+            ))} */}
         </>
      );
 }

@@ -3,11 +3,19 @@ import { getAllCollections, getUrlImage} from "../../db/crudDB";
 import { esdeveniment } from "../../models/esdeveniment";
 import ListRectangleCard from "../../components/card/ListRectangleCard";
 
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
-// import carnestoltes from "./images/carnestoltes.jpg";
-// import santjordi from "./images/SantJordi2022.JPG";
+import Paper from '@mui/material/Paper';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 
-
+let elevation = 24;
+const Item = styled(Paper)(({ theme }) => ({
+    ...theme.typography.body1,
+    color: theme.palette.text.secondary
+  }));
+  
+const lightTheme = createTheme({ palette: { mode: 'light' } });  
 
 function ViewEsdeveniments() {
 
@@ -38,42 +46,29 @@ function ViewEsdeveniments() {
 
     return (
         <>
-            {
-                <ListRectangleCard arrayData={listEsdeveniments} componentCall={origen} nameList="Esdeveniments"/>
-            }
-            {/* <hr className="featurette-divider"></hr>
-                <div className="row featurette">
-                    <div className="col-md-7">
-                        <h2 className="featurette-heading"><span className="text-muted">Festa de fi de curs.</span></h2>
-                        <p className="lead">Tradicionalment és un dinar obert a totes les famílies de l’escola. Està especialment pensada per a dir el adéu als alumnes de 6è i la resta acomiadar-nos fins el curs vinent.</p>
-                        <p className="lead">T’agradaria formar part d’alguna comissió? No dubtis a escriure a aquesta adreça: ampa.estalella.i.graells@gmail.com</p>
-                    </div>
-                    <div className="col-md-5">
-                        <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={carnestoltes} alt=""/>
-                    </div>
-                </div>
-            <hr className="featurette-divider"></hr>
-                <div className="row featurette">
-                    <div className="col-md-7 order-md-2">
-                        <h2 className="featurette-heading"><span className="text-muted">CARNESTOLTES</span></h2>
-                        <p className="lead">Apunta’t a la comparsa musical! Des de l’inici de curs hi ha un grup de pares i mares de diferents cursos que preparem la comparsa musical.</p>
-                    </div>
-                    <div className="col-md-5 order-md-1">
-                        <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={carnestoltes} alt=""/>
-                    </div>
-                </div>
-            <hr className="featurette-divider"></hr>
-                <div className="row featurette">
-                    <div className="col-md-7">
-                        <h2 className="featurette-heading"><span className="text-muted">Sant Jordi 2022</span></h2>
-                        <p className="lead">Hem celebrat la diada de Sant Jordi amb una mica més de normalitat I sense mascaretes! Ha estat un matí on hem pogut gaudir de diferents activitats, tant a l’interior com a l’exterior de l’escola, aprofitant el sol que que ens ha acompanyat.</p>
-                        <p className="lead">Feliç diada per a tothom!</p>
-                    </div>
-                    <div className="col-md-5">
-                        <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src={santjordi} alt=""/>
-                    </div>
-                </div>
-            <hr className="featurette-divider"></hr> */}
+            <Grid container spacing={2} sx={{pt:10}}>
+                {[lightTheme].map((theme, index) => (
+                    <Grid item key={index}>
+                    <ThemeProvider theme={theme} key={index}>
+                        <Box>       
+                            <Item key={elevation} elevation={elevation} sx={{
+                                    mb: 2,
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    height: 650,
+                                    overflow: "hidden",
+                                    overflowY: "scroll",
+                                    // justifyContent="flex-end" # DO NOT USE THIS WITH 'scroll'
+                                    }}>
+                                        {
+                                            <ListRectangleCard arrayData={listEsdeveniments} componentCall={origen} nameList="Esdeveniments"/>
+                                        }
+                            </Item>
+                        </Box>
+                    </ThemeProvider>
+                    </Grid>
+                ))}
+            </Grid>
         </>
     )
 }

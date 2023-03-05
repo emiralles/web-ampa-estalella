@@ -46,19 +46,19 @@ export default function AppFooter() {
   return (
     <Typography
       component="footer"
-      sx={{ display: 'flex', bgcolor: 'grey' }}
+      sx={{ display: 'flex', bgcolor: 'grey', width:'100%' }}
     >
-      <Container sx={{ my: 4, display: 'flex' }}>
-        <Grid container spacing={5}>
-          <Grid item xs={6} sm={4} md={3}>
+      <Container sx={{ my: 4, display: 'flex', width:'100%' }}>
+        <Grid container spacing={5} sx={{ width:'100%' }}>
+          <Grid item xs={6} sm={4} md={3} sx={{ width:'100%' }}>
             <Grid
               container
               direction="column"
               justifyContent="flex-end"
               spacing={2}
-              sx={{ height: 40 }}
+              sx={{ height: 40, width:'100%' }}
             >
-              <Grid item sx={{ display: 'flex' }}>
+              <Grid item sx={{ display: 'flex', width:'100%' }}>
                 {/* <Box component="a" href="https://mui.com/" sx={iconStyle}>
                   <img
                     src="/static/themes/onepirate/appFooterFacebook.png"

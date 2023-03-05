@@ -8,6 +8,7 @@ import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
+import Grid from '@mui/material/Grid';
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -75,56 +76,68 @@ function ViewActes() {
 
     return ( 
         <>
-            <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
-                <Chip label="Actes" size="large" variant="outlined" />
-            </Stack>
-            {[lightTheme].map((theme, index) => (
-                <ThemeProvider theme={theme} key={index}>
-                    <Box>
-                        <Item key={elevation} elevation={elevation}>
-                            <Stack direction="row" sx={{justifyContent: 'center'}}>
-                                <DialogContent>
-                                    <DialogContentText id="alert-dialog-description">
-                                        <Typography gutterBottom variant="h6" component="h6">
-                                        La missió de l’AFA és representar els pares i mares dels alumnes i creiem que, per a fer-ho, és imprescindible gestionar l’Associació de forma transparent i fomentant la participació dels socis i sòcies.
-                                        Per aquesta raó, posem a la vostra disposició en aquesta pàgina tota la documentació de gestió de l’entitat: actes de les Assemblees de Socis, actes de la junta directiva, convenis de col·laboració, documents de gestió econòmica, etc.
-                                        Actes de les assemblees de socis de l’AMPA
-                                        </Typography>
-                                        {/* { edicioQuisom ?
-                                            "A continuació indiquem els estatuts de l’Associació de Mares i Pares d’Alumnes de l’escola. Estatuts: Estatuts AFA Estalella i Graells (Aprovats a l’ActaAssembleaEstatuts)."
-                                            :""
-                                        } */}
-                                    </DialogContentText>
-                                    <DialogContentText sx={{width:"70%"}}>
-                                        <div className="p-3">
-                                            <TableContainer component={Paper}>
-                                                <Table sx={{ width: "100%" }} aria-label="customized table">
-                                                    <TableHead>
-                                                        <TableRow>
-                                                            <StyledTableCell sx={{textAlign:"center"}}>Data</StyledTableCell>
-                                                            <StyledTableCell align="center">Acte</StyledTableCell>
-                                                        </TableRow>
-                                                    </TableHead>
-                                                    <TableBody>
-                                                    {rows.map((row) => (
-                                                        <StyledTableRow key={row.name}>
-                                                        <StyledTableCell align="center" component="th" scope="row">
-                                                            {row.name}
-                                                        </StyledTableCell>
-                                                        <StyledTableCell align="center"><a href={row.fitxe} target="_blank" rel="noreferrer">{row.texto}</a></StyledTableCell>
-                                                        </StyledTableRow>
-                                                    ))}
-                                                    </TableBody>
-                                                </Table>
-                                            </TableContainer>
-                                        </div>
-                                    </DialogContentText>
-                                </DialogContent>
-                            </Stack>
-                        </Item>
-                    </Box>
-                </ThemeProvider>
-            ))}
+            <Grid container spacing={2} sx={{pt:10}}>
+                {[lightTheme].map((theme, index) => (
+                    <Grid item key={index}>
+                    <ThemeProvider theme={theme} key={index}>
+                        <Box>       
+                            <Item key={elevation} elevation={elevation} sx={{
+                                    mb: 2,
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    height: 650,
+                                    overflow: "hidden",
+                                    overflowY: "scroll",
+                                    // justifyContent="flex-end" # DO NOT USE THIS WITH 'scroll'
+                                    }}>
+                                        <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
+                                            <Chip label="Actes" size="large" variant="outlined" />
+                                        </Stack>
+                                        <Stack direction="row" sx={{justifyContent: 'center'}}>
+                                            <DialogContent>
+                                                <DialogContentText id="alert-dialog-description">
+                                                    <Typography gutterBottom variant="h6" component="h6">
+                                                    La missió de l’AFA és representar els pares i mares dels alumnes i creiem que, per a fer-ho, és imprescindible gestionar l’Associació de forma transparent i fomentant la participació dels socis i sòcies.
+                                                    Per aquesta raó, posem a la vostra disposició en aquesta pàgina tota la documentació de gestió de l’entitat: actes de les Assemblees de Socis, actes de la junta directiva, convenis de col·laboració, documents de gestió econòmica, etc.
+                                                    Actes de les assemblees de socis de l’AMPA
+                                                    </Typography>
+                                                    {/* { edicioQuisom ?
+                                                        "A continuació indiquem els estatuts de l’Associació de Mares i Pares d’Alumnes de l’escola. Estatuts: Estatuts AFA Estalella i Graells (Aprovats a l’ActaAssembleaEstatuts)."
+                                                        :""
+                                                    } */}
+                                                </DialogContentText>
+                                                <DialogContentText sx={{width:"70%"}}>
+                                                    <div className="p-3">
+                                                        <TableContainer component={Paper}>
+                                                            <Table sx={{ width: "100%" }} aria-label="customized table">
+                                                                <TableHead>
+                                                                    <TableRow>
+                                                                        <StyledTableCell sx={{textAlign:"center"}}>Data</StyledTableCell>
+                                                                        <StyledTableCell align="center">Acte</StyledTableCell>
+                                                                    </TableRow>
+                                                                </TableHead>
+                                                                <TableBody>
+                                                                {rows.map((row) => (
+                                                                    <StyledTableRow key={row.name}>
+                                                                    <StyledTableCell align="center" component="th" scope="row">
+                                                                        {row.name}
+                                                                    </StyledTableCell>
+                                                                    <StyledTableCell align="center"><a href={row.fitxe} target="_blank" rel="noreferrer">{row.texto}</a></StyledTableCell>
+                                                                    </StyledTableRow>
+                                                                ))}
+                                                                </TableBody>
+                                                            </Table>
+                                                        </TableContainer>
+                                                    </div>
+                                                </DialogContentText>
+                                            </DialogContent>
+                                        </Stack>
+                            </Item>
+                        </Box>
+                    </ThemeProvider>
+                    </Grid>
+                ))}
+            </Grid>
         </>
      );
 }

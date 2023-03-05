@@ -1,10 +1,3 @@
-// import Table from '@mui/material/Table';
-// import TableBody from '@mui/material/TableBody';
-// import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-// import TableContainer from '@mui/material/TableContainer';
-// import TableHead from '@mui/material/TableHead';
-// import TableRow from '@mui/material/TableRow';
-
 
 import {quisom} from "../../models/quisom";
 import {getAllCollections} from "../../db/crudDB";
@@ -12,6 +5,7 @@ import {getAllCollections} from "../../db/crudDB";
 import { useState, useEffect } from "react";
 
 import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 import Paper from '@mui/material/Paper';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
@@ -79,42 +73,54 @@ function ViewAcollida() {
     
     return ( 
         <>
-            {[lightTheme].map((theme, index) => (
-                <ThemeProvider theme={theme} key={index}>
-                    <Box>
-                        <Item key={elevation} elevation={elevation}>
-                            <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
-                                <Chip label="Acollida" size="large" variant="outlined" />
-                            </Stack>
-                            <Stack direction="row" sx={{justifyContent: 'center'}}>
-                                <DialogContent>
-                                    <DialogContentText id="alert-dialog-description">
-                                        { 
-                                            edicioQuisom ? <div className="container p-4" id='textoHtml' dangerouslySetInnerHTML={{ __html: `${edicioQuisom.cosHtml}` }}>
-                                            </div> : <p>Aun no existe información...</p>
-                                        }
-                                    </DialogContentText>
-                                    <DialogContentText id="alert-dialog-description">
-                                        {
-                                            pdf ?
-                                            <div className="container ml-5">
-                                                <a href={pdf} download={"inscripcionApp.pdf"}>
-                                                    <FormControl variant="standard" sx={{pl:3}}>
-                                                        <Button variant="contained" color="success" sx={{backgroundColor:"green"}} fullWidth size="medium" endIcon={<DownloadIcon />}>
-                                                            Download
-                                                        </Button>
-                                                    </FormControl>
-                                                </a>
-                                            </div>
-                                            :"..."
-                                        }
-                                    </DialogContentText>
-                                </DialogContent>
-                            </Stack>
-                        </Item>
-                    </Box>
-                </ThemeProvider>
-            ))}
+            <Grid container spacing={2} sx={{pt:10}}>
+                {[lightTheme].map((theme, index) => (
+                    <Grid item key={index}>
+                    <ThemeProvider theme={theme} key={index}>
+                        <Box>       
+                            <Item key={elevation} elevation={elevation} sx={{
+                                    mb: 2,
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    height: 650,
+                                    overflow: "hidden",
+                                    overflowY: "scroll",
+                                    // justifyContent="flex-end" # DO NOT USE THIS WITH 'scroll'
+                                    }}>
+                                        <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
+                                            <Chip label="Acollida" size="large" variant="outlined" />
+                                        </Stack>
+                                        <Stack direction="row" sx={{justifyContent: 'center'}}>
+                                            <DialogContent>
+                                                <DialogContentText id="alert-dialog-description">
+                                                    { 
+                                                        edicioQuisom ? <div className="container p-4" id='textoHtml' dangerouslySetInnerHTML={{ __html: `${edicioQuisom.cosHtml}` }}>
+                                                        </div> : <p>Aun no existe información...</p>
+                                                    }
+                                                </DialogContentText>
+                                                <DialogContentText id="alert-dialog-description">
+                                                    {
+                                                        pdf ?
+                                                        <div className="container ml-5">
+                                                            <a href={pdf} download={"inscripcionApp.pdf"}>
+                                                                <FormControl variant="standard" sx={{pl:3}}>
+                                                                    <Button variant="contained" color="success" sx={{backgroundColor:"green"}} fullWidth size="medium" endIcon={<DownloadIcon />}>
+                                                                        Download
+                                                                    </Button>
+                                                                </FormControl>
+                                                            </a>
+                                                        </div>
+                                                        :"..."
+                                                    }
+                                                </DialogContentText>
+                                            </DialogContent>
+                                        </Stack>
+                            </Item>
+                        </Box>
+                    </ThemeProvider>
+                    </Grid>
+                ))}
+            </Grid>
         </>
      );
 }

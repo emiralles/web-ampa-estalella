@@ -6,6 +6,7 @@ import {getAllCollections} from "../../db/crudDB";
 import { useState, useEffect } from "react";
 
 import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 import Paper from '@mui/material/Paper';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
@@ -76,50 +77,66 @@ function ViewMenjador() {
 
     return (  
         <>
-            <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
-                <Chip label="Menjador" size="large" variant="outlined" />
-            </Stack>
             <Card sx={{ maxWidth: "100%" }}>
-                <CardActionArea>
-                    {
-                        edicioMenjador && edicioMenjador.thereIsYoutubeVideo ?
-                        <div className="video-responsive rounded" id="ivideoyoutube" dangerouslySetInnerHTML={{ __html: `${edicioMenjador.iframeYoutube}` }}>
-                        </div> : ""  
-                    }
-                </CardActionArea>
-            </Card>
-            {[lightTheme].map((theme, index) => (
-                <ThemeProvider theme={theme} key={index}>
-                    <Box>
-                        <Item key={elevation} elevation={elevation}>
-                            <Stack direction="row" sx={{justifyContent: 'center'}}>
-                                <DialogContent>
-                                    <DialogContentText id="alert-dialog-description">
-                                        {
-                                            edicioMenjador && edicioMenjador.cosHtml ?
-                                            <div id='textoHtml' dangerouslySetInnerHTML={{ __html: `${edicioMenjador.cosHtml}` }}>
-                                            </div> : <p>No hay texto para presentar</p>
-                                        }
-                                    </DialogContentText>
-                                    <DialogContentText id="alert-dialog-description">
-                                        {
-                                            pdf ?
-                                            <a href={pdf} download={"menjadorEstalella.pdf"}>
-                                                <FormControl variant="standard">
-                                                    <Button variant="contained" color="success" sx={{backgroundColor:"green"}} fullWidth size="medium" endIcon={<DownloadIcon />}>
-                                                        Download
-                                                    </Button>
-                                                </FormControl>
-                                            </a>
-                                            :"..."
-                                        }
-                                    </DialogContentText>
-                                </DialogContent>
-                            </Stack>
-                        </Item>
-                    </Box>
-                </ThemeProvider>
-            ))}
+                                            <CardActionArea>
+                                                {
+                                                    edicioMenjador && edicioMenjador.thereIsYoutubeVideo ?
+                                                    <div className="video-responsive rounded" id="ivideoyoutube" dangerouslySetInnerHTML={{ __html: `${edicioMenjador.iframeYoutube}` }}>
+                                                    </div> : ""  
+                                                }
+                                            </CardActionArea>
+                                        </Card>
+            <Grid container spacing={2} sx={{pt:10}}>
+            
+                {[lightTheme].map((theme, index) => (
+                    <Grid item key={index}>
+                    <ThemeProvider theme={theme} key={index}>
+                        <Box>       
+                            <Item key={elevation} elevation={elevation} sx={{
+                                    mb: 2,
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    height: 650,  
+                                    overflow: "hidden",
+                                    overflowY: "scroll",
+                                    overflowX: "scroll",
+                                    // justifyContent="flex-end" # DO NOT USE THIS WITH 'scroll'
+                                    }}>
+                                        
+                                        <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
+                                            <Chip label="Menjador" size="large" variant="outlined" />
+                                        </Stack>
+                                        
+                                        <Stack direction="row" sx={{justifyContent: 'center'}}>
+                                            <DialogContent>
+                                                <DialogContentText id="alert-dialog-description">
+                                                    {
+                                                        edicioMenjador && edicioMenjador.cosHtml ?
+                                                        <div id='textoHtml' dangerouslySetInnerHTML={{ __html: `${edicioMenjador.cosHtml}` }}>
+                                                        </div> : <p>No hay texto para presentar</p>
+                                                    }
+                                                </DialogContentText>
+                                                <DialogContentText id="alert-dialog-description">
+                                                    {
+                                                        pdf ?
+                                                        <a href={pdf} download={"menjadorEstalella.pdf"}>
+                                                            <FormControl variant="standard">
+                                                                <Button variant="contained" color="success" sx={{backgroundColor:"green"}} fullWidth size="medium" endIcon={<DownloadIcon />}>
+                                                                    Download
+                                                                </Button>
+                                                            </FormControl>
+                                                        </a>
+                                                        :"..."
+                                                    }
+                                                </DialogContentText>
+                                            </DialogContent>
+                                        </Stack>
+                            </Item>
+                        </Box>
+                    </ThemeProvider>
+                    </Grid>
+                ))}
+            </Grid>
         </>
     );
 }

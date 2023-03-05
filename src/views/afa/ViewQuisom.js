@@ -35,7 +35,6 @@ function ViewQuisom() {
             promesa1.then((resul)=>{
             resul.forEach((doc)=>{
                 let item = new quisom(doc.id,doc.cosHtml,doc.dateCreation,"","","",false,false); 
-                // setTrue(!isTrue);
                 setEdicioQuisom(item);
             })
             })
@@ -49,23 +48,27 @@ function ViewQuisom() {
 
   return (
     <>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} sx={{pt:10}}>
         {[lightTheme].map((theme, index) => (
             <Grid item key={index}>
             <ThemeProvider theme={theme}>
                 <Box>
-                    
-                    <Item key={elevation} elevation={elevation}>
+                    <Item key={elevation} elevation={elevation} sx={{
+                        mb: 2,
+                        display: "flex",
+                        flexDirection: "column",
+                        height: 650,
+                        overflow: "hidden",
+                        overflowY: "scroll",
+                        // justifyContent="flex-end" # DO NOT USE THIS WITH 'scroll'
+                        }}>
+                        <Stack direction="row" sx={{justifyContent: 'center', pt:8, pb:1}}>
+                            <Chip label="Quisom" size="large" variant="outlined" />
+                        </Stack>
                         { edicioQuisom ?
-                            <>
-                                <Stack direction="row" sx={{justifyContent: 'center', pt:15, pb:2}}>
-                                    <Chip label="Quisom" size="large" variant="outlined" />
-                                </Stack>
-                                <div className=" m-2 p-4">
-                                    <Parrafo data={edicioQuisom} componentcall={origen} />
-                                </div>
-                            </>
-                            :""
+                            <div className=" m-2 p-4">
+                                <Parrafo data={edicioQuisom} componentcall={origen} />
+                            </div>:""
                         }
                     </Item>
                 </Box>

@@ -1,3 +1,22 @@
+.cntt{
+  margin-top: 10px!important;
+  margin-left: 5%!important;
+  margin-right: 5%!important;
+}
+
+.app-bar{
+  height: 2%!important;
+}
+
+.midg-container{
+  height: 88%!important;
+}
+
+.footer-top{
+  height: 10%!important;
+  width: 100%!important;
+}
+
 
 /* galeria de imagenes */
 .width-images-gallery{
