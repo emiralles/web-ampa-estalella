@@ -2,7 +2,12 @@
   margin-top: 10px!important;
   margin-left: 5%!important;
   margin-right: 5%!important;
+  width: 100%!important;
 }
+
+/* .cntt div div .MuiGrid-root .MuiGrid-item .css-13i4rnv-MuiGrid-root{
+  width: 80%!important;
+} */
 
 .app-bar{
   height: 2%!important;
