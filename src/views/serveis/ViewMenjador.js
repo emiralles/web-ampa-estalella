@@ -89,7 +89,7 @@ function ViewMenjador() {
             <Grid container spacing={2} sx={{pt:10}}>
             
                 {[lightTheme].map((theme, index) => (
-                    <Grid item key={index}>
+                    <Grid item key={index} sx={{width:'100%'}}>
                     <ThemeProvider theme={theme} key={index}>
                         <Box>       
                             <Item key={elevation} elevation={elevation} sx={{
