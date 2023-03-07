@@ -122,9 +122,11 @@ function ViewComisions() {
                                     overflowY: "scroll",
                                     // justifyContent="flex-end" # DO NOT USE THIS WITH 'scroll'
                                     }}>
-                                    <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:1}}>
-                                        <Chip label="Comissions" size="large" variant="outlined" />
-                                    </Stack>
+                                    <div className="container mx-5">
+                                        <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:1}}>
+                                            <Chip label="Comissions" size="large" variant="outlined" />
+                                        </Stack>
+                                    </div>
                                     <div className="container m-5 border border-success rounded">
                                         {
                                             <ListRectangleCard arrayData={listComisiones} componentCall={origen} nameList="Listat d'Comissions"/>
@@ -158,7 +160,7 @@ function ViewComisions() {
                                                     <FormControl variant="standard">
                                                         <Box
                                                             sx={{
-                                                                width: 300,
+                                                                width: '100%',
                                                                 maxWidth: '100%',
                                                             }}
                                                             >
@@ -174,7 +176,7 @@ function ViewComisions() {
                                                     <FormControl variant="standard">
                                                         <Box
                                                                 sx={{
-                                                                    width: 300,
+                                                                    width: '100%',
                                                                     maxWidth: '100%',
                                                                 }}
                                                                 >
