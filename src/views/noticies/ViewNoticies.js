@@ -73,7 +73,7 @@ function ViewNoticies() {
                                                         // </div> : 
                                                         <div className=" m-2 p-4">
                                                             {/* <Parrafo data={edicioQuisom} componentcall={origen} /> */}
-                                                            <p className="fs-5 col-md-12"><span style={{fontSize:"10pt"}}>Vols estar al dia de totes les noticies de l'AFA? No et vols perdre cap activitat o esdeveniment? L'actualitat més fresca de l'AFA a un sol clic: <a style={{color:'blue'}} href="https://www.instagram.com/estalellaigraells/">https://www.instagram.com/estalellaigraells/</a> Segueix-nos a Instagram!</span></p>
+                                                            <p className="fs-5 col-md-12"><span style={{fontSize:"15pt"}}>Vols estar al dia de totes les noticies de l'AFA? No et vols perdre cap activitat o esdeveniment? L'actualitat més fresca de l'AFA a un sol clic: <a style={{color:'blue'}} href="https://www.instagram.com/estalellaigraells/">https://www.instagram.com/estalellaigraells/</a> Segueix-nos a Instagram!</span></p>
                                                         </div>
                                                     }
                                                 </DialogContentText>
