@@ -11,6 +11,7 @@ import Box from '@mui/material/Box';
 // import MenuItem from '@mui/material/MenuItem';
 // import Button from '@mui/material/Button';
 // import SendIcon from '@mui/icons-material/Send';
+import Grid from '@mui/material/Grid';
 
 import Paper from '@mui/material/Paper';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
@@ -121,64 +122,47 @@ function ViewFesteSoci() {
 
     return (
         <>
-            {[lightTheme].map((theme, index) => (
-                // <Grid item key={index}>
-                <ThemeProvider theme={theme} key={index}>
-                    <Box>
-                        <Item key={elevation} elevation={elevation}>
-                                <Stack direction="row" sx={{justifyContent: 'center', pt:15, pb:2}}>
-                                    <Chip label="Fes-te Soci" size="large" variant="outlined" />
-                                </Stack>
-                                <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
-                                    <DialogContent>
-                                        <DialogContentText id="alert-dialog-description">
-                                        {
-                                            edicioQuisom && pdf ?
-                                            
-                                            <div className=" m-2 pt-12 pb-4 pr-4 pl-4">
-                                                {/* <hr className="featurette-divider"></hr> */}
-                                                <Parrafo data={edicioQuisom} componentcall={origen} />
-                                                <div className="nav">
-                                                    <a href={pdf} download={"FichaInscripcio.pdf"}>
-                                                            <button className="style-button-download">Download</button>
-                                                    </a>
-                                                </div>
-                                                {/* <hr className="featurette-divider"></hr>
-                                                <form onSubmit={EnviarMail}>
-                                                    <div className="mb-3">
-                                                        <label for="exampleInputEmail1" class="form-label">Email</label>
-                                                        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-                                                    </div>
-                                                    <div className="mb-3">
-                                                        <label for="exampleInputPassword1" className="form-label">Nombres</label>
-                                                        <input type="text" className="form-control" id="exampleInputPassword1"/>
-                                                    </div>
-                                                    <div className="mb-3">
-                                                        <label for="exampleInputPassword1" className="form-label">Primer Apellido</label>
-                                                        <input type="text" className="form-control" id="exampleInputPassword1"/>
-                                                    </div>
-                                                    <div className="mb-3">
-                                                        <label for="exampleInputPassword1" className="form-label">Segundo Apellido</label>
-                                                        <input type="text" className="form-control" id="exampleInputPassword1"/>
-                                                    </div>
-                                                    <div className="custom-file mb-3">
-                                                        <input className="d-none" id="pdfInscripcion"/>
-                                                        <label htmlFor="fileupload" className="form-label">Pujar ficher</label>
-                                                        <input type="file" onChange={handleFileChange} className="custom-file-input form-control" id="fileupload" name="fileupload" lang="in" />
-                                                    </div>
-                                                    <button type="submit" className="btn btn-primary">Enviar</button>
-                                                </form> */}
-                                                {/* <hr className="featurette-divider"></hr> */}
-                                            </div>:""
-                                        }
-                                        </DialogContentText>
-                                    </DialogContent>
-                                </Stack>
-                                    
-                        </Item>
-                    </Box>
-                </ThemeProvider>
-            ))}
+            <Grid container spacing={2} sx={{pt:10}}>
+                {[lightTheme].map((theme, index) => (
+                    <Grid item key={index} sx={{width:'100%'}}>
+                    <ThemeProvider theme={theme} key={index}>
+                        <Box>       
+                            <Item key={elevation} elevation={elevation} sx={{
+                                    mb: 2,
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    height: 650,
+                                    overflow: "hidden",
+                                    overflowY: "scroll",
+                                    // justifyContent="flex-end" # DO NOT USE THIS WITH 'scroll'
+                                    }}>
+                                        <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
+                                            <Chip label="Fes-te Soci" size="large" variant="outlined" />
+                                        </Stack>
+                                        <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
+                                            <DialogContent>
+                                                <DialogContentText id="alert-dialog-description">
+                                                {
+                                                    edicioQuisom && pdf ?
+                                                    
+                                                    <div className=" m-2 pt-12 pb-4 pr-4 pl-4">
+                                                        <Parrafo data={edicioQuisom} componentcall={origen} />
+                                                        <div className="nav">
+                                                            <a href={pdf} download={"FichaInscripcio.pdf"}>
+                                                                    <button className="style-button-download">Download</button>
+                                                            </a>
+                                                        </div>
+                                                    </div>:""
+                                                }
+                                                </DialogContentText>
+                                            </DialogContent>
+                                        </Stack>
+                            </Item>
+                        </Box>
+                    </ThemeProvider>
+                    </Grid>
+                ))}
+            </Grid>
         </>
     )
 }
