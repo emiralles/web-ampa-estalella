@@ -8,6 +8,11 @@ import Grid from '@mui/material/Grid';
 
 import Paper from '@mui/material/Paper';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+
 
 let elevation = 24;
 const Item = styled(Paper)(({ theme }) => ({
@@ -45,7 +50,7 @@ function ViewNoticies() {
         <>
             <Grid container spacing={2} sx={{pt:10}}>
                 {[lightTheme].map((theme, index) => (
-                    <Grid item key={index}>
+                    <Grid item key={index} sx={{width:'100%'}}>
                     <ThemeProvider theme={theme} key={index}>
                         <Box>       
                             <Item key={elevation} elevation={elevation} sx={{
@@ -57,10 +62,42 @@ function ViewNoticies() {
                                     overflowY: "scroll",
                                     // justifyContent="flex-end" # DO NOT USE THIS WITH 'scroll'
                                     }}>
+                                        <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
+                                            <Chip label="Noticies" size="large" variant="outlined" />
+                                        </Stack>
+                                        <Stack direction="row" sx={{justifyContent: 'center'}}>
+                                            <DialogContent>
+                                                <DialogContentText id="alert-dialog-description">
+                                                    { 
+                                                        // edicioQuisom ? <div className="container p-4" id='textoHtml' dangerouslySetInnerHTML={{ __html: `${edicioQuisom.cosHtml}` }}>
+                                                        // </div> : 
+                                                        <div className=" m-2 p-4">
+                                                            {/* <Parrafo data={edicioQuisom} componentcall={origen} /> */}
+                                                            <p className="fs-5 col-md-12"><span style={{fontSize:"10pt"}}>Vols estar al dia de totes les noticies de l'AFA? No et vols perdre cap activitat o esdeveniment? L'actualitat més fresca de l'AFA a un sol clic: <a style={{color:'blue'}} href="https://www.instagram.com/estalellaigraells/">https://www.instagram.com/estalellaigraells/</a> Segueix-nos a Instagram!</span></p>
+                                                        </div>
+                                                    }
+                                                </DialogContentText>
+                                                {/* <DialogContentText id="alert-dialog-description">
+                                                    {
+                                                        pdf ?
+                                                        <div className="container ml-5">
+                                                            <a href={pdf} download={"inscripcionApp.pdf"}>
+                                                                <FormControl variant="standard" sx={{pl:3}}>
+                                                                    <Button variant="contained" color="success" sx={{backgroundColor:"green"}} fullWidth size="medium" endIcon={<DownloadIcon />}>
+                                                                        Download
+                                                                    </Button>
+                                                                </FormControl>
+                                                            </a>
+                                                        </div>
+                                                        :"..."
+                                                    }
+                                                </DialogContentText> */}
+                                            </DialogContent>
+                                        </Stack>
                                         {/* <p className="lead">Vols estar al dia de totes les notícies de l’AFA? No et vols perdre cap activitat o esdeveniment? No ets de xarxes socials però no et vols perdre res del que es cou a l’AFA? Aquest és el teu lloc! L’actualitat més fresca de l’Afa a un sol clic. Aquí podràs trovar.</p> */}
-                                        {
+                                        {/* {
                                             <ListRectangleCard arrayData={listNoticies} componentCall={origen} nameList="Listat d'Noticies"/>
-                                        }
+                                        } */}
                             </Item>
                         </Box>
                     </ThemeProvider>
