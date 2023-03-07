@@ -29,8 +29,9 @@ function WebPage() {
             {
                 inicio === 0 ? <Carousel/> : <div></div>
             }
-            <div className='cntt'>
+            <div className='container'>
                 <Outlet/>
+                {/* cntt */}
             </div>
             <div className='footer-top'>
                 <AppFooter />
