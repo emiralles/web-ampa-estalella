@@ -77,7 +77,7 @@ function ViewMenjador() {
 
     return (  
         <>
-            <Card sx={{ maxWidth: "100%" }}>
+            <Card sx={{ maxWidth: "100%", marginTop:12 }}>
                                             <CardActionArea>
                                                 {
                                                     edicioMenjador && edicioMenjador.thereIsYoutubeVideo ?

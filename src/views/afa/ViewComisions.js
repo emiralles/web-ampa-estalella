@@ -118,18 +118,19 @@ function ViewComisions() {
                                     flexDirection: "column",
                                     height: 650,
                                     overflow: "hidden",
+                                    overflowX: "scroll",
                                     overflowY: "scroll",
                                     // justifyContent="flex-end" # DO NOT USE THIS WITH 'scroll'
                                     }}>
-                                    <Stack direction="row" sx={{justifyContent: 'center', pt:8, pb:1}}>
+                                    <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:1}}>
                                         <Chip label="Comissions" size="large" variant="outlined" />
                                     </Stack>
-                                    <div className="container m-3 border border-success rounded">
+                                    <div className="container m-5 border border-success rounded">
                                         {
                                             <ListRectangleCard arrayData={listComisiones} componentCall={origen} nameList="Listat d'Comissions"/>
                                         }
                                     </div>
-                                    <div className="container m-3 border border-success rounded">
+                                    <div className="container m-5 border border-success rounded">
                                     <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
                                         <Chip label="Inscriute a las comissions" size="large" variant="outlined" />
                                     </Stack>
