@@ -1,7 +1,7 @@
-import { getAllCollections, getUrlImage } from "../../db/crudDB";
-import { noticie } from "../../models/noticie";
+import { getAllCollections } from "../../db/crudDB";//, getUrlImage
+//import { noticie } from "../../models/noticie";
 import { useEffect, useState } from "react";
-import ListRectangleCard from "../../components/card/ListRectangleCard";
+//import ListRectangleCard from "../../components/card/ListRectangleCard";
 
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -12,6 +12,11 @@ import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
+import {quisom} from "../../models/quisom";
+import Parrafo from "../../components/menjador/Parrafo";
+
+
+let edicio = new quisom("","","","","","", false, false); 
 
 
 let elevation = 24;
@@ -24,27 +29,50 @@ const lightTheme = createTheme({ palette: { mode: 'light' } });
 
 
 function ViewNoticies() {
-    let origen = "noticies"; //vistaUsuario
-    const [listNoticies,setListNoticies]=useState([]);
+
+    const[edicioQuisom,setEdicioQuisom] = useState(edicio);
+    
+    let origen = "noticies";
 
     useEffect(()=>{
+
         const handleLoad = async () =>{
         
             let promesa1 = getAllCollections('noticie');
             promesa1.then((resul)=>{
-              resul.forEach((doc)=>{
-                let imgUrl = getUrlImage(doc.path);
-                imgUrl.then((rstUrl)=>{
-                    let item = new noticie(doc.id,doc.path,"",doc.title,doc.cosHtml,doc.dateCreation,doc.namePhoto,rstUrl,doc.pathsImages,[],[]); 
-                    setListNoticies(arr => [...arr, item]);
-                });
-              })
+            resul.forEach((doc)=>{
+                let item = new quisom(doc.id,doc.cosHtml,doc.dateCreation,"","","",false,false); 
+                setEdicioQuisom(item);
+            })
             })
             
         }
         
         handleLoad();
-    },[])
+
+    },[]);
+
+    // let origen = "noticies";
+    // const [listNoticies,setListNoticies]=useState([]);
+
+    // useEffect(()=>{
+    //     const handleLoad = async () =>{
+        
+    //         let promesa1 = getAllCollections('noticie');
+    //         promesa1.then((resul)=>{
+    //           resul.forEach((doc)=>{
+    //             let imgUrl = getUrlImage(doc.path);
+    //             imgUrl.then((rstUrl)=>{
+    //                 let item = new noticie(doc.id,doc.path,"",doc.title,doc.cosHtml,doc.dateCreation,doc.namePhoto,rstUrl,doc.pathsImages,[],[]); 
+    //                 setListNoticies(arr => [...arr, item]);
+    //             });
+    //           })
+    //         })
+            
+    //     }
+        
+    //     handleLoad();
+    // },[])
 
     return ( 
         <>
@@ -68,12 +96,18 @@ function ViewNoticies() {
                                         <Stack direction="row" sx={{justifyContent: 'center'}}>
                                             <DialogContent>
                                                 <DialogContentText id="alert-dialog-description">
+                                                    {/* { edicioQuisom ?
+                                                        <div className=" m-2 p-4">
+                                                            <Parrafo data={edicioQuisom} componentcall={origen} />
+                                                        </div>:""
+                                                    } */}
                                                     { 
-                                                        // edicioQuisom ? <div className="container p-4" id='textoHtml' dangerouslySetInnerHTML={{ __html: `${edicioQuisom.cosHtml}` }}>
-                                                        // </div> : 
+                                                        edicioQuisom ? <div className="container p-4" id='textoHtml' dangerouslySetInnerHTML={{ __html: `${edicioQuisom.cosHtml}` }}>
+                                                        </div> : 
                                                         <div className=" m-2 p-4">
                                                             {/* <Parrafo data={edicioQuisom} componentcall={origen} /> */}
-                                                            <p className="fs-5 col-md-12"><span style={{fontSize:"15pt"}}>Vols estar al dia de totes les noticies de l'AFA? No et vols perdre cap activitat o esdeveniment? L'actualitat més fresca de l'AFA a un sol clic: <a style={{color:'blue'}} href="https://www.instagram.com/estalellaigraells/">https://www.instagram.com/estalellaigraells/</a> Segueix-nos a Instagram!</span></p>
+                                                            {/* <p className="fs-5 col-md-12"><span style={{fontSize:"15pt"}}>Vols estar al dia de totes les noticies de l'AFA? No et vols perdre cap activitat o esdeveniment? L'actualitat més fresca de l'AFA a un sol clic: <a style={{color:'blue'}} href="https://www.instagram.com/estalellaigraells/" target={blank}>https://www.instagram.com/estalellaigraells/</a> Segueix-nos a Instagram!</span></p> */}
+                                                            <p className="fs-5 col-md-12"><span style={{fontSize:"15pt"}}>Pagina en modificaciò <a style={{color:'blue'}} href="https://www.instagram.com/estalellaigraells/" target={"_blank"}>https://www.instagram.com/estalellaigraells/</a> Segueix-nos a Instagram!</span></p>
                                                         </div>
                                                     }
                                                 </DialogContentText>
