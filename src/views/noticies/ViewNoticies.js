@@ -13,7 +13,7 @@ import Stack from '@mui/material/Stack';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import {quisom} from "../../models/quisom";
-import Parrafo from "../../components/menjador/Parrafo";
+//import Parrafo from "../../components/menjador/Parrafo";
 
 
 let edicio = new quisom("","","","","","", false, false); 
@@ -32,7 +32,7 @@ function ViewNoticies() {
 
     const[edicioQuisom,setEdicioQuisom] = useState(edicio);
     
-    let origen = "noticies";
+    //let origen = "noticies";
 
     useEffect(()=>{
 
@@ -107,7 +107,7 @@ function ViewNoticies() {
                                                         <div className=" m-2 p-4">
                                                             {/* <Parrafo data={edicioQuisom} componentcall={origen} /> */}
                                                             {/* <p className="fs-5 col-md-12"><span style={{fontSize:"15pt"}}>Vols estar al dia de totes les noticies de l'AFA? No et vols perdre cap activitat o esdeveniment? L'actualitat més fresca de l'AFA a un sol clic: <a style={{color:'blue'}} href="https://www.instagram.com/estalellaigraells/" target={blank}>https://www.instagram.com/estalellaigraells/</a> Segueix-nos a Instagram!</span></p> */}
-                                                            <p className="fs-5 col-md-12"><span style={{fontSize:"15pt"}}>Pagina en modificaciò <a style={{color:'blue'}} href="https://www.instagram.com/estalellaigraells/" target={"_blank"}>https://www.instagram.com/estalellaigraells/</a> Segueix-nos a Instagram!</span></p>
+                                                            <p className="fs-5 col-md-12"><span style={{fontSize:"15pt"}}>Pagina en modificaciò <a style={{color:'blue'}} href="https://www.instagram.com/estalellaigraells/" target={"_blank"} rel={"noopener noreferrer"} >https://www.instagram.com/estalellaigraells/</a> Segueix-nos a Instagram!</span></p>
                                                         </div>
                                                     }
                                                 </DialogContentText>
