@@ -41,6 +41,7 @@ function NavBar() {
                                         <ul className="dropdown-menu">
                                             <li><a href="/acollida" className="dropdown-item">Acollida</a></li>
                                             <li><a href="/menjador" className="dropdown-item">Menjador</a></li>
+                                            <li><a href="/llibres" className="dropdown-item">Llibres</a></li>
                                             <li><a href="/extraescolars" className="dropdown-item">Extraescolars</a></li>
                                             <li><a href="/equipament" className="dropdown-item">Equipament</a></li>
                                             <li><a href="/casaldestiu" className="dropdown-item">Casal d'estiu</a></li>

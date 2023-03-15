@@ -26,9 +26,11 @@ import FormulariEdicioTardesEstiu from "./views/formularis-edicio-apartados/View
 import FormulariEdicioCasalEstiu from "./views/formularis-edicio-apartados/View-edicio-casalestiu";
 import FormulariEdicioEquipament from "./views/formularis-edicio-apartados/View-edicio-Equipament";
 import FormulariEdicioEstatus from "./views/formularis-edicio-apartados/View-edicio-estatus";
+import FormulariEdicioLlibres from "./views/formularis-edicio-apartados/View-edicio-llibres";
 import Actes from "./views/transparencia/ViewActes";
 import Estatuts from "./views/transparencia/ViewEstatuts";
 import Casaldestiu from "./views/serveis/ViewCasaldestiu";
+import Llibres from "./views/serveis/ViewLlibres";
 import FormulariEdicioExtraescolars from "./views/formularis-edicio-apartados/View-edicio-extraescolars";
 import ProtectedRoute from "./components/protectedroute/ProtectedRoute";
 import ViewTardesEstiu from "./views/ViewTardesEstiu";
@@ -47,6 +49,7 @@ function App() {
                 
                 <Route path='/admin/index/menjador' element={<ProtectedRoute children={<FormulariEdicioMenjador/>}/>}/>
                 <Route path='/admin/index/acollida' element={<ProtectedRoute children={<FormulariEdicioAcollida/>}/>}/>
+                <Route path='/admin/index/llibres' element={<ProtectedRoute children={<FormulariEdicioLlibres/>}/>}/>
                 <Route path='/admin/index/comissions' element={<ProtectedRoute children={<FormulariEdicioComissions/>}/>}/>
                 <Route path='/admin/index/extraescolars' element={<ProtectedRoute children={<FormulariEdicioExtraescolars/>}/>}/>
                 <Route path='/admin/index/esdeveniments' element={<ProtectedRoute children={<FormulariEdicioEsdeveniments/>}/>}/>
@@ -69,6 +72,7 @@ function App() {
           <Route path='/comissions' element={<Comissions/>} />
           <Route path='/fer-se-soci' element={<Festesoci/>} />
           <Route path='/acollida' element={<Acollida/>} />
+          <Route path='/llibres' element={<Llibres/>} />
           <Route path='/menjador' element={<Menjador/>} />
           <Route path='/extraescolars' element={<Extraescolars/>} />
           <Route path='/contacta-ns' element={<Contactans/>} />

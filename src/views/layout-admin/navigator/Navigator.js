@@ -35,6 +35,7 @@ const categories = [
         sublista: [
             { id: "Acollida", href: "/admin/index/acollida", icon: <DnsRoundedIcon /> },
             { id: "Menjador", href: "/admin/index/menjador", icon: <PermMediaOutlinedIcon /> },
+            { id: "Llibres", href: "/admin/index/llibres", icon: <PermMediaOutlinedIcon /> },
             { id: "Extraescolars", href: "/admin/index/extraescolars", icon: <PermMediaOutlinedIcon /> },
             { id: "Equipament", href: "/admin/index/equipament", icon: <PermMediaOutlinedIcon /> },
             { id: "Casal d'estiu", href: "/admin/index/casalestiu", icon: <PermMediaOutlinedIcon /> },
