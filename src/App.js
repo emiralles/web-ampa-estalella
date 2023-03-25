@@ -27,6 +27,8 @@ import FormulariEdicioCasalEstiu from "./views/formularis-edicio-apartados/View-
 import FormulariEdicioEquipament from "./views/formularis-edicio-apartados/View-edicio-Equipament";
 import FormulariEdicioEstatus from "./views/formularis-edicio-apartados/View-edicio-estatus";
 import FormulariEdicioLlibres from "./views/formularis-edicio-apartados/View-edicio-llibres";
+import FormulariEdicioContactans from "./views/formularis-edicio-apartados/View-edicio-contactans";
+import FormulariEdicioActes from "./views/formularis-edicio-apartados/View-edicio-actes";
 import Actes from "./views/transparencia/ViewActes";
 import Estatuts from "./views/transparencia/ViewEstatuts";
 import Casaldestiu from "./views/serveis/ViewCasaldestiu";
@@ -59,6 +61,8 @@ function App() {
                 <Route path='/admin/index/casalestiu' element={<ProtectedRoute children={<FormulariEdicioCasalEstiu/>}/>}/>
                 <Route path='/admin/index/equipament' element={<ProtectedRoute children={<FormulariEdicioEquipament/>}/>}/>
                 <Route path='/admin/index/pressupostos' element={<ProtectedRoute children={<FormulariEdicioPressupostos/>}/>}/>
+                <Route path='/admin/index/contactans' element={<ProtectedRoute children={<FormulariEdicioContactans/>}/>}/>
+                <Route path='/admin/index/actes' element={<ProtectedRoute children={<FormulariEdicioActes/>}/>}/>
                 <Route path='/admin/index/estatus' element={<ProtectedRoute children={<FormulariEdicioEstatus/>}/>}/>
               </Route>
         </Routes>

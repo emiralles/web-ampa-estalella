@@ -16,8 +16,9 @@ let dataQuisom = {
     thereIsUrlPhoto: false,
     thereIsYoutubeVideo:false,
 }
-
-function ViewEdicioPressupostos() {
+  
+function ViewEdicioActes() {
+    
     const[edicioQuisom,setEdicioQuisom] = useState(edicio);
     const [isTrue, setTrue] = useState(false);
     const [dataAuxiliar, setDataAuxiliar] = useState([]);
@@ -86,7 +87,7 @@ function ViewEdicioPressupostos() {
             dataQuisom.dateCreation = item.dateCreation !== undefined && item.dateCreation !== "" ? item.dateCreation : itemAux.dateCreation;
             // dataQuisom.iframeYoutube = item.iframeYoutube !== undefined && item.iframeYoutube !== "" ? item.iframeYoutube : itemAux.iframeYoutube;
             
-            await updateOneDocOfTpo('pressupostos',idCard,dataQuisom);
+            await updateOneDocOfTpo('actes',idCard,dataQuisom);
             
             let btnMenjador = document.getElementById('btn-menjador');
             btnMenjador.innerText = "Agregar";
@@ -115,7 +116,7 @@ function ViewEdicioPressupostos() {
             dataQuisom.dateCreation = edicioQuisom.dateCreation;
             // dataQuisom.iframeYoutube = edicioQuisom.iframeYoutube;
             
-            await add('pressupostos',dataQuisom);
+            await add('actes',dataQuisom);
             
             handleReset();
             refresh();
@@ -133,7 +134,7 @@ function ViewEdicioPressupostos() {
         // let textPhoto = document.getElementById('iframeYoutube');
         let inputAux = document.getElementById('input-aux');
         
-        let promise = getOneDocOfTipo('pressupostos',name);
+        let promise = getOneDocOfTipo('actes',name);
         promise.then((result)=>{
           
             let data = result.data();
@@ -156,7 +157,7 @@ function ViewEdicioPressupostos() {
     const handleRemove = ({target:{name}}) =>{
         let arrStr = name.split(" - ");
         let id = arrStr[0];
-        deleteOneDocOfTipo('pressupostos',id);
+        deleteOneDocOfTipo('actes',id);
         refresh();
     }
 
@@ -164,7 +165,7 @@ function ViewEdicioPressupostos() {
    
         const handleLoad = async () =>{
         
-          let promesa1 = getAllCollections('pressupostos');
+          let promesa1 = getAllCollections('actes');
           promesa1.then((resul)=>{
             resul.forEach((doc)=>{
                 let item = new quisom(doc.id,doc.cosHtml,doc.dateCreation,"","","",false,false); 
@@ -184,7 +185,7 @@ function ViewEdicioPressupostos() {
             <div className="row featurette">
                 <div className="col-md-12">
                     <div className="card border-info mb-3">
-                        <div className="card-header bg-warning"><h2 className="card-title">Pressupostos</h2></div>
+                        <div className="card-header bg-warning"><h2 className="card-title">Actes</h2></div>
                         <div className="card-body">
                             <form onSubmit={handleSubmit} >
                                 <input className="d-none" id="input-aux" ></input>
@@ -229,4 +230,4 @@ function ViewEdicioPressupostos() {
      );
 }
 
-export default ViewEdicioPressupostos;
+export default ViewEdicioActes;

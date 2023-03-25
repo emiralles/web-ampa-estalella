@@ -26,7 +26,7 @@ const categories = [
             { id: "Qui Som", href: "/admin/index/quisom", icon: <DnsRoundedIcon /> },
             { id: "Comissions", href: "/admin/index/comissions", icon: <PermMediaOutlinedIcon /> },
             { id: "Fer se soci", href: "/admin/index/festesoci", icon: <PermMediaOutlinedIcon /> },
-            { id: "Contacta'ns", href: "/contacta-ns", icon: <PermMediaOutlinedIcon /> },
+            { id: "Contacta'ns", href: "/admin/index/contactans", icon: <PermMediaOutlinedIcon /> },
         ], 
         icon: <PeopleIcon />, 
         active: true
@@ -46,7 +46,7 @@ const categories = [
         sublista: [
             { id: "Estatus", href: "/admin/index/estatus", icon: <DnsRoundedIcon /> },
             { id: "Pressupostos", href: "/admin/index/pressupostos", icon: <PermMediaOutlinedIcon /> },
-            { id: "Actes", href: "/admin/index/extraescolars", icon: <PermMediaOutlinedIcon /> },
+            { id: "Actes", href: "/admin/index/actes", icon: <PermMediaOutlinedIcon /> },
         ], 
         icon: <PermMediaOutlinedIcon /> },
         { id: "Otros", 
