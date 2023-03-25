@@ -10,13 +10,13 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import Grid from '@mui/material/Grid';
 
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Typography from '@mui/material/Typography';
+// import Table from '@mui/material/Table';
+// import TableBody from '@mui/material/TableBody';
+//import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+// import TableContainer from '@mui/material/TableContainer';
+// import TableHead from '@mui/material/TableHead';
+//import TableRow from '@mui/material/TableRow';
+//import Typography from '@mui/material/Typography';
 
 let edicio = new quisom("","","","","","", false, false); 
 let elevation = 24;
@@ -28,33 +28,32 @@ const Item = styled(Paper)(({ theme }) => ({
   
 const lightTheme = createTheme({ palette: { mode: 'light' } });  
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-        backgroundColor: "forestgreen", // theme.palette.common.green,
-        color: theme.palette.common.white,
-    },
-    [`&.${tableCellClasses.body}`]: {
-        fontSize: 12,
-    },
-}));
+// const StyledTableCell = styled(TableCell)(({ theme }) => ({
+//     [`&.${tableCellClasses.head}`]: {
+//         backgroundColor: "forestgreen",
+//         color: theme.palette.common.white,
+//     },
+//     [`&.${tableCellClasses.body}`]: {
+//         fontSize: 12,
+//     },
+// }));
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(odd)': {
-        backgroundColor: theme.palette.action.hover,
-    },
-    // hide last border
-    '&:last-child td, &:last-child th': {
-        border: 0,
-    },
-}));
+// const StyledTableRow = styled(TableRow)(({ theme }) => ({
+//     '&:nth-of-type(odd)': {
+//         backgroundColor: theme.palette.action.hover,
+//     },
+//     '&:last-child td, &:last-child th': {
+//         border: 0,
+//     },
+// }));
 
-function createData(name, fitxe, texto) {
-    return { name, fitxe, texto };
-}
+// function createData(name, fitxe, texto) {
+//     return { name, fitxe, texto };
+// }
 
-const rows = [   
-    createData('2021-2022', 'https://agora.xtec.cat/ceipestalella/wp-content/uploads/usu318/2022/03/estatuts-2.pdf', 'Estatuts 2021-2022'),
-];
+// const rows = [   
+//     createData('2021-2022', 'https://agora.xtec.cat/ceipestalella/wp-content/uploads/usu318/2022/03/estatuts-2.pdf', 'Estatuts 2021-2022'),
+// ];
   
 
 function ViewEstatuts() {
@@ -64,7 +63,7 @@ function ViewEstatuts() {
 
     useEffect(()=>{
         const handleLoad = async () =>{
-            let promesa1 = getAllCollections('quisom');
+            let promesa1 = getAllCollections('estatus');
             promesa1.then((resul)=>{
                 resul.forEach((doc)=>{
                     let item = new quisom(doc.id,doc.cosHtml,doc.dateCreation,"","","",false,false); 
@@ -98,15 +97,17 @@ function ViewEstatuts() {
                                         <Stack direction="row" sx={{justifyContent: 'center'}}>
                                             <DialogContent>
                                                 <DialogContentText id="alert-dialog-description">
+                                                    { 
+                                                        edicioQuisom ? <div className="container p-4" id='textoHtml' dangerouslySetInnerHTML={{ __html: `${edicioQuisom.cosHtml}` }}>
+                                                        </div> : <p>Aun no existe información...</p>
+                                                    }
+                                                </DialogContentText>
+                                                {/* <DialogContentText id="alert-dialog-description">
                                                     <Typography gutterBottom variant="h6" component="h6">
                                                         A continuació indiquem els estatuts de l’Associació de Mares i Pares d’Alumnes de l’escola. Estatuts: Estatuts AFA Estalella i Graells (Aprovats a l’ActaAssembleaEstatuts).
                                                     </Typography>
-                                                    {/* { edicioQuisom ?
-                                                        "A continuació indiquem els estatuts de l’Associació de Mares i Pares d’Alumnes de l’escola. Estatuts: Estatuts AFA Estalella i Graells (Aprovats a l’ActaAssembleaEstatuts)."
-                                                        :""
-                                                    } */}
-                                                </DialogContentText>
-                                                <DialogContentText sx={{width:"70%"}}>
+                                                </DialogContentText> */}
+                                                {/* <DialogContentText sx={{width:"70%"}}>
                                                     <div className="p-3">
                                                         <TableContainer component={Paper}>
                                                             <Table sx={{ width: "100%" }} aria-label="customized table">
@@ -130,7 +131,7 @@ function ViewEstatuts() {
                                                         </TableContainer>
                                                     </div>
                                                     
-                                                </DialogContentText>
+                                                </DialogContentText> */}
                                             </DialogContent>
                                         </Stack>
                             </Item>

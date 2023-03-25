@@ -1,13 +1,14 @@
 import { useRef, useState, useEffect } from "react";
 import { Editor } from '@tinymce/tinymce-react';
 import { quisom } from "../../models/quisom";
-import { useAuth } from "../../context/authContext";
+//import { useAuth } from "../../context/authContext";
 
 //import { add, updateOneDocOfTpo, getAllCollections, deleteOneDocOfTipo, getOneDocOfTipo} from "../../db/crudDB";
-import { getUrlImage, uploadFile, add, updateOneDocOfTpo, getAllCollections, removeObject, deleteOneDocOfTipo, getOneDocOfTipo} from "../../db/crudDB";
+//getUrlImage,uploadFile,  , removeObject
+import { add, updateOneDocOfTpo, getAllCollections, deleteOneDocOfTipo, getOneDocOfTipo} from "../../db/crudDB";
 import Parrafo from "../../components/menjador/Parrafo";
-import ListRectangleCard from "../../components/card/ListRectangleCard";
-import { esdeveniment } from "../../models/esdeveniment";
+//import ListRectangleCard from "../../components/card/ListRectangleCard";
+//import { esdeveniment } from "../../models/esdeveniment";
 
 
 let edicio = new quisom("","","","","","", false, false); 
@@ -23,24 +24,24 @@ let dataQuisom = {
     thereIsYoutubeVideo:false,
 }
 
-let evento = new esdeveniment("","","","","","","",""); 
+//let evento = new esdeveniment("","","","","","","",""); 
 
 
-let dataEvento = {
-    uid:"",
-    path:"",
-    fileupload:"",
-    title:"",
-    cosHtml:"",
-    dateCreation:"",
-    namePhoto:"",
-    urlPhoto:"",
-}
+// let dataEvento = {
+//     uid:"",
+//     path:"",
+//     fileupload:"",
+//     title:"",
+//     cosHtml:"",
+//     dateCreation:"",
+//     namePhoto:"",
+//     urlPhoto:"",
+// }
 
 function ViewEdicioEstatus() {
-    const[esdevenim,setEsdevenim] = useState(evento);
-    const [listEsdeveniments,setListEsdeveniments] = useState([]);
-    const { user }  = useAuth();
+    //const[esdevenim,setEsdevenim] = useState(evento);
+    //const [listEsdeveniments,setListEsdeveniments] = useState([]);
+    //const { user }  = useAuth();
     
     const[edicioQuisom,setEdicioQuisom] = useState(edicio);
     const [isTrue, setTrue] = useState(false);
@@ -49,13 +50,13 @@ function ViewEdicioEstatus() {
 
     const editorRef = useRef(null);
     
-    const handleChange = ({target:{name,value}}) => {
-        setEsdevenim({...esdevenim,[name]:value});
-    }
+    // const handleChange = ({target:{name,value}}) => {
+    //     setEsdevenim({...esdevenim,[name]:value});
+    // }
 
-    const handleFileChange = ({target:{name,files}}) => {
-        setEsdevenim({...esdevenim,[name]:files[0]})
-    }
+    // const handleFileChange = ({target:{name,files}}) => {
+    //     setEsdevenim({...esdevenim,[name]:files[0]})
+    // }
 
     const refresh = ()=>{
         // re-renders the component
@@ -156,78 +157,78 @@ function ViewEdicioEstatus() {
 
     };
 
-    const handleSubmitFile = async (e) => {
-        e.preventDefault();
-        let inputAux = document.getElementById('input-aux');
-        let fecha = new Date();
-        let nowDate = fecha.toLocaleString("es-ES");
+    // const handleSubmitFile = async (e) => {
+    //     e.preventDefault();
+    //     let inputAux = document.getElementById('input-aux');
+    //     let fecha = new Date();
+    //     let nowDate = fecha.toLocaleString("es-ES");
             
-        if (inputAux.value !== "") {
+    //     if (inputAux.value !== "") {
             
-            if (nowDate !== "") {
-                let auxEvento = esdevenim;
-                auxEvento.dateCreation=nowDate;
-                setEsdevenim(auxEvento);    
-            }
+    //         if (nowDate !== "") {
+    //             let auxEvento = esdevenim;
+    //             auxEvento.dateCreation=nowDate;
+    //             setEsdevenim(auxEvento);    
+    //         }
 
-            let arrDataAux = inputAux.value.split(" - ");
-            let idCard = arrDataAux[0];
-            let dataImagen = esdevenim["fileupload"];
-            let nameCardPhoto = dataImagen !== undefined ? dataImagen.name : arrDataAux[1];  
+    //         let arrDataAux = inputAux.value.split(" - ");
+    //         let idCard = arrDataAux[0];
+    //         let dataImagen = esdevenim["fileupload"];
+    //         let nameCardPhoto = dataImagen !== undefined ? dataImagen.name : arrDataAux[1];  
 
-            let item = new esdeveniment('','',esdevenim["fileupload"],esdevenim['title'],esdevenim['cosHtml'],esdevenim['dateCreation'],nameCardPhoto,"");
-            let itemAux = new esdeveniment('','','',dataAuxiliar.title,dataAuxiliar.cosHtml,dataAuxiliar.dateCreation,dataAuxiliar.namePhoto,dataAuxiliar.urlPhoto);
+    //         let item = new esdeveniment('','',esdevenim["fileupload"],esdevenim['title'],esdevenim['cosHtml'],esdevenim['dateCreation'],nameCardPhoto,"");
+    //         let itemAux = new esdeveniment('','','',dataAuxiliar.title,dataAuxiliar.cosHtml,dataAuxiliar.dateCreation,dataAuxiliar.namePhoto,dataAuxiliar.urlPhoto);
             
-            dataEvento.title = item.title !== undefined && item.title !== ""  ? item.title : itemAux.title;
-            dataEvento.cosHtml = item.cosHtml !== undefined && item.cosHtml !== "" ? item.cosHtml : itemAux.cosHtml;
-            dataEvento.dateCreation = item.dateCreation !== undefined && item.dateCreation !== "" ? item.dateCreation : itemAux.dateCreation;
-            dataEvento.namePhoto = item.namePhoto !== undefined && item.namePhoto !== "" ? item.namePhoto : itemAux.namePhoto;
-            dataEvento.urlPhoto = esdevenim["fileupload"] !== undefined ? "" : itemAux.urlPhoto;
+    //         dataEvento.title = item.title !== undefined && item.title !== ""  ? item.title : itemAux.title;
+    //         dataEvento.cosHtml = item.cosHtml !== undefined && item.cosHtml !== "" ? item.cosHtml : itemAux.cosHtml;
+    //         dataEvento.dateCreation = item.dateCreation !== undefined && item.dateCreation !== "" ? item.dateCreation : itemAux.dateCreation;
+    //         dataEvento.namePhoto = item.namePhoto !== undefined && item.namePhoto !== "" ? item.namePhoto : itemAux.namePhoto;
+    //         dataEvento.urlPhoto = esdevenim["fileupload"] !== undefined ? "" : itemAux.urlPhoto;
 
-            await updateOneDocOfTpo('esdeveniment',idCard,dataEvento);
+    //         await updateOneDocOfTpo('estatus',idCard,dataEvento);
             
-            if (esdevenim["fileupload"] !== undefined) {
-                let textPhoto = document.getElementById('textPhoto');
-                let pathPhoto = textPhoto.value;
-                removeObject(pathPhoto);
-                const dataImg = await uploadFile(esdevenim["fileupload"],esdevenim["fileupload"].name,idCard,user.uid);
-                dataEvento.namePhoto = esdevenim["fileupload"].name;
-                dataEvento.path = dataImg.metadata.fullPath;
-                await updateOneDocOfTpo('esdeveniment',idCard,dataEvento);    
-            }
+    //         if (esdevenim["fileupload"] !== undefined) {
+    //             let textPhoto = document.getElementById('textPhoto');
+    //             let pathPhoto = textPhoto.value;
+    //             removeObject(pathPhoto);
+    //             const dataImg = await uploadFile(esdevenim["fileupload"],esdevenim["fileupload"].name,idCard,user.uid);
+    //             dataEvento.namePhoto = esdevenim["fileupload"].name;
+    //             dataEvento.path = dataImg.metadata.fullPath;
+    //             await updateOneDocOfTpo('estatus',idCard,dataEvento);    
+    //         }
             
-            let btnEsdeveniment = document.getElementById('btn-esdeveniment');
-            btnEsdeveniment.innerText = "Agregar";
+    //         let btnEsdeveniment = document.getElementById('btn-esdeveniment');
+    //         btnEsdeveniment.innerText = "Agregar";
 
-            handleReset();
-            refresh();
+    //         handleReset();
+    //         refresh();
 
-        }else{
+    //     }else{
         
-            if (nowDate !== "") {
-                let auxEvento = esdevenim;
-                auxEvento.dateCreation=nowDate;
-                setEsdevenim(auxEvento);    
-            }
+    //         if (nowDate !== "") {
+    //             let auxEvento = esdevenim;
+    //             auxEvento.dateCreation=nowDate;
+    //             setEsdevenim(auxEvento);    
+    //         }
             
-            dataEvento.cosHtml = esdevenim.cosHtml;
-            dataEvento.dateCreation = esdevenim.dateCreation;
-            dataEvento.namePhoto = esdevenim.fileupload.name;
-            dataEvento.title = esdevenim.title;
+    //         dataEvento.cosHtml = esdevenim.cosHtml;
+    //         dataEvento.dateCreation = esdevenim.dateCreation;
+    //         dataEvento.namePhoto = esdevenim.fileupload.name;
+    //         dataEvento.title = esdevenim.title;
             
-            const idData = await add('esdeveniment',dataEvento);
-            if (idData !== undefined && idData !== "") {
-                const dataImg = await uploadFile(esdevenim.fileupload,dataEvento.namePhoto,idData,user.uid);
-                dataEvento.path = dataImg.metadata.fullPath;
-                await updateOneDocOfTpo('esdeveniment',idData,dataEvento);  
-            }
+    //         const idData = await add('estatus',dataEvento);
+    //         if (idData !== undefined && idData !== "") {
+    //             const dataImg = await uploadFile(esdevenim.fileupload,dataEvento.namePhoto,idData,user.uid);
+    //             dataEvento.path = dataImg.metadata.fullPath;
+    //             await updateOneDocOfTpo('estatus',idData,dataEvento);  
+    //         }
 
-            handleReset();
-            refresh();
+    //         handleReset();
+    //         refresh();
             
-        }
+    //     }
 
-    };
+    // };
 
     const handleEdit = ({target:{name}}) =>{
 
@@ -282,25 +283,21 @@ function ViewEdicioEstatus() {
         
         handleLoad();
     
-        const handleLoadEstatus = async () =>{
-        
-            // let arrayItems = [];
-            let promesa1 = getAllCollections('esdeveniment');
-            promesa1.then((resul)=>{
-              resul.forEach((doc)=>{
-                let imgUrl = getUrlImage(doc.path);
-                imgUrl.then((rstUrl)=>{
-                  let item = new esdeveniment(doc.id,doc.path,"",doc.title,doc.cosHtml,doc.dateCreation,doc.namePhoto,rstUrl); 
-                  // arrayItems.push(item);
-                  setListEsdeveniments(arr => [...arr, item]);
-                  //console.log(listEsdeveniments);
-                });
-              })
-            })
+        // const handleLoadEstatus = async () =>{
+        //     let promesa1 = getAllCollections('estatus');
+        //     promesa1.then((resul)=>{
+        //       resul.forEach((doc)=>{
+        //         let imgUrl = getUrlImage(doc.path);
+        //         imgUrl.then((rstUrl)=>{
+        //           let item = new esdeveniment(doc.id,doc.path,"",doc.title,doc.cosHtml,doc.dateCreation,doc.namePhoto,rstUrl); 
+        //           setListEsdeveniments(arr => [...arr, item]);
+        //         });
+        //       })
+        //     })
             
-          }
+        //   }
           
-          handleLoadEstatus();
+        //   handleLoadEstatus();
 
     },[isTrue]);
 
@@ -350,7 +347,7 @@ function ViewEdicioEstatus() {
                     </div>
                 </div>
             </div>
-            <div className="row featurette">
+            {/* <div className="row featurette">
                 <div className="col-md-12">
                     <div className="card border-info mb-3">
                         <div className="card-header bg-warning"><h2 className="card-title">Estatus</h2></div>
@@ -378,10 +375,10 @@ function ViewEdicioEstatus() {
                         </div>
                     </div>
                     {
-                        <ListRectangleCard arrayData={listEsdeveniments} handleEdit={handleEdit} handleRemove={handleRemove} componentCall={origen} nameList="Listat d'Esdeveniments"/>
+                        <ListRectangleCard arrayData={listEsdeveniments} handleEdit={handleEdit} handleRemove={handleRemove} componentCall={origen} nameList="Estatus"/>
                     }
                 </div>
-            </div>
+            </div> */}
         </>
      );
 }
