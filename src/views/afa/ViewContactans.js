@@ -3,16 +3,26 @@ import { useState } from "react";
 import { mail } from "../../models/mail";
 
 import Box from '@mui/material/Box';
-// import FormControl from '@mui/material/FormControl';
-// import TextField from '@mui/material/TextField';
-// import MenuItem from '@mui/material/MenuItem';
-// import Button from '@mui/material/Button';
-// import SendIcon from '@mui/icons-material/Send';
 import Grid from '@mui/material/Grid';
 
 import Paper from '@mui/material/Paper';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+
+import {quisom} from "../../models/quisom";
+import {getAllCollections} from "../../db/crudDB";
+
+import { useState, useEffect } from "react";
+
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+
+import Paper from '@mui/material/Paper';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import DialogContent from '@mui/material/DialogContent';
@@ -26,14 +36,33 @@ const Item = styled(Paper)(({ theme }) => ({
   
 const lightTheme = createTheme({ palette: { mode: 'light' } });  
 
+let edicio = new quisom("","","","","","", false, false); 
 
 function ViewContactans() {
 
+    const[edicioQuisom,setEdicioQuisom] = useState(edicio);
+    
     const [user,setUser] = useState({nombre:"",email:"",subject:"",textArea:""});
     const handleChange = ({target:{name,value}}) =>{
         setUser({...user,[name]:value})
     }
 
+    useEffect(() => {
+        
+        const handleLoad = async () =>{
+            let promesa1 = getAllCollections('llibres');
+            promesa1.then((resul)=>{
+            resul.forEach((doc)=>{
+                let item = new quisom(doc.id,doc.cosHtml,doc.dateCreation,"","","",false,false); 
+                setEdicioQuisom(item);
+            })
+            })
+        }
+        
+        handleLoad();
+    
+    }, [])
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -84,6 +113,12 @@ function ViewContactans() {
                                                     <div className="row featurette">
                                                         <div className="col-md-7">
                                                             <h2 className="featurette-heading">Contacta amb nosaltres.</h2>
+                                                            <DialogContentText id="alert-dialog-description">
+                                                                { 
+                                                                    edicioQuisom ? <div className="container p-4" id='textoHtml' dangerouslySetInnerHTML={{ __html: `${edicioQuisom.cosHtml}` }}>
+                                                                    </div> : <p>Aun no existe información...</p>
+                                                                }
+                                                            </DialogContentText>
                                                             <p className="lead">Si tens algun dubte, consulta o necessites enviar-nos alguna informació no dubtis a fer servir aquest formulari per contactar amb nosaltres.</p>
                                                         </div>
                                                         <div className="col-md-5">
@@ -130,3 +165,46 @@ function ViewContactans() {
 }
 
 export default ViewContactans
+
+
+// function ViewLlibres() {
+    
+//     return ( 
+//         <>
+//             <Grid container spacing={2} sx={{pt:10}}>
+//                 {[lightTheme].map((theme, index) => (
+//                     <Grid item key={index} sx={{width:'100%'}}>
+//                     <ThemeProvider theme={theme} key={index}>
+//                         <Box>       
+//                             <Item key={elevation} elevation={elevation} sx={{
+//                                     mb: 2,
+//                                     display: "flex",
+//                                     flexDirection: "column",
+//                                     height: 650,
+//                                     overflow: "hidden",
+//                                     overflowY: "scroll",
+//                                     }}>
+//                                         <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
+//                                             <Chip label="Llibres" size="large" variant="outlined" />
+//                                         </Stack>
+//                                         <Stack direction="row" sx={{justifyContent: 'center'}}>
+//                                             <DialogContent>
+//                                                 <DialogContentText id="alert-dialog-description">
+//                                                     { 
+//                                                         edicioQuisom ? <div className="container p-4" id='textoHtml' dangerouslySetInnerHTML={{ __html: `${edicioQuisom.cosHtml}` }}>
+//                                                         </div> : <p>Aun no existe información...</p>
+//                                                     }
+//                                                 </DialogContentText>
+//                                             </DialogContent>
+//                                         </Stack>
+//                             </Item>
+//                         </Box>
+//                     </ThemeProvider>
+//                     </Grid>
+//                 ))}
+//             </Grid>
+//         </>
+//      );
+// }
+
+// export default ViewLlibres;
