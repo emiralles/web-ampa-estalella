@@ -134,7 +134,7 @@ function ViewEdicioContactans() {
         // let textPhoto = document.getElementById('iframeYoutube');
         let inputAux = document.getElementById('input-aux');
         
-        let promise = getOneDocOfTipo('llibres',name);
+        let promise = getOneDocOfTipo('contactans',name);
         promise.then((result)=>{
           
             let data = result.data();
