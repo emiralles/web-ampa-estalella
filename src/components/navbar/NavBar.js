@@ -54,7 +54,7 @@ function NavBar() {
                                         </a>
                                         <ul className="dropdown-menu" aria-labelledby="navbarDocumentsDropdown">
                                             <li><a href="/estatuts" className="dropdown-item">Estatuts</a></li>
-                                            <li><a href="fg" className="dropdown-item">Pressupost 2021-2022</a></li>
+                                            <li><a href="/pressupostos" className="dropdown-item">Pressupostos</a></li>
                                             <li><a href="/actes" className="dropdown-item">Actes</a></li>
                                         </ul>
                                     </li>

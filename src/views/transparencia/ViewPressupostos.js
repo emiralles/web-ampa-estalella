@@ -52,7 +52,7 @@ function ViewPressupostos() {
                                     overflowY: "scroll",
                                     }}>
                                         <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
-                                            <Chip label="Actes" size="large" variant="outlined" />
+                                            <Chip label="Pressupostos" size="large" variant="outlined" />
                                         </Stack>
                                         <Stack direction="row" sx={{justifyContent: 'center'}}>
                                             <DialogContent>
