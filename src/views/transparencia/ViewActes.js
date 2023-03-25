@@ -16,7 +16,7 @@ import Grid from '@mui/material/Grid';
 // import TableContainer from '@mui/material/TableContainer';
 // import TableHead from '@mui/material/TableHead';
 //import TableRow from '@mui/material/TableRow';
-//import Typography from '@mui/material/Typography';
+// import Typography from '@mui/material/Typography';
 
 let edicio = new quisom("","","","","","", false, false); 
 let elevation = 24;
@@ -42,6 +42,7 @@ const lightTheme = createTheme({ palette: { mode: 'light' } });
 //     '&:nth-of-type(odd)': {
 //         backgroundColor: theme.palette.action.hover,
 //     },
+//     // hide last border
 //     '&:last-child td, &:last-child th': {
 //         border: 0,
 //     },
@@ -106,8 +107,8 @@ function ViewActes() {
                                                     Per aquesta raó, posem a la vostra disposició en aquesta pàgina tota la documentació de gestió de l’entitat: actes de les Assemblees de Socis, actes de la junta directiva, convenis de col·laboració, documents de gestió econòmica, etc.
                                                     Actes de les assemblees de socis de l’AMPA
                                                     </Typography>
-                                                </DialogContentText>
-                                                <DialogContentText sx={{width:"70%"}}>
+                                                </DialogContentText> */}
+                                                {/* <DialogContentText sx={{width:"70%"}}>
                                                     <div className="p-3">
                                                         <TableContainer component={Paper}>
                                                             <Table sx={{ width: "100%" }} aria-label="customized table">
