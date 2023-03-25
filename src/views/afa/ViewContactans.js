@@ -50,7 +50,7 @@ function ViewContactans() {
     useEffect(() => {
         
         const handleLoad = async () =>{
-            let promesa1 = getAllCollections('llibres');
+            let promesa1 = getAllCollections('contactans');
             promesa1.then((resul)=>{
             resul.forEach((doc)=>{
                 let item = new quisom(doc.id,doc.cosHtml,doc.dateCreation,"","","",false,false); 
