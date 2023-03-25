@@ -1,4 +1,4 @@
-import axios from "axios";
+//import axios from "axios";
 import { useState, useEffect } from "react";
 import { getAllCollections, getUrlImage} from "../../db/crudDB";
 import { comissio } from "../../models/comissio";
@@ -6,12 +6,13 @@ import ListRectangleCard from "../../components/card/ListRectangleCard";
 
 
 import Box from '@mui/material/Box';
-import FormControl from '@mui/material/FormControl';
-import TextField from '@mui/material/TextField';
-import MenuItem from '@mui/material/MenuItem';
-import Button from '@mui/material/Button';
-import SendIcon from '@mui/icons-material/Send';
+// import FormControl from '@mui/material/FormControl';
+// import TextField from '@mui/material/TextField';
+// import MenuItem from '@mui/material/MenuItem';
+// import Button from '@mui/material/Button';
+// import SendIcon from '@mui/icons-material/Send';
 import Grid from '@mui/material/Grid';
+import {quisom} from "../../models/quisom";
 
 import Paper from '@mui/material/Paper';
 //import Box from '@mui/material/Box';
@@ -30,30 +31,30 @@ const Item = styled(Paper)(({ theme }) => ({
   
 const lightTheme = createTheme({ palette: { mode: 'light' } });  
 
-
+let edicio = new quisom("","","","","","", false, false); 
 
 function ViewComisions() {
 
+    const[edicioQuisom,setEdicioQuisom] = useState(edicio);
+    
+    // const [name, setName] = useState('Composed TextField');
 
-    const [name, setName] = useState('Composed TextField');
+    // const handleChange = (event) => {
+    //   setName(event.target.value);
+    // };
 
-    const handleChange = (event) => {
-      setName(event.target.value);
-    };
+    // const [comboValor, setComboValor] = useState('');
 
-    const [comboValor, setComboValor] = useState('');
-
-    const handleChangeCombo = (event) => {
-        setComboValor(event.target.value);
-    };
+    // const handleChangeCombo = (event) => {
+    //     setComboValor(event.target.value);
+    // };
 
     let origen = "negoci";
     const [listComisiones,setListComisiones] = useState([]);
     
     useEffect(()=>{
    
-        const handleLoad = async () =>{
-        
+        const handleLoad = async () =>{        
           let promesa1 = getAllCollections('comissio');
           promesa1.then((resul)=>{
             resul.forEach((doc)=>{
@@ -67,43 +68,54 @@ function ViewComisions() {
           
         }
         
+        const handleLoadComissioText = async () =>{
+            let promesa1 = getAllCollections('comissio-text');
+            promesa1.then((resul)=>{
+            resul.forEach((doc)=>{
+                let item = new quisom(doc.id,doc.cosHtml,doc.dateCreation,"","","",false,false); 
+                setEdicioQuisom(item);
+            })
+            })
+        }
+
         handleLoad();
+        handleLoadComissioText();
     
     },[]);
 
 
-    let EnviarMail = (e) => {
-        e.preventDefault();
+    // let EnviarMail = (e) => {
+    //     e.preventDefault();
     
-        let textSubject = "Inscripciò en comission";
-        let textTo = e.target[0].value;
-        let textOf = `${e.target[1].value} ${e.target[2].value} `;
-        let textTexto = `${e.target[3].value} `;
+    //     let textSubject = "Inscripciò en comission";
+    //     let textTo = e.target[0].value;
+    //     let textOf = `${e.target[1].value} ${e.target[2].value} `;
+    //     let textTexto = `${e.target[3].value} `;
         
-        const data =
-        {
-            from: textTo,
-            to: textTo,
-            of: textOf,
-            subject: textSubject, 
-            text: textTexto
-        };
+    //     const data =
+    //     {
+    //         from: textTo,
+    //         to: textTo,
+    //         of: textOf,
+    //         subject: textSubject, 
+    //         text: textTexto
+    //     };
 
-        axios.post('https://arimathsolutions.com/api/mail',data,{header:{
-            'TIPO DE CONTENIDO': 'Aplicación / JSON' 
-            }})
-            .then(res => {
-                e.target[0].value="";
-                e.target[1].value="";
-                e.target[2].value="";
-                e.target[3].value="";
-                e.target[4].value="";
-                e.target[5].value="";
-            }).catch(error => {
-                let errordata = error;
-                console.log(errordata);
-            })
-    }
+    //     axios.post('https://arimathsolutions.com/api/mail',data,{header:{
+    //         'TIPO DE CONTENIDO': 'Aplicación / JSON' 
+    //         }})
+    //         .then(res => {
+    //             e.target[0].value="";
+    //             e.target[1].value="";
+    //             e.target[2].value="";
+    //             e.target[3].value="";
+    //             e.target[4].value="";
+    //             e.target[5].value="";
+    //         }).catch(error => {
+    //             let errordata = error;
+    //             console.log(errordata);
+    //         })
+    // }
 
     return (
         <>
@@ -138,12 +150,18 @@ function ViewComisions() {
                                     </Stack>
                                     <Stack direction="row" sx={{justifyContent: 'center', pt:2, pb:2}}>
                                         <DialogContent>
-                                            <DialogContentText id="alert-dialog-description">
+                                            {/* <DialogContentText id="alert-dialog-description">
                                                 L’AFA no té cap sentit si les famílies no s’hi involucren. Hi ha moltes formes de col·laborar, que s’adapten a les possibilitats i el temps de cadascú. Si vols participar, escriu-nos.
+                                            </DialogContentText> */}
+                                            <DialogContentText id="alert-dialog-description">
+                                                { 
+                                                    edicioQuisom ? <div className="container p-4" id='textoHtml' dangerouslySetInnerHTML={{ __html: `${edicioQuisom.cosHtml}` }}>
+                                                    </div> : <p>Aun no existe información...</p>
+                                                }
                                             </DialogContentText>
                                         </DialogContent>
                                     </Stack>
-                                        <div className="container p-4">
+                                        {/* <div className="container p-4">
                                             <div className="row featurette">
                                                 <div className="col-md-5">
                                                     <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x270</text></svg>
@@ -214,7 +232,7 @@ function ViewComisions() {
                                                 </Box>
                                                 </div>
                                             </div>
-                                        </div>    
+                                        </div>     */}
                                     </div>
                             </Item>
                         </Box>

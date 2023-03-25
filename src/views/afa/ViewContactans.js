@@ -112,14 +112,15 @@ function ViewContactans() {
                                                 <DialogContentText id="alert-dialog-description">
                                                     <div className="row featurette">
                                                         <div className="col-md-7">
-                                                            <h2 className="featurette-heading">Contacta amb nosaltres.</h2>
                                                             <DialogContentText id="alert-dialog-description">
                                                                 { 
                                                                     edicioQuisom ? <div className="container p-4" id='textoHtml' dangerouslySetInnerHTML={{ __html: `${edicioQuisom.cosHtml}` }}>
                                                                     </div> : <p>Aun no existe información...</p>
                                                                 }
                                                             </DialogContentText>
-                                                            <p className="lead">Si tens algun dubte, consulta o necessites enviar-nos alguna informació no dubtis a fer servir aquest formulari per contactar amb nosaltres.</p>
+                                                            {/* <h2 className="featurette-heading">Contacta amb nosaltres.</h2>
+                                                            
+                                                            <p className="lead">Si tens algun dubte, consulta o necessites enviar-nos alguna informació no dubtis a fer servir aquest formulari per contactar amb nosaltres.</p> */}
                                                         </div>
                                                         <div className="col-md-5">
                                                             <div className="card border-info mb-3">
