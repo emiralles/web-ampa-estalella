@@ -32,6 +32,7 @@ import FormulariEdicioActes from "./views/formularis-edicio-apartados/View-edici
 import Actes from "./views/transparencia/ViewActes";
 import Estatuts from "./views/transparencia/ViewEstatuts";
 import Casaldestiu from "./views/serveis/ViewCasaldestiu";
+import Pressupostos from "./views/transparencia/ViewPressupostos";
 import Llibres from "./views/serveis/ViewLlibres";
 import FormulariEdicioExtraescolars from "./views/formularis-edicio-apartados/View-edicio-extraescolars";
 import ProtectedRoute from "./components/protectedroute/ProtectedRoute";
@@ -82,6 +83,7 @@ function App() {
           <Route path='/contacta-ns' element={<Contactans/>} />
           <Route path='/actes' element={<Actes/>} />
           <Route path='/estatuts' element={<Estatuts/>} />
+          <Route path='/pressupostos' element={<Pressupostos/>} />
           <Route path='/casaldestiu' element={<Casaldestiu/>} />
           <Route path='/tardesestiu' element={<ViewTardesEstiu/>} />
           <Route path='/equipament' element={<ViewEquipament/>} />

@@ -74,7 +74,6 @@ function ViewEdicioPressupostos() {
                 let auxEvento = edicioQuisom;
                 auxEvento.cosHtml=data;
                 setEdicioQuisom(auxEvento);
-                // console.log(data);
             }
 
             let idCard = inputAux.value;
@@ -84,7 +83,6 @@ function ViewEdicioPressupostos() {
             
             dataQuisom.cosHtml = item.cosHtml !== undefined && item.cosHtml !== "" ? item.cosHtml : itemAux.cosHtml;
             dataQuisom.dateCreation = item.dateCreation !== undefined && item.dateCreation !== "" ? item.dateCreation : itemAux.dateCreation;
-            // dataQuisom.iframeYoutube = item.iframeYoutube !== undefined && item.iframeYoutube !== "" ? item.iframeYoutube : itemAux.iframeYoutube;
             
             await updateOneDocOfTpo('pressupostos',idCard,dataQuisom);
             
@@ -107,13 +105,10 @@ function ViewEdicioPressupostos() {
                 let auxEvento = edicioQuisom;
                 auxEvento.cosHtml=data;
                 setEdicioQuisom(auxEvento);
-                // console.log(data);
             }
-
-            
+    
             dataQuisom.cosHtml = edicioQuisom.cosHtml;
             dataQuisom.dateCreation = edicioQuisom.dateCreation;
-            // dataQuisom.iframeYoutube = edicioQuisom.iframeYoutube;
             
             await add('pressupostos',dataQuisom);
             
@@ -127,10 +122,7 @@ function ViewEdicioPressupostos() {
     const handleEdit = ({target:{name}}) =>{
 
         let btnMenjador = document.getElementById('btn-menjador');
-        
-        // let inputparraf = document.getElementById('tinymce');
         let psd = document.getElementById('container-body-parraph');
-        // let textPhoto = document.getElementById('iframeYoutube');
         let inputAux = document.getElementById('input-aux');
         
         let promise = getOneDocOfTipo('pressupostos',name);
@@ -138,13 +130,9 @@ function ViewEdicioPressupostos() {
           
             let data = result.data();
             data.id = result.id;
-          
             setDataAuxiliar(data);
-
-            // textPhoto.value = data.iframeYoutube;
             inputAux.value = data.id;
             psd.children[1].children[0].children[1].children[0].children[0].contentDocument.children[0].children['tinymce'].innerHTML=data.cosHtml;
-            // inputparraf.innerHTML = data.cosHtml;
             
             btnMenjador.innerText = "Modificar";
             refresh();
@@ -168,7 +156,6 @@ function ViewEdicioPressupostos() {
           promesa1.then((resul)=>{
             resul.forEach((doc)=>{
                 let item = new quisom(doc.id,doc.cosHtml,doc.dateCreation,"","","",false,false); 
-                // setTrue(!isTrue);
                 setEdicioQuisom(item);
             })
           })
